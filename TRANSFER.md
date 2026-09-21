@@ -44,19 +44,6 @@ unrelated files through TI-OS, then retry. Do not delete your only saved copy.
 A RAM reset can erase unarchived saves. Old CNTGNDAT saves remain untouched and
 cannot continue as version-2 runs.
 
-## First check on your calculator
-
-Start Bacteria, open and close region details, then buy Water I in evolution.
-Let the map advance, press Clear to save, and Clear again to quit. Relaunch
-CNTAGION, press Zoom, and confirm the purchase and outbreak remain. Check that
-controls respond normally and that saving produces no error. Then play a full
-run before treating this as a hardware-verified release.
-
-This build passed native emulator playthroughs for all three diseases and host
-rule/codec tests. Emulator coverage uses TI-OS 5.3, not your physical OS 5.7 device.
-Physical performance, OS 5.7 execution and real power-loss behavior remain to be
-verified. No ROM, firmware, test fixture or emulator is included in this ZIP.
-
 ## Sources and credits
 
 TI Connect CE: https://education.ti.com/en/products/computer-software/ti-connect-ce-sw
