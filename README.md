@@ -101,7 +101,7 @@ rules.
 
 ## Installation
 
-1. Download and unzip [CONTAGION CE 2.0](bin/CONTAGION-CE-2.0.zip).
+1. Download and unzip [CONTAGION CE 2.0](bin/CONTAGION-CE-2.0.zip). (Found at bin/CONTAGION-CE-2.0.zip)
 2. Transfer `CNTAGION.8xp` and all four `.8xv` libraries with TI Connect CE.
 3. Launch `CNTAGION` through arTIfiCE or another native-program shell.
 4. Start a new game with `Y=`.
