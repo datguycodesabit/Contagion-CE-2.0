@@ -1,0 +1,92 @@
+[WASM] load_rom: 4194304 bytes
+[WASM] load_rom: success
+[WASM] send_file: 1207 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 11430 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 177 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 2697 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 26258 bytes
+[WASM] send_file: injected 1 entries
+[CEmu] Loading ROM Image...
+[CEmu] Freed Memory.
+[CEmu] Freed ASIC.
+[CEmu] Initialized Memory...
+[CEmu] Initialized CPU...
+[CEmu] Initialized Control Ports...
+[CEmu] Initialized Flash...
+[CEmu] Initialized SHA256 Chip...
+[CEmu] Initialized USB...
+[CEmu] Initialized LCD...
+[CEmu] Initialized Interrupt Controller...
+[CEmu] Initialized Watchdog Timer...
+[CEmu] Initialized General Purpose Timers...
+[CEmu] Initialized Real Time Clock...
+[CEmu] Initialized Protected Ports...
+[CEmu] Initialized Keypad...
+[CEmu] Initialized Backlight...
+[CEmu] Initialized Serial Peripheral Interface...
+[CEmu] Initialized UART...
+[CEmu] Initialized Advanced Peripheral Bus...
+[CEmu] Initialized ASIC...
+[CEmu] Info from cert: Device type = 0x00 (84+CE-like). Model = 0x13 (CE).
+[CEmu] Loaded ROM Image.
+[CEmu] Boot code version: 5.1.5.0014
+[CEmu] Default ASIC revision is rev I.
+[CEmu] Flash reset.
+[CEmu] Memory reset.
+[CEmu] LCD reset.
+[CEmu] Keypad reset.
+[CEmu] GPT reset.
+[CEmu] RTC reset.
+[CEmu] Watchdog timer reset.
+[CEmu] CPU reset.
+[CEmu] SHA256 chip reset.
+[CEmu] Control reset.
+MENU  
+AFTER Y=  
+start 
+RAM 4847856
+START {
+  regions: [
+    { healthy: 838, active: 2 },
+    { healthy: 1520, active: 0 },
+    { healthy: 382, active: 0 },
+    { healthy: 116, active: 0 },
+    { healthy: 768, active: 0 },
+    { healthy: 505, active: 0 },
+    { healthy: 279, active: 0 }
+  ],
+  spores: 0,
+  response: 0,
+  owned: [ 0, 0 ],
+  cycles: 8,
+  dna: 17,
+  cure: 0,
+  result: 0,
+  healthy: 4408,
+  active: 2,
+  dead: 0
+}
+PROGRESS {"regions":[{"healthy":838,"active":2},{"healthy":1520,"active":0},{"healthy":382,"active":0},{"healthy":116,"active":0},{"healthy":768,"active":0},{"healthy":505,"active":0},{"healthy":279,"active":0}],"spores":0,"response":0,"owned":[0,0],"cycles":8,"dna":17,"cure":0,"result":0,"healthy":4408,"active":2,"dead":0}
+BUY Water I 11
+BUY Air I 5
+BUY Livestock I 4
+BUY Insects I 11
+BUY Water II 1
+BUY Air II 4
+BUY Cold Adaptation I 1
+BUY Genetic Hardening I 1
+BUY Genetic Hardening II 0
+PROGRESS {"regions":[{"healthy":0,"active":840},{"healthy":0,"active":1520},{"healthy":1,"active":381},{"healthy":1,"active":115},{"healthy":0,"active":768},{"healthy":0,"active":505},{"healthy":0,"active":279}],"spores":0,"response":2,"owned":[2147483935,24],"cycles":237,"dna":37,"cure":1351,"result":0,"healthy":2,"active":4408,"dead":0}
+PROGRESS {"regions":[{"healthy":0,"active":840},{"healthy":0,"active":1520},{"healthy":0,"active":382},{"healthy":0,"active":116},{"healthy":0,"active":768},{"healthy":0,"active":505},{"healthy":0,"active":279}],"spores":0,"response":3,"owned":[2147483935,24],"cycles":390,"dna":45,"cure":4135,"result":0,"healthy":0,"active":4410,"dead":0}
+PROGRESS {"regions":[{"healthy":0,"active":840},{"healthy":0,"active":1520},{"healthy":0,"active":382},{"healthy":0,"active":116},{"healthy":0,"active":768},{"healthy":0,"active":505},{"healthy":0,"active":279}],"spores":0,"response":3,"owned":[2147483935,24],"cycles":544,"dna":45,"cure":6938,"result":0,"healthy":0,"active":4410,"dead":0}
+PROGRESS {"regions":[{"healthy":0,"active":840},{"healthy":0,"active":1520},{"healthy":0,"active":382},{"healthy":0,"active":116},{"healthy":0,"active":768},{"healthy":0,"active":505},{"healthy":0,"active":279}],"spores":0,"response":3,"owned":[2147483935,24],"cycles":698,"dna":45,"cure":9741,"result":0,"healthy":0,"active":4410,"dead":0}
+result 
+FINAL {"regions":[{"healthy":0,"active":840},{"healthy":0,"active":1520},{"healthy":0,"active":382},{"healthy":0,"active":116},{"healthy":0,"active":768},{"healthy":0,"active":505},{"healthy":0,"active":279}],"spores":0,"response":3,"owned":[2147483935,24],"cycles":713,"dna":45,"cure":10000,"result":3,"healthy":0,"active":4410,"dead":0,"purchases":9,"devolutions":0}
+result-menu 
+reopened-result 
+reset 
+PASS: native type 0, cure, result pause/reopen and New Game reset

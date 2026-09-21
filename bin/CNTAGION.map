@@ -1,0 +1,1026 @@
+
+Merging object attributes
+
+
+Discarded input sections
+
+ .comment       0x00000000      0xad9 obj/CNTAGION.o
+ .note.GNU-stack
+                0x00000000        0x0 obj/CNTAGION.o
+ .init.weak_crt
+                0x00000000       0x10 obj/CNTAGION.o
+ .text          0x00000000        0x0 obj/crt0.o
+ .data          0x00000000        0x0 obj/crt0.o
+ .bss           0x00000000        0x0 obj/crt0.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+prgm             0x00d1a87f         0x00400000
+bss              0x00d052c6         0x0000ed12
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00d1a87f                        LOAD_ADDR = 0xd1a87f
+                0x00d052c6                        BSSHEAP_LOW = 0xd052c6
+                0x00d13fd8                        BSSHEAP_HIGH = 0xd13fd8
+                0x00d1a87e                        STACK_HIGH = 0xd1a87e
+                0x00000001                        __TICE__ = 0x1
+                0x00d1a87f                        . = LOAD_ADDR
+
+.header         0x00d1a87f      0x11d
+ *(.header)
+ .header        0x00d1a87f        0x3 obj/crt0.o
+ *(.header.icon)
+ .header.icon   0x00d1a882      0x11a obj/CNTAGION.o
+                0x00d1a887                ___icon
+                0x00d1a989                ___description
+
+.init           0x00d1a99c      0x15f
+ *(.init)
+ .init          0x00d1a99c      0x15f obj/crt0.o
+                0x00d1a99c                __start
+                0x00d1a9f9                __libload_library_FILEIOC
+                0x00d1aa03                _ti_Open
+                0x00d1aa07                _ti_Close
+                0x00d1aa0b                _ti_Write
+                0x00d1aa0f                _ti_Read
+                0x00d1aa13                _ti_Delete
+                0x00d1aa17                _ti_Seek
+                0x00d1aa1b                _ti_GetSize
+                0x00d1aa1f                __libload_library_GRAPHX
+                0x00d1aa28                _gfx_Begin
+                0x00d1aa2c                _gfx_End
+                0x00d1aa30                _gfx_SetColor
+                0x00d1aa34                _gfx_FillScreen
+                0x00d1aa38                _gfx_SetDraw
+                0x00d1aa3c                _gfx_SwapDraw
+                0x00d1aa40                _gfx_PrintStringXY
+                0x00d1aa44                _gfx_SetTextBGColor
+                0x00d1aa48                _gfx_SetTextFGColor
+                0x00d1aa4c                _gfx_SetTextTransparentColor
+                0x00d1aa50                _gfx_GetStringWidth
+                0x00d1aa54                _gfx_Line
+                0x00d1aa58                _gfx_Circle
+                0x00d1aa5c                _gfx_FillCircle
+                0x00d1aa60                _gfx_Rectangle
+                0x00d1aa64                _gfx_FillRectangle
+                0x00d1aa68                _gfx_ScaledTransparentSprite_NoClip
+                0x00d1aa6c                _gfx_FillTriangle
+                0x00d1aa70                _gfx_SetTextScale
+                0x00d1aa74                _gfx_SetTransparentColor
+                0x00d1aa78                __libload_library_KEYPADC
+                0x00d1aa82                _kb_Scan
+                0x00d1aabf                ___exithl
+                0x00d1aac0                _exit.sp
+
+.text           0x00d1aafb     0x8d88
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00d1aafb      0x62f obj/CNTAGION.o
+                0x00d1aafb                __land
+                0x00d1aaff                __iand
+                0x00d1ab16                __bdivu
+                0x00d1ab20                __bdvrmu
+                0x00d1ab21                __bdvrmu.hijack_l_dividend
+                0x00d1ab2f                __bremu
+                0x00d1ab3a                __bshl
+                0x00d1ab43                __dcmp
+                0x00d1aba1                __frameset
+                0x00d1abaf                __frameset0
+                0x00d1abba                __ftod
+                0x00d1ac02                __idivs
+                0x00d1ac09                __idivu
+                0x00d1ac11                __idvrms
+                0x00d1ac3f                __idvrmu
+                0x00d1ac43                __idvrmu.hijack_a_iters_ude_dividend
+                0x00d1ac59                __imulu
+                0x00d1ac59                __imuls
+                0x00d1ac89                __indcallhl
+                0x00d1ac8a                __sneg
+                0x00d1ac8a                __ineg
+                0x00d1ac93                __iremu
+                0x00d1ac9a                __sshl
+                0x00d1ac9a                __ishl
+                0x00d1acc0                __ishru
+                0x00d1acc5                __ishrs
+                0x00d1ad01                __ishru_1
+                0x00d1ad0f                __ladd
+                0x00d1ad15                __lcmps
+                0x00d1ad22                __lcmpu
+                0x00d1ad2a                __lcmpzero
+                0x00d1ad2a                __lequzero
+                0x00d1ad35                __ldivu
+                0x00d1ad3f                __ldivu_lremu_common
+                0x00d1ad67                __lladd
+                0x00d1ad8b                __lland
+                0x00d1adc7                __llcmps
+                0x00d1adf4                __llcmpu
+                0x00d1ae1e                __llcmpzero
+                0x00d1ae1e                __llequzero
+                0x00d1ae33                __lldivu
+                0x00d1ae47                __lldvrmu
+                0x00d1ae4e                __lldvrmu.hijack
+                0x00d1aea5                __llmulu
+                0x00d1aefa                __llshl
+                0x00d1af14                __llshru
+                0x00d1af44                __llshrs
+                0x00d1af80                __llxor
+                0x00d1afbc                __lmuls
+                0x00d1afbc                __lmulu
+                0x00d1b018                __lnot
+                0x00d1b025                __lremu
+                0x00d1b031                __lshl
+                0x00d1b03e                __lshrs
+                0x00d1b058                __lshru
+                0x00d1b066                __lsub
+                0x00d1b070                __lor
+                0x00d1b074                __ior
+                0x00d1b08b                __sand
+                0x00d1b094                __sdivu
+                0x00d1b09c                __sdvrmu
+                0x00d1b0ac                __setflag
+                0x00d1b0b6                __smuls
+                0x00d1b0b6                __smulu
+                0x00d1b0c9                __sor
+                0x00d1b0d2                __sremu
+                0x00d1b0d9                __sshru
+                0x00d1b0e6                __lxor
+                0x00d1b0ea                __ixor
+                0x00d1b101                _memcpy
+                0x00d1b122                _srand
+ .text._Owns    0x00d1b12a       0x52 obj/CNTAGION.o
+                0x00d1b12a                _Owns
+ .text._Eligible
+                0x00d1b17c       0xa2 obj/CNTAGION.o
+                0x00d1b17c                _Eligible
+ .text._Purchase
+                0x00d1b21e       0xe3 obj/CNTAGION.o
+                0x00d1b21e                _Purchase
+ .text._SetOwned
+                0x00d1b301       0x51 obj/CNTAGION.o
+ .text._CanDevolve
+                0x00d1b352       0x96 obj/CNTAGION.o
+                0x00d1b352                _CanDevolve
+ .text._Devolve
+                0x00d1b3e8       0xb2 obj/CNTAGION.o
+                0x00d1b3e8                _Devolve
+ .text._CalculateEffects
+                0x00d1b49a      0x712 obj/CNTAGION.o
+                0x00d1b49a                _CalculateEffects
+ .text._Level   0x00d1bbac       0x3b obj/CNTAGION.o
+ .text._Mutate  0x00d1bbe7       0xda obj/CNTAGION.o
+                0x00d1bbe7                _Mutate
+ .text._AwardDNA
+                0x00d1bcc1      0x28f obj/CNTAGION.o
+                0x00d1bcc1                _AwardDNA
+ .text._EvaluateOutcome
+                0x00d1bf50       0x84 obj/CNTAGION.o
+                0x00d1bf50                _EvaluateOutcome
+ .text._AdvanceDisease
+                0x00d1bfd4      0x55e obj/CNTAGION.o
+                0x00d1bfd4                _AdvanceDisease
+ .text._ValidateDisease
+                0x00d1c532      0x443 obj/CNTAGION.o
+                0x00d1c532                _ValidateDisease
+ .text._EvolutionMenu
+                0x00d1c975     0x11d7 obj/CNTAGION.o
+                0x00d1c975                _EvolutionMenu
+ .text._StateSymbol
+                0x00d1db4c       0x65 obj/CNTAGION.o
+ .text._SporeMenu
+                0x00d1dbb1      0x1f7 obj/CNTAGION.o
+                0x00d1dbb1                _SporeMenu
+ .text._RegionInfo
+                0x00d1dda8      0x315 obj/CNTAGION.o
+                0x00d1dda8                _RegionInfo
+ .text._ResultScreen
+                0x00d1e0bd      0x2b7 obj/CNTAGION.o
+                0x00d1e0bd                _ResultScreen
+ .text._GameRandom
+                0x00d1e374       0x31 obj/CNTAGION.o
+                0x00d1e374                _GameRandom
+ .text._ReadKey
+                0x00d1e3a5       0xda obj/CNTAGION.o
+                0x00d1e3a5                _ReadKey
+ .text._ScannedKeyDown
+                0x00d1e47f       0x2e obj/CNTAGION.o
+ .text._ReleaseKeys
+                0x00d1e4ad       0x13 obj/CNTAGION.o
+                0x00d1e4ad                _ReleaseKeys
+ .text._WaitKey
+                0x00d1e4c0        0xe obj/CNTAGION.o
+                0x00d1e4c0                _WaitKey
+ .text._Text    0x00d1e4ce       0x3e obj/CNTAGION.o
+                0x00d1e4ce                _Text
+ .text._BeginScreen
+                0x00d1e50c       0x6d obj/CNTAGION.o
+                0x00d1e50c                _BeginScreen
+ .text._WrapText
+                0x00d1e579      0x127 obj/CNTAGION.o
+                0x00d1e579                _WrapText
+ .text._Message
+                0x00d1e6a0       0x67 obj/CNTAGION.o
+                0x00d1e6a0                _Message
+ .text._QueueNews
+                0x00d1e707       0x50 obj/CNTAGION.o
+                0x00d1e707                _QueueNews
+ .text._ResetGameState
+                0x00d1e757       0xfe obj/CNTAGION.o
+                0x00d1e757                _ResetGameState
+ .text._UpdateSelectedRegion
+                0x00d1e855      0x2a6 obj/CNTAGION.o
+                0x00d1e855                _UpdateSelectedRegion
+ .text._main    0x00d1eafb      0x24d obj/CNTAGION.o
+                0x00d1eafb                _main
+ .text._StartGame
+                0x00d1ed48      0x554 obj/CNTAGION.o
+ .text._Play    0x00d1f29c      0xb28 obj/CNTAGION.o
+ .text._DrawMap
+                0x00d1fdc4       0x74 obj/CNTAGION.o
+ .text._LoadData
+                0x00d1fe38       0x56 obj/CNTAGION.o
+                0x00d1fe38                _LoadData
+ .text._ReadNamed
+                0x00d1fe8e       0xb0 obj/CNTAGION.o
+ .text._FileRead
+                0x00d1ff3e       0x31 obj/CNTAGION.o
+ .text._FileWrite
+                0x00d1ff6f       0x31 obj/CNTAGION.o
+ .text._FileSeek
+                0x00d1ffa0       0x2c obj/CNTAGION.o
+ .text._SaveData
+                0x00d1ffcc       0xfd obj/CNTAGION.o
+                0x00d1ffcc                _SaveData
+ .text._CopyNamed
+                0x00d200c9      0x105 obj/CNTAGION.o
+ .text._SaveSize
+                0x00d201ce       0x77 obj/CNTAGION.o
+                0x00d201ce                _SaveSize
+ .text._EncodeSave
+                0x00d20245      0x13a obj/CNTAGION.o
+                0x00d20245                _EncodeSave
+ .text._Header  0x00d2037f       0xac obj/CNTAGION.o
+ .text._State   0x00d2042b      0x20f obj/CNTAGION.o
+ .text._Geometry
+                0x00d2063a       0x69 obj/CNTAGION.o
+ .text._Bytes   0x00d206a3       0xbd obj/CNTAGION.o
+ .text._Checksum
+                0x00d20760       0x4e obj/CNTAGION.o
+ .text._U32     0x00d207ae       0xd2 obj/CNTAGION.o
+ .text._U16     0x00d20880       0x55 obj/CNTAGION.o
+ .text._U8      0x00d208d5       0x1a obj/CNTAGION.o
+ .text._ValidateSave
+                0x00d208ef       0x1d obj/CNTAGION.o
+                0x00d208ef                _ValidateSave
+ .text._ReadSave
+                0x00d2090c      0x761 obj/CNTAGION.o
+ .text._DecodeSave
+                0x00d2106d       0x40 obj/CNTAGION.o
+                0x00d2106d                _DecodeSave
+ .text._RecountRegion
+                0x00d210ad       0xb9 obj/CNTAGION.o
+                0x00d210ad                _RecountRegion
+ .text._CountWorld
+                0x00d21166       0xb8 obj/CNTAGION.o
+                0x00d21166                _CountWorld
+ .text._SetCell
+                0x00d2121e       0x97 obj/CNTAGION.o
+                0x00d2121e                _SetCell
+ .text._InfectCoordinate
+                0x00d212b5       0xe5 obj/CNTAGION.o
+                0x00d212b5                _InfectCoordinate
+ .text._SeedRegion
+                0x00d2139a       0xbc obj/CNTAGION.o
+                0x00d2139a                _SeedRegion
+ .text._StepRegion
+                0x00d21456      0x192 obj/CNTAGION.o
+                0x00d21456                _StepRegion
+ .text._StepWorldRegion
+                0x00d215e8       0xa4 obj/CNTAGION.o
+                0x00d215e8                _StepWorldRegion
+ .text._ValidPort
+                0x00d2168c       0xd8 obj/CNTAGION.o
+                0x00d2168c                _ValidPort
+ .text._Transport
+                0x00d21764      0x2e2 obj/CNTAGION.o
+                0x00d21764                _Transport
+ .text._Migrate
+                0x00d21a46      0x21d obj/CNTAGION.o
+                0x00d21a46                _Migrate
+ .text._SporeBurst
+                0x00d21c63       0x9e obj/CNTAGION.o
+                0x00d21c63                _SporeBurst
+ .text._ClosePorts
+                0x00d21d01      0x14f obj/CNTAGION.o
+                0x00d21d01                _ClosePorts
+ .text._npf_vpprintf
+                0x00d21e50     0x1775 obj/CNTAGION.o
+                0x00d21e50                _npf_vpprintf
+ .text._NPF_PUTC_IMPL
+                0x00d235c5       0x2d obj/CNTAGION.o
+ .text._npf_utoa_rev
+                0x00d235f2       0xe6 obj/CNTAGION.o
+ .text._vsnprintf
+                0x00d236d8       0x88 obj/CNTAGION.o
+                0x00d236d8                _vsnprintf
+ .text._npf_bufputc
+                0x00d23760       0x25 obj/CNTAGION.o
+ .text._npf_bufputc_nop
+                0x00d23785        0x7 obj/CNTAGION.o
+ .text._snprintf
+                0x00d2378c       0x28 obj/CNTAGION.o
+                0x00d2378c                _snprintf
+ .text.__bctlz  0x00d237b4       0x22 obj/CNTAGION.o
+                0x00d237b4                __bctlz
+ .text.__sctlz  0x00d237d6        0xc obj/CNTAGION.o
+                0x00d237d6                __sctlz
+ .text.__ictlz  0x00d237e2       0x12 obj/CNTAGION.o
+                0x00d237e2                __ictlz
+ .text.__llctlz
+                0x00d237f4        0xe obj/CNTAGION.o
+                0x00d237f4                __llctlz
+ .text.__i48ctlz
+                0x00d23802       0x15 obj/CNTAGION.o
+                0x00d23802                __i48ctlz
+ .text._random  0x00d23817       0x55 obj/CNTAGION.o
+                0x00d23817                _random
+ .text._srandom
+                0x00d2386c       0x17 obj/CNTAGION.o
+                0x00d2386c                _srandom
+                0x00d23873                __setstate
+ *(.gnu.warning)
+
+.rodata         0x00d23884     0x1838
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata._Play  0x00d23884       0x18 obj/CNTAGION.o
+ .rodata._.str  0x00d2389c        0xd obj/CNTAGION.o
+ .rodata._.str.1
+                0x00d238a9        0xa obj/CNTAGION.o
+ .rodata._.str.2
+                0x00d238b3        0xb obj/CNTAGION.o
+ .rodata._affected_thresholds
+                0x00d238be        0x9 obj/CNTAGION.o
+ .rodata._death_thresholds
+                0x00d238c7        0x6 obj/CNTAGION.o
+ .rodata._cure_thresholds
+                0x00d238cd        0x4 obj/CNTAGION.o
+ .rodata._categories
+                0x00d238d1        0x9 obj/CNTAGION.o
+ .rodata._.str.4
+                0x00d238da       0x1e obj/CNTAGION.o
+ .rodata._branch_labels
+                0x00d238f8       0x3f obj/CNTAGION.o
+ .rodata._.str.1.5
+                0x00d23937        0x8 obj/CNTAGION.o
+ .rodata._.str.2.6
+                0x00d2393f        0xb obj/CNTAGION.o
+ .rodata._.str.3.7
+                0x00d2394a        0x7 obj/CNTAGION.o
+ .rodata._.str.4.8
+                0x00d23951       0x29 obj/CNTAGION.o
+ .rodata._.str.5
+                0x00d2397a       0x1e obj/CNTAGION.o
+ .rodata._.str.6
+                0x00d23998       0x25 obj/CNTAGION.o
+ .rodata._.str.7
+                0x00d239bd       0x14 obj/CNTAGION.o
+ .rodata._first_node
+                0x00d239d1        0x3 obj/CNTAGION.o
+ .rodata._environments
+                0x00d239d4       0x31 obj/CNTAGION.o
+                0x00d239d4                _environments
+ .rodata._.str.8
+                0x00d23a05       0x21 obj/CNTAGION.o
+ .rodata._.str.9
+                0x00d23a26       0x11 obj/CNTAGION.o
+ .rodata._.str.10
+                0x00d23a37       0x1d obj/CNTAGION.o
+ .rodata._.str.11
+                0x00d23a54       0x12 obj/CNTAGION.o
+ .rodata._.str.12
+                0x00d23a66       0x19 obj/CNTAGION.o
+ .rodata._.str.13
+                0x00d23a7f       0x14 obj/CNTAGION.o
+ .rodata._.str.14
+                0x00d23a93        0xe obj/CNTAGION.o
+ .rodata._.str.15
+                0x00d23aa1       0x1c obj/CNTAGION.o
+ .rodata._.str.16
+                0x00d23abd       0x1f obj/CNTAGION.o
+ .rodata._.str.17
+                0x00d23adc       0x1e obj/CNTAGION.o
+ .rodata._.str.19
+                0x00d23afa       0x14 obj/CNTAGION.o
+ .rodata._.str.20
+                0x00d23b0e       0x19 obj/CNTAGION.o
+ .rodata._.str.21
+                0x00d23b27       0x1e obj/CNTAGION.o
+ .rodata._.str.22
+                0x00d23b45       0x26 obj/CNTAGION.o
+ .rodata._.str.23
+                0x00d23b6b       0x12 obj/CNTAGION.o
+ .rodata._.str.24
+                0x00d23b7d       0x21 obj/CNTAGION.o
+ .rodata._.str.25
+                0x00d23b9e       0x14 obj/CNTAGION.o
+ .rodata._.str.26
+                0x00d23bb2       0x21 obj/CNTAGION.o
+ .rodata._.str.27
+                0x00d23bd3       0x19 obj/CNTAGION.o
+ .rodata._.str.28
+                0x00d23bec       0x26 obj/CNTAGION.o
+ .rodata._.str.29
+                0x00d23c12       0x14 obj/CNTAGION.o
+ .rodata._.str.30
+                0x00d23c26        0xf obj/CNTAGION.o
+ .rodata._.str.31
+                0x00d23c35        0x8 obj/CNTAGION.o
+ .rodata._.str.32
+                0x00d23c3d       0x1c obj/CNTAGION.o
+ .rodata._.str.33
+                0x00d23c59       0x25 obj/CNTAGION.o
+ .rodata._.str.34
+                0x00d23c7e       0x24 obj/CNTAGION.o
+ .rodata._.str.35
+                0x00d23ca2       0x1d obj/CNTAGION.o
+ .rodata._.str.36
+                0x00d23cbf       0x1d obj/CNTAGION.o
+ .rodata._.str.37
+                0x00d23cdc       0x3c obj/CNTAGION.o
+ .rodata._.str.38
+                0x00d23d18       0x19 obj/CNTAGION.o
+ .rodata._.str.39
+                0x00d23d31        0xd obj/CNTAGION.o
+ .rodata._.str.40
+                0x00d23d3e        0x9 obj/CNTAGION.o
+ .rodata._.str.41
+                0x00d23d47        0xa obj/CNTAGION.o
+ .rodata._.str.42
+                0x00d23d51        0x4 obj/CNTAGION.o
+ .rodata._.str.43
+                0x00d23d55        0x6 obj/CNTAGION.o
+ .rodata._.str.44
+                0x00d23d5b        0x5 obj/CNTAGION.o
+ .rodata._.str.45
+                0x00d23d60        0x4 obj/CNTAGION.o
+ .rodata._.str.46
+                0x00d23d64        0x7 obj/CNTAGION.o
+ .rodata._.str.47
+                0x00d23d6b        0x5 obj/CNTAGION.o
+ .rodata._.str.48
+                0x00d23d70        0x6 obj/CNTAGION.o
+ .rodata._.str.49
+                0x00d23d76        0xc obj/CNTAGION.o
+ .rodata._.str.50
+                0x00d23d82        0xa obj/CNTAGION.o
+ .rodata._.str.51
+                0x00d23d8c        0x9 obj/CNTAGION.o
+ .rodata._.str.52
+                0x00d23d95        0x5 obj/CNTAGION.o
+ .rodata._.str.53
+                0x00d23d9a        0x5 obj/CNTAGION.o
+ .rodata._.str.54
+                0x00d23d9f        0x8 obj/CNTAGION.o
+ .rodata._.str.55
+                0x00d23da7        0x7 obj/CNTAGION.o
+ .rodata._.str.56
+                0x00d23dae        0x8 obj/CNTAGION.o
+ .rodata._.str.57
+                0x00d23db6       0x12 obj/CNTAGION.o
+ .rodata._.str.58
+                0x00d23dc8       0x1c obj/CNTAGION.o
+ .rodata._.str.59
+                0x00d23de4        0xa obj/CNTAGION.o
+ .rodata._.str.60
+                0x00d23dee        0x5 obj/CNTAGION.o
+ .rodata._.str.61
+                0x00d23df3       0x24 obj/CNTAGION.o
+ .rodata._.str.62
+                0x00d23e17       0x11 obj/CNTAGION.o
+ .rodata._.str.63
+                0x00d23e28       0x12 obj/CNTAGION.o
+ .rodata._.str.64
+                0x00d23e3a       0x15 obj/CNTAGION.o
+ .rodata._.str.65
+                0x00d23e4f       0x1a obj/CNTAGION.o
+ *fill*         0x00d23e69        0x1 
+ .rodata._reshuffle_reductions
+                0x00d23e6a        0x4 obj/CNTAGION.o
+                0x00d23e6a                _reshuffle_reductions
+ .rodata._.str.66
+                0x00d23e6e       0x21 obj/CNTAGION.o
+ .rodata._.str.67
+                0x00d23e8f       0x19 obj/CNTAGION.o
+ .rodata._.str.68
+                0x00d23ea8       0x1e obj/CNTAGION.o
+ .rodata._.str.69
+                0x00d23ec6       0x20 obj/CNTAGION.o
+ .rodata._.str.70
+                0x00d23ee6       0x21 obj/CNTAGION.o
+ .rodata._.str.71
+                0x00d23f07       0x20 obj/CNTAGION.o
+ .rodata._.str.72
+                0x00d23f27       0x26 obj/CNTAGION.o
+ .rodata._.str.73
+                0x00d23f4d        0xb obj/CNTAGION.o
+ .rodata._.str.74
+                0x00d23f58       0x24 obj/CNTAGION.o
+ .rodata._.str.75
+                0x00d23f7c       0x1d obj/CNTAGION.o
+ .rodata._.str.76
+                0x00d23f99       0x21 obj/CNTAGION.o
+ .rodata._.str.77
+                0x00d23fba       0x16 obj/CNTAGION.o
+ .rodata._.str.1.80
+                0x00d23fd0        0x3 obj/CNTAGION.o
+ .rodata._.str.2.81
+                0x00d23fd3       0x11 obj/CNTAGION.o
+ .rodata._.str.3.82
+                0x00d23fe4       0x29 obj/CNTAGION.o
+ .rodata._.str.4.83
+                0x00d2400d       0x5a obj/CNTAGION.o
+ .rodata._.str.5.84
+                0x00d24067        0xd obj/CNTAGION.o
+ .rodata._.str.6.86
+                0x00d24074       0x19 obj/CNTAGION.o
+ .rodata._.str.7.85
+                0x00d2408d        0xc obj/CNTAGION.o
+ .rodata._.str.8.87
+                0x00d24099       0x1d obj/CNTAGION.o
+ .rodata._.str.9.88
+                0x00d240b6       0x25 obj/CNTAGION.o
+ .rodata._.str.10.89
+                0x00d240db        0xc obj/CNTAGION.o
+ .rodata._.str.11.90
+                0x00d240e7       0x54 obj/CNTAGION.o
+ .rodata._.str.12.91
+                0x00d2413b       0x1e obj/CNTAGION.o
+ .rodata._.str.13.92
+                0x00d24159       0x24 obj/CNTAGION.o
+ .rodata._InitializeMap.names
+                0x00d2417d       0x15 obj/CNTAGION.o
+ .rodata._.str.14.124
+                0x00d24192        0x7 obj/CNTAGION.o
+ .rodata._.str.15.125
+                0x00d24199        0x5 obj/CNTAGION.o
+ .rodata._.str.16.126
+                0x00d2419e        0x7 obj/CNTAGION.o
+ .rodata._.str.17.127
+                0x00d241a5        0xa obj/CNTAGION.o
+ .rodata._.str.18.128
+                0x00d241af        0xe obj/CNTAGION.o
+ .rodata._.str.19.129
+                0x00d241bd        0xe obj/CNTAGION.o
+ .rodata._.str.20.130
+                0x00d241cb        0x8 obj/CNTAGION.o
+ .rodata._InitializeMap.x
+                0x00d241d3        0x7 obj/CNTAGION.o
+ .rodata._InitializeMap.y
+                0x00d241da        0x7 obj/CNTAGION.o
+ .rodata._map_sprites
+                0x00d241e1       0x15 obj/CNTAGION.o
+ .rodata._.str.21.121
+                0x00d241f6       0x47 obj/CNTAGION.o
+ .rodata._.str.22.122
+                0x00d2423d       0x59 obj/CNTAGION.o
+ .rodata._.str.23.123
+                0x00d24296       0x54 obj/CNTAGION.o
+ .rodata.___const.StartGame.descriptions
+                0x00d242ea        0x9 obj/CNTAGION.o
+ .rodata._.str.24.111
+                0x00d242f3       0x17 obj/CNTAGION.o
+ .rodata._disease_names
+                0x00d2430a        0x9 obj/CNTAGION.o
+                0x00d2430a                _disease_names
+ .rodata._.str.25.112
+                0x00d24313       0x1e obj/CNTAGION.o
+ .rodata._.str.26.113
+                0x00d24331        0xe obj/CNTAGION.o
+ .rodata._.str.27.119
+                0x00d2433f       0x29 obj/CNTAGION.o
+ .rodata._.str.28.120
+                0x00d24368       0x29 obj/CNTAGION.o
+ .rodata._NameDisease.alphabet
+                0x00d24391       0x27 obj/CNTAGION.o
+ .rodata._.str.29.114
+                0x00d243b8       0x12 obj/CNTAGION.o
+ .rodata._.str.30.115
+                0x00d243ca       0x11 obj/CNTAGION.o
+ .rodata._.str.31.116
+                0x00d243db       0x29 obj/CNTAGION.o
+ .rodata._.str.32.117
+                0x00d24404       0x1b obj/CNTAGION.o
+ .rodata._.str.33.118
+                0x00d2441f        0x9 obj/CNTAGION.o
+ .rodata._.str.34.106
+                0x00d24428       0x5d obj/CNTAGION.o
+ .rodata._.str.35.93
+                0x00d24485        0xd obj/CNTAGION.o
+ .rodata._.str.36.94
+                0x00d24492       0x15 obj/CNTAGION.o
+ .rodata._.str.37.95
+                0x00d244a7       0x19 obj/CNTAGION.o
+ .rodata._.str.38.96
+                0x00d244c0       0x1f obj/CNTAGION.o
+ .rodata._.str.39.97
+                0x00d244df       0x15 obj/CNTAGION.o
+ .rodata._.str.40.98
+                0x00d244f4       0x15 obj/CNTAGION.o
+ .rodata._.str.41.99
+                0x00d24509       0x15 obj/CNTAGION.o
+ .rodata._.str.42.100
+                0x00d2451e       0x15 obj/CNTAGION.o
+ .rodata._.str.43.101
+                0x00d24533       0x25 obj/CNTAGION.o
+ .rodata._.str.44.102
+                0x00d24558       0x1f obj/CNTAGION.o
+ .rodata._responses
+                0x00d24577        0xc obj/CNTAGION.o
+ .rodata._.str.45.103
+                0x00d24583       0x1b obj/CNTAGION.o
+ .rodata._.str.46.104
+                0x00d2459e       0x20 obj/CNTAGION.o
+ .rodata._.str.47.105
+                0x00d245be       0x29 obj/CNTAGION.o
+ .rodata._.str.48.107
+                0x00d245e7        0xb obj/CNTAGION.o
+ .rodata._.str.49.108
+                0x00d245f2        0xb obj/CNTAGION.o
+ .rodata._.str.50.109
+                0x00d245fd       0x12 obj/CNTAGION.o
+ .rodata._.str.51.110
+                0x00d2460f       0x14 obj/CNTAGION.o
+ .rodata._.str.133
+                0x00d24623        0x7 obj/CNTAGION.o
+ .rodata._.str.1.134
+                0x00d2462a        0x8 obj/CNTAGION.o
+ .rodata._.str.2.138
+                0x00d24632        0x8 obj/CNTAGION.o
+ .rodata._.str.3.139
+                0x00d2463a        0x2 obj/CNTAGION.o
+ .rodata._.str.4.135
+                0x00d2463c        0x2 obj/CNTAGION.o
+ .rodata._.str.142
+                0x00d2463e        0x5 obj/CNTAGION.o
+ .rodata._.str.162
+                0x00d24643        0x1 obj/CNTAGION.o
+ .rodata._.str.173
+                0x00d24644        0x6 obj/CNTAGION.o
+ .rodata._.str.1.174
+                0x00d2464a       0x2f obj/CNTAGION.o
+ .rodata._.str.2.175
+                0x00d24679        0x7 obj/CNTAGION.o
+ .rodata._.str.3.176
+                0x00d24680        0x8 obj/CNTAGION.o
+ .rodata._.str.4.177
+                0x00d24688       0x31 obj/CNTAGION.o
+ .rodata._.str.5.178
+                0x00d246b9        0x9 obj/CNTAGION.o
+ .rodata._.str.6.179
+                0x00d246c2        0xc obj/CNTAGION.o
+ .rodata._.str.7.180
+                0x00d246ce       0x1f obj/CNTAGION.o
+ .rodata._.str.8.181
+                0x00d246ed        0xd obj/CNTAGION.o
+ .rodata._.str.9.182
+                0x00d246fa        0xa obj/CNTAGION.o
+ .rodata._.str.10.183
+                0x00d24704       0x1f obj/CNTAGION.o
+ .rodata._.str.11.184
+                0x00d24723        0xb obj/CNTAGION.o
+ .rodata._.str.12.185
+                0x00d2472e        0xa obj/CNTAGION.o
+ .rodata._.str.13.186
+                0x00d24738       0x1e obj/CNTAGION.o
+ .rodata._.str.14.187
+                0x00d24756        0xb obj/CNTAGION.o
+ .rodata._.str.15.188
+                0x00d24761        0x8 obj/CNTAGION.o
+ .rodata._.str.16.189
+                0x00d24769       0x2a obj/CNTAGION.o
+ .rodata._.str.17.190
+                0x00d24793        0x9 obj/CNTAGION.o
+ .rodata._.str.18.191
+                0x00d2479c        0x8 obj/CNTAGION.o
+ .rodata._.str.19.192
+                0x00d247a4       0x29 obj/CNTAGION.o
+ .rodata._.str.20.193
+                0x00d247cd        0x9 obj/CNTAGION.o
+ .rodata._.str.21.194
+                0x00d247d6       0x14 obj/CNTAGION.o
+ .rodata._.str.22.195
+                0x00d247ea       0x1f obj/CNTAGION.o
+ .rodata._.str.23.196
+                0x00d24809       0x12 obj/CNTAGION.o
+ .rodata._.str.24.197
+                0x00d2481b       0x2e obj/CNTAGION.o
+ .rodata._.str.25.198
+                0x00d24849       0x12 obj/CNTAGION.o
+ .rodata._.str.26.199
+                0x00d2485b       0x23 obj/CNTAGION.o
+ .rodata._.str.27.200
+                0x00d2487e        0x6 obj/CNTAGION.o
+ .rodata._.str.28.201
+                0x00d24884       0x24 obj/CNTAGION.o
+ .rodata._.str.29.202
+                0x00d248a8        0x9 obj/CNTAGION.o
+ .rodata._.str.30.203
+                0x00d248b1       0x24 obj/CNTAGION.o
+ .rodata._.str.31.204
+                0x00d248d5        0xa obj/CNTAGION.o
+ .rodata._.str.32.205
+                0x00d248df       0x20 obj/CNTAGION.o
+ .rodata._.str.33.206
+                0x00d248ff       0x14 obj/CNTAGION.o
+ .rodata._.str.34.207
+                0x00d24913       0x27 obj/CNTAGION.o
+ .rodata._.str.35.208
+                0x00d2493a        0x7 obj/CNTAGION.o
+ .rodata._.str.36.209
+                0x00d24941        0x9 obj/CNTAGION.o
+ .rodata._.str.37.210
+                0x00d2494a        0x9 obj/CNTAGION.o
+ .rodata._.str.38.211
+                0x00d24953       0x12 obj/CNTAGION.o
+ .rodata._.str.39.212
+                0x00d24965        0x5 obj/CNTAGION.o
+ .rodata._.str.40.213
+                0x00d2496a        0x6 obj/CNTAGION.o
+ .rodata._.str.41.214
+                0x00d24970       0x13 obj/CNTAGION.o
+ .rodata._.str.42.215
+                0x00d24983        0xe obj/CNTAGION.o
+ .rodata._.str.43.216
+                0x00d24991       0x12 obj/CNTAGION.o
+ .rodata._.str.44.217
+                0x00d249a3       0x1c obj/CNTAGION.o
+ .rodata._.str.45.218
+                0x00d249bf       0x13 obj/CNTAGION.o
+ .rodata._.str.46.219
+                0x00d249d2       0x24 obj/CNTAGION.o
+ .rodata._.str.47.220
+                0x00d249f6       0x12 obj/CNTAGION.o
+ .rodata._.str.48.221
+                0x00d24a08       0x1c obj/CNTAGION.o
+ .rodata._.str.49.222
+                0x00d24a24       0x13 obj/CNTAGION.o
+ .rodata._.str.50.223
+                0x00d24a37       0x24 obj/CNTAGION.o
+ .rodata._.str.51.224
+                0x00d24a5b       0x15 obj/CNTAGION.o
+ .rodata._.str.52.225
+                0x00d24a70       0x22 obj/CNTAGION.o
+ .rodata._.str.53.226
+                0x00d24a92       0x16 obj/CNTAGION.o
+ .rodata._.str.54.227
+                0x00d24aa8       0x2a obj/CNTAGION.o
+ .rodata._.str.55.228
+                0x00d24ad2       0x14 obj/CNTAGION.o
+ .rodata._.str.56.229
+                0x00d24ae6       0x1d obj/CNTAGION.o
+ .rodata._.str.57.230
+                0x00d24b03       0x15 obj/CNTAGION.o
+ .rodata._.str.58.231
+                0x00d24b18       0x1e obj/CNTAGION.o
+ .rodata._.str.59.232
+                0x00d24b36       0x14 obj/CNTAGION.o
+ .rodata._.str.60.233
+                0x00d24b4a       0x28 obj/CNTAGION.o
+ .rodata._.str.61.234
+                0x00d24b72       0x15 obj/CNTAGION.o
+ .rodata._.str.62.235
+                0x00d24b87       0x28 obj/CNTAGION.o
+ *fill*         0x00d24baf        0x1 
+ .rodata._traits
+                0x00d24bb0      0x35a obj/CNTAGION.o
+                0x00d24bb0                _traits
+ .rodata._port_definitions
+                0x00d24f0a       0x84 obj/CNTAGION.o
+                0x00d24f0a                _port_definitions
+ .rodata._neighbors
+                0x00d24f8e        0x7 obj/CNTAGION.o
+ .rodata._spore_costs
+                0x00d24f95        0x3 obj/CNTAGION.o
+                0x00d24f95                _spore_costs
+ .rodata._npf_vpprintf
+                0x00d24f98      0x102 obj/CNTAGION.o
+ .rodata.libload
+                0x00d2509a       0x22 obj/crt0.o
+
+.init_array     0x00d250bc        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(.preinit_array)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x00d250bc        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+                0x00d250bc                        ___data_low = .
+
+.data           0x00d250bc     0x2a5b
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00d250bc       0x10 obj/CNTAGION.o
+ .data._africa_data
+                0x00d250cc      0x75a obj/CNTAGION.o
+                0x00d250cc                _africa_data
+ .data._asia_data
+                0x00d25826      0xdf9 obj/CNTAGION.o
+                0x00d25826                _asia_data
+ .data._europe_data
+                0x00d2661f      0x302 obj/CNTAGION.o
+                0x00d2661f                _europe_data
+ .data._greenland_data
+                0x00d26921      0x152 obj/CNTAGION.o
+                0x00d26921                _greenland_data
+ .data._northamerica_data
+                0x00d26a73      0x7b2 obj/CNTAGION.o
+                0x00d26a73                _northamerica_data
+ .data._oceania_data
+                0x00d27225      0x420 obj/CNTAGION.o
+                0x00d27225                _oceania_data
+ .data._southamerica_data
+                0x00d27645      0x4d2 obj/CNTAGION.o
+                0x00d27645                _southamerica_data
+ *(.data1)
+                0x00d27b17                        ___runprgm_reloc_start = .
+ *(.runprgm.reloc)
+                0x00d27b17                        ___runprgm_reloc_end = .
+                0x00d27b17                        ___data_high = .
+                0x00002a5b                        ___data_len = (___data_high - ___data_low)
+                0x00d052c6                        . = BSSHEAP_LOW
+                0x00d052c6                        ___bss_low = .
+
+.bss            0x00d052c6      0x2e5
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss._canpress
+                0x00d052c6        0x1 obj/CNTAGION.o
+ .bss._news_count
+                0x00d052c7        0x1 obj/CNTAGION.o
+ .bss._news     0x00d052c8      0x180 obj/CNTAGION.o
+ .bss._news_head
+                0x00d05448        0x1 obj/CNTAGION.o
+ .bss._connection
+                0x00d05449        0x1 obj/CNTAGION.o
+ .bss._destination_port
+                0x00d0544a        0x1 obj/CNTAGION.o
+ .bss._source_port
+                0x00d0544b        0x1 obj/CNTAGION.o
+ .bss._news_age
+                0x00d0544c        0x1 obj/CNTAGION.o
+ *fill*         0x00d0544d        0x1 
+ .bss._disease  0x00d0544e       0x3a obj/CNTAGION.o
+                0x00d0544e                _disease
+ .bss._effects  0x00d05488       0x1c obj/CNTAGION.o
+                0x00d05488                _effects
+ .bss._session  0x00d054a4        0x9 obj/CNTAGION.o
+                0x00d054a4                _session
+ *fill*         0x00d054ad        0x1 
+ .bss._region   0x00d054ae       0x70 obj/CNTAGION.o
+                0x00d054ae                _region
+ .bss._port     0x00d0551e       0x84 obj/CNTAGION.o
+                0x00d0551e                _port
+ .bss._pc_cnt.0
+                0x00d055a2        0x3 obj/CNTAGION.o
+ .bss._pc_cnt.1
+                0x00d055a5        0x3 obj/CNTAGION.o
+ .bss._pc_cnt.2
+                0x00d055a8        0x3 obj/CNTAGION.o
+ *(COMMON)
+                0x00d055ab                        ___bss_high = .
+                0x000002e5                        ___bss_len = (___bss_high - ___bss_low)
+                0x00000001                        ASSERT ((. <= BSSHEAP_HIGH), Error: BSS exceed BSSHEAP_HIGH limit)
+                0x00d055ab                        ___heap_low = .
+                0x00d13fd8                        . = BSSHEAP_HIGH
+                0x00d13fd8                        ___heap_high = .
+
+.runprgm
+ *(.runprgm.reloc)
+
+.debug_info
+ *(.debug_info .debug_info.*)
+
+.debug_abbrev
+ *(.debug_abbrev .debug_abbrev.*)
+
+.debug_line
+ *(.debug_line .debug_line.*)
+
+.debug_line_str
+ *(.debug_line_str .debug_line_str.*)
+
+.debug_str
+ *(.debug_str .debug_str.*)
+
+.debug_str_offsets
+ *(.debug_str_offsets .debug_str_offsets.*)
+
+.debug_addr
+ *(.debug_addr .debug_addr.*)
+
+.debug_aranges
+ *(.debug_aranges .debug_aranges.*)
+
+.debug_ranges
+ *(.debug_ranges .debug_ranges.*)
+
+.debug_rnglists
+ *(.debug_rnglists .debug_rnglists.*)
+
+.debug_loc
+ *(.debug_loc .debug_loc.*)
+
+.debug_loclists
+ *(.debug_loclists .debug_loclists.*)
+
+.debug_frame
+ *(.debug_frame .debug_frame.*)
+
+.debug_macro
+ *(.debug_macro .debug_macro.*)
+
+.debug_macinfo
+ *(.debug_macinfo .debug_macinfo.*)
+
+.debug_names
+ *(.debug_names .debug_names.*)
+
+.debug_pubnames
+ *(.debug_pubnames .debug_pubnames.*)
+
+.debug_pubtypes
+ *(.debug_pubtypes .debug_pubtypes.*)
+
+.debug_types
+ *(.debug_types .debug_types.*)
+
+.debug_sup
+ *(.debug_sup .debug_sup.*)
+
+.debug_cu_index
+ *(.debug_cu_index .debug_cu_index.*)
+
+.debug_tu_index
+ *(.debug_tu_index .debug_tu_index.*)
+
+.gdb_index
+ *(.gdb_index)
+
+.debug_gdb_scripts
+ *(.debug_gdb_scripts)
+
+.debug_abbrev.dwo
+ *(.debug_abbrev.dwo .debug_abbrev.dwo.*)
+
+.debug_info.dwo
+ *(.debug_info.dwo .debug_info.dwo.*)
+
+.debug_line.dwo
+ *(.debug_line.dwo .debug_line.dwo.*)
+
+.debug_loclists.dwo
+ *(.debug_loclists.dwo .debug_loclists.dwo.*)
+
+.debug_macro.dwo
+ *(.debug_macro.dwo .debug_macro.dwo.*)
+
+.debug_rnglists.dwo
+ *(.debug_rnglists.dwo .debug_rnglists.dwo.*)
+
+.debug_str.dwo
+ *(.debug_str.dwo .debug_str.dwo.*)
+
+.debug_str_offsets.dwo
+ *(.debug_str_offsets.dwo .debug_str_offsets.dwo.*)
+
+.eh_frame
+ *(.eh_frame)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+/DISCARD/
+ *(.comment)
+ *(.note*)
+                [!provide]                        PROVIDE (___runprgm_reloc_len = (___runprgm_reloc_end - ___runprgm_reloc_start))
+LOAD obj/CNTAGION.o
+LOAD obj/crt0.o
+START GROUP
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libc/allocator_standard.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/crt/libcrt.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/ce/libce.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/softfloat/libsoftfloat.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libc/libc_os.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libcxx/libcxx.a
+END GROUP
+OUTPUT(bin/CNTAGION.obj elf32-z80)
