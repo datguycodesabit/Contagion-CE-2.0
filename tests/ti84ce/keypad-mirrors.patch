@@ -1,0 +1,53 @@
+diff --git a/core/src/peripherals/mod.rs b/core/src/peripherals/mod.rs
+index a41a67b..0949e50 100644
+--- a/core/src/peripherals/mod.rs
++++ b/core/src/peripherals/mod.rs
+@@ -53,7 +53,7 @@ const INT_END: u32 = 0x100020;
+ const TIMER_BASE: u32 = 0x120000; // 0xF20000
+ const TIMER_END: u32 = 0x120040;
+ const KEYPAD_BASE: u32 = 0x150000; // 0xF50000
+-const KEYPAD_END: u32 = 0x151000; // Full 4KB page — undefined offsets return 0
++const KEYPAD_END: u32 = 0x160000; // 64KB MMIO window; registers mirror every 128 bytes
+ const WATCHDOG_BASE: u32 = 0x160000; // 0xF60000
+ const WATCHDOG_END: u32 = 0x160100;
+ const RTC_BASE: u32 = 0x180000; // 0xF80000
+@@ -200,7 +200,7 @@ impl Peripherals {
+             a if a >= TIMER_BASE && a < TIMER_END => self.timers.read(a - TIMER_BASE),
+ 
+             // Keypad Controller (0xF50000 - 0xF5003F)
+-            a if a >= KEYPAD_BASE && a < KEYPAD_END => self.keypad.read(a - KEYPAD_BASE, key_state),
++            a if a >= KEYPAD_BASE && a < KEYPAD_END => self.keypad.read((a - KEYPAD_BASE) & 0x7F, key_state),
+ 
+             // Watchdog Controller (0xF60000 - 0xF600FF)
+             a if a >= WATCHDOG_BASE && a < WATCHDOG_END => self.watchdog.read(a - WATCHDOG_BASE),
+@@ -272,7 +272,7 @@ impl Peripherals {
+ 
+             // Keypad Controller (0xF50000 - 0xF5003F)
+             a if a >= KEYPAD_BASE && a < KEYPAD_END => {
+-                let offset = a - KEYPAD_BASE;
++                let offset = (a - KEYPAD_BASE) & 0x7F;
+ 
+                 let flag_before = self.keypad.needs_any_key_check;
+                 self.keypad.write(offset, value);
+@@ -889,6 +889,21 @@ mod tests {
+         }
+     }
+ 
++    #[test]
++    fn test_keypadc_mmio_mirrors() {
++        let mut p = Peripherals::new();
++        let keys = [[false; KEYPAD_COLS]; KEYPAD_ROWS];
++        for mirror in [0x200, 0x1200, 0xff80] {
++            p.write_test(KEYPAD_BASE + mirror + 4, 8);
++            p.write_test(KEYPAD_BASE + mirror + 5, 8);
++            p.write_test(KEYPAD_BASE + mirror, 2);
++            assert_eq!(p.read_test(KEYPAD_BASE, &keys) & 3, 2);
++            assert_eq!(p.read_test(KEYPAD_BASE + mirror, &keys) & 3, 2);
++            p.keypad.tick(100000, &keys);
++            assert_eq!(p.read_test(KEYPAD_BASE + mirror, &keys) & 3, 0);
++        }
++    }
++
+     #[test]
+     fn test_new() {
+         let p = Peripherals::new();

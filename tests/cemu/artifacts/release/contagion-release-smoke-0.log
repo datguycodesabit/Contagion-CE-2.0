@@ -1,0 +1,64 @@
+[WASM] load_rom: 4194304 bytes
+[WASM] load_rom: success
+[WASM] send_file: 1207 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 11430 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 177 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 2697 bytes
+[WASM] send_file: injected 1 entries
+[WASM] send_file: 26258 bytes
+[WASM] send_file: injected 1 entries
+[CEmu] Loading ROM Image...
+[CEmu] Freed Memory.
+[CEmu] Freed ASIC.
+[CEmu] Initialized Memory...
+[CEmu] Initialized CPU...
+[CEmu] Initialized Control Ports...
+[CEmu] Initialized Flash...
+[CEmu] Initialized SHA256 Chip...
+[CEmu] Initialized USB...
+[CEmu] Initialized LCD...
+[CEmu] Initialized Interrupt Controller...
+[CEmu] Initialized Watchdog Timer...
+[CEmu] Initialized General Purpose Timers...
+[CEmu] Initialized Real Time Clock...
+[CEmu] Initialized Protected Ports...
+[CEmu] Initialized Keypad...
+[CEmu] Initialized Backlight...
+[CEmu] Initialized Serial Peripheral Interface...
+[CEmu] Initialized UART...
+[CEmu] Initialized Advanced Peripheral Bus...
+[CEmu] Initialized ASIC...
+[CEmu] Info from cert: Device type = 0x00 (84+CE-like). Model = 0x13 (CE).
+[CEmu] Loaded ROM Image.
+[CEmu] Boot code version: 5.1.5.0014
+[CEmu] Default ASIC revision is rev I.
+[CEmu] Flash reset.
+[CEmu] Memory reset.
+[CEmu] LCD reset.
+[CEmu] Keypad reset.
+[CEmu] GPT reset.
+[CEmu] RTC reset.
+[CEmu] Watchdog timer reset.
+[CEmu] CPU reset.
+[CEmu] SHA256 chip reset.
+[CEmu] Control reset.
+MENU  
+AFTER Y=  
+start 
+only-save 
+quit-os 
+continue-menu 
+continued-map 
+second-save 
+{
+  "start": "6e3a284b80dae873af95fb505f40237edd5a57f658b0d31c0dbc69729557c79c",
+  "only-save": "10588dc868b9d8395aacd7116e094f72525d45ad27d20e7d4a6856d2102189be",
+  "quit-os": "a05c7a699a0d7288646c632146d7c028e46f28310135cef58ff4ed99dfbd120e",
+  "continue-menu": "10588dc868b9d8395aacd7116e094f72525d45ad27d20e7d4a6856d2102189be",
+  "continued-map": "02f63a9c447b653f40445f1dd92c8c79c4d0afdfa39fae0e12095a34dc50167d",
+  "second-save": "10588dc868b9d8395aacd7116e094f72525d45ad27d20e7d4a6856d2102189be"
+}
+PASS: native disease 0, save, exit, relaunch, continue, second save

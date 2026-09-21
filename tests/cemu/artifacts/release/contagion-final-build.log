@@ -1,0 +1,84 @@
+[cc] src/disease.c
+[cc] src/evolution.c
+[cc] src/main.c
+[cc] src/persistence.c
+[cc] src/savecodec.c
+[cc] src/sprites/africa.c
+[cc] src/sprites/anchor_scaled.c
+[cc] src/sprites/asia.c
+[cc] src/sprites/cemetechdiscord.c
+[cc] src/sprites/closed_scaled.c
+[cc] src/sprites/ecprograms.c
+[cc] src/sprites/europe.c
+[cc] src/sprites/greenland.c
+[cc] src/sprites/icons.c
+[cc] src/sprites/logo.c
+[cc] src/sprites/myprograms.c
+[cc] src/sprites/northamerica.c
+[cc] src/sprites/oceania.c
+[cc] src/sprites/optix.c
+src/sprites/optix.c:243:28: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+  243 |     if (optix_wordwraptext = realloc(optix_wordwraptext, (*numlines + 1) * sizeof(struct optix_wordwraptext_t))) {
+      |         ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/sprites/optix.c:243:28: note: place parentheses around the assignment to silence this warning
+  243 |     if (optix_wordwraptext = realloc(optix_wordwraptext, (*numlines + 1) * sizeof(struct optix_wordwraptext_t))) {
+      |                            ^                                                                                   
+      |         (                                                                                                      )
+src/sprites/optix.c:243:28: note: use '==' to turn this assignment into an equality comparison
+  243 |     if (optix_wordwraptext = realloc(optix_wordwraptext, (*numlines + 1) * sizeof(struct optix_wordwraptext_t))) {
+      |                            ^
+      |                            ==
+src/sprites/optix.c:368:13: warning: variable 'currline' set but not used [-Wunused-but-set-variable]
+  368 |     uint8_t currline;
+      |             ^
+src/sprites/optix.c:372:10: warning: variable 'enterpressed' set but not used [-Wunused-but-set-variable]
+  372 |     bool enterpressed;
+      |          ^
+src/sprites/optix.c:450:56: warning: unused parameter 'sprites' [-Wunused-parameter]
+  450 |                       const char text[], gfx_sprite_t *sprites[]) {
+      |                                                        ^
+src/sprites/optix.c:691:27: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+  691 |     if (optix_stringinput = realloc(optix_stringinput, maxchars + 1)) {
+      |         ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/sprites/optix.c:691:27: note: place parentheses around the assignment to silence this warning
+  691 |     if (optix_stringinput = realloc(optix_stringinput, maxchars + 1)) {
+      |                           ^                                         
+      |         (                                                           )
+src/sprites/optix.c:691:27: note: use '==' to turn this assignment into an equality comparison
+  691 |     if (optix_stringinput = realloc(optix_stringinput, maxchars + 1)) {
+      |                           ^
+      |                           ==
+src/sprites/optix.c:676:10: warning: variable 'keypress' set but not used [-Wunused-but-set-variable]
+  676 |     bool keypress;
+      |          ^
+src/sprites/optix.c:906:88: warning: argument 'text' of type 'const char[15]' with mismatched bound [-Warray-parameter]
+  906 | void optix_AddButton(uint16_t x, uint8_t y, uint16_t width, uint8_t height, const char text[15], gfx_sprite_t *spr, void (*funct)(void), sk_key_t altkey) {
+      |                                                                                        ^
+src/sprites/optix.h:29:88: note: previously declared as 'const char[]' here
+   29 | void optix_AddButton(uint16_t x, uint8_t y, uint16_t width, uint8_t height, const char text[], gfx_sprite_t *spr, void (*funct)(void), sk_key_t altkey);
+      |                                                                                        ^
+src/sprites/optix.c:907:22: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+  907 |     if (optix_button = realloc(optix_button, (optix_buttoninfo.numbuttons + 1) * sizeof(struct optix_button_t))) {
+      |         ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/sprites/optix.c:907:22: note: place parentheses around the assignment to silence this warning
+  907 |     if (optix_button = realloc(optix_button, (optix_buttoninfo.numbuttons + 1) * sizeof(struct optix_button_t))) {
+      |                      ^                                                                                         
+      |         (                                                                                                      )
+src/sprites/optix.c:907:22: note: use '==' to turn this assignment into an equality comparison
+  907 |     if (optix_button = realloc(optix_button, (optix_buttoninfo.numbuttons + 1) * sizeof(struct optix_button_t))) {
+      |                      ^
+      |                      ==
+8 warnings generated.
+[cc] src/sprites/programthread.c
+[cc] src/sprites/southamerica.c
+[cc] src/sprites/sprites.c
+[cc] src/traits.c
+[cc] src/world.c
+[lto] obj/lto.bc
+[convimg] icon.png
+/tmp/contagion-cedev-mount/CEdev/binutils/bin/z80-none-elf-ld: warning: strcpy.ce.o: missing .note.GNU-stack section implies executable stack
+/tmp/contagion-cedev-mount/CEdev/binutils/bin/z80-none-elf-ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+[linking] bin/CNTAGION.obj
+/tmp/contagion-cedev-mount/CEdev/binutils/bin/z80-none-elf-ld: warning: obj/crt0.o: missing .note.GNU-stack section implies executable stack
+/tmp/contagion-cedev-mount/CEdev/binutils/bin/z80-none-elf-ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+[success] bin/CNTAGION.8xp, 26258 bytes. (zx7 compressed 51.44%)
