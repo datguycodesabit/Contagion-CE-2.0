@@ -18,21 +18,54 @@
   <img src="https://user-images.githubusercontent.com/59743315/88998471-1ec4f700-d2c0-11ea-9d27-805e5e90abde.png" alt="CONTAGION CE gameplay">
 </p>
 
-## About
+## What's New in Contagion CE 2.0
 
-CONTAGION CE is a strategy game inspired by *Plague Inc.* Spread a disease
-across seven regions, evolve transmissions and symptoms, manage transportation,
-and defeat the cure before the outbreak ends.
+Contagion CE 2.0 expands the original game into a larger disease strategy
+experience while keeping the original calculator-focused gameplay.
 
-Choose between three disease types:
+| Original Contagion CE | Contagion CE 2.0 |
+|---|---|
+| One disease campaign | Bacteria, Virus, and Fungus disease types |
+| Four difficulty settings | Disease-specific mechanics and progression |
+| Mutation menu | Three connected evolution pages: Transmission, Symptoms, and Abilities |
+| Basic mutation upgrades | 39 evolution nodes with prerequisites, costs, and previews |
+| Transportation view | Air travel, sea travel, migration, spores, and permanent restrictions |
+| Basic world spread | Seven regions with heat, cold, humidity, aridity, urban, rural, and healthcare conditions |
+| Simple outbreak progression | Discovery, cure research, escalating response, closures, and milestone events |
+| Original mutation system | Virus mutations and Fungus spore bursts |
+| Original save data | Validated `CNTGN2` saves with recovery copies and partial-cycle resume |
+| Basic ending flow | Victory, extinction defeat, and cure defeat result screens |
+| Original calculator interface | Redesigned paused menus, connected trait navigation, previews, and key-release handling |
 
-- **Bacteria** — the balanced starting disease
-- **Virus** — can mutate symptoms during the outbreak
-- **Fungus** — has three powerful spore bursts
+### New disease types
 
-The game includes regional conditions, air and sea transportation, discovery,
-research, healthcare response, permanent restrictions, saving, and multiple
-outcomes.
+- **Bacteria** provides the balanced baseline experience.
+- **Virus** can mutate eligible symptoms during an outbreak.
+- **Fungus** spreads less effectively through normal transportation but can use
+  three increasingly expensive spore bursts.
+
+### New evolution system
+
+The original mutation menu has been replaced with three connected pages:
+
+- **Transmission** controls environmental spread and transportation.
+- **Symptoms** increases infectivity, severity, and lethality.
+- **Abilities** improves regional adaptation, resistance, hardening, and cure
+  management.
+
+Symptoms can be devolved from eligible leaf nodes for DNA, but purchases are
+never refunded and discoveries or restrictions remain permanent.
+
+### New world and response systems
+
+The seven regions now have different environmental and healthcare conditions.
+Outbreak response develops over time through discovery, cure research, healthcare
+pressure, travel restrictions, and cure milestones.
+
+### Save compatibility
+
+Version 2.0 uses the new `CNTGN2` save format. Original `CNTGNDAT` saves are
+left untouched, but they cannot be continued by the new game rules.
 
 ## Compatibility
 
