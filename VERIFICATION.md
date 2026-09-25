@@ -1,5 +1,117 @@
 # CONTAGION CE 2.0 verification report
 
+## September 24, 2026: lightweight news ticker (current candidate)
+
+`bin/CNTAGION.8xp`: **29,685 bytes**, SHA-256
+`b3033ba328cf75d71d3b2bf05a5969f51c0558b5122cac852ddb592d12831c5f`.
+`bin/CONTAGION-CE-2.0.zip`: **43,817 bytes**, SHA-256
+`c162b5e694dbc41ddd48a4b264aca76d2df79a5cad5633099c1d10b8d53cd22a`.
+
+Ticker-only validation was deliberately scoped to this change:
+
+```sh
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_ticker
+export CEDEV=/tmp/contagion-cedev-mount/CEdev
+export PATH="$CEDEV/bin:$PATH"
+make OUTPUT_MAP=YES
+sh tests/ticker-native/build.sh
+TI84CE_ROOT=/tmp/ti84ce-eb90c33cfaebd19fbd0fea9c06a359e3efaf54c2 \
+AUTOTESTER_ROM=/tmp/contagion-ti84ce.rom CE_LIBRARIES=bin/CONTAGION-CE-2.0 \
+CONTAGION_PROGRAM=tests/cemu/artifacts/ticker-bin/CNTAGION.8xp \
+CONTAGION_MAP=tests/cemu/artifacts/ticker-bin/CNTAGION.map \
+TI84CE_OUTPUT=/tmp/contagion-ticker node tests/ti84ce/ticker.mjs
+CE_LIBRARIES=bin/CONTAGION-CE-2.0 python3 tests/package/build.py
+shasum -a 256 bin/CNTAGION.8xp bin/CONTAGION-CE-2.0.zip
+```
+
+PASS: sanitizer-enabled host checks for priorities/overflow, duplicate suppression,
+cure coalescing, stationary and scrolling timing, bounded formatting, milestone
+aggregation, quiet report rotation, and reset/load snapshots. PASS: native fixture
+checks for urgent ordering, short and longest supported headlines, clipping outside
+the strip, final hold, and pause/resume through the actual Actions menu. Captures
+were visually inspected at 320x240. The widest tested headline was 337 pixels;
+its final offset was 25 pixels. The fixture needed normal boot settling, the same
+text transparency initialization as the game, and LCD settling before captures.
+Those corrections affected the diagnostic only. This is a synthetic UI fixture,
+not a natural playthrough; full disease runs were not repeated for a ticker change.
+
+Native build passed with the existing toolchain/OPTIX warnings. Program growth:
+1,862 bytes. Ticker storage: 134 bytes versus the former 387-byte queue/counters.
+Linker initialized data remains 10,843 bytes; total BSS is now 487 bytes. No heap
+allocation, map scans, simulation randomness, balance, or save-format changes.
+Package readback verifies the native binary and included files; the extracted
+transfer folder is refreshed from the same ZIP. No diagnostic or firmware is shipped.
+
+Coverage remains CEmu reference core / OS 5.3.0.0037. Physical OS 5.7 verification
+is outstanding. Evidence below describes previous builds.
+
+## September 24, 2026: visible actions and spore bursts
+
+Current candidate: `bin/CNTAGION.8xp`, **27,823 bytes**, SHA-256
+`b5bfba00894f80ca286261fa66cb31e72a98dcf614678b93a2cb3ffe7418d756`.
+Transfer ZIP: **41,865 bytes**, SHA-256
+`b60baed6c26f9bbfbaca32ae00c6179c5f15d3c7d6a82cb5d9005a3532c4273a`.
+The ZIP and extracted transfer folder contain the exact tested game binary.
+Disease rules and the version-2 save codec are unchanged.
+
+Validation used CE Toolchain v15 (macOS arm64) and ti84ce commit
+`eb90c33cfaebd19fbd0fea9c06a359e3efaf54c2`, executing its CEmu reference core
+with TI-OS 5.3.0.0037. Firmware and screenshots remain outside the transfer ZIP.
+
+Commands (from repository root, with the toolchain `bin` on PATH):
+
+```sh
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk make test-host
+CEDEV=/tmp/contagion-cedev-mount/CEdev make OUTPUT_MAP=YES
+export TI84CE_ROOT=/tmp/ti84ce-eb90c33cfaebd19fbd0fea9c06a359e3efaf54c2
+export AUTOTESTER_ROM=/tmp/contagion-ti84ce.rom
+export CE_LIBRARIES=bin/CONTAGION-CE-2.0
+for disease in 0 1 2; do
+  DISEASE_TYPE=$disease TI84CE_OUTPUT=/tmp/contagion-menu-verified$disease \
+    node tests/ti84ce/smoke.mjs
+done
+DISEASE_TYPE=2 TI84CE_OUTPUT=/tmp/contagion-menu-play2 \
+  node tests/ti84ce/playthrough.mjs
+sh tests/native/build.sh
+CONTAGION_PROGRAM=tests/cemu/artifacts/native-bin/CNTAGION.8xp \
+CONTAGION_MAP=tests/cemu/artifacts/native-bin/CNTAGION.map \
+ARCHIVE_FIXTURE=/tmp/contagion-menu-native/archive-fixture.8xv \
+TI84CE_OUTPUT=/tmp/contagion-menu-verified-native node tests/ti84ce/native-save.mjs
+python3 tests/package/build.py
+shasum -a 256 bin/CNTAGION.8xp bin/CONTAGION-CE-2.0.zip
+```
+
+All six host groups passed: 4,410 land cells, 10,923-byte saves. Native build
+passed; existing toolchain GNU-stack linker warnings remain. An initial build
+with an absolute OBJDIR failed because the toolchain prefixes that path with
+the repository path; the normal build above succeeded. Linker initialized data
+is 10,843 bytes, BSS 741 bytes; these are static totals, not measured peak RAM.
+Menus use bounded local arrays, with no new full-map or save-sized stack buffer.
+
+All three disease starts/save/quit/relaunch/continue sequences passed. The tests
+read calculator RAM to assert the requested type and exact disease restoration.
+The full Fungus run won at 421 cycles with 13 purchases, one spore burst, 4,410
+dead cells and 76.44% cure; result pause/reopen and clean New Game also passed.
+The separate native UI fixture passed all 39 purchases, held Enter, duplicate
+purchases, three bursts, cancellation/exhausted charges, prerequisite devolution
+rejection, Virus leaf devolution, and all three outcome screens. These funded
+and outcome fixtures are not natural playthroughs. Actions, Region Details and
+trait screens were visually inspected at 320x240.
+
+The final expanded diagnostic also passed archived save replacement, paused
+Region Details/travel toggle, insufficient-DNA and no-healthy-land spore rejection,
+save failure retry, default-safe confirmation, Clear cancellation, and explicit
+Quit Without Saving. Spore rejection screens were visually inspected. During
+test development the artificial no-land fixture was unsuitable for save encoding;
+the save-failure stage now starts a separate valid seeded run. A 60-frame modal
+delay also proved too short for save preparation; the storage checks now allow
+600 frames. Both were diagnostic corrections, not production gameplay changes.
+The complete corrected sequence reached native stage 2000 successfully.
+
+Package readback and SHA-256 manifest verification passed. OS 5.7.0.0021 and
+physical calculator execution remain unverified; use the short acceptance check
+in `TRANSFER.md`. Older evidence below applies to earlier builds unless noted.
+
 Implementation verification: September 15–16, 2026. This is an uncommitted working
 copy; no commit, push, or hardware/emulator gameplay verification is claimed.
 All six implementation checkpoints are present. Physical calculator verification

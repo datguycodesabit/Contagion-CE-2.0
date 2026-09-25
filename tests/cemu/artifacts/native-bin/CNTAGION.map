@@ -73,638 +73,744 @@ Linker script and memory map
                 0x00d1aab7                ___exithl
                 0x00d1aab8                _exit.sp
 
-.text           0x00d1aaf3     0x6a36
+.text           0x00d1aaf3     0x791c
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
  *(.text.hot .text.hot.*)
  *(SORT_BY_NAME(.text.sorted.*))
  *(.text .stub .text.* .gnu.linkonce.t.*)
- .text          0x00d1aaf3      0x604 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text          0x00d1aaf3      0x615 tests/cemu/artifacts/native-obj/CNTAGION.o
                 0x00d1aaf3                __land
                 0x00d1aaf7                __iand
-                0x00d1ab0e                __bdvrmu
-                0x00d1ab0f                __bdvrmu.hijack_l_dividend
-                0x00d1ab1d                __bremu
-                0x00d1ab28                __bshl
-                0x00d1ab31                __dcmp
-                0x00d1ab8f                __frameset
-                0x00d1ab9d                __frameset0
-                0x00d1aba8                __ftod
-                0x00d1abf0                __idivs
-                0x00d1abf7                __idivu
-                0x00d1abff                __idvrms
-                0x00d1ac2d                __idvrmu
-                0x00d1ac31                __idvrmu.hijack_a_iters_ude_dividend
-                0x00d1ac47                __imuls
-                0x00d1ac47                __imulu
-                0x00d1ac77                __indcallhl
-                0x00d1ac78                __sneg
-                0x00d1ac78                __ineg
-                0x00d1ac81                __iremu
-                0x00d1ac88                __ishl
-                0x00d1ac88                __sshl
-                0x00d1acae                __ishru
-                0x00d1acb3                __ishrs
-                0x00d1acef                __ishru_1
-                0x00d1acfd                __ladd
-                0x00d1ad03                __lcmps
-                0x00d1ad10                __lcmpu
-                0x00d1ad18                __lcmpzero
-                0x00d1ad18                __lequzero
-                0x00d1ad23                __ldivu
-                0x00d1ad2d                __ldivu_lremu_common
-                0x00d1ad55                __lladd
-                0x00d1ad79                __lland
-                0x00d1adb5                __llcmps
-                0x00d1ade2                __llcmpu
-                0x00d1ae0c                __llequzero
-                0x00d1ae0c                __llcmpzero
-                0x00d1ae21                __lldivu
-                0x00d1ae35                __lldvrmu
-                0x00d1ae3c                __lldvrmu.hijack
-                0x00d1ae93                __llmulu
-                0x00d1aee8                __llshl
-                0x00d1af02                __llshru
-                0x00d1af32                __llshrs
-                0x00d1af6e                __llxor
-                0x00d1afaa                __lmuls
-                0x00d1afaa                __lmulu
-                0x00d1b006                __lnot
-                0x00d1b013                __lshl
-                0x00d1b020                __lshrs
-                0x00d1b03a                __lshru
-                0x00d1b048                __lsub
-                0x00d1b052                __lor
-                0x00d1b056                __ior
-                0x00d1b06d                __sand
-                0x00d1b076                __sdivu
-                0x00d1b07e                __sdvrmu
-                0x00d1b08e                __setflag
-                0x00d1b098                __smuls
-                0x00d1b098                __smulu
-                0x00d1b0ab                __sor
-                0x00d1b0b4                __sremu
-                0x00d1b0bb                __lxor
-                0x00d1b0bf                __ixor
-                0x00d1b0d6                _memcpy
- .text._Owns    0x00d1b0f7       0x52 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b0f7                _Owns
+                0x00d1ab0e                __bshl
+                0x00d1ab17                __dcmp
+                0x00d1ab75                __frameset
+                0x00d1ab83                __frameset0
+                0x00d1ab8e                __ftod
+                0x00d1abd6                __idivs
+                0x00d1abdd                __idivu
+                0x00d1abe5                __idvrms
+                0x00d1ac13                __idvrmu
+                0x00d1ac17                __idvrmu.hijack_a_iters_ude_dividend
+                0x00d1ac2d                __imulu
+                0x00d1ac2d                __imuls
+                0x00d1ac5d                __indcallhl
+                0x00d1ac5e                __sneg
+                0x00d1ac5e                __ineg
+                0x00d1ac67                __iremu
+                0x00d1ac6e                __sshl
+                0x00d1ac6e                __ishl
+                0x00d1ac94                __ishru
+                0x00d1ac99                __ishrs
+                0x00d1acd5                __ishru_1
+                0x00d1ace3                __ladd
+                0x00d1ace9                __lcmps
+                0x00d1acf6                __lcmpu
+                0x00d1acfe                __lcmpzero
+                0x00d1acfe                __lequzero
+                0x00d1ad09                __ldivu
+                0x00d1ad13                __ldivu_lremu_common
+                0x00d1ad3b                __lladd
+                0x00d1ad5f                __lland
+                0x00d1ad9b                __llcmps
+                0x00d1adc8                __llcmpu
+                0x00d1adf2                __llequzero
+                0x00d1adf2                __llcmpzero
+                0x00d1ae07                __lldivu
+                0x00d1ae1b                __lldvrmu
+                0x00d1ae22                __lldvrmu.hijack
+                0x00d1ae79                __llmulu
+                0x00d1aece                __llshl
+                0x00d1aee8                __llshru
+                0x00d1af18                __llshrs
+                0x00d1af54                __llxor
+                0x00d1af90                __lmulu
+                0x00d1af90                __lmuls
+                0x00d1afec                __lnot
+                0x00d1aff9                __lshl
+                0x00d1b006                __lshrs
+                0x00d1b020                __lshru
+                0x00d1b02e                __lsub
+                0x00d1b038                __lor
+                0x00d1b03c                __ior
+                0x00d1b053                __sand
+                0x00d1b05c                __sdivu
+                0x00d1b064                __sdvrms_abs
+                0x00d1b084                __sdvrmu
+                0x00d1b094                __setflag
+                0x00d1b09e                __smulu
+                0x00d1b09e                __smuls
+                0x00d1b0b1                __sor
+                0x00d1b0ba                __srems
+                0x00d1b0c5                __sremu
+                0x00d1b0cc                __lxor
+                0x00d1b0d0                __ixor
+                0x00d1b0e7                _memcpy
+ .text._Owns    0x00d1b108       0x52 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b108                _Owns
  .text._Eligible
-                0x00d1b149       0xa2 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b149                _Eligible
+                0x00d1b15a       0xa2 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b15a                _Eligible
  .text._Purchase
-                0x00d1b1eb       0xe3 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b1eb                _Purchase
+                0x00d1b1fc       0xe3 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b1fc                _Purchase
  .text._SetOwned
-                0x00d1b2ce       0x51 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b2df       0x51 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._CanDevolve
-                0x00d1b31f       0x96 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b31f                _CanDevolve
+                0x00d1b330       0x96 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b330                _CanDevolve
  .text._Devolve
-                0x00d1b3b5       0xb2 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b3b5                _Devolve
+                0x00d1b3c6       0xb2 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b3c6                _Devolve
  .text._CalculateEffects
-                0x00d1b467      0x712 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1b467                _CalculateEffects
- .text._Level   0x00d1bb79       0x3b tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b478      0x712 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1b478                _CalculateEffects
+ .text._Level   0x00d1bb8a       0x3b tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._EvaluateOutcome
-                0x00d1bbb4       0x84 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1bbb4                _EvaluateOutcome
+                0x00d1bbc5       0x84 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1bbc5                _EvaluateOutcome
  .text._ValidateDisease
-                0x00d1bc38      0x443 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1bc38                _ValidateDisease
+                0x00d1bc49      0x443 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1bc49                _ValidateDisease
  .text._EvolutionMenu
-                0x00d1c07b     0x11d7 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1c07b                _EvolutionMenu
+                0x00d1c08c     0x15f0 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1c08c                _EvolutionMenu
  .text._StateSymbol
-                0x00d1d252       0x65 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1d67c       0x65 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._RegionInfo
+                0x00d1d6e1      0x315 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1d6e1                _RegionInfo
  .text._SporeMenu
-                0x00d1d2b7      0x1f7 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1d2b7                _SporeMenu
+                0x00d1d9f6      0x252 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1d9f6                _SporeMenu
  .text._ResultScreen
-                0x00d1d4ae      0x2b7 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1d4ae                _ResultScreen
+                0x00d1dc48      0x2b7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1dc48                _ResultScreen
  .text._LoadData
-                0x00d1d765       0x56 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1d765                _LoadData
+                0x00d1deff       0x56 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1deff                _LoadData
  .text._ReadNamed
-                0x00d1d7bb       0xb0 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1df55       0xb0 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._FileRead
-                0x00d1d86b       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e005       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._FileWrite
-                0x00d1d89c       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e036       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._FileSeek
-                0x00d1d8cd       0x2c tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e067       0x2c tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._SaveData
-                0x00d1d8f9       0xfd tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1d8f9                _SaveData
+                0x00d1e093       0xfd tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e093                _SaveData
  .text._CopyNamed
-                0x00d1d9f6      0x105 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e190      0x105 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._SaveSize
-                0x00d1dafb       0x77 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1dafb                _SaveSize
+                0x00d1e295       0x77 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e295                _SaveSize
  .text._EncodeSave
-                0x00d1db72      0x13a tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1db72                _EncodeSave
- .text._Header  0x00d1dcac       0xac tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._State   0x00d1dd58      0x20f tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e30c      0x13a tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e30c                _EncodeSave
+ .text._Header  0x00d1e446       0xac tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._State   0x00d1e4f2      0x20f tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._Geometry
-                0x00d1df67       0x69 tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._Bytes   0x00d1dfd0       0xbd tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e701       0x69 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._Bytes   0x00d1e76a       0xbd tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._Checksum
-                0x00d1e08d       0x4e tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._U32     0x00d1e0db       0xd2 tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._U16     0x00d1e1ad       0x55 tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._U8      0x00d1e202       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e827       0x4e tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._U32     0x00d1e875       0xd2 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._U16     0x00d1e947       0x55 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._U8      0x00d1e99c       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._ValidateSave
-                0x00d1e21c       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1e21c                _ValidateSave
+                0x00d1e9b6       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e9b6                _ValidateSave
  .text._ReadSave
-                0x00d1e239      0x761 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1e9d3      0x761 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._DecodeSave
-                0x00d1e99a       0x40 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1e99a                _DecodeSave
+                0x00d1f134       0x40 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f134                _DecodeSave
  .text._RecountRegion
-                0x00d1e9da       0xb9 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1e9da                _RecountRegion
+                0x00d1f174       0xb9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f174                _RecountRegion
  .text._CountWorld
-                0x00d1ea93       0xb8 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ea93                _CountWorld
+                0x00d1f22d       0xb8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f22d                _CountWorld
  .text._SetCell
-                0x00d1eb4b       0x97 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1eb4b                _SetCell
+                0x00d1f2e5       0x97 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f2e5                _SetCell
  .text._SeedRegion
-                0x00d1ebe2       0xbc tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ebe2                _SeedRegion
+                0x00d1f37c       0xbc tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f37c                _SeedRegion
  .text._SporeBurst
-                0x00d1ec9e       0x9e tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ec9e                _SporeBurst
+                0x00d1f438       0x9e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f438                _SporeBurst
  .text._GameRandom
-                0x00d1ed3c       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ed3c                _GameRandom
+                0x00d1f4d6       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f4d6                _GameRandom
  .text._ReadKey
-                0x00d1ed6d       0xda tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ed6d                _ReadKey
+                0x00d1f507       0xda tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f507                _ReadKey
  .text._ScannedKeyDown
-                0x00d1ee47       0x2e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f5e1       0x2e tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._ReleaseKeys
-                0x00d1ee75       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ee75                _ReleaseKeys
+                0x00d1f60f       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f60f                _ReleaseKeys
  .text._WaitKey
-                0x00d1ee88        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ee88                _WaitKey
- .text._Text    0x00d1ee96       0x3e tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ee96                _Text
+                0x00d1f622        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f622                _WaitKey
+ .text._EndModal
+                0x00d1f630       0x11 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f630                _EndModal
+ .text._MenuMove
+                0x00d1f641       0x52 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f641                _MenuMove
+ .text._MenuItem
+                0x00d1f693       0x7e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f693                _MenuItem
+ .text._Text    0x00d1f711       0x3e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f711                _Text
+ .text._ChooseMenu
+                0x00d1f74f      0x107 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f74f                _ChooseMenu
  .text._BeginScreen
-                0x00d1eed4       0x6d tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1eed4                _BeginScreen
+                0x00d1f856       0x6d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f856                _BeginScreen
  .text._WrapText
-                0x00d1ef41      0x127 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1ef41                _WrapText
+                0x00d1f8c3      0x127 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f8c3                _WrapText
  .text._QueueNews
-                0x00d1f068       0x50 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1f068                _QueueNews
+                0x00d1f9ea       0x50 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1f9ea                _QueueNews
  .text._ResetGameState
-                0x00d1f0b8       0xfe tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1f0b8                _ResetGameState
+                0x00d1fa3a       0xfe tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1fa3a                _ResetGameState
+ .text._ActionsMenu
+                0x00d1fb38      0x257 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1fb38                _ActionsMenu
+ .text._SaveExit
+                0x00d1fd8f       0xa2 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._InitializeMap
-                0x00d1f1b6       0x9b tests/cemu/artifacts/native-obj/CNTAGION.o
- .text._main    0x00d1f251      0x714 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1f251                _main
- .text._Check   0x00d1f965       0x66 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1fe31       0x9b tests/cemu/artifacts/native-obj/CNTAGION.o
+ .text._main    0x00d1fecc      0x97f tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d1fecc                _main
+ .text._Check   0x00d2084b       0x66 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._RestoreCheck
-                0x00d1f9cb       0xcc tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d208b1       0xcc tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._Corrupt
-                0x00d1fa97       0x76 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2097d       0x76 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._npf_vpprintf
-                0x00d1fb0d     0x1775 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d1fb0d                _npf_vpprintf
+                0x00d209f3     0x1775 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d209f3                _npf_vpprintf
  .text._NPF_PUTC_IMPL
-                0x00d21282       0x2d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22168       0x2d tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._npf_utoa_rev
-                0x00d212af       0xe6 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22195       0xe6 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._vsnprintf
-                0x00d21395       0x88 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d21395                _vsnprintf
+                0x00d2227b       0x88 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2227b                _vsnprintf
  .text._npf_bufputc
-                0x00d2141d       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22303       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._npf_bufputc_nop
-                0x00d21442        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22328        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .text._snprintf
-                0x00d21449       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d21449                _snprintf
- .text.__bctlz  0x00d21471       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d21471                __bctlz
- .text.__sctlz  0x00d21493        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d21493                __sctlz
- .text.__ictlz  0x00d2149f       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d2149f                __ictlz
+                0x00d2232f       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2232f                _snprintf
+ .text.__bctlz  0x00d22357       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22357                __bctlz
+ .text.__sctlz  0x00d22379        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22379                __sctlz
+ .text.__ictlz  0x00d22385       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22385                __ictlz
  .text.__llctlz
-                0x00d214b1        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d214b1                __llctlz
+                0x00d22397        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22397                __llctlz
  .text.__i48ctlz
-                0x00d214bf       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d214bf                __i48ctlz
- .text._random  0x00d214d4       0x55 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d214d4                _random
+                0x00d223a5       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d223a5                __i48ctlz
+ .text._random  0x00d223ba       0x55 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d223ba                _random
  *(.gnu.warning)
 
-.rodata         0x00d2152a     0x1214
+.rodata         0x00d22410     0x14e2
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata._.str  0x00d2152a        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._SporeMenu
+                0x00d22410        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str  0x00d2241c        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.1
-                0x00d21537        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22429        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.2
-                0x00d21541        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._categories
-                0x00d2154c        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22433        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.4
-                0x00d21555       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._branch_labels
-                0x00d21573       0x3f tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2243e       0x1b tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._categories
+                0x00d22459        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.1.5
-                0x00d215b2        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22462        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._branch_labels
+                0x00d22469       0x3f tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.2.6
-                0x00d215ba        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d224a8        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.3.7
-                0x00d215c5        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d224b0        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.4.8
-                0x00d215cc       0x29 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d224bb        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.5
-                0x00d215f5       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d224c2       0x29 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.6
-                0x00d21613       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d224eb       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.7
-                0x00d21638       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22509       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._first_node
-                0x00d2164c        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2251b        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._environments
-                0x00d2164f       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d2164f                _environments
+                0x00d2251e       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2251e                _environments
+ .rodata._.str.8
+                0x00d2254f       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.9
+                0x00d22570       0x11 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.10
+                0x00d22581       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.11
+                0x00d2259e       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.12
+                0x00d225b0       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.13
+                0x00d225c9       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.14
+                0x00d225dd        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.15
+                0x00d225eb       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.16
+                0x00d22607       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.19
-                0x00d21680       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22626       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.20
-                0x00d21694       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2263a       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.21
-                0x00d216ad       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22653       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.22
-                0x00d216cb       0x26 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22671       0x26 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.23
-                0x00d216f1       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22697       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.24
-                0x00d21703       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d226a9       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.25
-                0x00d21724       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d226ca       0x17 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.26
-                0x00d21738       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d226e1       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.27
-                0x00d21759       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d226fa       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.28
-                0x00d21772       0x26 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2271a       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.29
-                0x00d21798       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2273a       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.30
-                0x00d217ac        0xf tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2275b       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.31
-                0x00d217bb        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22774       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.32
-                0x00d217c3       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22799       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.33
-                0x00d217df       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d227ad        0xf tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.34
-                0x00d21804       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d227bc        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.35
-                0x00d21828       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d227c4       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.36
-                0x00d21845       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d227e0       0x25 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.37
-                0x00d21862       0x3c tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22805       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.38
-                0x00d2189e       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22829       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.39
-                0x00d218b7        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22846       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.40
-                0x00d218c4        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22863       0x3c tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.41
-                0x00d218cd        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2289f       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.42
-                0x00d218d7        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228b9        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.43
-                0x00d218db        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228c6        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.44
-                0x00d218e1        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228cf        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.45
-                0x00d218e6        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228d9        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.46
-                0x00d218ea        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228dd        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.47
-                0x00d218f1        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228e3        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.48
-                0x00d218f6        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228e8        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.49
-                0x00d218fc        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228ec        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.50
-                0x00d21908        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228f3        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.51
-                0x00d21912        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228f8        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.52
-                0x00d2191b        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d228fe        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.53
-                0x00d21920        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2290a        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.54
-                0x00d21925        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22914        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.55
-                0x00d2192d        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2291d        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.56
-                0x00d21934        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22922        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.57
-                0x00d2193c       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22927        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.58
-                0x00d2194e       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2292f        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.59
-                0x00d2196a        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22936        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.60
-                0x00d21974        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2293e       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.61
-                0x00d21979       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22950       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.62
-                0x00d2199d       0x11 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2296c        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.63
-                0x00d219ae       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22976        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.64
-                0x00d219c0       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2297b       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.65
-                0x00d219d5       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
- *fill*         0x00d219ef        0x1 
- .rodata._reshuffle_reductions
-                0x00d219f0        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d219f0                _reshuffle_reductions
+                0x00d2299f       0x11 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.66
-                0x00d219f4       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d229b0       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.67
-                0x00d21a15       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d229c2       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.68
-                0x00d21a2e       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d229d7       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
+ *fill*         0x00d229f1        0x1 
+ .rodata._reshuffle_reductions
+                0x00d229f2        0x4 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d229f2                _reshuffle_reductions
  .rodata._.str.69
-                0x00d21a4c       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d229f6       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.70
-                0x00d21a6c       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22a17       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.71
-                0x00d21a8d       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22a30       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.72
-                0x00d21aad       0x26 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22a4e       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.73
-                0x00d21ad3        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22a6e       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.74
-                0x00d21ade       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22a8f       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.75
-                0x00d21b02       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22aa2        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.76
-                0x00d21b1f       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22aab        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.77
+                0x00d22ab5        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.78
+                0x00d22ac1       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.79
+                0x00d22ad3       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.80
+                0x00d22ae6        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.81
+                0x00d22aeb        0xf tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.82
+                0x00d22afa       0x16 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.83
+                0x00d22b10       0x10 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._.str.84
-                0x00d21b40        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.92
-                0x00d21b45        0x1 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.101
-                0x00d21b46        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.1.102
-                0x00d21b4c       0x2f tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.2.103
-                0x00d21b7b        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.3.104
-                0x00d21b82        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.4.105
-                0x00d21b8a       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.5.106
-                0x00d21bbb        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.6.107
-                0x00d21bc4        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.7.108
-                0x00d21bd0       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.8.109
-                0x00d21bef        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.9.110
-                0x00d21bfc        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.10.111
-                0x00d21c06       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.11.112
-                0x00d21c25        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.12.113
-                0x00d21c30        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.13.114
-                0x00d21c3a       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.14.115
-                0x00d21c58        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.15.116
-                0x00d21c63        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.16.117
-                0x00d21c6b       0x2a tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.17.118
-                0x00d21c95        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.18.119
-                0x00d21c9e        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.19.120
-                0x00d21ca6       0x29 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.20.121
-                0x00d21ccf        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.21.122
-                0x00d21cd8       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.22.123
-                0x00d21cec       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.23.124
-                0x00d21d0b       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.24.125
-                0x00d21d1d       0x2e tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.25.126
-                0x00d21d4b       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.26.127
-                0x00d21d5d       0x23 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.27.128
-                0x00d21d80        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.28.129
-                0x00d21d86       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.29.130
-                0x00d21daa        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.30.131
-                0x00d21db3       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.31.132
-                0x00d21dd7        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.32.133
-                0x00d21de1       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.33.134
-                0x00d21e01       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.34.135
-                0x00d21e15       0x27 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.35.136
-                0x00d21e3c        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.36.137
-                0x00d21e43        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.37.138
-                0x00d21e4c        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.38.139
-                0x00d21e55       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.39.140
-                0x00d21e67        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.40.141
-                0x00d21e6c        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.41.142
-                0x00d21e72       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.42.143
-                0x00d21e85        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.43.144
-                0x00d21e93       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.44.145
-                0x00d21ea5       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.45.146
-                0x00d21ec1       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.46.147
-                0x00d21ed4       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.47.148
-                0x00d21ef8       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.48.149
-                0x00d21f0a       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.49.150
-                0x00d21f26       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.50.151
-                0x00d21f39       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.51.152
-                0x00d21f5d       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.52.153
-                0x00d21f72       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.53.154
-                0x00d21f94       0x16 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.54.155
-                0x00d21faa       0x2a tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.55.156
-                0x00d21fd4       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.56.157
-                0x00d21fe8       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.57.158
-                0x00d22005       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.58.159
-                0x00d2201a       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.59.160
-                0x00d22038       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.60.161
-                0x00d2204c       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.61.162
-                0x00d22074       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.62.163
-                0x00d22089       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._spore_costs
-                0x00d220b1        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d220b1                _spore_costs
- .rodata._.str.1.195
-                0x00d220b4        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d22b20        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.85
+                0x00d22b2b       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.86
+                0x00d22b49       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.94
+                0x00d22b5e        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.102
+                0x00d22b63        0x1 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.111
+                0x00d22b64        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.1.112
+                0x00d22b6a       0x2f tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.2.113
+                0x00d22b99        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.3.114
+                0x00d22ba0        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.4.115
+                0x00d22ba8       0x31 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.5.116
+                0x00d22bd9        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.6.117
+                0x00d22be2        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.7.118
+                0x00d22bee       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.8.119
+                0x00d22c0d        0xd tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.9.120
+                0x00d22c1a        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.10.121
+                0x00d22c24       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.11.122
+                0x00d22c43        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.12.123
+                0x00d22c4e        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.13.124
+                0x00d22c58       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.14.125
+                0x00d22c76        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.15.126
+                0x00d22c81        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.16.127
+                0x00d22c89       0x2a tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.17.128
+                0x00d22cb3        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.18.129
+                0x00d22cbc        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.19.130
+                0x00d22cc4       0x29 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.20.131
+                0x00d22ced        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.21.132
+                0x00d22cf6       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.22.133
+                0x00d22d0a       0x1f tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.23.134
+                0x00d22d29       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.24.135
+                0x00d22d3b       0x2e tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.25.136
+                0x00d22d69       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.26.137
+                0x00d22d7b       0x23 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.27.138
+                0x00d22d9e        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.28.139
+                0x00d22da4       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.29.140
+                0x00d22dc8        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.30.141
+                0x00d22dd1       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.31.142
+                0x00d22df5        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.32.143
+                0x00d22dff       0x20 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.33.144
+                0x00d22e1f       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.34.145
+                0x00d22e33       0x27 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.35.146
+                0x00d22e5a        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.36.147
+                0x00d22e61        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.37.148
+                0x00d22e6a        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.38.149
+                0x00d22e73       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.39.150
+                0x00d22e85        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.40.151
+                0x00d22e8a        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.41.152
+                0x00d22e90       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.42.153
+                0x00d22ea3        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.43.154
+                0x00d22eb1       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.44.155
+                0x00d22ec3       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.45.156
+                0x00d22edf       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.46.157
+                0x00d22ef2       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.47.158
+                0x00d22f16       0x12 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.48.159
+                0x00d22f28       0x1c tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.49.160
+                0x00d22f44       0x13 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.50.161
+                0x00d22f57       0x24 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.51.162
+                0x00d22f7b       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.52.163
+                0x00d22f90       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.53.164
+                0x00d22fb2       0x16 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.54.165
+                0x00d22fc8       0x2a tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.55.166
+                0x00d22ff2       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.56.167
+                0x00d23006       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.57.168
+                0x00d23023       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.58.169
+                0x00d23038       0x1e tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.59.170
+                0x00d23056       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.60.171
+                0x00d2306a       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.61.172
+                0x00d23092       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.62.173
+                0x00d230a7       0x28 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.202
+                0x00d230cf        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.1.203
+                0x00d230d1        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.2.210
+                0x00d230d3       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.3.211
+                0x00d230f4        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.4.214
+                0x00d23100       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.5.217
+                0x00d23115        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._port_definitions
-                0x00d220b7       0x84 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d220b7                _port_definitions
- .rodata._.str.14.248
-                0x00d2213b        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.15.249
-                0x00d22142        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.16.250
-                0x00d22144        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.17.251
-                0x00d2214c        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.18.252
-                0x00d22154        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.19.253
-                0x00d22156       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.20.254
-                0x00d2216f       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.21.255
-                0x00d22190       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.22.256
-                0x00d221b1       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.23.257
-                0x00d221d3       0x17 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.24.258
-                0x00d221ea       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.25.259
-                0x00d22203       0x17 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23118       0x84 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23118                _port_definitions
+ .rodata._.str.6.220
+                0x00d2319c        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.7.221
+                0x00d231a3        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.8.222
+                0x00d231ad        0xf tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.9.224
+                0x00d231bc       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.10.223
+                0x00d231d5       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.11.225
+                0x00d231ef       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._spore_costs
+                0x00d2320c        0x3 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2320c                _spore_costs
+ .rodata._.str.12.226
+                0x00d2320f       0x1d tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.13.227
+                0x00d2322c       0x11 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.14.228
+                0x00d2323d        0xc tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.15.229
+                0x00d23249       0x10 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.16.230
+                0x00d23259        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.24.283
+                0x00d23267        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.25.284
+                0x00d2326e        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.26.285
+                0x00d23270        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.27.286
+                0x00d23278        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.28.287
+                0x00d23280        0x2 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.29.288
+                0x00d23282       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.30.289
+                0x00d2329b       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.31.290
+                0x00d232bc       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.32.291
+                0x00d232dd       0x22 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.33.292
+                0x00d232ff       0x17 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.34.293
+                0x00d23316       0x19 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.35.294
+                0x00d2332f       0x1b tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._SaveExit.choices
+                0x00d2334a        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.36.235
+                0x00d23353       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.37.236
+                0x00d23367        0xb tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.38.234
+                0x00d23372       0x14 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.39.231
+                0x00d23386       0x21 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._SaveExit.confirm
+                0x00d233a7        0x6 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.40.233
+                0x00d233ad        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.41.232
+                0x00d233b5       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._InitializeMap.names
-                0x00d2221a       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.26.241
-                0x00d2222f        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.27.242
-                0x00d22236        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.28.243
-                0x00d2223b        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.29.244
-                0x00d22242        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.30.245
-                0x00d2224c        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.31.246
-                0x00d2225a        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
- .rodata._.str.32.247
-                0x00d22268        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d233cf       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.42.276
+                0x00d233e4        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.43.277
+                0x00d233eb        0x5 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.44.278
+                0x00d233f0        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.45.279
+                0x00d233f7        0xa tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.46.280
+                0x00d23401        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.47.281
+                0x00d2340f        0xe tests/cemu/artifacts/native-obj/CNTAGION.o
+ .rodata._.str.48.282
+                0x00d2341d        0x8 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._InitializeMap.x
-                0x00d22270        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23425        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._InitializeMap.y
-                0x00d22277        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2342c        0x7 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._map_sprites
-                0x00d2227e       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23433       0x15 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._disease_names
-                0x00d22293        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d22293                _disease_names
- .rodata._.str.45.235
-                0x00d2229c        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
- *fill*         0x00d222a5        0x1 
+                0x00d23448        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23448                _disease_names
+ .rodata._.str.61.251
+                0x00d23451        0x9 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._traits
-                0x00d222a6      0x35a tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d222a6                _traits
- .rodata._.str.64.260
-                0x00d22600       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2345a      0x35a tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2345a                _traits
+ .rodata._.str.81.295
+                0x00d237b4       0x1a tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata._npf_vpprintf
-                0x00d2261a      0x102 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d237ce      0x102 tests/cemu/artifacts/native-obj/CNTAGION.o
  .rodata.libload
-                0x00d2271c       0x22 tests/cemu/artifacts/native-obj/crt0.o
+                0x00d238d0       0x22 tests/cemu/artifacts/native-obj/crt0.o
 
-.init_array     0x00d2273e        0x0
+.init_array     0x00d238f2        0x0
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(.preinit_array)
  *(SORT_BY_INIT_PRIORITY(.init_array.*))
  *(.init_array)
                 [!provide]                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x00d2273e        0x0
+.fini_array     0x00d238f2        0x0
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*))
  *(.fini_array)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x00d2273e                        ___data_low = .
+                0x00d238f2                        ___data_low = .
 
-.data           0x00d2273e     0x2a5b
+.data           0x00d238f2     0x2a5b
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00d2273e       0x10 tests/cemu/artifacts/native-obj/CNTAGION.o
+ .data          0x00d238f2       0x10 tests/cemu/artifacts/native-obj/CNTAGION.o
  .data._africa_data
-                0x00d2274e      0x75a tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d2274e                _africa_data
+                0x00d23902      0x75a tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d23902                _africa_data
  .data._asia_data
-                0x00d22ea8      0xdf9 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d22ea8                _asia_data
+                0x00d2405c      0xdf9 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d2405c                _asia_data
  .data._europe_data
-                0x00d23ca1      0x302 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d23ca1                _europe_data
+                0x00d24e55      0x302 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d24e55                _europe_data
  .data._greenland_data
-                0x00d23fa3      0x152 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d23fa3                _greenland_data
+                0x00d25157      0x152 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d25157                _greenland_data
  .data._northamerica_data
-                0x00d240f5      0x7b2 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d240f5                _northamerica_data
+                0x00d252a9      0x7b2 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d252a9                _northamerica_data
  .data._southamerica_data
-                0x00d248a7      0x4d2 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d248a7                _southamerica_data
+                0x00d25a5b      0x4d2 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d25a5b                _southamerica_data
  .data._oceania_data
-                0x00d24d79      0x420 tests/cemu/artifacts/native-obj/CNTAGION.o
-                0x00d24d79                _oceania_data
+                0x00d25f2d      0x420 tests/cemu/artifacts/native-obj/CNTAGION.o
+                0x00d25f2d                _oceania_data
  *(.data1)
-                0x00d25199                        ___runprgm_reloc_start = .
+                0x00d2634d                        ___runprgm_reloc_start = .
  *(.runprgm.reloc)
-                0x00d25199                        ___runprgm_reloc_end = .
-                0x00d25199                        ___data_high = .
+                0x00d2634d                        ___runprgm_reloc_end = .
+                0x00d2634d                        ___data_high = .
                 0x00002a5b                        ___data_len = (___data_high - ___data_low)
                 0x00d052c6                        . = BSSHEAP_LOW
                 0x00d052c6                        ___bss_low = .

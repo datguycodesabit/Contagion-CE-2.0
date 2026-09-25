@@ -16,7 +16,7 @@ The ZIP is generated locally; historical GitHub releases may still be version 1.
 
 ## How to play 2.0
 
-Start **New Game** with Y= (or Zoom when no run exists). Choose Bacteria, Virus,
+Select **New Game** with the arrows and Enter. Choose Bacteria, Virus,
 or Fungus, enter a name with the on-screen character picker, and seed healthy
 land. Bacteria is the recommended introduction. Spread quietly, collect DNA,
 then evolve lethal symptoms before the cure finishes. Victory requires every
@@ -31,19 +31,29 @@ the leaves, for a cost and no refund.
 
 | Context | Controls |
 |---|---|
-| Main menu | Y=: New Game; Zoom: start/continue/results; Graph/Clear: save and quit |
-| Name picker | Arrows: character; Enter: add; Del: erase; Zoom: finish; Clear: cancel |
+| Main menu | Up/Down: select; Enter: confirm; Clear: select Save & Quit |
+| Name picker | Arrows: character or Done; Enter: add/finish; Del: erase; Clear: cancel |
 | Initial seed | Arrows: one map cell; Enter: seed; Clear: cancel |
-| World | Arrows: spatial region selection; Enter: region info; Mode: travel view; Graph: evolve; Clear: save and return to menu |
-| Evolution | Y=/Window: previous/next category; arrows: connected-node selection; Enter: details; Graph/Clear: return |
-| Trait details | Enter: purchase; Del: devolve an eligible owned symptom; Graph/Clear: back |
-| Fungus abilities page | Zoom: spore menu; Up/Down: destination; Enter: buy/release; Graph/Clear: cancel |
+| World | Arrows: region; Enter or Clear: paused actions menu |
+| Actions | Up/Down: select; Enter: confirm; Clear: resume |
+| Evolution | Choose a category with Up/Down and Enter; arrows follow tree nodes; Enter: details; Clear: categories/back |
+| Trait details | Up/Down: Purchase, Devolve (symptoms), or Back; Enter: confirm; Clear: back |
+| Fungus Spore Burst | Select from Actions; Up/Down: destination; Enter: buy/release; Clear: back |
+
+Actions includes region details, travel view, Save & Main Menu, and Save & Quit.
+Fungus shows spore charges and the next cost (10/16/24 DNA) from the start.
+The destination menu stays open after a burst. Rejected bursts spend nothing.
 
 Evolution symbols: `*` owned, `+` available, `L` locked, `$` insufficient DNA.
 Selection has an outline; color is not the sole indication. Release a key before
 another action. All menus pause gameplay. Travel markers use a triangle for air,
 a square for sea, and a slash when closed. A line shows a successful arrival.
 The region panel shows mixed ratings and closed endpoint counts.
+
+The news ticker reports regional spread, milestones, travel restrictions,
+mutations and spore destinations. Urgent headlines take priority over waiting
+routine reports. Long headlines scroll; all news pauses while menus are open.
+Quiet periods show factual world updates. News never changes disease balance.
 
 ## Saves and reset
 

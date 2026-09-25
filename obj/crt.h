@@ -110,6 +110,10 @@ _gfx_Rectangle:
 	.type _gfx_FillRectangle, @function
 _gfx_FillRectangle:
 	jp 108
+	.global _gfx_SetClipRegion
+	.type _gfx_SetClipRegion, @function
+_gfx_SetClipRegion:
+	jp 129
 	.global _gfx_ScaledTransparentSprite_NoClip
 	.type _gfx_ScaledTransparentSprite_NoClip, @function
 _gfx_ScaledTransparentSprite_NoClip:
@@ -126,6 +130,10 @@ _gfx_SetTextScale:
 	.type _gfx_SetTransparentColor, @function
 _gfx_SetTransparentColor:
 	jp 225
+	.global _gfx_SetTextConfig
+	.type _gfx_SetTextConfig, @function
+_gfx_SetTextConfig:
+	jp 231
 	.global __libload_library_KEYPADC
 	.type __libload_library_KEYPADC, @object
 __libload_library_KEYPADC:

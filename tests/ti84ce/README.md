@@ -19,9 +19,9 @@ node tests/ti84ce/smoke.mjs
 Repeat with `DISEASE_TYPE=1` and `2`. Optional `TI84CE_OUTPUT` selects an output
 folder (default `/tmp/contagion-smoke`); `CONTAGION_PROGRAM` selects the artifact.
 Outputs include local firmware/state copies: never commit them. RGBA frames are
-320x240, four bytes per pixel. The Continue-menu hash was accepted only after
-visually inspecting the real rendered screen. Assertions require that menu after
-saving, relaunching, and saving a second time, plus changed gameplay frames.
+320x240, four bytes per pixel. The smoke sequence compares the Continue selection
+after saving, relaunching, and saving again, plus changed gameplay frames. It also
+reads calculator RAM to check the chosen disease type and exact disease restore.
 These assertions prove smoke coverage, not a full winning playthrough or every
 saved field. Pure codec semantics remain covered by `make test-host`.
 
@@ -97,3 +97,30 @@ no uninspected framebuffer hashes are asserted.
 `tests/cemu/smoke-test.md` remains the comprehensive **physical acceptance** list.
 Hardware timing, OS 5.7 launch, actual interrupted power, full archive/GC, and
 exhaustive manual navigation/name entry still require calculator verification.
+
+## Focused ticker check (September 24)
+
+For ticker changes, run `sh tests/host/run.sh test_ticker`, then the short native
+fixture below with the existing toolchain/ROM/library environment. This uses the
+production ticker, GraphX rendering and Actions menu. It queues synthetic news,
+not a natural playthrough; it is never packaged. The harness reads emulator RAM,
+checks priority order, clipping, scrolling, final hold and pause/resume timing,
+and writes 320x240 RGBA captures for visual inspection.
+
+```sh
+sh tests/ticker-native/build.sh
+CONTAGION_PROGRAM=tests/cemu/artifacts/ticker-bin/CNTAGION.8xp \
+CONTAGION_MAP=tests/cemu/artifacts/ticker-bin/CNTAGION.map \
+TI84CE_OUTPUT=/tmp/contagion-ticker node tests/ti84ce/ticker.mjs
+```
+
+The ticker queue and display position are transient. Loading initializes milestone
+snapshots from the restored disease instead of replaying old milestone headlines.
+
+## Menu controls (September 24)
+
+All scripts now use arrows, Enter and Clear through Actions and the category menu.
+The native diagnostic also exercises Region Details, travel toggle, insufficient
+spore DNA, exhausted destination land, and failed-save retry/cancel/explicit quit.
+The harness only reads emulator state; funded/failure fixtures are explicitly
+constructed in the separate native diagnostic, never in the shipping game.

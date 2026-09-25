@@ -33,14 +33,14 @@ function run(n=60){for(let i=0;i<n;i++)e.run_cycles(800000);}
 function key(r,c){e.set_key(r,c,true);run(30);e.set_key(r,c,false);run(180);}
 run(240);key(6,6);key(4,6);key(5,1);key(6,0);run(180);
 console.log('MENU', e.debug_status(),e.dump_state());
-key(1,4);run(60);console.log('AFTER Y=',e.debug_status(),e.dump_state());
+key(6,0);run(60);
 fs.writeFileSync(path.join(output,'menu.state'),e.save_state());
 fs.writeFileSync(path.join(output,'menu.rgba'),e.get_framebuffer_rgba());
 function snap(n){snapshots.set(n,createHash("sha256").update(e.get_framebuffer_rgba()).digest("hex"));if(process.env.TI84CE_BACKEND === 'rust')fs.writeFileSync(path.join(output,`${n}.state`),e.save_state());fs.writeFileSync(path.join(output,`${n}.rgba`),e.get_framebuffer_rgba());console.log(n,e.debug_status());}
 const diseaseType=Number(process.env.DISEASE_TYPE || 0);
 assert(Number.isInteger(diseaseType) && diseaseType>=0 && diseaseType<=2);
 for(let i=0;i<diseaseType;i++) key(7,0);
-key(6,0);key(1,2);key(6,0);run(180);snap('start');
+key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);key(6,0);run(180);snap('start');
 
 const map=fs.readFileSync(process.env.CONTAGION_MAP || 'bin/CNTAGION.map','utf8');
 const address=n=>parseInt(map.match(new RegExp('0x([0-9a-f]+) +_'+n+'\\s'))[1],16);
@@ -68,9 +68,10 @@ const traits=fs.readFileSync('src/traits.c','utf8').split('\n').filter(l=>l.star
 const own=(s,id)=>Boolean(s.owned[id>>>5] & (1<<(id%32)));
 const eligible=(s,id)=>!own(s,id)&&traits[id].pre.every(p=>p===255||own(s,p))&&s.dna>=traits[id].cost;
 function navigate(id){
- key(1,0); // Graph: open tree
+ key(6,0);key(7,0);key(6,0); // Actions -> Evolution
  const cat=traits[id].category;
- for(let i=0;i<cat;i++)key(1,3); // Window
+ for(let i=0;i<cat;i++)key(7,0);
+ key(6,0);
  const start=[0,17,29][cat],queue=[[start,[]]],seen=new Set([start]);
  while(queue.length){const [at,steps]=queue.shift();if(at===id){
   for(const step of steps)key(7,[1,2,3,0][step]);key(6,0);return;
@@ -79,13 +80,13 @@ function navigate(id){
 }
 let purchases=0,devolutions=0;
 function buy(id,remove=false){
- navigate(id);const before=read();key(...(remove?[1,7]:[6,0]));const after=read();
+ navigate(id);const before=read();if(remove)key(7,0);key(6,0);const after=read();
  assert.equal(own(after,id),!remove,`UI action ${traits[id].name}`);
  assert.equal(after.dna,before.dna-(remove?(diseaseType===1?7:4):traits[id].cost));
  assert.equal(after.cycles,before.cycles,'Detail remains paused');
  if(remove)devolutions++;else purchases++;
  console.log(remove?'DEVOLVE':'BUY',traits[id].name,after.dna);
- key(6,6);key(6,6);
+ key(6,6);key(6,6);key(6,6);key(6,6);
 }
 const opening=[2,0,4,8,3,1,31,35,36];let order=0,lastCycle=-1,stalls=0;
 const scenario=process.env.SCENARIO || 'win';
@@ -106,7 +107,7 @@ for(let iteration=0;iteration<10000;iteration++){
   s=read();
   if(diseaseType===2&&s.spores<3&&s.cycles>50&&s.dna>=[10,16,24][s.spores]+6){
    const target=s.regions.findIndex(r=>r.healthy&&!r.active);
-   if(target>=0){key(1,0);key(1,3);key(1,3);key(1,2);
+   if(target>=0){key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);
     // session.selected remains Africa throughout this policy.
     for(let i=0;i<target;i++)key(7,0);
     const before=read();key(6,0);assert.equal(read().spores,before.spores+1);
@@ -120,8 +121,8 @@ for(let iteration=0;iteration<10000;iteration++){
 run(600);const final=read();snap('result');console.log('FINAL',JSON.stringify({...final,purchases,devolutions}));
 assert.equal(final.result,{win:1,extinction:2,cure:3}[scenario]);
 const frozen=read();run(600);assert.deepEqual(read(),frozen,'Result screen pauses mechanics');
-key(6,0);snap('result-menu');key(1,2);snap('reopened-result');assert.deepEqual(read(),frozen);
-key(6,6);key(1,4);key(6,0);key(1,2);key(6,0);
+key(6,0);snap('result-menu');key(6,0);snap('reopened-result');assert.deepEqual(read(),frozen);
+key(6,6);key(7,3);key(6,0);key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);key(6,0);
 const reset=read();assert.deepEqual(reset.owned,[0,0]);assert.equal(reset.dead,0);assert.equal(reset.cure,0);assert.equal(reset.spores,0);assert.equal(reset.result,0);assert.equal(reset.response,0);
 assert(reset.cycles<20);snap('reset');
 console.log(`PASS: native type ${diseaseType}, ${scenario}, result pause/reopen and New Game reset`);

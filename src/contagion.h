@@ -1,6 +1,7 @@
 #ifndef CONTAGION_H
 #define CONTAGION_H
 #include "savecodec.h"
+#include "ticker.h"
 #include <graphx.h>
 #include <keypadc.h>
 #define WORLD_SCALE 2
@@ -18,7 +19,11 @@ void BeginScreen(const char *title);
 void Text(const char *text, int x, int y);
 void WrapText(const char *text, int x, int y, int width, uint8_t lines);
 void Message(const char *title, const char *message);
-void QueueNews(const char *text);
+void MenuItem(const char *label, int y, bool selected);
+bool MenuMove(uint8_t key, uint8_t *selected, uint8_t count);
+uint8_t ChooseMenu(const char *title, const char * const *items, uint8_t count, uint8_t selected);
+void EndModal(void);
+uint8_t ActionsMenu(void);
 uint16_t GameRandom(uint16_t limit);
 void EvolutionMenu(void);
 void RegionInfo(void);

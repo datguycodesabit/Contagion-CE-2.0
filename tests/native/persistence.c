@@ -92,11 +92,31 @@ int main(void) {
  CalculateEffects(&disease,&effects);
  native_check=1100;
  while(disease.owned[0]!=UINT32_MAX || disease.owned[1]!=127 || disease.spores_used!=3) {
-  BeginScreen("FUNDED UI TEST FIXTURE");gfx_SwapDraw();WaitKey();EvolutionMenu();
+  BeginScreen("FUNDED UI TEST FIXTURE");gfx_SwapDraw();WaitKey();ActionsMenu();
  }
  disease.type=VIRUS;native_check=1200;
  while(Owns(&disease,RESP_FAILURE)) {
-  BeginScreen("VIRUS DEVOLUTION FIXTURE");gfx_SwapDraw();WaitKey();EvolutionMenu();
+  BeginScreen("VIRUS DEVOLUTION FIXTURE");gfx_SwapDraw();WaitKey();ActionsMenu();
  }
- native_check=2000;BeginScreen("PASS: OUTCOME FIXTURES");gfx_SwapDraw();for(;;)kb_Scan();
+ ResetGameState();disease.type=FUNGUS;disease.started=1;disease.dna=0;
+ native_check=1300;ActionsMenu();
+ Check(disease.dna==0 && disease.spores_used==0,1301);
+ disease.dna=100;
+ for(size_t j=0;j<(size_t)region[0].width*region[0].height;j++)
+  if(region[0].data[j])region[0].data[j]=CELL_INFECTED;
+ RecountRegion(&region[0]);
+ native_check=1400;ActionsMenu();
+ Check(disease.dna==100 && disease.spores_used==0,1401);
+ ResetGameState();disease.started=1;SeedRegion(region,&disease,0,GameRandom);
+ Check(SaveData(),1450);
+ for(i=0;i<8;i++) {
+  available=os_MemChk(NULL);if(available<1500)break;
+  amount=available-1024;if(amount>60000)amount=60000;
+  filler[6]='0'+i;h=ti_Open(filler,"w");Check(h!=0,1451);
+  Check(ti_Resize(amount,h)==(int)amount,1452);ti_Close(h);
+ }
+ native_check=1500;Check(SaveExit(2)==0,1501);
+ native_check=1600;Check(SaveExit(2)==2,1601);
+ for(i=0;i<8;i++){filler[6]='0'+i;ti_Delete(filler);}
+ native_check=2000;BeginScreen("PASS: MENU AND SAVE CHECKS");gfx_SwapDraw();for(;;)kb_Scan();
 }

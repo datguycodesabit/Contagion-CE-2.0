@@ -23,4 +23,9 @@ with zipfile.ZipFile(output) as archive:
     assert set(archive.namelist()) == set(files) | {'SHA256SUMS.txt'}
     for name, source in files.items():
         assert archive.read(name) == source.read_bytes()
+    # Keep the directly transferable folder identical to the verified ZIP.
+    unpacked = root / 'bin/CONTAGION-CE-2.0'
+    unpacked.mkdir(exist_ok=True)
+    for name in archive.namelist():
+        (unpacked / name).write_bytes(archive.read(name))
 print(f'{output}: {output.stat().st_size} bytes, verified {len(files)} files + manifest')

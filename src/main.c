@@ -17,8 +17,6 @@ static bool connection;
 static uint8_t source_port,destination_port;
 static gfx_sprite_t * const map_sprites[REGION_COUNT]={africa,asia,europe,greenland,northamerica,southamerica,oceania};
 /* Tiny bounded FIFO: no allocations or repeated discovery events. */
-static char news[8][48];
-static uint8_t news_head,news_count,news_age;
 static const char * const responses[4]={"Undetected","Discovered","Research underway","Escalating response"};
 
 uint16_t GameRandom(uint16_t limit) { return limit?(uint16_t)randInt(0,limit-1):0; }
@@ -46,6 +44,28 @@ uint8_t ReadKey(void) {
 }
 void ReleaseKeys(void) { do { kb_Scan(); } while(ScannedKeyDown()); canpress=true; }
 uint8_t WaitKey(void) { uint8_t key; ReleaseKeys(); do { key=ReadKey(); } while(key==KEY_NONE); return key; }
+void EndModal(void) { ReleaseKeys(); timer_1_Counter=0; }
+bool MenuMove(uint8_t key, uint8_t *selected, uint8_t count) {
+ if(key==KEY_UP) { *selected=(*selected+count-1)%count; return true; }
+ if(key==KEY_DOWN) { *selected=(*selected+1)%count; return true; }
+ return false;
+}
+void MenuItem(const char *label, int y, bool selected) {
+ if(selected) { gfx_SetColor(224); gfx_Rectangle(6,y-4,308,19); }
+ Text(selected?">":" ",10,y); Text(label,24,y);
+}
+uint8_t ChooseMenu(const char *title, const char * const *items, uint8_t count, uint8_t selected) {
+ uint8_t i,key;
+ for(;;) {
+  BeginScreen(title);
+  for(i=0;i<count;i++) MenuItem(items[i],42+i*24,i==selected);
+  Text("Up/Down: select   Enter: confirm",8,211); Text("Clear: back",8,226);
+  gfx_SwapDraw(); key=WaitKey();
+  if(key==KEY_CLEAR) { EndModal(); return 255; }
+  if(key==KEY_ENTER) { EndModal(); return selected; }
+  MenuMove(key,&selected,count);
+ }
+}
 void Text(const char *text, int x, int y) { gfx_SetTextFGColor(255); gfx_PrintStringXY(text,x,y); }
 void BeginScreen(const char *title) {
  gfx_SetDrawBuffer(); gfx_FillScreen(0); gfx_SetTextScale(1,1); gfx_SetTextBGColor(0); gfx_SetTextTransparentColor(0);
@@ -68,12 +88,9 @@ void WrapText(const char *text, int x, int y, int width, uint8_t lines) {
  }
 }
 void Message(const char *title, const char *message) {
- BeginScreen(title); WrapText(message,8,48,304,12); Text("Enter / Clear: return",8,222); gfx_SwapDraw();
+ BeginScreen(title); WrapText(message,8,48,304,10); MenuItem("Back (Enter / Clear)",222,true); gfx_SwapDraw();
  for(;;) { uint8_t key=WaitKey(); if(key==KEY_ENTER || key==KEY_CLEAR) break; }
  ReleaseKeys(); timer_1_Counter=0;
-}
-void QueueNews(const char *text) {
- if(news_count<8) { snprintf(news[(news_head+news_count)%8],48,"%s",text); news_count++; }
 }
 static void InitializeMap(void) {
  uint8_t i;
@@ -94,7 +111,7 @@ void ResetGameState(void) {
  ResetDisease(&disease); memset(&session,0,sizeof(session)); memcpy(port,port_definitions,sizeof(port));
  CalculateEffects(&disease,&effects);
  connection=false; source_port=destination_port=0; canpress=false;
- news_head=news_count=news_age=0; memset(news,0,sizeof(news));
+ TickerInit(&disease);
 }
 static void DrawMap(void) {
  uint8_t i; gfx_FillScreen(18);
@@ -115,13 +132,11 @@ static void RenderHUD(void) {
  char line[80]; counts_t c=CountWorld(region); uint16_t total=LandCount(c);
  gfx_SetColor(0); gfx_FillRectangle(0,0,320,34); gfx_FillRectangle(0,204,320,36);
  snprintf(line,sizeof(line),"DNA %u   Cure %u%%   Cycle %lu",disease.dna,disease.cure/100,(unsigned long)disease.cycles); Text(line,4,4);
- if(news_count) {
-  Text(news[news_head],4,20);
-  if(++news_age>=100) { news_age=0; news_head=(news_head+1)%8; news_count--; }
- } else Text(responses[disease.response],4,20);
+ if(ticker.count) TickerRender();
+ else Text(responses[disease.response],4,20);
  snprintf(line,sizeof(line),"%s: active %u%%  dead %u%%",region[session.selected].name,Percentage(region[session.selected].counts.active,LandCount(region[session.selected].counts)),Percentage(region[session.selected].counts.dead,LandCount(region[session.selected].counts))); Text(line,4,207);
  snprintf(line,sizeof(line),"World affected %u%%   dead %u%%",Percentage(c.active+c.dead,total),Percentage(c.dead,total)); Text(line,4,219);
- Text("Graph: evolve  Enter: info  Mode: routes",4,231);
+ Text("Arrows: region   Enter/Clear: actions",4,231);
 }
 void UpdateSelectedRegion(void) {
     //ripped from OPTIX
@@ -183,17 +198,18 @@ static bool NameDisease(void) {
    if(i==selected) { gfx_SetColor(224); gfx_Rectangle(x-4,y-4,19,18); }
    Text(letter,x,y);
   }
-  snprintf(line,sizeof(line),"%u/19 characters",length); Text(line,8,186);
-  Text("Arrows: select   Enter: add   Del: erase",8,207); Text("Zoom: done   Clear: cancel",8,224);
+  MenuItem("Done",181,selected==38);
+  snprintf(line,sizeof(line),"%u/19 characters   Del: erase",length); Text(line,8,199);
+  Text("Arrows: select   Enter: add / done",8,215); Text("Clear: cancel",8,229);
   gfx_SwapDraw(); key=WaitKey();
   if(key==KEY_CLEAR) return false;
-  if(key==KEY_LEFT) selected=selected?selected-1:37;
-  if(key==KEY_RIGHT) selected=(selected+1)%38;
-  if(key==KEY_UP) selected=selected>=10?selected-10:selected;
-  if(key==KEY_DOWN) selected=selected+10<38?selected+10:selected;
+  if(key==KEY_LEFT && selected<38) selected=selected?selected-1:37;
+  if(key==KEY_RIGHT && selected<38) selected=(selected+1)%38;
+  if(key==KEY_UP) selected=selected==38?30:selected>=10?selected-10:selected;
+  if(key==KEY_DOWN) selected=selected+10<38?selected+10:38;
+  if(key==KEY_ENTER && selected==38) { if(!length) strcpy(disease.name,"Pathogen"); return true; }
   if(key==KEY_ENTER && length<19) { disease.name[length++]=alphabet[selected]; disease.name[length]=0; }
   if(key==KEY_DELETE && length) disease.name[--length]=0;
-  if(key==KEY_ZOOM) { if(!length) strcpy(disease.name,"Pathogen"); return true; }
  }
 }
 static bool StartGame(void) {
@@ -229,34 +245,74 @@ static bool StartGame(void) {
  disease.started=1; ReleaseKeys(); timer_1_Counter=0; return true;
 }
 static void CompleteCycle(void) {
- uint8_t i,event,mutation,closed,previously_closed=0,restricted_regions=0; counts_t counts[REGION_COUNT]; char line[48];
+ uint8_t i,event,mutation,closed,previously_closed=0,restricted_regions=0,last_closed=0; counts_t counts[REGION_COUNT];
  Migrate(region,&disease,&effects,GameRandom);
  mutation=Mutate(&disease,GameRandom);
- if(mutation!=NO_TRAIT) { CalculateEffects(&disease,&effects); snprintf(line,sizeof(line),"Mutation: %s",traits[mutation].name); QueueNews(line); }
+ if(mutation!=NO_TRAIT) { CalculateEffects(&disease,&effects); TickerPost(NEWS_MUTATION,mutation,0); }
  for(i=0;i<REGION_COUNT;i++) counts[i]=region[i].counts;
  event=AdvanceDisease(&disease,counts,&effects);
- if(event&EVENT_DISCOVERY) QueueNews("Outbreak discovered.");
- if(event&EVENT_RESEARCH) QueueNews("Cure research has begun.");
- if(event&EVENT_RESPONSE) QueueNews("Public response is escalating.");
- if(event&EVENT_CURE25) QueueNews("Cure milestone: 25%.");
- if(event&EVENT_CURE50) QueueNews("Cure milestone: 50%.");
- if(event&EVENT_CURE75) QueueNews("Cure milestone: 75%.");
- if(event&EVENT_CURE90) QueueNews("Cure milestone: 90%.");
+ if(event&EVENT_DISCOVERY) TickerPost(NEWS_DISCOVERY,0,0);
+ if(event&EVENT_RESEARCH) TickerPost(NEWS_RESEARCH,0,0);
+ if(event&EVENT_RESPONSE) TickerPost(NEWS_RESPONSE,0,0);
+ if(event&EVENT_CURE25) TickerPost(NEWS_CURE,0,25);
+ if(event&EVENT_CURE50) TickerPost(NEWS_CURE,0,50);
+ if(event&EVENT_CURE75) TickerPost(NEWS_CURE,0,75);
+ if(event&EVENT_CURE90) TickerPost(NEWS_CURE,0,90);
  for(i=0;i<PORT_COUNT;i++) if(port[i].closed) previously_closed|=1U<<port[i].region;
  closed=ClosePorts(region,port,&disease,&effects,GameRandom)&~previously_closed;
- for(i=0;i<REGION_COUNT;i++) if(closed&(1U<<i)) restricted_regions++;
- if(restricted_regions) { snprintf(line,sizeof(line),"New travel restrictions: %u regions.",restricted_regions); QueueNews(line); }
+ for(i=0;i<REGION_COUNT;i++) if(closed&(1U<<i)) { restricted_regions++; last_closed=i; }
+ if(restricted_regions) TickerPost(NEWS_CLOSURE,last_closed,restricted_regions);
+ TickerObserve(&disease,counts);
 }
-static void Play(void) {
+static uint8_t SaveExit(uint8_t destination) {
+ static const char * const choices[]={"Return to game/menu","Retry save","Quit Without Saving"};
+ if(SaveData()) return destination;
+ for(;;) {
+  uint8_t choice=ChooseMenu("SAVE FAILED: FREE CALCULATOR RAM",choices,3,0);
+  if(choice==255 || choice==0) return 0;
+  if(choice==1 && SaveData()) return destination;
+  if(choice==2) {
+   static const char * const confirm[]={"Go back","Quit Without Saving"};
+   if(ChooseMenu("DISCARD UNSAVED PROGRESS?",confirm,2,0)==1) return 2;
+  }
+ }
+}
+uint8_t ActionsMenu(void) {
+ uint8_t selected=0,key,i,result,count=disease.type==FUNGUS?7:6;
+ char spore[64]; const char *items[7];
+ for(;;) {
+  items[0]="Resume"; items[1]="Evolution"; items[2]="Region Details";
+  items[3]=session.view?"Travel View: ON (toggle)":"Travel View: OFF (toggle)";
+  if(disease.spores_used<3) snprintf(spore,sizeof(spore),"Spore Burst: %u left, %u DNA",3-disease.spores_used,spore_costs[disease.spores_used]);
+  else strcpy(spore,"Spore Burst: no charges left");
+  if(disease.type==FUNGUS) items[4]=spore;
+  items[count-2]="Save & Main Menu"; items[count-1]="Save & Quit";
+  BeginScreen("PAUSED: ACTIONS");
+  for(i=0;i<count;i++) MenuItem(items[i],38+i*24,i==selected);
+  Text("Up/Down: select   Enter: confirm",8,211); Text("Clear: resume",8,226);
+  gfx_SwapDraw(); key=WaitKey();
+  if(key==KEY_CLEAR || (key==KEY_ENTER && selected==0)) { EndModal(); return 0; }
+  if(MenuMove(key,&selected,count) || key!=KEY_ENTER) continue;
+  if(selected==1) EvolutionMenu();
+  else if(selected==2) RegionInfo();
+  else if(selected==3) session.view^=1;
+  else if(selected==4 && disease.type==FUNGUS) SporeMenu();
+  else {
+   result=SaveExit(selected==count-1?2:1);
+   if(result) { EndModal(); return result; }
+  }
+ }
+}
+static bool Play(void) {
  ReleaseKeys(); timer_1_Counter=0;
  while(disease.result==PLAYING) {
   uint8_t key=ReadKey(); bool completed;
   if(key==KEY_NONE) canpress=true;
   if(canpress) {
-   if(key==KEY_CLEAR) break;
-   if(key==KEY_GRAPH) EvolutionMenu();
-   else if(key==KEY_ENTER) RegionInfo();
-   else if(key==KEY_MODE) session.view^=1;
+   if(key==KEY_CLEAR || key==KEY_ENTER) {
+    uint8_t destination=ActionsMenu();
+    if(destination) return destination==2;
+   }
    else if(key>=KEY_LEFT && key<=KEY_DOWN) UpdateSelectedRegion();
    if(key!=KEY_NONE) canpress=false;
   }
@@ -267,6 +323,7 @@ static void Play(void) {
   if(session.view) DrawTransportation();
   else { gfx_SetColor(224); gfx_Rectangle(region[session.selected].x*2,region[session.selected].y*2,region[session.selected].width*2,region[session.selected].height*2); }
   RenderHUD(); gfx_SwapDraw();
+  TickerUpdate(timer_1_Counter);
   if(UINT32_MAX-session.ticks>timer_1_Counter) session.ticks+=timer_1_Counter;
   else session.ticks=UINT32_MAX;
   timer_1_Counter=0;
@@ -274,37 +331,33 @@ static void Play(void) {
  if(!SaveData()) Message("SAVE FAILED","Unable to save. Your last validated save is retained. Free calculator storage and try again.");
  if(disease.result!=PLAYING) ResultScreen();
  ReleaseKeys();
+ return false;
 }
 int main(void) {
- bool done=false; uint8_t key;
+ bool done=false; uint8_t key,selected=0,count,i;
  srand(rtc_Time()); gfx_Begin(); gfx_SetDrawBuffer(); gfx_SetTransparentColor(0); gfx_SetTextTransparentColor(0);
- InitializeMap(); ResetGameState(); LoadData();
+ InitializeMap(); ResetGameState(); LoadData(); TickerInit(&disease);
  timer_Control=TIMER1_ENABLE|TIMER1_32K|TIMER1_UP;
  while(!done) {
   BeginScreen("CONTAGION CE 2.0");
   Text("Seven regions. One extinction objective.",8,42);
   WrapText("Spread quietly, earn DNA, then evolve lethal symptoms before humanity completes its cure.",8,69,304,4);
-  Text("Y=: New Game",8,130);
-  Text(disease.started?"Zoom: Continue / Results":"Zoom: Start",8,153);
-  Text("Graph / Clear: Save and Quit",8,176);
-  Text("Old version-1 runs remain untouched.",8,215);
+  const char *items[3];
+  count=disease.started?3:2; items[0]="New Game";
+  if(disease.started) items[1]=disease.result==PLAYING?"Continue":"Results";
+  items[count-1]="Save & Quit";
+  if(selected>=count) selected=0;
+  for(i=0;i<count;i++) MenuItem(items[i],130+i*24,i==selected);
+  Text("Up/Down: select   Enter: confirm",8,207);
+  Text("Clear: select Save & Quit",8,224);
   gfx_SwapDraw(); key=WaitKey();
-  if(key==KEY_PREVIOUS) { if(StartGame()) Play(); }
-  else if(key==KEY_ZOOM) {
-   if(!disease.started) { if(StartGame()) Play(); }
+  if(key==KEY_CLEAR) selected=count-1;
+  else if(!MenuMove(key,&selected,count) && key==KEY_ENTER) {
+   if(selected==0) { if(StartGame()) done=Play(); }
+   else if(selected==count-1) done=SaveExit(2)==2;
    else if(disease.result!=PLAYING) ResultScreen();
-   else Play();
-  } else if(key==KEY_GRAPH || key==KEY_CLEAR) {
-   if(SaveData()) done=true;
-   else {
-    BeginScreen("SAVE FAILED");
-    WrapText("Your last validated save is retained. There may be insufficient calculator storage.",8,48,304,5);
-    Text("Enter: return and retry later",8,184);
-    Text("Clear: quit WITHOUT saving this run",8,210);
-    gfx_SwapDraw();
-    do { key=WaitKey(); } while(key!=KEY_ENTER && key!=KEY_CLEAR);
-    done=key==KEY_CLEAR;
-   }
+   else done=Play();
+   selected=disease.started?1:0;
   }
  }
  gfx_End(); return 0;

@@ -52,7 +52,7 @@ Native fixtures do not establish real power-loss/GC behavior or OS 5.7 support.
 
 ## Evolution navigation and purchases
 
-- [ ] Open Transmission, Symptoms, Abilities using Y=/Window in both directions.
+- [ ] Open each category through Actions > Evolution using arrows and Enter.
 - [ ] Visit every node and exercise all four navigation edges from each node,
       including self edges and category wrap. Selection remains visible.
 - [ ] Check all prerequisite connectors, names, costs, states, descriptions, and
@@ -61,12 +61,17 @@ Native fixtures do not establish real power-loss/GC behavior or OS 5.7 support.
 - [ ] Buy each root and dependent node, each combination, and both reshuffles.
 - [ ] Exact DNA succeeds; insufficient DNA and missing prerequisites fail unchanged.
 - [ ] Duplicate purchases and held Enter never charge twice or buy another level.
-- [ ] Held arrows/category keys and Graph/Clear have one action per release.
+- [ ] Held arrows, Enter and Clear have one action per release.
 - [ ] Devolve an owned leaf symptom; reject an owned prerequisite/non-symptom.
       Confirm no refund, higher Virus cost, and unchanged discovery/closures.
 - [ ] Reshuffle requires discovery and positive research, lowers cure once, cannot
       be devolved/repurchased, and does not repeat cure milestone news afterward.
-- [ ] Graph/Clear exits every level without trapping the player or exiting play accidentally.
+- [ ] Clear returns detail > tree > categories > actions > gameplay.
+- [ ] Region Details returns to Actions; Travel View toggles while paused.
+- [ ] Main-menu Clear selects Save & Quit without immediately exiting.
+- [ ] Name grid Done works without shortcut keys; Clear cancels, Del erases.
+- [ ] Save failure defaults to returning; retry, cancel unsaved-quit confirmation,
+      and explicitly confirm Quit Without Saving. No accidental exit from Enter.
 
 ## Disease types, regions, and routes
 
@@ -74,6 +79,8 @@ Native fixtures do not establish real power-loss/GC behavior or OS 5.7 support.
 - [ ] Virus only mutates eligible unowned symptoms, for free, on its cycle cadence;
       verify its notification and later paid devolution.
 - [ ] Fungus ordinary travel is weaker; all three spore charges have escalating costs.
+- [ ] Actions shows Spore Burst, charges and next cost immediately in a Fungus run,
+      hides it for other types, and stays in destination selection after each burst.
 - [ ] Spore destination selection shows healthy land counts. Invalid/full region,
       insufficient DNA, exhausted charges, and cancellation spend nothing.
 - [ ] A valid burst seeds exactly one healthy cell even with all ports closed.

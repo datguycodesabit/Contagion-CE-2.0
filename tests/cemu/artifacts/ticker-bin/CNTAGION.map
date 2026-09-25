@@ -1,0 +1,1012 @@
+
+Merging object attributes
+
+
+Discarded input sections
+
+ .comment       0x00000000      0xbb7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .note.GNU-stack
+                0x00000000        0x0 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .init.weak_crt
+                0x00000000       0x10 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text          0x00000000        0x0 tests/cemu/artifacts/ticker-obj/crt0.o
+ .data          0x00000000        0x0 tests/cemu/artifacts/ticker-obj/crt0.o
+ .bss           0x00000000        0x0 tests/cemu/artifacts/ticker-obj/crt0.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+prgm             0x00d1a87f         0x00400000
+bss              0x00d052c6         0x0000ed12
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x00d1a87f                        LOAD_ADDR = 0xd1a87f
+                0x00d052c6                        BSSHEAP_LOW = 0xd052c6
+                0x00d13fd8                        BSSHEAP_HIGH = 0xd13fd8
+                0x00d1a87e                        STACK_HIGH = 0xd1a87e
+                0x00000001                        __TICE__ = 0x1
+                0x00d1a87f                        . = LOAD_ADDR
+
+.header         0x00d1a87f      0x11d
+ *(.header)
+ .header        0x00d1a87f        0x3 tests/cemu/artifacts/ticker-obj/crt0.o
+ *(.header.icon)
+ .header.icon   0x00d1a882      0x11a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1a887                ___icon
+                0x00d1a989                ___description
+
+.init           0x00d1a99c      0x15f
+ *(.init)
+ .init          0x00d1a99c      0x15f tests/cemu/artifacts/ticker-obj/crt0.o
+                0x00d1a99c                __start
+                0x00d1a9f9                __libload_library_FILEIOC
+                0x00d1aa03                _ti_Open
+                0x00d1aa07                _ti_Close
+                0x00d1aa0b                _ti_Write
+                0x00d1aa0f                _ti_Read
+                0x00d1aa13                _ti_Delete
+                0x00d1aa17                _ti_Seek
+                0x00d1aa1b                _ti_GetSize
+                0x00d1aa1f                __libload_library_GRAPHX
+                0x00d1aa28                _gfx_Begin
+                0x00d1aa2c                _gfx_SetColor
+                0x00d1aa30                _gfx_FillScreen
+                0x00d1aa34                _gfx_SetDraw
+                0x00d1aa38                _gfx_SwapDraw
+                0x00d1aa3c                _gfx_PrintStringXY
+                0x00d1aa40                _gfx_SetTextBGColor
+                0x00d1aa44                _gfx_SetTextFGColor
+                0x00d1aa48                _gfx_SetTextTransparentColor
+                0x00d1aa4c                _gfx_GetStringWidth
+                0x00d1aa50                _gfx_Line
+                0x00d1aa54                _gfx_Circle
+                0x00d1aa58                _gfx_FillCircle
+                0x00d1aa5c                _gfx_Rectangle
+                0x00d1aa60                _gfx_FillRectangle
+                0x00d1aa64                _gfx_SetClipRegion
+                0x00d1aa68                _gfx_ScaledTransparentSprite_NoClip
+                0x00d1aa6c                _gfx_SetTextScale
+                0x00d1aa70                _gfx_SetTransparentColor
+                0x00d1aa74                _gfx_SetTextConfig
+                0x00d1aa78                __libload_library_KEYPADC
+                0x00d1aa82                _kb_Scan
+                0x00d1aabf                ___exithl
+                0x00d1aac0                _exit.sp
+
+.text           0x00d1aafb     0x7777
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(SORT_BY_NAME(.text.sorted.*))
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00d1aafb      0x622 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1aafb                __land
+                0x00d1aaff                __iand
+                0x00d1ab16                __bshl
+                0x00d1ab1f                __dcmp
+                0x00d1ab7d                __frameset
+                0x00d1ab8b                __frameset0
+                0x00d1ab96                __ftod
+                0x00d1abde                __idivs
+                0x00d1abe5                __idivu
+                0x00d1abed                __idvrms
+                0x00d1ac1b                __idvrmu
+                0x00d1ac1f                __idvrmu.hijack_a_iters_ude_dividend
+                0x00d1ac35                __imuls
+                0x00d1ac35                __imulu
+                0x00d1ac65                __indcallhl
+                0x00d1ac66                __ineg
+                0x00d1ac66                __sneg
+                0x00d1ac6f                __iremu
+                0x00d1ac76                __ishl
+                0x00d1ac76                __sshl
+                0x00d1ac9c                __ishru
+                0x00d1aca1                __ishrs
+                0x00d1acdd                __ishru_1
+                0x00d1aceb                __ladd
+                0x00d1acf1                __lcmps
+                0x00d1acfe                __lcmpu
+                0x00d1ad06                __lequzero
+                0x00d1ad06                __lcmpzero
+                0x00d1ad11                __ldivu
+                0x00d1ad1b                __ldivu_lremu_common
+                0x00d1ad43                __lladd
+                0x00d1ad67                __lland
+                0x00d1ada3                __llcmps
+                0x00d1add0                __llcmpu
+                0x00d1adfa                __llequzero
+                0x00d1adfa                __llcmpzero
+                0x00d1ae0f                __lldivu
+                0x00d1ae23                __lldvrmu
+                0x00d1ae2a                __lldvrmu.hijack
+                0x00d1ae81                __llmulu
+                0x00d1aed6                __llshl
+                0x00d1aef0                __llshru
+                0x00d1af20                __llshrs
+                0x00d1af5c                __llxor
+                0x00d1af98                __lmuls
+                0x00d1af98                __lmulu
+                0x00d1aff4                __lnot
+                0x00d1b001                __lshl
+                0x00d1b00e                __lshrs
+                0x00d1b028                __lshru
+                0x00d1b036                __lsub
+                0x00d1b040                __lor
+                0x00d1b044                __ior
+                0x00d1b05b                __sand
+                0x00d1b064                __sdivu
+                0x00d1b06c                __sdvrms_abs
+                0x00d1b08c                __sdvrmu
+                0x00d1b09c                __setflag
+                0x00d1b0a6                __smulu
+                0x00d1b0a6                __smuls
+                0x00d1b0b9                __sor
+                0x00d1b0c2                __srems
+                0x00d1b0cd                __sremu
+                0x00d1b0d4                __sshru
+                0x00d1b0e1                __lxor
+                0x00d1b0e5                __ixor
+                0x00d1b0fc                _memcpy
+ .text._Owns    0x00d1b11d       0x52 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b11d                _Owns
+ .text._Eligible
+                0x00d1b16f       0xa2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b16f                _Eligible
+ .text._Purchase
+                0x00d1b211       0xe3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b211                _Purchase
+ .text._SetOwned
+                0x00d1b2f4       0x51 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._CanDevolve
+                0x00d1b345       0x96 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b345                _CanDevolve
+ .text._Devolve
+                0x00d1b3db       0xb2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b3db                _Devolve
+ .text._CalculateEffects
+                0x00d1b48d      0x712 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1b48d                _CalculateEffects
+ .text._Level   0x00d1bb9f       0x3b tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._EvaluateOutcome
+                0x00d1bbda       0x84 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1bbda                _EvaluateOutcome
+ .text._ValidateDisease
+                0x00d1bc5e      0x443 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1bc5e                _ValidateDisease
+ .text._EvolutionMenu
+                0x00d1c0a1     0x15f0 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1c0a1                _EvolutionMenu
+ .text._StateSymbol
+                0x00d1d691       0x65 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._RegionInfo
+                0x00d1d6f6      0x315 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1d6f6                _RegionInfo
+ .text._SporeMenu
+                0x00d1da0b      0x25c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1da0b                _SporeMenu
+ .text._ReadNamed
+                0x00d1dc67       0xb0 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._FileRead
+                0x00d1dd17       0x31 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._FileWrite
+                0x00d1dd48       0x31 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._FileSeek
+                0x00d1dd79       0x2c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._SaveData
+                0x00d1dda5       0xfd tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1dda5                _SaveData
+ .text._CopyNamed
+                0x00d1dea2      0x105 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._SaveSize
+                0x00d1dfa7       0x77 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1dfa7                _SaveSize
+ .text._EncodeSave
+                0x00d1e01e      0x13a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1e01e                _EncodeSave
+ .text._Header  0x00d1e158       0xac tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._State   0x00d1e204      0x20f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._Geometry
+                0x00d1e413       0x69 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._Bytes   0x00d1e47c       0xbd tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._Checksum
+                0x00d1e539       0x4e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._U32     0x00d1e587       0xd2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._U16     0x00d1e659       0x55 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._U8      0x00d1e6ae       0x1a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._ValidateSave
+                0x00d1e6c8       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1e6c8                _ValidateSave
+ .text._ReadSave
+                0x00d1e6e5      0x761 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._DecodeSave
+                0x00d1ee46       0x40 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1ee46                _DecodeSave
+ .text._TickerInit
+                0x00d1ee86       0x44 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1ee86                _TickerInit
+ .text._TickerPost
+                0x00d1eeca      0x210 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1eeca                _TickerPost
+ .text._Remove  0x00d1f0da       0x43 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._TickerText
+                0x00d1f11d      0x1d1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f11d                _TickerText
+ .text._TickerPrepare
+                0x00d1f2ee       0x96 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f2ee                _TickerPrepare
+ .text._TickerUpdate
+                0x00d1f384      0x16a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f384                _TickerUpdate
+ .text._TickerOffset
+                0x00d1f4ee       0x88 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f4ee                _TickerOffset
+ .text._TickerRender
+                0x00d1f576       0xd3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f576                _TickerRender
+ .text._RecountRegion
+                0x00d1f649       0xb9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f649                _RecountRegion
+ .text._CountWorld
+                0x00d1f702       0xb8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f702                _CountWorld
+ .text._SetCell
+                0x00d1f7ba       0x97 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f7ba                _SetCell
+ .text._SeedRegion
+                0x00d1f851       0xbc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f851                _SeedRegion
+ .text._SporeBurst
+                0x00d1f90d       0x9e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f90d                _SporeBurst
+ .text._GameRandom
+                0x00d1f9ab       0x31 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f9ab                _GameRandom
+ .text._ReadKey
+                0x00d1f9dc       0xda tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1f9dc                _ReadKey
+ .text._ScannedKeyDown
+                0x00d1fab6       0x2e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._ReleaseKeys
+                0x00d1fae4       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fae4                _ReleaseKeys
+ .text._WaitKey
+                0x00d1faf7        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1faf7                _WaitKey
+ .text._EndModal
+                0x00d1fb05       0x11 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fb05                _EndModal
+ .text._MenuMove
+                0x00d1fb16       0x52 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fb16                _MenuMove
+ .text._MenuItem
+                0x00d1fb68       0x7e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fb68                _MenuItem
+ .text._Text    0x00d1fbe6       0x3e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fbe6                _Text
+ .text._ChooseMenu
+                0x00d1fc24      0x107 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fc24                _ChooseMenu
+ .text._BeginScreen
+                0x00d1fd2b       0x6d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fd2b                _BeginScreen
+ .text._WrapText
+                0x00d1fd98      0x127 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1fd98                _WrapText
+ .text._ResetGameState
+                0x00d1febf       0xe3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1febf                _ResetGameState
+ .text._ActionsMenu
+                0x00d1ffa2      0x257 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d1ffa2                _ActionsMenu
+ .text._SaveExit
+                0x00d201f9       0xa2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._InitializeMap
+                0x00d2029b       0x9b tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._DrawMap
+                0x00d20336       0x74 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._RenderHUD
+                0x00d203aa      0x2a5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._main    0x00d2064f      0x207 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d2064f                _main
+ .text._npf_vpprintf
+                0x00d20856     0x1775 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d20856                _npf_vpprintf
+ .text._NPF_PUTC_IMPL
+                0x00d21fcb       0x2d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._npf_utoa_rev
+                0x00d21ff8       0xe6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._vsnprintf
+                0x00d220de       0x88 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d220de                _vsnprintf
+ .text._npf_bufputc
+                0x00d22166       0x25 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._npf_bufputc_nop
+                0x00d2218b        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .text._snprintf
+                0x00d22192       0x28 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d22192                _snprintf
+ .text.__bctlz  0x00d221ba       0x22 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d221ba                __bctlz
+ .text.__sctlz  0x00d221dc        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d221dc                __sctlz
+ .text.__ictlz  0x00d221e8       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d221e8                __ictlz
+ .text.__llctlz
+                0x00d221fa        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d221fa                __llctlz
+ .text.__i48ctlz
+                0x00d22208       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d22208                __i48ctlz
+ .text._random  0x00d2221d       0x55 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d2221d                _random
+ *(.gnu.warning)
+
+.rodata         0x00d22272     0x15b4
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata._SporeMenu
+                0x00d22272        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._TickerText
+                0x00d2227e       0x2a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4
+                0x00d222a8       0x1b tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._categories
+                0x00d222c3        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1.5
+                0x00d222cc        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._branch_labels
+                0x00d222d3       0x3f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2.6
+                0x00d22312        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.3.7
+                0x00d2231a        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4.8
+                0x00d22325        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.5
+                0x00d2232c       0x29 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.6
+                0x00d22355       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.7
+                0x00d22373       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._first_node
+                0x00d22385        0x3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._environments
+                0x00d22388       0x31 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d22388                _environments
+ .rodata._.str.8
+                0x00d223b9       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.9
+                0x00d223da       0x11 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.10
+                0x00d223eb       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.11
+                0x00d22408       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.12
+                0x00d2241a       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.13
+                0x00d22433       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.14
+                0x00d22447        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.15
+                0x00d22455       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.16
+                0x00d22471       0x1f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.19
+                0x00d22490       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.20
+                0x00d224a4       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.21
+                0x00d224bd       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.22
+                0x00d224db       0x26 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.23
+                0x00d22501       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.24
+                0x00d22513       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.25
+                0x00d22534       0x17 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.26
+                0x00d2254b       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.27
+                0x00d22564       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.28
+                0x00d22584       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.29
+                0x00d225a4       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.30
+                0x00d225bd       0x25 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.41
+                0x00d225e2        0xd tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.42
+                0x00d225ef        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.43
+                0x00d225f8        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.44
+                0x00d22602        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.45
+                0x00d22606        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.46
+                0x00d2260c        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.47
+                0x00d22611        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.48
+                0x00d22615        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.49
+                0x00d2261c        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.50
+                0x00d22621        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.51
+                0x00d22627        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.52
+                0x00d22633        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.53
+                0x00d2263d        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.54
+                0x00d22646        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.55
+                0x00d2264b        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.56
+                0x00d22650        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.57
+                0x00d22658        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.58
+                0x00d2265f        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.59
+                0x00d22667       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.60
+                0x00d22679       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.61
+                0x00d22695        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.62
+                0x00d2269f        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.63
+                0x00d226a4       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.64
+                0x00d226c8       0x11 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.65
+                0x00d226d9       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.66
+                0x00d226eb       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.67
+                0x00d22700       0x1a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._reshuffle_reductions
+                0x00d2271a        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d2271a                _reshuffle_reductions
+ .rodata._.str.68
+                0x00d2271e       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.69
+                0x00d2273f       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.70
+                0x00d22758       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.71
+                0x00d22776       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.72
+                0x00d22796       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.73
+                0x00d227b7       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.74
+                0x00d227ca        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.75
+                0x00d227d3        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.76
+                0x00d227dd        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.77
+                0x00d227e9       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.78
+                0x00d227fb       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.79
+                0x00d2280e        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.80
+                0x00d22813        0xf tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.81
+                0x00d22822       0x16 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.82
+                0x00d22838       0x10 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.83
+                0x00d22848        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.84
+                0x00d22853       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.85
+                0x00d22871       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.86
+                0x00d22886        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1.87
+                0x00d2288d        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2.89
+                0x00d22895        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.3.90
+                0x00d2289d        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4.88
+                0x00d2289f        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.93
+                0x00d228a1        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.126
+                0x00d228a6        0x1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1.110
+                0x00d228a7       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2.111
+                0x00d228c3       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.3.112
+                0x00d228e3       0x26 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4.113
+                0x00d22909       0x1a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.5.114
+                0x00d22923       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.6.115
+                0x00d2293f       0x23 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.7.116
+                0x00d22962       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.8.117
+                0x00d22977       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.9.118
+                0x00d22994       0x23 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.10.119
+                0x00d229b7       0x22 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.11.120
+                0x00d229d9       0x22 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.12.121
+                0x00d229fb       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.13.122
+                0x00d22a1f       0x2e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.14.123
+                0x00d22a4d       0x28 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.15.124
+                0x00d22a75       0x2a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.16.125
+                0x00d22a9f       0x2e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.136
+                0x00d22acd        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1.137
+                0x00d22ad3       0x2f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2.138
+                0x00d22b02        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.3.139
+                0x00d22b09        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4.140
+                0x00d22b11       0x31 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.5.141
+                0x00d22b42        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.6.142
+                0x00d22b4b        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.7.143
+                0x00d22b57       0x1f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.8.144
+                0x00d22b76        0xd tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.9.145
+                0x00d22b83        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.10.146
+                0x00d22b8d       0x1f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.11.147
+                0x00d22bac        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.12.148
+                0x00d22bb7        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.13.149
+                0x00d22bc1       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.14.150
+                0x00d22bdf        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.15.151
+                0x00d22bea        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.16.152
+                0x00d22bf2       0x2a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.17.153
+                0x00d22c1c        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.18.154
+                0x00d22c25        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.19.155
+                0x00d22c2d       0x29 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.20.156
+                0x00d22c56        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.21.157
+                0x00d22c5f       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.22.158
+                0x00d22c73       0x1f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.23.159
+                0x00d22c92       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.24.160
+                0x00d22ca4       0x2e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.25.161
+                0x00d22cd2       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.26.162
+                0x00d22ce4       0x23 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.27.163
+                0x00d22d07        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.28.164
+                0x00d22d0d       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.29.165
+                0x00d22d31        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.30.166
+                0x00d22d3a       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.31.167
+                0x00d22d5e        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.32.168
+                0x00d22d68       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.33.169
+                0x00d22d88       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.34.170
+                0x00d22d9c       0x27 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.35.171
+                0x00d22dc3        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.36.172
+                0x00d22dca        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.37.173
+                0x00d22dd3        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.38.174
+                0x00d22ddc       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.39.175
+                0x00d22dee        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.40.176
+                0x00d22df3        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.41.177
+                0x00d22df9       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.42.178
+                0x00d22e0c        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.43.179
+                0x00d22e1a       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.44.180
+                0x00d22e2c       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.45.181
+                0x00d22e48       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.46.182
+                0x00d22e5b       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.47.183
+                0x00d22e7f       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.48.184
+                0x00d22e91       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.49.185
+                0x00d22ead       0x13 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.50.186
+                0x00d22ec0       0x24 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.51.187
+                0x00d22ee4       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.52.188
+                0x00d22ef9       0x22 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.53.189
+                0x00d22f1b       0x16 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.54.190
+                0x00d22f31       0x2a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.55.191
+                0x00d22f5b       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.56.192
+                0x00d22f6f       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.57.193
+                0x00d22f8c       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.58.194
+                0x00d22fa1       0x1e tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.59.195
+                0x00d22fbf       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.60.196
+                0x00d22fd3       0x28 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.61.197
+                0x00d22ffb       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.62.198
+                0x00d23010       0x28 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._traits
+                0x00d23038      0x35a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d23038                _traits
+ .rodata._.str.227
+                0x00d23392        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1.228
+                0x00d23394        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2.235
+                0x00d23396       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.3.236
+                0x00d233b7        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.4.239
+                0x00d233c3       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._port_definitions
+                0x00d233d8       0x84 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d233d8                _port_definitions
+ .rodata._.str.5.242
+                0x00d2345c        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.6.243
+                0x00d23463        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.7.244
+                0x00d2346d        0xf tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.8.246
+                0x00d2347c       0x19 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.9.245
+                0x00d23495       0x1a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.10.247
+                0x00d234af       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._spore_costs
+                0x00d234cc        0x3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d234cc                _spore_costs
+ .rodata._.str.11.248
+                0x00d234cf       0x1d tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.12.249
+                0x00d234ec       0x11 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.13.250
+                0x00d234fd        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.14.251
+                0x00d23509       0x10 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.15.252
+                0x00d23519        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._SaveExit.choices
+                0x00d23527        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.23.257
+                0x00d23530       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.24.258
+                0x00d23544        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.25.256
+                0x00d2354f       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.26.253
+                0x00d23563       0x21 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._SaveExit.confirm
+                0x00d23584        0x6 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.27.255
+                0x00d2358a        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.28.254
+                0x00d23592       0x1a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._InitializeMap.names
+                0x00d235ac       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.29.289
+                0x00d235c1        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.30.290
+                0x00d235c8        0x5 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.31.291
+                0x00d235cd        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.32.292
+                0x00d235d4        0xa tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.33.293
+                0x00d235de        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.34.294
+                0x00d235ec        0xe tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.35.295
+                0x00d235fa        0x8 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._InitializeMap.x
+                0x00d23602        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._InitializeMap.y
+                0x00d23609        0x7 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._map_sprites
+                0x00d23610       0x15 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.48.273
+                0x00d23625        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.51.278
+                0x00d2362e       0x1f tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._responses
+                0x00d2364d        0xc tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.52.279
+                0x00d23659       0x1b tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.53.280
+                0x00d23674       0x20 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.54.281
+                0x00d23694       0x26 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.55.282
+                0x00d236ba        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.56.283
+                0x00d236c5        0xb tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.57.284
+                0x00d236d0       0x12 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.58.285
+                0x00d236e2       0x14 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._npf_vpprintf
+                0x00d236f6      0x102 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str  0x00d237f8        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.1
+                0x00d237fc        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata._.str.2
+                0x00d23800        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .rodata.libload
+                0x00d23804       0x22 tests/cemu/artifacts/ticker-obj/crt0.o
+
+.init_array     0x00d23826        0x0
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(.preinit_array)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x00d23826        0x0
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end = .)
+                0x00d23826                        ___data_low = .
+
+.data           0x00d23826     0x2a5b
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00d23826       0x10 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .data._africa_data
+                0x00d23836      0x75a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d23836                _africa_data
+ .data._asia_data
+                0x00d23f90      0xdf9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d23f90                _asia_data
+ .data._europe_data
+                0x00d24d89      0x302 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d24d89                _europe_data
+ .data._greenland_data
+                0x00d2508b      0x152 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d2508b                _greenland_data
+ .data._northamerica_data
+                0x00d251dd      0x7b2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d251dd                _northamerica_data
+ .data._southamerica_data
+                0x00d2598f      0x4d2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d2598f                _southamerica_data
+ .data._oceania_data
+                0x00d25e61      0x420 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d25e61                _oceania_data
+ *(.data1)
+                0x00d26281                        ___runprgm_reloc_start = .
+ *(.runprgm.reloc)
+                0x00d26281                        ___runprgm_reloc_end = .
+                0x00d26281                        ___data_high = .
+                0x00002a5b                        ___data_len = (___data_high - ___data_low)
+                0x00d052c6                        . = BSSHEAP_LOW
+                0x00d052c6                        ___bss_low = .
+
+.bss            0x00d052c6      0x1f3
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss._canpress
+                0x00d052c6        0x1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ *fill*         0x00d052c7        0x1 
+ .bss._region   0x00d052c8       0x70 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d052c8                _region
+ .bss._disease  0x00d05338       0x3a tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d05338                _disease
+ .bss._session  0x00d05372        0x9 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d05372                _session
+ .bss._port     0x00d0537b       0x84 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d0537b                _port
+ *fill*         0x00d053ff        0x1 
+ .bss._effects  0x00d05400       0x1c tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d05400                _effects
+ .bss._connection
+                0x00d0541c        0x1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .bss._destination_port
+                0x00d0541d        0x1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .bss._source_port
+                0x00d0541e        0x1 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ *fill*         0x00d0541f        0x1 
+ .bss._ticker   0x00d05420       0x86 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d05420                _ticker
+ .bss._ticker_test_kind
+                0x00d054a6        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d054a6                _ticker_test_kind
+ .bss._ticker_test_elapsed
+                0x00d054a8        0x4 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d054a8                _ticker_test_elapsed
+ .bss._ticker_test_offset
+                0x00d054ac        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d054ac                _ticker_test_offset
+ .bss._ticker_test_width
+                0x00d054ae        0x2 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+                0x00d054ae                _ticker_test_width
+ .bss._pc_cnt.0
+                0x00d054b0        0x3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .bss._pc_cnt.1
+                0x00d054b3        0x3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ .bss._pc_cnt.2
+                0x00d054b6        0x3 tests/cemu/artifacts/ticker-obj/CNTAGION.o
+ *(COMMON)
+                0x00d054b9                        ___bss_high = .
+                0x000001f3                        ___bss_len = (___bss_high - ___bss_low)
+                0x00000001                        ASSERT ((. <= BSSHEAP_HIGH), Error: BSS exceed BSSHEAP_HIGH limit)
+                0x00d054b9                        ___heap_low = .
+                0x00d13fd8                        . = BSSHEAP_HIGH
+                0x00d13fd8                        ___heap_high = .
+
+.runprgm
+ *(.runprgm.reloc)
+
+.debug_info
+ *(.debug_info .debug_info.*)
+
+.debug_abbrev
+ *(.debug_abbrev .debug_abbrev.*)
+
+.debug_line
+ *(.debug_line .debug_line.*)
+
+.debug_line_str
+ *(.debug_line_str .debug_line_str.*)
+
+.debug_str
+ *(.debug_str .debug_str.*)
+
+.debug_str_offsets
+ *(.debug_str_offsets .debug_str_offsets.*)
+
+.debug_addr
+ *(.debug_addr .debug_addr.*)
+
+.debug_aranges
+ *(.debug_aranges .debug_aranges.*)
+
+.debug_ranges
+ *(.debug_ranges .debug_ranges.*)
+
+.debug_rnglists
+ *(.debug_rnglists .debug_rnglists.*)
+
+.debug_loc
+ *(.debug_loc .debug_loc.*)
+
+.debug_loclists
+ *(.debug_loclists .debug_loclists.*)
+
+.debug_frame
+ *(.debug_frame .debug_frame.*)
+
+.debug_macro
+ *(.debug_macro .debug_macro.*)
+
+.debug_macinfo
+ *(.debug_macinfo .debug_macinfo.*)
+
+.debug_names
+ *(.debug_names .debug_names.*)
+
+.debug_pubnames
+ *(.debug_pubnames .debug_pubnames.*)
+
+.debug_pubtypes
+ *(.debug_pubtypes .debug_pubtypes.*)
+
+.debug_types
+ *(.debug_types .debug_types.*)
+
+.debug_sup
+ *(.debug_sup .debug_sup.*)
+
+.debug_cu_index
+ *(.debug_cu_index .debug_cu_index.*)
+
+.debug_tu_index
+ *(.debug_tu_index .debug_tu_index.*)
+
+.gdb_index
+ *(.gdb_index)
+
+.debug_gdb_scripts
+ *(.debug_gdb_scripts)
+
+.debug_abbrev.dwo
+ *(.debug_abbrev.dwo .debug_abbrev.dwo.*)
+
+.debug_info.dwo
+ *(.debug_info.dwo .debug_info.dwo.*)
+
+.debug_line.dwo
+ *(.debug_line.dwo .debug_line.dwo.*)
+
+.debug_loclists.dwo
+ *(.debug_loclists.dwo .debug_loclists.dwo.*)
+
+.debug_macro.dwo
+ *(.debug_macro.dwo .debug_macro.dwo.*)
+
+.debug_rnglists.dwo
+ *(.debug_rnglists.dwo .debug_rnglists.dwo.*)
+
+.debug_str.dwo
+ *(.debug_str.dwo .debug_str.dwo.*)
+
+.debug_str_offsets.dwo
+ *(.debug_str_offsets.dwo .debug_str_offsets.dwo.*)
+
+.eh_frame
+ *(.eh_frame)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+/DISCARD/
+ *(.comment)
+ *(.note*)
+                [!provide]                        PROVIDE (___runprgm_reloc_len = (___runprgm_reloc_end - ___runprgm_reloc_start))
+LOAD tests/cemu/artifacts/ticker-obj/CNTAGION.o
+LOAD tests/cemu/artifacts/ticker-obj/crt0.o
+START GROUP
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libc/allocator_standard.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/crt/libcrt.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/ce/libce.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/softfloat/libsoftfloat.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libc/libc_os.a
+LOAD /tmp/contagion-cedev-mount/CEdev/lib/libcxx/libcxx.a
+END GROUP
+OUTPUT(tests/cemu/artifacts/ticker-bin/CNTAGION.obj elf32-z80)

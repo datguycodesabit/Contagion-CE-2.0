@@ -12,8 +12,9 @@ For TI-84 Plus CE, OS 5.7.0.0021, with arTIfiCE already installed.
 4. Open your existing arTIfiCE launcher and select CNTAGION. With arTIfiCE v2,
    run program A to open the launcher. With an existing v1 setup, use its usual
    Cabri Jr. launcher, or your already-installed shell. No OS update is required.
-5. Press Y= for New Game, Enter for Bacteria, Zoom to accept the default name,
-   then Enter to seed the initial land location.
+5. Select New Game with Enter, then choose a disease with arrows and Enter.
+   In the name grid, move down to Done and press Enter (an empty name uses
+   Pathogen). Press Enter on healthy land to seed your outbreak.
 
 Missing-library errors mean one of the four .8xv files was not transferred.
 ERR:INVALID from the normal program menu means you should use arTIfiCE or your
@@ -21,17 +22,26 @@ installed native-program shell to launch CNTAGION.
 
 ## Controls
 
-- World: Graph opens evolution; Enter opens paused region details; arrows select
-  regions; Mode changes travel view; Clear saves and returns to the main menu.
-- Evolution: Y=/Window switch category, arrows select a node, Enter opens its
-  details, then Enter purchases. Del devolves eligible symptom leaves for DNA.
-- Graph/Clear returns from a panel. Release each key before pressing it again.
-- Fungus: on the Abilities page, Zoom opens the three paid spore bursts.
-- Main menu: Zoom continues; Graph/Clear saves and quits to the launcher/OS.
+- Menus: Up/Down selects, Enter confirms, Clear goes back.
+- World: arrows select regions; Enter or Clear opens paused Actions.
+- Actions: Resume, Evolution, Region Details, Travel View, Spore Burst (Fungus),
+  Save & Main Menu, Save & Quit. Clear resumes gameplay.
+- Evolution: choose a category, then use arrows to follow connected nodes.
+  Enter opens details; select Purchase, Devolve (symptoms), or Back with arrows
+  and Enter. Devolution costs DNA and gives no refund.
+- Fungus: Spore Burst shows charges and next cost (10/16/24 DNA). Choose a region
+  with Up/Down and Enter. The selector stays open for further bursts. Clear backs
+  out; rejected bursts spend nothing and explain the reason.
+- Naming: arrows select characters or Done; Enter adds/finishes; Del erases.
+- Main menu: select New Game, Continue/Results, or Save & Quit and press Enter.
+  Clear only selects Save & Quit. Release each key before another action.
 
 Spread quietly first, then buy lethal symptoms once the world is infected.
 Victory requires every land cell to be dead before the cure is completed.
 Virus mutates symptoms; Fungus can seed distant regions with spores.
+
+The news strip reports regional events and world progress. Long headlines scroll
+automatically, and the ticker pauses with menus. No extra controls are needed.
 
 ## Saves
 
@@ -47,13 +57,12 @@ cannot continue as version-2 runs.
 ## First check on your calculator
 
 Start Bacteria, open and close region details, then buy Water I in evolution.
-Let the map advance, press Clear to save, and Clear again to quit. Relaunch
-CNTAGION, press Zoom, and confirm the purchase and outbreak remain. Check that
+Let the map advance, open Actions and select Save & Quit. Relaunch
+CNTAGION, select Continue, and confirm the purchase and outbreak remain. Check that
 controls respond normally and that saving produces no error. Then play a full
 run before treating this as a hardware-verified release.
 
-This build passed native emulator playthroughs for all three diseases and host
-rule/codec tests. Emulator coverage uses TI-OS 5.3, not your physical OS 5.7 device.
+Emulator coverage uses TI-OS 5.3, not your physical OS 5.7 device.
 Physical performance, OS 5.7 execution and real power-loss behavior remain to be
 verified. No ROM, firmware, test fixture or emulator is included in this ZIP.
 

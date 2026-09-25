@@ -48,6 +48,7 @@ endif
 .PHONY: test-host
 test-host:
 	@sh tests/host/run.sh
+	@sh tests/host/run.sh test_ticker
 
 .PHONY: test-cemu
 

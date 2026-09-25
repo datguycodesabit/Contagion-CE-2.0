@@ -4,7 +4,7 @@ obj/src/evolution.c.bc: src/evolution.c src/contagion.h src/savecodec.h \
   /tmp/contagion-cedev-mount/CEdev/include/stddef.h \
   /tmp/contagion-cedev-mount/CEdev/include/cdefs.h \
   /tmp/contagion-cedev-mount/CEdev/include/stdint.h src/balance.h \
-  /tmp/contagion-cedev-mount/CEdev/include/graphx.h \
+  src/ticker.h /tmp/contagion-cedev-mount/CEdev/include/graphx.h \
   /tmp/contagion-cedev-mount/CEdev/include/stdlib.h \
   /tmp/contagion-cedev-mount/CEdev/include/keypadc.h \
   /tmp/contagion-cedev-mount/CEdev/include/stdio.h \
