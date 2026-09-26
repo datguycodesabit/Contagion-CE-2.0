@@ -21,10 +21,13 @@ static void Detail(uint8_t id) {
  const char *feedback="";
  for(;;) {
   disease_t preview=disease; effects_t after;
+  event_modifiers_t preview_mods; counts_t counts[REGION_COUNT]; uint8_t r;
   bool removal=symptom && action==1;
   if(removal) preview.owned[id/32]&=~(UINT32_C(1)<<(id%32));
   else preview.owned[id/32]|=UINT32_C(1)<<(id%32);
   CalculateEffects(&preview,&after);
+  for(r=0;r<REGION_COUNT;r++) counts[r]=region[r].counts;
+  EventsApply(&world_events,&preview,counts,&after,&preview_mods);
   BeginScreen("EVOLUTION DETAILS");
   Text(t->name,8,28);
   snprintf(line,sizeof(line),"DNA %u   Cost %u   State %c",disease.dna,t->cost,StateSymbol(id)); Text(line,8,42);
@@ -63,11 +66,11 @@ static void Detail(uint8_t id) {
     if(Owns(&disease,id)) feedback="Already owned.";
     else if(!Eligible(&disease,id)) feedback="Requirements not met.";
     else if(disease.dna<t->cost) feedback="Not enough DNA.";
-    else if(Purchase(&disease,id)) { CalculateEffects(&disease,&effects); feedback="Purchased."; }
+    else if(Purchase(&disease,id)) { RefreshEffects(); feedback="Purchased."; }
    } else {
     if(!CanDevolve(&disease,id)) feedback="Select an owned leaf symptom.";
     else if(disease.dna<DevolveCost(&disease)) feedback="Not enough DNA.";
-    else if(Devolve(&disease,id)) { CalculateEffects(&disease,&effects); feedback="Devolved. No refund."; }
+    else if(Devolve(&disease,id)) { RefreshEffects(); feedback="Devolved. No refund."; }
    }
   }
  }

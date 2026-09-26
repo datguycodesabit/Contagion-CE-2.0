@@ -102,6 +102,12 @@ static void InitializeMap(void) {
   region[i].data=map_sprites[i]->data;
  }
 }
+void RefreshEffects(void) {
+ counts_t counts[REGION_COUNT];uint8_t i;
+ for(i=0;i<REGION_COUNT;i++)counts[i]=region[i].counts;
+ EventsRefreshTraits(&world_events,&disease);CalculateEffects(&disease,&effects);
+ EventsApply(&world_events,&disease,counts,&effects,&event_modifiers);
+}
 void ResetGameState(void) {
  uint8_t i; size_t j;
  for(i=0;i<REGION_COUNT;i++) {
@@ -109,7 +115,7 @@ void ResetGameState(void) {
   RecountRegion(&region[i]);
  }
  ResetDisease(&disease); memset(&session,0,sizeof(session)); memcpy(port,port_definitions,sizeof(port));
- CalculateEffects(&disease,&effects);
+ EventsInit(&world_events,&disease,(uint32_t)rtc_Time()^UINT32_C(0x43ab97cd));RefreshEffects();
  connection=false; source_port=destination_port=0; canpress=false;
  TickerInit(&disease);
 }
@@ -226,7 +232,7 @@ static bool StartGame(void) {
   if(key==KEY_ENTER) break;
  }
  /* New game is a full reset, including any previous completed run. */
- ResetGameState(); disease.type=type; CalculateEffects(&disease,&effects);
+ ResetGameState(); disease.type=type; RefreshEffects();
  if(!NameDisease()) { ResetGameState(); return false; }
  session.cursorx=80; session.cursory=60;
  for(;;) {
@@ -244,13 +250,14 @@ static bool StartGame(void) {
  for(i=0;i<REGION_COUNT;i++) if(disease.seen_regions&(1U<<i)) session.selected=i;
  disease.started=1; ReleaseKeys(); timer_1_Counter=0; return true;
 }
+static void EventNotice(uint8_t id,uint8_t region,bool ended) { TickerPost(ended?NEWS_EVENT_END:NEWS_EVENT,id,region); }
 static void CompleteCycle(void) {
  uint8_t i,event,mutation,closed,previously_closed=0,restricted_regions=0,last_closed=0; counts_t counts[REGION_COUNT];
- Migrate(region,&disease,&effects,GameRandom);
+ MigrateEvents(region,&disease,&effects,GameRandom,&event_modifiers);
  mutation=Mutate(&disease,GameRandom);
- if(mutation!=NO_TRAIT) { CalculateEffects(&disease,&effects); TickerPost(NEWS_MUTATION,mutation,0); }
+ if(mutation!=NO_TRAIT) { RefreshEffects(); TickerPost(NEWS_MUTATION,mutation,0); }
  for(i=0;i<REGION_COUNT;i++) counts[i]=region[i].counts;
- event=AdvanceDisease(&disease,counts,&effects);
+ event=AdvanceDiseaseEvents(&disease,counts,&effects,event_modifiers.discovery,event_modifiers.research);
  if(event&EVENT_DISCOVERY) TickerPost(NEWS_DISCOVERY,0,0);
  if(event&EVENT_RESEARCH) TickerPost(NEWS_RESEARCH,0,0);
  if(event&EVENT_RESPONSE) TickerPost(NEWS_RESPONSE,0,0);
@@ -262,6 +269,7 @@ static void CompleteCycle(void) {
  closed=ClosePorts(region,port,&disease,&effects,GameRandom)&~previously_closed;
  for(i=0;i<REGION_COUNT;i++) if(closed&(1U<<i)) { restricted_regions++; last_closed=i; }
  if(restricted_regions) TickerPost(NEWS_CLOSURE,last_closed,restricted_regions);
+ if(disease.result==PLAYING) { EventsAdvance(&world_events,&disease,counts,EventNotice);RefreshEffects(); }
  TickerObserve(&disease,counts);
 }
 static uint8_t SaveExit(uint8_t destination) {
@@ -278,17 +286,20 @@ static uint8_t SaveExit(uint8_t destination) {
  }
 }
 uint8_t ActionsMenu(void) {
- uint8_t selected=0,key,i,result,count=disease.type==FUNGUS?7:6;
- char spore[64]; const char *items[7];
+ uint8_t selected=0,key,i,result,top=0,count=disease.type==FUNGUS?8:7;
+ char spore[64]; const char *items[8];
  for(;;) {
   items[0]="Resume"; items[1]="Evolution"; items[2]="Region Details";
   items[3]=session.view?"Travel View: ON (toggle)":"Travel View: OFF (toggle)";
+  items[4]="World Events";
   if(disease.spores_used<3) snprintf(spore,sizeof(spore),"Spore Burst: %u left, %u DNA",3-disease.spores_used,spore_costs[disease.spores_used]);
   else strcpy(spore,"Spore Burst: no charges left");
-  if(disease.type==FUNGUS) items[4]=spore;
+  if(disease.type==FUNGUS) items[5]=spore;
   items[count-2]="Save & Main Menu"; items[count-1]="Save & Quit";
   BeginScreen("PAUSED: ACTIONS");
-  for(i=0;i<count;i++) MenuItem(items[i],38+i*24,i==selected);
+  if(selected<top)top=selected;if(selected>=top+6)top=selected-5;
+  for(i=top;i<count&&i<top+6;i++) MenuItem(items[i],38+(i-top)*24,i==selected);
+  if(top)Text("^ more",250,24);if(top+6<count)Text("v more",250,185);
   Text("Up/Down: select   Enter: confirm",8,211); Text("Clear: resume",8,226);
   gfx_SwapDraw(); key=WaitKey();
   if(key==KEY_CLEAR || (key==KEY_ENTER && selected==0)) { EndModal(); return 0; }
@@ -296,7 +307,8 @@ uint8_t ActionsMenu(void) {
   if(selected==1) EvolutionMenu();
   else if(selected==2) RegionInfo();
   else if(selected==3) session.view^=1;
-  else if(selected==4 && disease.type==FUNGUS) SporeMenu();
+  else if(selected==4) WorldEventsMenu();
+  else if(selected==5 && disease.type==FUNGUS) SporeMenu();
   else {
    result=SaveExit(selected==count-1?2:1);
    if(result) { EndModal(); return result; }
@@ -317,7 +329,7 @@ static bool Play(void) {
    if(key!=KEY_NONE) canpress=false;
   }
   completed=StepWorldRegion(region,&session.next_region,&effects,GameRandom);
-  connection=Transport(region,port,&disease,&effects,GameRandom,&source_port,&destination_port);
+  connection=TransportEvents(region,port,&disease,&effects,GameRandom,&source_port,&destination_port,&event_modifiers);
   if(completed) CompleteCycle();
   DrawMap();
   if(session.view) DrawTransportation();
@@ -336,7 +348,12 @@ static bool Play(void) {
 int main(void) {
  bool done=false; uint8_t key,selected=0,count,i;
  srand(rtc_Time()); gfx_Begin(); gfx_SetDrawBuffer(); gfx_SetTransparentColor(0); gfx_SetTextTransparentColor(0);
- InitializeMap(); ResetGameState(); LoadData(); TickerInit(&disease);
+ InitializeMap(); ResetGameState();
+ if(!LoadData() && HasLegacySave()) {
+  static const char * const choices[]={"Continue version-2 save","Start fresh"};
+  if(ChooseMenu("OLDER SAVE FOUND",choices,2,0)==0 && !ImportLegacySave())Message("IMPORT FAILED","The older save could not be loaded. It has not been changed.");
+ }
+ TickerInit(&disease);
  timer_Control=TIMER1_ENABLE|TIMER1_32K|TIMER1_UP;
  while(!done) {
   BeginScreen("CONTAGION CE 2.0");

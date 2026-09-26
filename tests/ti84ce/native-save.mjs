@@ -50,13 +50,13 @@ for(let at=b.indexOf('Pathogen');at>=0;at=b.indexOf('Pathogen',at+1)){
 console.log('NATIVE SAVE CHECK',found);
 // Export only a checksum-valid production save as a development archive fixture.
 for(let at=b.indexOf('CNTG');at>=0;at=b.indexOf('CNTG',at+1)){
- if(b[at+4]!==2||b.readUInt32LE(at+5)!==10923||at+10923>b.length)continue;
- const data=b.subarray(at,at+10923);let hash=2166136261;
+ if(b[at+4]!==3||b.readUInt32LE(at+5)!==10973||at+10973>b.length)continue;
+ const data=b.subarray(at,at+10973);let hash=2166136261;
  for(const byte of data.subarray(0,-4))hash=Math.imul(hash^byte,16777619)>>>0;
  if(hash!==data.readUInt32LE(data.length-4))continue;
  const variable=Buffer.alloc(data.length+2);variable.writeUInt16LE(data.length);data.copy(variable,2);
  const entry=Buffer.alloc(17+variable.length);entry.writeUInt16LE(13);entry.writeUInt16LE(variable.length,2);entry[4]=0x15;
- entry.write('CNTGN2',5);entry[14]=128;entry.writeUInt16LE(variable.length,15);variable.copy(entry,17);
+ entry.write('CNTGN3',5);entry[14]=128;entry.writeUInt16LE(variable.length,15);variable.copy(entry,17);
  const header=Buffer.alloc(55);header.write('**TI83F*');header.set([26,10,0],8);header.writeUInt16LE(entry.length,53);
  const checksum=Buffer.alloc(2);checksum.writeUInt16LE(entry.reduce((a,v)=>(a+v)&65535,0));
  fs.writeFileSync(path.join(output,'archive-fixture.8xv'),Buffer.concat([header,entry,checksum]));break;
@@ -106,7 +106,7 @@ for(let id=0;id<39;id++){
  if([14,16,20,28,38].includes(id))shot(`detail-${id}`);
  key(6,6);key(6,6);key(6,6);key(6,6);
 }
-function spores(){key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);}
+function spores(){key(6,0);for(let i=0;i<5;i++)key(7,0);key(6,0);}
 spores();const cancelled=d();key(6,6);key(6,6);assert.deepEqual(d(),cancelled,'Cancel spores is inert');
 spores();for(const cost of [10,16,24]){const before=d();key(6,0);assert.equal(d().dna,before.dna-cost);assert.equal(d().spores,before.spores+1);}
 const spent=d();key(6,0);assert.deepEqual(d(),spent,'Fourth spore is inert');shot('three-spores');key(6,6);key(6,6);
@@ -114,10 +114,10 @@ assert.equal(stage(),1200);
 detail(19);const blocked=d();key(7,0);key(6,0);assert.deepEqual(d(),blocked,'Cannot devolve a prerequisite');key(6,6);key(6,6);key(6,6);key(6,6);
 detail(20);const before=d();key(7,0);key(6,0);assert.equal(d().dna,before.dna-7);assert(!(d().owned[0]&(1<<20)));shot('devolved');key(6,6);key(6,6);key(6,6);key(6,6);
 assert.equal(stage(),1300);
-for(let i=0;i<4;i++)key(7,0);key(6,0);
+for(let i=0;i<5;i++)key(7,0);key(6,0);
 const poor=d();key(6,0);assert.deepEqual(d(),poor);shot('spore-no-dna');key(6,6);key(6,6);
 assert.equal(stage(),1400);
-for(let i=0;i<4;i++)key(7,0);key(6,0);
+for(let i=0;i<5;i++)key(7,0);key(6,0);
 const full=d();key(6,0);assert.deepEqual(d(),full);shot('spore-no-land');key(6,6);key(6,6);
 run(600);assert.equal(stage(),1500);shot('save-failed');
 key(7,0);key(6,0);run(600);assert.equal(stage(),1500,'Retry still cannot save');

@@ -124,3 +124,31 @@ The native diagnostic also exercises Region Details, travel toggle, insufficient
 spore DNA, exhausted destination land, and failed-save retry/cancel/explicit quit.
 The harness only reads emulator state; funded/failure fixtures are explicitly
 constructed in the separate native diagnostic, never in the shipping game.
+
+## Focused mechanical event fixture
+
+The event fixture uses production event/save rules and FileIOC, with explicitly
+constructed timed/branch states. It is a targeted fixture, not a playthrough.
+The read-only JavaScript observer checks paused timers, World Events details,
+Actions scrolling, and returns. It writes screenshots for visual inspection.
+Use the same TI84CE_ROOT, AUTOTESTER_ROM, CE_LIBRARIES, and CEDEV environment as
+the earlier reference-core checks.
+
+```sh
+sh tests/event-native/build.sh
+CONTAGION_PROGRAM=tests/cemu/artifacts/event-bin/CNTAGION.8xp \
+CONTAGION_MAP=tests/cemu/artifacts/event-bin/CNTAGION.map \
+TI84CE_OUTPUT=/tmp/contagion-events node tests/ti84ce/events.mjs
+```
+
+Catalog checking and focused host checks:
+
+```sh
+python3 tools/generate_events.py --check
+sh tests/host/run.sh test_events
+sh tests/host/run.sh test_event_saves
+sh tests/host/run.sh event_balance
+```
+
+Host comparisons exercise the actual maps and rules with an automated policy;
+they do not measure calculator performance or establish player balance.

@@ -1,0 +1,6422 @@
+[
+  {
+    "id": 0,
+    "name": "Emergency Blood Donor Rally",
+    "description": "Walk-in donors raise blood-route spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 1,
+    "name": "Convention Hall Vent Fault",
+    "description": "Stale air adds 15% to air travel and 10% to aerosol spread for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 8,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 2,
+    "name": "Choir Tour Rehearsals",
+    "description": "Shared warm-up rooms raise air travel by 20% and Air I spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 3,
+    "name": "University Welcome Week",
+    "description": "Dormitory mixers add 15% to general spread in urban regions for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 4,
+    "name": "Faith Hall Meal Line",
+    "description": "A shared meal queue raises Water I spread by 15% for 8 cycles in humid regions.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 5,
+    "name": "Marathon Aid Stations",
+    "description": "Repeated handoffs add 10% to blood-route spread and 10% to air travel for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 6,
+    "name": "Night Market Opening",
+    "description": "Open produce stalls raise Insects I spread by 15% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 7,
+    "name": "School Exam Assembly",
+    "description": "Packed examination rooms add 10% to blood-route spread and 10% to discovery for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 8,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 5,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 8,
+    "name": "Transit Union Rally",
+    "description": "An indoor rally raises blood-route spread by 15% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 9,
+    "name": "Indoor Esports Final",
+    "description": "A packed arena adds 20% to air travel and 15% to Air I spread for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 0,
+    "chain": 255,
+    "duration": 8,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 2,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 10,
+    "name": "New Regional Air Link",
+    "description": "A new route raises air travel by 15% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 11,
+    "name": "Red-Eye Cabin Recirculation",
+    "description": "Long recirculation raises air travel by 20% and discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 12,
+    "name": "Sleeper Rail Through-Service",
+    "description": "Overnight rail links add 15% to blood-route spread and 10% to air travel for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 13,
+    "name": "Coach Border Screening",
+    "description": "A health checkpoint cuts air travel by 15% and adds 10% to discovery for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 14,
+    "name": "Crew Sick-Leave Roster",
+    "description": "Fewer available crew cut air travel by 15% for 16 cycles in active regions.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 15,
+    "name": "Rural Mail Flight",
+    "description": "A chartered mail flight adds 15% to air travel and 10% to air travel for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 1,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 16,
+    "name": "Student Exchange Charter",
+    "description": "An exchange charter raises air travel by 15% and blood-route spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 17,
+    "name": "Relief Bus Convoy",
+    "description": "Displaced passengers raise air travel by 20% and blood-route spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 18,
+    "name": "Overnight Ferry Surge",
+    "description": "An overnight ferry raises sea travel by 20% and Water I spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 1,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 19,
+    "name": "Airport Slot Pause",
+    "description": "A temporary slot freeze blocks air travel for 8 cycles and slows air travel by 10%.",
+    "effect": [
+      {
+        "kind": 7,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 1,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 2,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 20,
+    "name": "Container Hub Shift",
+    "description": "A new transshipment shift raises sea travel by 20% and Water I spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 21,
+    "name": "Reefer Door Failure",
+    "description": "A spoiled cargo transfer adds 10% to sea travel and Livestock I spread for 16 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 22,
+    "name": "Port Health Quarantine",
+    "description": "A dockside quarantine blocks sea travel for 8 cycles and lifts discovery by 15%.",
+    "effect": [
+      {
+        "kind": 8,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 8,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 23,
+    "name": "Ballast Water Audit",
+    "description": "Sampling delays ships by 10% but improves discovery by 20% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 20
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 24,
+    "name": "Cold-Chain Fish Auction",
+    "description": "A busy auction adds 15% to Water I spread and 10% to general spread for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 25,
+    "name": "Deckhand Sick Roster",
+    "description": "Crew shortages reduce sea travel by 15% while blood-route spread rises 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 8,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 26,
+    "name": "Canal Lock Closure",
+    "description": "A damaged lock blocks sea travel for 16 cycles and reduces local spread by 10%.",
+    "effect": [
+      {
+        "kind": 8,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 2,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 27,
+    "name": "Grain Hold Rodents",
+    "description": "Rodent sightings raise Rodents I spread by 20% and sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": 20
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 28,
+    "name": "Inland Barge Relay",
+    "description": "A river-to-port relay raises sea travel by 10% and local spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 29,
+    "name": "Customs Scanner Outage",
+    "description": "A scanner outage raises sea travel by 15% and reduces discovery by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 2,
+    "chain": 255,
+    "duration": 8,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 30,
+    "name": "Monsoon Humidity Belt",
+    "description": "Persistent rain raises Water I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 255,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 31,
+    "name": "Desert Dust Front",
+    "description": "Dust cuts air travel by 15% but raises Insects I spread by 15% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 8,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 32,
+    "name": "Heat Haze Corridor",
+    "description": "Hot, dry conditions raise Insects I spread by 20% and lower air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 33,
+    "name": "Highland Cold Snap",
+    "description": "A sudden cold snap cuts local spread by 15% and Livestock I spread by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 8,
+    "target": 4,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 34,
+    "name": "Coastal Fog Bank",
+    "description": "Low visibility cuts air travel by 20% and blocks it for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 7,
+        "trait": 255,
+        "amount": 1
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 35,
+    "name": "Freeze-Thaw Runoff",
+    "description": "Runoff raises Water I spread by 15% and sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 36,
+    "name": "Dry-Season Wind Shift",
+    "description": "Trade winds raise air travel by 10% and Air I spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 255,
+    "duration": 16,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 37,
+    "name": "Warm Wet Nights",
+    "description": "Warm nights raise Insects I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 38,
+    "name": "Snowbound Mountain Pass",
+    "description": "Deep snow cuts local spread by 20% and general spread by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 8,
+    "target": 4,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 39,
+    "name": "Wildfire Smoke Plume",
+    "description": "Where Air I is evolved, smoke raises aerosol spread by 10% and discovery by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 3,
+    "chain": 255,
+    "duration": 8,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 40,
+    "name": "Chlorination Pump Failure",
+    "description": "Untreated mains raise Water I spread by 20% and discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 41,
+    "name": "Boil-Water Broadcast",
+    "description": "Household boiling cuts Water I spread by 20% and adds 10% to discovery for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 42,
+    "name": "Leaking Neighborhood Main",
+    "description": "Pressure loss raises Water I and blood-route spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 43,
+    "name": "Wastewater Bypass Release",
+    "description": "A bypass adds 15% to Water I spread while sewage sampling lifts discovery 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 44,
+    "name": "Mobile Test-Strip Drive",
+    "description": "Field water tests reduce Water I spread by 10% and increase discovery by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 45,
+    "name": "Rural Wellhead Repair",
+    "description": "A sealed well cuts Livestock I spread by 10% and Water I spread by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": -10
+      },
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 46,
+    "name": "Flooded Sewage Lift Station",
+    "description": "Overflow raises Water I spread by 15% and sea travel by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 1,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 47,
+    "name": "Shared Tanker Contamination",
+    "description": "A contaminated tanker route raises Water I spread by 25% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 48,
+    "name": "Chlorine Delivery Strike",
+    "description": "A supply stoppage raises Water I spread by 15% and lowers research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 49,
+    "name": "Aquifer Lab Consortium",
+    "description": "Well sampling boosts discovery before detection and improves cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 50,
+    "name": "Mixed Herd Market Day",
+    "description": "Animal mixing raises Livestock I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 51,
+    "name": "Rookery Roost Expansion",
+    "description": "A larger seasonal roost adds 25% to bird migration for 16 cycles when Birds I is evolved.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": 25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 52,
+    "name": "Pig Barn Fan Failure",
+    "description": "Poor ventilation raises Livestock I spread by 20% and air travel by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 20
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 8,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 53,
+    "name": "Vector Hatch Cycle",
+    "description": "A warm hatch raises Insects I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 54,
+    "name": "Urban Rat Feeding Ban",
+    "description": "Sealed refuse cuts Rodents I spread by 20% and discovery rises 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 8,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 55,
+    "name": "Wildlife Corridor Reopens",
+    "description": "A reopened corridor adds 15% to bird migration and 10% to Livestock I spread for 16 cycles.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 56,
+    "name": "Veterinary Vaccine Sweep",
+    "description": "Animal testing cuts Livestock I spread by 15% and lifts discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 57,
+    "name": "Poultry Transfer Pause",
+    "description": "A veterinary hold reduces local spread by 15% and blocks sea traffic for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 8,
+        "trait": 255,
+        "amount": 1
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 8,
+    "target": 10,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 58,
+    "name": "Mosquito Net Rollout",
+    "description": "Net distribution cuts Insects I spread by 20% and raises discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 59,
+    "name": "Grain Store Ratproofing",
+    "description": "Sealed feed cuts Rodents I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 60,
+    "name": "Clinic Triage Queue",
+    "description": "Crowded intake raises blood-route spread by 15% and discovery by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 8,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 61,
+    "name": "Sterile Pack Delay",
+    "description": "A delayed supply raises blood-route spread by 20% for 16 cycles in strained care regions.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 5,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 62,
+    "name": "Lab Reagent Shortage",
+    "description": "Missing reagents slow discovery before detection and cure research once laboratory trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 63,
+    "name": "Mobile Clinic Circuit",
+    "description": "A traveling clinic lowers blood-route spread by 10% and raises discovery by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 64,
+    "name": "Ward Cohorting Protocol",
+    "description": "Separating patients cuts blood-route spread by 15% and adds 10% to research for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 65,
+    "name": "Oxygen Hub Overload",
+    "description": "Overfilled treatment raises blood-route spread by 10% and discovery by 15% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 8,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 2,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 66,
+    "name": "Nurse Cross-Training",
+    "description": "Cross-trained teams cut blood-route spread by 10% and add 15% to research for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 67,
+    "name": "Rural Ambulance Gap",
+    "description": "Long transfers raise blood-route spread by 15% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 68,
+    "name": "Protective Kit Shipment",
+    "description": "A new protective-kit stock cuts blood-route spread by 20% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 69,
+    "name": "Transfusion Trace Audit",
+    "description": "Donor tracing cuts blood-route spread by 15% and boosts discovery by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 70,
+    "name": "Bacterial Culture Exchange",
+    "description": "Shared bacterial cultures accelerate regional cure research.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 1,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 71,
+    "name": "Viral Genome Review",
+    "description": "New viral genome comparisons accelerate regional cure research.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 2,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 72,
+    "name": "Fungal Sample Backlog",
+    "description": "Slow fungal sample processing temporarily delays regional cure research.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 4,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 73,
+    "name": "Field Cohort Consent",
+    "description": "A consenting study cohort raises blood-route spread by 10% and cure research by 15% once trials begin, for 8 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 8,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 74,
+    "name": "Assay Contamination Review",
+    "description": "Recalled assays slow discovery before detection and cure research after laboratory trials begin for 8 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 75,
+    "name": "Replication Protocol Release",
+    "description": "A replicated protocol speeds discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 76,
+    "name": "Sensitive Data Embargo",
+    "description": "An embargo slows discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 77,
+    "name": "Cross-Lab Proficiency Panel",
+    "description": "Common reference samples raise research by 20% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 78,
+    "name": "Research Server Outage",
+    "description": "A server outage slows cure research after trials begin and discovery before detection for 8 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 8,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 79,
+    "name": "Negative-Control Audit",
+    "description": "Control audits speed discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 7,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 80,
+    "name": "Mask Fit Campaign",
+    "description": "Fit checks reduce Air I spread by 15% and discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 81,
+    "name": "Asymptomatic Rumor Wave",
+    "description": "A rumor suppresses discovery by 15% while general spread rises 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 82,
+    "name": "Work-From-Home Week",
+    "description": "Remote schedules lower general spread by 15% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 83,
+    "name": "Handwashing Pledge Drive",
+    "description": "A public pledge cuts blood-route spread by 15% and raises discovery by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 84,
+    "name": "Funeral Attendance Surge",
+    "description": "Large memorial services raise general spread by 15% and discovery by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 8,
+    "target": 1,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 1,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 85,
+    "name": "Community Testing Week",
+    "description": "More voluntary testing raises discovery by 15% and lowers general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 86,
+    "name": "School Door Closure",
+    "description": "A temporary closure lowers general spread by 15% and adds 10% to discovery for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 87,
+    "name": "Cure Rumor Reversal",
+    "description": "A corrected rumor raises general spread by 10% and cure research by 10% once trials begin, for 8 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 88,
+    "name": "Volunteer Supply Drops",
+    "description": "Doorstep deliveries cut general spread by 10% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 89,
+    "name": "Compliance Fatigue Break",
+    "description": "A lull in precautions raises general spread by 15% and lowers research by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 8,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 90,
+    "name": "Regional Grid Brownout",
+    "description": "A brownout slows air travel by 10% and research by 15% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 91,
+    "name": "Telecom Backbone Cut",
+    "description": "A severed network slows discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 92,
+    "name": "Cold-Store Warehouse Fault",
+    "description": "A failed cold store raises Livestock I spread by 15% and sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 15
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 93,
+    "name": "Water Pumping Blackout",
+    "description": "A power cut raises Water I spread by 15% and lowers research by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 8,
+    "target": 5,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 94,
+    "name": "Runway Resurfacing Window",
+    "description": "Runway works block air travel for 8 cycles and lower air travel by 10%.",
+    "effect": [
+      {
+        "kind": 7,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 8,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 95,
+    "name": "Bridge Washout Detour",
+    "description": "A washed-out bridge cuts local spread by 20% and general spread by 10% for 8 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 8,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 96,
+    "name": "Port Crane Labor Strike",
+    "description": "Idle cranes block sea travel for 8 cycles and lower local spread by 10%.",
+    "effect": [
+      {
+        "kind": 8,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 8,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 97,
+    "name": "Cell Broadcast Alert",
+    "description": "A reliable emergency alert raises discovery by 20% and lowers general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 98,
+    "name": "Grid Backup Generator",
+    "description": "Backup power improves cure research after trials begin and discovery before detection for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 8,
+    "group": 9,
+    "chain": 255,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 99,
+    "name": "Municipal Pressure Restore",
+    "description": "Stable mains cut Water I spread by 15% and lift discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 255,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 100,
+    "name": "Games Delegations Arrive",
+    "description": "International teams raise air travel by 15% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 0,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 101,
+    "next_false": 255,
+    "storyline_title": "World Games"
+  },
+  {
+    "id": 101,
+    "name": "Games Entry Plan",
+    "description": "Entry checks lower air travel by 10% while arena crowd plans are reviewed.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 0,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 2,
+    "branch_trait": 255,
+    "next_true": 102,
+    "next_false": 103
+  },
+  {
+    "id": 102,
+    "name": "Venue Air Plan",
+    "description": "Distributed events cut Air I spread by 20% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": -20
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 0,
+    "duration": 16,
+    "target": 7,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 104,
+    "next_false": 255
+  },
+  {
+    "id": 103,
+    "name": "Finals Crowd Surge",
+    "description": "Sold-out finals raise blood-route spread by 15% and discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 0,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 12,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 104,
+    "next_false": 255
+  },
+  {
+    "id": 104,
+    "name": "Athlete Village Dispersal",
+    "description": "Departing teams raise air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 0,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 105,
+    "name": "Festival Campgrounds Open",
+    "description": "Shared campground taps raise Water I spread by 15% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 1,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 106,
+    "next_false": 255,
+    "storyline_title": "Regional festival"
+  },
+  {
+    "id": 106,
+    "name": "Festival Hygiene Drive",
+    "description": "Handwashing stations at food stalls cut general spread by 10% during the festival.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 1,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 1,
+    "branch_trait": 8,
+    "next_true": 107,
+    "next_false": 108
+  },
+  {
+    "id": 107,
+    "name": "Vector Screens Hold",
+    "description": "Larval screening cuts Insects I spread by 20% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 1,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 8,
+    "min_dead": 8,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 109,
+    "next_false": 255
+  },
+  {
+    "id": 108,
+    "name": "Late-Night Stalls Expand",
+    "description": "Unscreened stalls raise Insects I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 1,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 8,
+    "min_dead": 8,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 109,
+    "next_false": 255
+  },
+  {
+    "id": 109,
+    "name": "Festival Routes Clear",
+    "description": "Crowd dispersal adds 10% to air travel for 16 cycles.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 0,
+    "chain": 1,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 110,
+    "name": "Open Cure Notebook",
+    "description": "Shared case notes speed discovery before detection and cure research once trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 2,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 35,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 111,
+    "next_false": 255,
+    "storyline_title": "Crowdsourced cure project"
+  },
+  {
+    "id": 111,
+    "name": "Shared Cure Data Review",
+    "description": "Researchers compare case notes, raising cure research by 10% once research is active.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 2,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 35,
+    "branch": 5,
+    "branch_trait": 255,
+    "next_true": 112,
+    "next_false": 113
+  },
+  {
+    "id": 112,
+    "name": "Replicated Cure Leads",
+    "description": "Replicated findings raise research by 20% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 2,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 35,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 114,
+    "next_false": 255
+  },
+  {
+    "id": 113,
+    "name": "Unvetted Cure Recipes",
+    "description": "Unverified recipes slow discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 2,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 35,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 114,
+    "next_false": 255
+  },
+  {
+    "id": 114,
+    "name": "Clinical Notes Consolidated",
+    "description": "A consolidated protocol raises research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 2,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 35,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 115,
+    "name": "First Clinic Cluster",
+    "description": "A traceable clinic cluster raises discovery by 20% and blood-route spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 3,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 116,
+    "next_false": 255,
+    "storyline_title": "Patient Zero investigation"
+  },
+  {
+    "id": 116,
+    "name": "Spaced Contact Interviews",
+    "description": "Separated interview rooms cut general spread by 10% while contact tracing expands.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 3,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 2,
+    "branch_trait": 255,
+    "next_true": 117,
+    "next_false": 118
+  },
+  {
+    "id": 117,
+    "name": "Contact Trace Starts Early",
+    "description": "Confirmed contacts focus regional research and reduce local spread while clinics trace the first infection.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 3,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 119,
+    "next_false": 255
+  },
+  {
+    "id": 118,
+    "name": "Contact Trace Arrives Late",
+    "description": "Delayed contact tracing allows local spread; investigators still contribute to regional cure research.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 3,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 119,
+    "next_false": 255
+  },
+  {
+    "id": 119,
+    "name": "Clinic Register Reconciled",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 3,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 120,
+    "name": "Terminal Filter Inspection",
+    "description": "A filter inspection raises discovery by 10% and cuts air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 4,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 0,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 121,
+    "next_false": 255,
+    "storyline_title": "Airline sanitation rollout"
+  },
+  {
+    "id": 121,
+    "name": "Terminal Filter Sweep",
+    "description": "The airport filter sweep cuts air travel by 10% during the sanitation check.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 4,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 0,
+    "branch": 1,
+    "branch_trait": 0,
+    "next_true": 122,
+    "next_false": 123
+  },
+  {
+    "id": 122,
+    "name": "Filter Stock Reaches Hubs",
+    "description": "Working filters cut Air I spread by 20% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": -20
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 4,
+    "duration": 16,
+    "target": 11,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 0,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 124,
+    "next_false": 255
+  },
+  {
+    "id": 123,
+    "name": "Ventilation Ducts Stay Open",
+    "description": "Unfiltered ducts raise Air I spread by 15% and air travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 0,
+        "amount": 15
+      },
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 4,
+    "duration": 16,
+    "target": 11,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 124,
+    "next_false": 255
+  },
+  {
+    "id": 124,
+    "name": "Airflow Audit Closes",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 4,
+    "duration": 16,
+    "target": 11,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 0,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 125,
+    "name": "Harbor Discharge Sampling",
+    "description": "Harbor sampling raises discovery by 10% and Water I spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 5,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 126,
+    "next_false": 255,
+    "storyline_title": "Shipping sanitation rollout"
+  },
+  {
+    "id": 126,
+    "name": "Ballast Sample Hold",
+    "description": "Sampling delays lower sea travel by 10% while untreated ballast is checked.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 5,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 2,
+    "branch": 1,
+    "branch_trait": 2,
+    "next_true": 127,
+    "next_false": 128
+  },
+  {
+    "id": 127,
+    "name": "Ballast Treatment Holds",
+    "description": "Treatment cuts Water I spread by 20% and sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -20
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 5,
+    "duration": 16,
+    "target": 10,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 2,
+    "mitigate": 2,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 129,
+    "next_false": 255
+  },
+  {
+    "id": 128,
+    "name": "Untreated Ballast Release",
+    "description": "Untreated discharge raises Water I spread by 20% and sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 20
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 5,
+    "duration": 16,
+    "target": 10,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 2,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 129,
+    "next_false": 255
+  },
+  {
+    "id": 129,
+    "name": "Harbor Water Recheck",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 2,
+    "chain": 5,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 2,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 130,
+    "name": "Seasonal Flyway Opens",
+    "description": "A seasonal flyway raises bird migration by 20% for 16 cycles when Birds I is evolved.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 6,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 131,
+    "next_false": 255,
+    "storyline_title": "Migration season"
+  },
+  {
+    "id": 131,
+    "name": "Flyway Watch Teams",
+    "description": "Watch teams cut bird bird migration by 10% as seasonal counts are compared.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 6,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 3,
+    "branch_trait": 255,
+    "next_true": 132,
+    "next_false": 133
+  },
+  {
+    "id": 132,
+    "name": "Rest Stop Route Thins",
+    "description": "Loss of a roost cuts bird migration by 25% for 16 cycles when Birds I is evolved.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": -25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 6,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 25,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 134,
+    "next_false": 255
+  },
+  {
+    "id": 133,
+    "name": "Wetland Rest Stops Fill",
+    "description": "Busy roosts raise bird migration by 25% for 16 cycles when Birds I is evolved.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": 25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 6,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 25,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 134,
+    "next_false": 255
+  },
+  {
+    "id": 134,
+    "name": "Flyway Traffic Settles",
+    "description": "Migration remains 10% higher as seasonal bird routes finish for 16 cycles.",
+    "effect": [
+      {
+        "kind": 4,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 6,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 135,
+    "name": "Mixed Herd Auction",
+    "description": "Mixed pens raise Livestock I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 7,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 136,
+    "next_false": 255,
+    "storyline_title": "Livestock outbreak"
+  },
+  {
+    "id": 136,
+    "name": "Livestock Gate Checks",
+    "description": "Gate checks cut Livestock I spread by 10% before herd movement is reviewed.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 7,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 2,
+    "branch_trait": 255,
+    "next_true": 137,
+    "next_false": 138
+  },
+  {
+    "id": 137,
+    "name": "Farm Gate Biosecurity",
+    "description": "Owned livestock controls cut Livestock I spread by 20% and raise discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 7,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 4,
+    "min_dead": 4,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 139,
+    "next_false": 255
+  },
+  {
+    "id": 138,
+    "name": "Auction Pens Remain Mixed",
+    "description": "Unscreened pens raise Livestock I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 4,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 7,
+    "duration": 16,
+    "target": 8,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 4,
+    "min_dead": 4,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 139,
+    "next_false": 255
+  },
+  {
+    "id": 139,
+    "name": "Herd Movement Register",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 7,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 140,
+    "name": "Warm-Season Hatch",
+    "description": "A warm hatch raises Insects I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 8,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 141,
+    "next_false": 255,
+    "storyline_title": "Insect population boom"
+  },
+  {
+    "id": 141,
+    "name": "Vector Mapping Sweep",
+    "description": "Mapped breeding sites cut Insects I spread by 10% during the survey.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 8,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 2,
+    "branch_trait": 255,
+    "next_true": 142,
+    "next_false": 143
+  },
+  {
+    "id": 142,
+    "name": "Larvicide Grid Covers Town",
+    "description": "Owned insect controls cut Insects I spread by 20% and local spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 8,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 8,
+    "min_dead": 8,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 144,
+    "next_false": 255
+  },
+  {
+    "id": 143,
+    "name": "Unmapped Ponds Breed Vectors",
+    "description": "Untreated ponds raise Insects I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 8,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 8,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 8,
+    "min_dead": 8,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 144,
+    "next_false": 255
+  },
+  {
+    "id": 144,
+    "name": "Vector Survey Repeats",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 8,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 145,
+    "name": "Market Grain Spill",
+    "description": "Loose grain raises Rodents I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 9,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 146,
+    "next_false": 255,
+    "storyline_title": "Rodent infestation"
+  },
+  {
+    "id": 146,
+    "name": "Night Refuse Pickup",
+    "description": "Night refuse pickup cuts general spread by 10% while rodent access is assessed.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 9,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 4,
+    "branch_trait": 255,
+    "next_true": 147,
+    "next_false": 148
+  },
+  {
+    "id": 147,
+    "name": "Waste Bins Seal",
+    "description": "A well-adopted cleanup cuts Rodents I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": -20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 9,
+    "duration": 16,
+    "target": 7,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 50,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 149,
+    "next_false": 255
+  },
+  {
+    "id": 148,
+    "name": "Alleys Stay Accessible",
+    "description": "Dense activity leaves Rodents I spread 20% higher and discovery 10% lower for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": 20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 9,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 50,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 149,
+    "next_false": 255
+  },
+  {
+    "id": 149,
+    "name": "Night Traps Reset",
+    "description": "Continued trapping cuts Rodents I spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 6,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 5,
+    "chain": 9,
+    "duration": 16,
+    "target": 7,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 150,
+    "name": "River Gauge Overtops",
+    "description": "Flooded wells strengthen Water transmission while damaged laboratories slow regional cure research.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 20
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 10,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 151,
+    "next_false": 255,
+    "storyline_title": "Flood emergency"
+  },
+  {
+    "id": 151,
+    "name": "Floodwater Intake Watch",
+    "description": "Temporary intake controls cut sea travel by 10% while floodwater is sampled.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 10,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 3,
+    "branch_trait": 255,
+    "next_true": 152,
+    "next_false": 153
+  },
+  {
+    "id": 152,
+    "name": "Water Test Teams Arrive",
+    "description": "A high death toll brings tests that cut Water I spread by 20% and lift discovery by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 10,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 25,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 154,
+    "next_false": 255
+  },
+  {
+    "id": 153,
+    "name": "Lowland Wells Stay Submerged",
+    "description": "Submerged wells raise Water I spread by 25% and lower discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 25
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 10,
+    "duration": 16,
+    "target": 5,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 25,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 154,
+    "next_false": 255
+  },
+  {
+    "id": 154,
+    "name": "Pumps Drain Floodplain",
+    "description": "Recovery pumping cuts Water I spread by 10% and raises research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 10,
+    "duration": 16,
+    "target": 5,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 155,
+    "name": "Seismic Lab Shutdown",
+    "description": "Shaken labs lower research by 15% while local spread rises 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 11,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 156,
+    "next_false": 255,
+    "storyline_title": "Earthquake recovery"
+  },
+  {
+    "id": 156,
+    "name": "Emergency Lab Relay",
+    "description": "A portable lab relay raises cure research by 10% once research is active.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 11,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 2,
+    "branch_trait": 255,
+    "next_true": 157,
+    "next_false": 158
+  },
+  {
+    "id": 157,
+    "name": "Backup Lab Network Restored",
+    "description": "A coordinated rebuild speeds cure research after trials begin and discovery before detection for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 11,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 159,
+    "next_false": 255
+  },
+  {
+    "id": 158,
+    "name": "Power Relays Remain Damaged",
+    "description": "Ongoing outages slow cure research after trials begin and discovery before detection for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 11,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 159,
+    "next_false": 255
+  },
+  {
+    "id": 159,
+    "name": "Sample Freezers Rechecked",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 11,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 160,
+    "name": "Storm Surge Reaches Docks",
+    "description": "Surge water raises Water I spread by 15% and cuts sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 15
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 12,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 161,
+    "next_false": 255,
+    "storyline_title": "Coastal storm season"
+  },
+  {
+    "id": 161,
+    "name": "Harbor Closure Review",
+    "description": "A harbor review cuts sea travel by 10% as crews test the disinfection plan.",
+    "effect": [
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 12,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 1,
+    "branch_trait": 2,
+    "next_true": 162,
+    "next_false": 163
+  },
+  {
+    "id": 162,
+    "name": "Harbor Disinfection Crews",
+    "description": "Treatment cuts Water I spread by 20% and restores sea travel by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -20
+      },
+      {
+        "kind": 3,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 12,
+    "duration": 16,
+    "target": 10,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 2,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 164,
+    "next_false": 255
+  },
+  {
+    "id": 163,
+    "name": "Harbor Closure Persists",
+    "description": "An unsafe harbor blocks sea travel for 16 cycles and raises discovery by 10%.",
+    "effect": [
+      {
+        "kind": 8,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 12,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 2,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 164,
+    "next_false": 255
+  },
+  {
+    "id": 164,
+    "name": "Coastal Intake Reopens",
+    "description": "Follow-up samples cut Water I spread by 10% and raise discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 12,
+    "duration": 16,
+    "target": 10,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 165,
+    "name": "Heatwave Shelter Demand",
+    "description": "Heat conditions reduce local spread by 20%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 13,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 166,
+    "next_false": 255,
+    "storyline_title": "Heatwave"
+  },
+  {
+    "id": 166,
+    "name": "Cooling Center Check-In",
+    "description": "Heat conditions reduce local spread by 25%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 13,
+    "duration": 16,
+    "target": 3,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 1,
+    "branch_trait": 29,
+    "next_true": 167,
+    "next_false": 168
+  },
+  {
+    "id": 167,
+    "name": "Cooling Halls Relieve Crowding",
+    "description": "Heat conditions reduce local spread by 10%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 13,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 10,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 169,
+    "next_false": 255
+  },
+  {
+    "id": 168,
+    "name": "Night Cooling Fails",
+    "description": "Heat conditions reduce local spread by 30%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -30
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 13,
+    "duration": 16,
+    "target": 3,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 8,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 169,
+    "next_false": 255
+  },
+  {
+    "id": 169,
+    "name": "Heat Clinics Keep Hours",
+    "description": "Heat conditions reduce local spread by 10%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 13,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 29,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 170,
+    "name": "Winter Shelter Census",
+    "description": "Cold conditions reduce local spread by 20%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 14,
+    "duration": 16,
+    "target": 4,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 31,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 171,
+    "next_false": 255,
+    "storyline_title": "Severe winter"
+  },
+  {
+    "id": 171,
+    "name": "Winter Shelter Roster",
+    "description": "Cold conditions reduce local spread by 25%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -25
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 14,
+    "duration": 16,
+    "target": 4,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 31,
+    "branch": 1,
+    "branch_trait": 31,
+    "next_true": 172,
+    "next_false": 173
+  },
+  {
+    "id": 172,
+    "name": "Cold-Weather Clinics Open",
+    "description": "Cold conditions reduce local spread by 10%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 14,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 31,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 174,
+    "next_false": 255
+  },
+  {
+    "id": 173,
+    "name": "Shelter Intake Overflows",
+    "description": "Cold conditions reduce local spread by 30%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -30
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 14,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 31,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 174,
+    "next_false": 255
+  },
+  {
+    "id": 174,
+    "name": "Spring Ventilation Checks",
+    "description": "Cold conditions reduce local spread by 10%. Matching adaptation halves this temporary penalty.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 3,
+    "chain": 14,
+    "duration": 16,
+    "target": 4,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 31,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 175,
+    "name": "Reservoir Allocation Tightens",
+    "description": "Water shortages raise Water I spread by 10% and lower discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 15,
+    "duration": 16,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 176,
+    "next_false": 255,
+    "storyline_title": "Drought and water rationing"
+  },
+  {
+    "id": 176,
+    "name": "Water Queue Testing",
+    "description": "Shared tanker queues raise general spread by 10% before drought water tests begin.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 15,
+    "duration": 16,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 4,
+    "branch_trait": 255,
+    "next_true": 177,
+    "next_false": 178
+  },
+  {
+    "id": 177,
+    "name": "Rural Tankers Are Tested",
+    "description": "Testing cuts Water I spread by 15% and lifts discovery by 15% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 15,
+    "duration": 16,
+    "target": 8,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 50,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 179,
+    "next_false": 255
+  },
+  {
+    "id": 178,
+    "name": "Unsealed Tanker Stops",
+    "description": "Untested deliveries raise Water I spread by 20% and general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 2,
+        "amount": 20
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 15,
+    "duration": 16,
+    "target": 8,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 50,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 179,
+    "next_false": 255
+  },
+  {
+    "id": 179,
+    "name": "Reservoir Sampling Resumes",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 4,
+    "chain": 15,
+    "duration": 16,
+    "target": 6,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 180,
+    "name": "Ward Beds Reach Capacity",
+    "description": "Overfull wards raise blood-route spread by 15% and discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 16,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 181,
+    "next_false": 255,
+    "storyline_title": "Hospital overload"
+  },
+  {
+    "id": 181,
+    "name": "Overflow Ward Cohorting",
+    "description": "Ward cohorting cuts blood-route spread by 10% during the capacity review.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 16,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 3,
+    "branch_trait": 255,
+    "next_true": 182,
+    "next_false": 183
+  },
+  {
+    "id": 182,
+    "name": "Regional Staff Pool Arrives",
+    "description": "Staffing support cuts blood-route spread by 20% and boosts research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -20
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 16,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 25,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 184,
+    "next_false": 255
+  },
+  {
+    "id": 183,
+    "name": "Transfers Queue at Triage",
+    "description": "Transfer queues raise blood-route spread by 20% and lower research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": 20
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 16,
+    "duration": 16,
+    "target": 9,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 25,
+    "mitigate": 33,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 184,
+    "next_false": 255
+  },
+  {
+    "id": 184,
+    "name": "Discharge Reviews Resume",
+    "description": "Care reviews cut blood-route spread by 10% and raise discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 12,
+        "amount": -10
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 6,
+    "chain": 16,
+    "duration": 16,
+    "target": 9,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 185,
+    "name": "Joint Genome Desk Opens",
+    "description": "A shared genome desk speeds discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 17,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 186,
+    "next_false": 255,
+    "storyline_title": "International research coalition"
+  },
+  {
+    "id": 186,
+    "name": "Coalition Assay Exchange",
+    "description": "Shared assay notes raise cure research by 10% as laboratories align results.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 17,
+    "duration": 16,
+    "target": 0,
+    "min_response": 2,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 1,
+    "branch_trait": 35,
+    "next_true": 187,
+    "next_false": 188
+  },
+  {
+    "id": 187,
+    "name": "Hardening Data Is Shared",
+    "description": "A coalition overcomes hardening, lifting research by 20% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 20
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 17,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 35,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 189,
+    "next_false": 255
+  },
+  {
+    "id": 188,
+    "name": "Separate Assay Queues Persist",
+    "description": "Separate assay queues slow cure research after trials begin and discovery before detection for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 17,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 35,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 189,
+    "next_false": 255
+  },
+  {
+    "id": 189,
+    "name": "Shared Reagent Ledger",
+    "description": "Joint procurement raises research by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 7,
+    "chain": 17,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 190,
+    "name": "Daily Case Board Launches",
+    "description": "Clear case counts improve discovery before detection and cure research once trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 18,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 191,
+    "next_false": 255,
+    "storyline_title": "Public confidence crisis"
+  },
+  {
+    "id": 191,
+    "name": "Daily Briefing Schedule",
+    "description": "Regular briefings cut general spread by 10% as case information is checked.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 18,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 5,
+    "branch_trait": 255,
+    "next_true": 192,
+    "next_false": 193
+  },
+  {
+    "id": 192,
+    "name": "Trusted Briefings Continue",
+    "description": "Credible progress raises research by 15% and lowers general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 18,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 194,
+    "next_false": 255
+  },
+  {
+    "id": 193,
+    "name": "Unclear Results Erode Trust",
+    "description": "Mixed results lower research by 15% and raise general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": -15
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 18,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 194,
+    "next_false": 255
+  },
+  {
+    "id": 194,
+    "name": "Community Questions Answered",
+    "description": "Updated records help trace infections and support regional cure research while this response is active.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 8,
+    "chain": 18,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  },
+  {
+    "id": 195,
+    "name": "National Response Desk Opens",
+    "description": "A central desk improves discovery before detection and cure research after trials begin for 16 cycles.",
+    "effect": [
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 19,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 196,
+    "next_false": 255,
+    "storyline_title": "Emergency government response"
+  },
+  {
+    "id": 196,
+    "name": "Emergency Air Order",
+    "description": "A temporary air order lowers air travel by 10% while national rules are coordinated.",
+    "effect": [
+      {
+        "kind": 2,
+        "trait": 255,
+        "amount": -10
+      },
+      {
+        "kind": 0,
+        "trait": 255,
+        "amount": 0
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 19,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 6,
+    "branch_trait": 255,
+    "next_true": 197,
+    "next_false": 198
+  },
+  {
+    "id": 197,
+    "name": "Escalated Travel Order",
+    "description": "A coordinated order blocks air travel for 16 cycles and cuts general spread by 15%.",
+    "effect": [
+      {
+        "kind": 7,
+        "trait": 255,
+        "amount": 1
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -15
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 19,
+    "duration": 16,
+    "target": 11,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 2,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 199,
+    "next_false": 255
+  },
+  {
+    "id": 198,
+    "name": "Local Rules Conflict",
+    "description": "Conflicting orders raise general spread by 15% and lower discovery by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": 15
+      },
+      {
+        "kind": 5,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 19,
+    "duration": 16,
+    "target": 0,
+    "min_response": 0,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 1,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 199,
+    "next_false": 255
+  },
+  {
+    "id": 199,
+    "name": "Emergency Powers Reviewed",
+    "description": "A review raises research by 10% and lowers general spread by 10% for 16 cycles.",
+    "effect": [
+      {
+        "kind": 6,
+        "trait": 255,
+        "amount": 10
+      },
+      {
+        "kind": 1,
+        "trait": 255,
+        "amount": -10
+      }
+    ],
+    "min_cycle": 16,
+    "group": 9,
+    "chain": 19,
+    "duration": 16,
+    "target": 0,
+    "min_response": 1,
+    "required_trait": 255,
+    "type_mask": 7,
+    "min_active": 0,
+    "min_dead": 0,
+    "mitigate": 255,
+    "branch": 0,
+    "branch_trait": 255,
+    "next_true": 255,
+    "next_false": 255
+  }
+]

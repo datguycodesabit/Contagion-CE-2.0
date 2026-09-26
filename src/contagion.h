@@ -30,6 +30,8 @@ void RegionInfo(void);
 void SporeMenu(void);
 void ResultScreen(void);
 void ResetGameState(void);
+void RefreshEffects(void);
+void WorldEventsMenu(void);
 bool SaveData(void);
 bool LoadData(void);
 #endif

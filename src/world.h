@@ -1,6 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 #include "disease.h"
+#include "events.h"
 typedef struct {
  const char *name;
  uint8_t *data;
@@ -20,6 +21,8 @@ bool StepWorldRegion(region_t r[REGION_COUNT], uint8_t *next, const effects_t *e
 bool ValidPort(const region_t r[REGION_COUNT], const port_t *p);
 bool Transport(region_t r[REGION_COUNT], port_t p[PORT_COUNT], disease_t *d, const effects_t *e, random_fn random, uint8_t *source, uint8_t *destination);
 bool Migrate(region_t r[REGION_COUNT], disease_t *d, const effects_t *e, random_fn random);
+bool TransportEvents(region_t r[REGION_COUNT],port_t p[PORT_COUNT],disease_t *d,const effects_t *e,random_fn random,uint8_t *source,uint8_t *destination,const event_modifiers_t *mods);
+bool MigrateEvents(region_t r[REGION_COUNT],disease_t *d,const effects_t *e,random_fn random,const event_modifiers_t *mods);
 bool SporeBurst(region_t r[REGION_COUNT], disease_t *d, uint8_t destination, random_fn random);
 uint8_t ClosePorts(const region_t r[REGION_COUNT], port_t p[PORT_COUNT], const disease_t *d, const effects_t *e, random_fn random);
 #endif

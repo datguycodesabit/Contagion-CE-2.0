@@ -64,9 +64,11 @@ bool Devolve(disease_t *d, uint8_t id);
 uint8_t DevolveCost(const disease_t *d);
 void ResetDisease(disease_t *d);
 void CalculateEffects(const disease_t *d, effects_t *e);
+uint16_t TransmissionContribution(const disease_t *d,uint8_t region,uint8_t trait);
 uint8_t Mutate(disease_t *d, random_fn random);
 void AwardDNA(disease_t *d, counts_t total);
 uint8_t AdvanceDisease(disease_t *d, const counts_t regions[REGION_COUNT], const effects_t *e);
+uint8_t AdvanceDiseaseEvents(disease_t *d,const counts_t regions[REGION_COUNT],const effects_t *e,uint16_t discovery_percent,uint16_t research_percent);
 void EvaluateOutcome(disease_t *d, counts_t total);
 bool ValidateDisease(const disease_t *d);
 #endif

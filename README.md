@@ -1,7 +1,7 @@
 # CONTAGION CE
 Contagion CE is a Plague Inc. inspired game written in C for the TI-84 Plus CE calculator.
 
-Version 2.0 is a local development overhaul; published historical releases may still contain version 1.x. See [verification status](VERIFICATION.md) before release.
+Version 2.0 includes three disease types, shared evolution trees, and 200 gameplay events.
 
 ### Transfer this build
 
@@ -40,7 +40,7 @@ the leaves, for a cost and no refund.
 | Trait details | Up/Down: Purchase, Devolve (symptoms), or Back; Enter: confirm; Clear: back |
 | Fungus Spore Burst | Select from Actions; Up/Down: destination; Enter: buy/release; Clear: back |
 
-Actions includes region details, travel view, Save & Main Menu, and Save & Quit.
+Actions includes region details, travel view, World Events, Save & Main Menu, and Save & Quit. The menu scrolls as you move through its options.
 Fungus shows spore charges and the next cost (10/16/24 DNA) from the start.
 The destination menu stays open after a burst. Rejected bursts spend nothing.
 
@@ -53,11 +53,25 @@ The region panel shows mixed ratings and closed endpoint counts.
 The news ticker reports regional spread, milestones, travel restrictions,
 mutations and spore destinations. Urgent headlines take priority over waiting
 routine reports. Long headlines scroll; all news pauses while menus are open.
-Quiet periods show factual world updates. News never changes disease balance.
+Quiet periods show factual world updates. Mechanical world events also appear here;
+open **Actions → World Events** to inspect their effects and remaining time.
+
+## World events
+
+The catalog contains **100 standalone events and 20 branching, five-stage
+storylines**: travel surges, sanitation campaigns, animal outbreaks, severe
+weather, medical responses, and more. Each run encounters a selection. Events
+unfold automatically; existing traits and outbreak conditions determine branches.
+Temporary effects can change regional spread, travel, discovery, and research.
+They never award DNA, remove upgrades, or kill cells directly. All event timers
+pause in menus. See the [event reference](docs/EVENTS.md) for the full catalog.
 
 ## Saves and reset
 
-New saves use **CNTGN2**, with a validated previous generation in **CNTGN2B**.
+New saves use **CNTGN3**, with a validated previous generation in **CNTGN3B**.
+If no valid new save exists, the main menu offers to continue a validated version-2
+save. Import leaves **CNTGN2/CNTGN2B** untouched and gives events a 24-cycle grace
+period. Active events, their timers, and future event scheduling survive saving.
 Version-1 **CNTGNDAT** saves remain untouched and cannot continue under the new
 rules. Saves are explicit, checksummed, validated before applying, and restore
 partial-cycle scheduling. New Game clears all new progression and derived state.

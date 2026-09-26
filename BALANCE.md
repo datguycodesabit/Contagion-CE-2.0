@@ -200,3 +200,32 @@ Virus 342 / 11 purchases plus mutations; Fungus 440 / 13 purchases plus one spor
 Final cure was 66.48%, 68.73%, and 78.92%, respectively. A nonlethal Bacteria
 policy lost to cure at cycle 713. These support functional winning paths, not
 human difficulty or wall-clock run-length targets. No constants were retuned.
+
+## Mechanical world events (September 25)
+
+The 200-entry catalog contains 100 standalone events and 20 five-stage chains.
+After a 24-cycle grace period, an empty slot gets a 25% start check every eight
+cycles, with at least 16 cycles between starts. Standalone/chain selection is
+70:30 when both are eligible. Four slots, at most two chains, bound concurrency.
+Standalone effects last 8, 16, or 24 cycles; normal chain stages last 16.
+Each newly purchased Reshuffle delays an unresolved Patient Zero stage by 16
+cycles. Conditions at transition time choose its branch, without a popup.
+
+Percentage changes stack additively. Local spread and travel stay within
+50–150% of ordinary values; discovery/research stay within 75–125%. Regional
+research/discovery contributions are weighted by regional land, with a minimum
+one percentage point for a nonzero contribution. Trait-specific spread modifies
+only that transmission's environmental contribution, not all local spread.
+Zero baseline travel stays zero; research retains its positive minimum.
+Temporary travel blocks never clear permanent closures and do not block spores
+or bird migration. No event directly changes DNA, ownership, or population cells.
+
+Scheduling uses its own persisted RNG. Ordinary mechanics and outcome evaluation
+finish before events advance, so new effects begin next cycle. Menus pause timers.
+The 8–14 starts, 15–25 minutes, and 12–20 purchases targets need human playtesting;
+the earlier diagnostic results above predate mechanical events.
+
+The focused two-seed comparison per disease completed all twelve on/off runs
+with victories. Event-enabled runs took 332–465 cycles with 10–14 event starts
+and 13–15 purchases. The event-disabled counterparts took 335–423 cycles.
+See VERIFICATION.md for per-disease results and the limits of this policy test.

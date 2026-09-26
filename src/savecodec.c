@@ -23,9 +23,9 @@ uint32_t SaveSize(const region_t r[REGION_COUNT]) {
  return size;
 }
 static void Header(stream_t *st, const region_t r[REGION_COUNT]) {
- uint8_t magic[4]={'C','N','T','G'}, version=SAVE_VERSION; uint32_t length=SaveSize(r);
+ uint8_t magic[4]={'C','N','T','G'}, version=2; uint32_t length=SaveSize(r);
  Bytes(st,magic,4); U8(st,&version); U32(st,&length);
- if(memcmp(magic,"CNTG",4) || version!=SAVE_VERSION || length!=SaveSize(r)) st->ok=false;
+ if(memcmp(magic,"CNTG",4) || version!=2 || length!=SaveSize(r)) st->ok=false;
 }
 static void State(stream_t *st, disease_t *d, session_t *s, uint8_t ports[3]) {
  U32(st,&d->owned[0]); U32(st,&d->owned[1]); U32(st,&d->cycles); U32(st,&d->discovery_cycle); U32(st,&d->discovery_pressure);
@@ -98,4 +98,82 @@ bool ValidateSave(save_io_t *io, const region_t r[REGION_COUNT]) {
 bool DecodeSave(save_io_t *io, disease_t *d, session_t *s, region_t r[REGION_COUNT], port_t p[PORT_COUNT]) {
  if(!ValidateSave(io,r)) return false;
  return ReadSave(io,d,s,r,p,true);
+}
+
+/* Version 3 keeps all v2 fields byte-for-byte, then adds the engine event
+ * scheduler before map geometry. Event fields are written one scalar at a
+ * time so their representation stays explicitly little-endian. */
+uint32_t SaveSizeV3(const region_t r[REGION_COUNT]) { return SaveSize(r)+50U; }
+static void HeaderV3(stream_t *st, const region_t r[REGION_COUNT]) {
+ uint8_t magic[4]={'C','N','T','G'},version=SAVE_VERSION; uint32_t length=SaveSizeV3(r);
+ Bytes(st,magic,4); U8(st,&version); U32(st,&length);
+ if(memcmp(magic,"CNTG",4) || version!=SAVE_VERSION || length!=SaveSizeV3(r)) st->ok=false;
+}
+static void EventState(stream_t *st, event_state_t *events, const disease_t *d) {
+ uint8_t i;
+ U32(st,&events->rng); U32(st,&events->last_cycle); U32(st,&events->next_start);
+ Bytes(st,events->occurred,sizeof(events->occurred)); U8(st,&events->reshuffles_seen);
+ for(i=0;i<WORLD_EVENT_SLOTS;i++) {
+  U8(st,&events->active[i].id); U8(st,&events->active[i].region); U8(st,&events->active[i].remaining);
+ }
+ if(st->ok && !EventsValidate(events,d)) st->ok=false;
+}
+bool EncodeSaveV3(save_io_t *io, const disease_t *d, const session_t *s,
+                  const region_t r[REGION_COUNT], const port_t p[PORT_COUNT],
+                  const event_state_t *events) {
+ stream_t st={io,UINT32_C(2166136261),true,true};
+ disease_t copy=*d; session_t session=*s; event_state_t event_copy=*events;
+ uint8_t bits[3]={0,0,0},i;
+ for(i=0;i<PORT_COUNT;i++) if(p[i].closed) bits[i/8]|=(uint8_t)(1U<<(i%8));
+ HeaderV3(&st,r); State(&st,&copy,&session,bits); EventState(&st,&event_copy,&copy);
+ for(i=0;i<REGION_COUNT;i++) { Geometry(&st,&r[i]); Bytes(&st,r[i].data,(size_t)r[i].width*r[i].height); }
+ Checksum(&st); return st.ok;
+}
+static bool ReadSaveV3(save_io_t *io, disease_t *out, session_t *session,
+                       region_t r[REGION_COUNT], port_t p[PORT_COUNT],
+                       event_state_t *event_out, bool apply) {
+ stream_t st={io,UINT32_C(2166136261),true,false};
+ disease_t d={0}; session_t s={0}; event_state_t events={0};
+ uint8_t bits[3]={0},buffer[32],i,seen=0; counts_t total={0,0,0};
+ if(io->size!=SaveSizeV3(r) || !io->seek(io->context,0)) return false;
+ HeaderV3(&st,r); State(&st,&d,&s,bits); EventState(&st,&events,&d);
+ for(i=0;i<REGION_COUNT && st.ok;i++) {
+  size_t offset=0,n=(size_t)r[i].width*r[i].height;
+  Geometry(&st,&r[i]);
+  while(offset<n && st.ok) {
+   size_t j,count=n-offset; if(count>sizeof(buffer)) count=sizeof(buffer);
+   Bytes(&st,buffer,count);
+   if(!st.ok) break;
+   for(j=0;j<count;j++) {
+    uint8_t v=buffer[j]; bool land=r[i].data[offset+j]!=CELL_EMPTY;
+    if((!land && v!=CELL_EMPTY) || (land && v!=CELL_HEALTHY && v!=CELL_INFECTED && v!=CELL_DEAD)) { st.ok=false; break; }
+    if(v==CELL_HEALTHY) total.healthy++;
+    if(v==CELL_INFECTED) { total.active++; seen|=(uint8_t)(1U<<i); }
+    if(v==CELL_DEAD) { total.dead++; seen|=(uint8_t)(1U<<i); }
+   }
+   if(apply && st.ok) memcpy(r[i].data+offset,buffer,count);
+   offset+=count;
+  }
+ }
+ Checksum(&st);
+ if((seen!=d.seen_regions) || (!d.started && seen) || (d.started && !seen)) st.ok=false;
+ if(d.result!=PLAYING) {
+  disease_t check=d; check.result=PLAYING; EvaluateOutcome(&check,total);
+  if(check.result!=d.result || s.next_region!=0) st.ok=false;
+ }
+ if(!st.ok) return false;
+ if(apply) {
+  *out=d; *session=s; *event_out=events;
+  for(i=0;i<PORT_COUNT;i++) p[i].closed=(bits[i/8]&(1U<<(i%8)))!=0;
+  for(i=0;i<REGION_COUNT;i++) RecountRegion(&r[i]);
+ }
+ return true;
+}
+bool ValidateSaveV3(save_io_t *io, const region_t r[REGION_COUNT]) {
+ return ReadSaveV3(io,NULL,NULL,(region_t *)r,NULL,NULL,false);
+}
+bool DecodeSaveV3(save_io_t *io, disease_t *d, session_t *s,
+                  region_t r[REGION_COUNT], port_t p[PORT_COUNT], event_state_t *events) {
+ if(!ValidateSaveV3(io,r)) return false;
+ return ReadSaveV3(io,d,s,r,p,events,true);
 }

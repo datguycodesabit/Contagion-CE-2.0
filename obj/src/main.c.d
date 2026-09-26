@@ -3,7 +3,8 @@ obj/src/main.c.bc: src/main.c src/contagion.h src/savecodec.h src/world.h \
   /tmp/contagion-cedev-mount/CEdev/include/stddef.h \
   /tmp/contagion-cedev-mount/CEdev/include/cdefs.h \
   /tmp/contagion-cedev-mount/CEdev/include/stdint.h src/balance.h \
-  src/ticker.h /tmp/contagion-cedev-mount/CEdev/include/graphx.h \
+  src/events.h src/ticker.h \
+  /tmp/contagion-cedev-mount/CEdev/include/graphx.h \
   /tmp/contagion-cedev-mount/CEdev/include/stdlib.h \
   /tmp/contagion-cedev-mount/CEdev/include/keypadc.h \
   src/sprites/sprites.h \

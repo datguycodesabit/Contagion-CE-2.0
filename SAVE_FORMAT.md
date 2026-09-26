@@ -1,22 +1,24 @@
-# Save format 2
+# Save format 3
 
-New runs use **CNTGN2**. The old **CNTGNDAT** AppVar is never read, renamed,
-overwritten, or deleted. Version-1 runs cannot be continued under the new rules.
-`CNTGN2T` is a temporary write and `CNTGN2B` is the last validated backup.
+New runs use **CNTGN3**. **CNTGN3T** is the temporary write and **CNTGN3B** is
+the last validated backup. The older **CNTGNDAT** AppVar is never read or
+changed. Version-2 saves (**CNTGN2** and **CNTGN2B**) remain readable only for
+the explicit legacy-import offer; new saves are always version 3.
 
-All integers are explicitly little-endian; no native structs, pointers, `int`,
-`long`, padding, or compiler-specific 24-bit values are stored. Trait IDs are
-stable in `disease.h`; 39 ownership bits occupy two 32-bit words. Pixel buffers
-remain the authoritative state. Derived counts and effects are rebuilt on load.
+All integers are explicitly little-endian. The file contains no native structs,
+pointers, padding, or compiler-specific integer widths. Trait IDs remain stable
+in `disease.h`; two 32-bit words store ownership of the 39 traits. Map pixels
+remain authoritative, while counts, effects, and event modifiers are rebuilt
+from saved state on load.
 
 ## Byte layout
 
 | Offset | Size | Field |
 |---:|---:|---|
 | 0 | 4 | ASCII `CNTG` |
-| 4 | 1 | Version = 2 |
+| 4 | 1 | Version = 3 |
 | 5 | 4 | Total encoded length including checksum |
-| 9 | 8 | Two ownership words (only low 7 bits of second word valid) |
+| 9 | 8 | Two ownership words; only the low 7 bits of the second are valid |
 | 17 | 4 | Completed cycles |
 | 21 | 4 | Discovery cycle (0 when undetected) |
 | 25 | 4 | Accumulated discovery pressure |
@@ -25,8 +27,8 @@ remain the authoritative state. Derived counts and effects are rebuilt on load.
 | 33 | 2 | Cure remainder, 0–199 units of 1/200 basis point |
 | 35 | 2 | Nine affected milestone flags |
 | 37 | 1 | Six death milestone flags |
-| 38 | 1 | Seven rewarded region flags |
-| 39 | 1 | Seven ever-infected region flags, including pending rewards |
+| 38 | 1 | Seven rewarded-region flags |
+| 39 | 1 | Seven ever-infected-region flags, including pending rewards |
 | 40 | 1 | Four cure-news milestone flags |
 | 41 | 1 | Disease type: Bacteria 0, Virus 1, Fungus 2 |
 | 42 | 1 | Started flag |
@@ -40,49 +42,60 @@ remain the authoritative state. Derived counts and effects are rebuilt on load.
 | 72 | 2 | Cursor x/y, within 160×120 |
 | 74 | 1 | Map view, 0–1 |
 | 75 | 3 | 22 closed-port flags; upper two bits must be zero |
-| 78 | variable | Seven records: width, height, x, y (one byte each), then width×height pixels |
+| 78 | 4 | Event scheduler RNG state |
+| 82 | 4 | Last cycle processed by the event scheduler |
+| 86 | 4 | Earliest cycle for another event |
+| 90 | 25 | 200 event-occurrence flags, bit 0 first in each byte |
+| 115 | 1 | Reshuffle traits observed, bits 0–1 |
+| 116 | 12 | Four active-event records: ID, region, remaining cycles |
+| 128 | variable | Seven map records: width, height, x, y, then width×height pixels |
 | final 4 | 4 | FNV-1a checksum of all preceding bytes |
 
-Region order is Africa, Asia, Europe, Greenland, North America, South America,
-Oceania. The current total is **10,923 bytes**, versus 10,858 for stabilized v1.
-FNV-1a detects accidental corruption; it is not an authentication mechanism.
+The region order is Africa, Asia, Europe, Greenland, North America, South
+America, Oceania. Current map geometry makes a v3 save **10,973 bytes**; v2 was
+10,923 bytes. FNV-1a detects accidental corruption and is not authentication.
 
 ## Validation and replacement
 
-A validation pass checks exact length, magic/version, checksum, geometry,
-land/ocean topology, cell palette values, enum ranges, field bounds, prerequisite
-ownership, canonical names, milestone masks, DNA bounded by earned income,
-region reward consistency, discovery state, spore type/limit, and completed
-outcome consistency. Only healthy/infected/dead values are valid at existing
-land positions; only empty is valid at existing ocean positions. The full file
-is checked before any live pixel is changed. A second streaming pass applies it
-using a 32-byte pixel buffer and rebuilds counts. No duplicate map is allocated.
+The reader checks the exact file length, magic and version, checksum, map
+geometry, land/ocean topology, pixel values, disease state, UI bounds, port flags,
+and event scheduler state before applying anything. Event validation enforces a
+nonzero RNG state, a scheduler cycle at or immediately before the disease cycle,
+the 24-cycle maximum start window, reshuffle ownership, valid occurrence-chain
+flags, and canonical active slots. Only healthy, infected, and dead values are
+valid at existing land positions; only empty is valid at ocean positions. The
+map is read through a 32-byte buffer and region counts are rebuilt after loading.
 
-Saving writes and validates `CNTGN2T`, copies a validated primary to `CNTGN2B`
-with a 32-byte buffer, validates that backup, and only then copies the temporary
-file to `CNTGN2`. The completed primary is validated before deleting the temporary
-file. Handles are closed before validating each copy. If primary replacement fails,
-loading falls back to the validated backup. If backup copying fails, the old primary
-is retained. No rename is used: FileIOC v15 rename invokes TI-OS archiving, which
-crashed during the GraphX save flow in both tested emulator cores.
-On launch, an invalid/missing primary falls back to the validated backup; otherwise
-all gameplay state resets. Temporary incomplete files are never loaded.
+Saving streams to `CNTGN3T` and validates it. A validated primary is copied to
+`CNTGN3B` with a 32-byte buffer before the temporary save is copied to
+`CNTGN3`; each copy is validated after its handle closes. The temporary file is
+removed after primary validation. If replacement fails, loading falls back to
+the validated backup. The flow does not use FileIOC rename, which invokes
+TI-OS archiving and previously failed during the GraphX save flow.
+
+On launch, an invalid or missing primary falls back to the v3 backup; if neither
+validates, gameplay state resets. Version-2 files are not loaded automatically.
+The import offer checks `CNTGN2` first and then `CNTGN2B`; accepting it decodes
+the v2 state, initializes the event scheduler with a deterministic nonzero seed,
+and grants 24 cycles before the first event can start. The next save is v3.
+Import never modifies or deletes the original v2 AppVar.
 
 AppVars are written in RAM, matching the previous workflow. Budget room for the
-primary, backup, and temporary copy during replacement (up to 32,769 data bytes,
-plus OS metadata). A user may archive the primary with the calculator OS; archived
-load/copy behavior remains on the physical-hardware checklist. No automatic
+primary, backup, and temporary copy during replacement (up to 32,919 data bytes,
+plus OS metadata). A user may archive the primary with the calculator OS;
+archived load/copy behavior remains a physical-hardware check. No automatic
 archive operation or garbage-collection callback runs during play.
 
-Save on returning from gameplay and on quitting. Partial-cycle position persists;
-loading does not award rewards, mutate symptoms, or advance research. New Game
-resets pixels, disease/economy/response markers, port closures, scheduler, UI
-state, and effects. The previous generation may remain as a recovery backup;
-selecting New Game does not delete unrelated or version-1 AppVars.
+Save on returning from gameplay and on quitting. Partial-cycle position
+persists; loading does not award rewards, mutate symptoms, or advance research.
+New Game resets pixels, disease and economy state, port closures, event
+scheduler, UI state, and derived effects. A previous v3 generation may remain
+as the recovery backup. Selecting New Game does not delete older AppVars.
 
-September 21 native FileIOC diagnostics passed low-RAM failure, corrupt/missing
-primary backup recovery, both-invalid reset, exact partial-cycle roundtrip, and
-load/replacement of a production save injected as an archived AppVar. A truncated
-primary is an interruption fixture; actual power cuts and manual archive/GC
-remain physical checks. The tested ROM reports ARCHIVE FULL when asked to archive
-through TI-OS, so this does not establish archive-allocation behavior.
+The focused host save checks cover active chain records saved immediately
+before either branch, continuation after decode, repaired-checksum corruption
+cases, partial-cycle position, and v2 decode with the import grace period. The
+native FileIOC fixture checks v3 roundtrip and backup recovery, v2 import without
+changing the legacy bytes, both chain branches, event expiry and cancellation,
+and closed-port persistence. Archive allocation and power-loss behavior still
+require calculator or emulator integration checks.

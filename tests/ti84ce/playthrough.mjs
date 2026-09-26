@@ -107,7 +107,7 @@ for(let iteration=0;iteration<10000;iteration++){
   s=read();
   if(diseaseType===2&&s.spores<3&&s.cycles>50&&s.dna>=[10,16,24][s.spores]+6){
    const target=s.regions.findIndex(r=>r.healthy&&!r.active);
-   if(target>=0){key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);
+   if(target>=0){key(6,0);for(let i=0;i<5;i++)key(7,0);key(6,0);
     // session.selected remains Africa throughout this policy.
     for(let i=0;i<target;i++)key(7,0);
     const before=read();key(6,0);assert.equal(read().spores,before.spores+1);

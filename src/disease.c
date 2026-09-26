@@ -46,6 +46,18 @@ bool Devolve(disease_t *d, uint8_t id) {
 }
 void ResetDisease(disease_t *d) { memset(d,0,sizeof(*d)); d->dna=START_DNA; memcpy(d->name,"Pathogen",9); }
 static uint8_t Level(const disease_t *d, uint8_t first) { return Owns(d,first)+Owns(d,first+1); }
+uint16_t TransmissionContribution(const disease_t *d,uint8_t region,uint8_t trait) {
+ const environment_t *r;if(region>=REGION_COUNT)return 0;r=&environments[region];
+ switch(trait) {
+ case AIR1:return AIR_WATER_SPREAD_BONUS*r->dry*Level(d,AIR1);
+ case WATER1:return AIR_WATER_SPREAD_BONUS*r->humid*Level(d,WATER1);
+ case LIVESTOCK1:return ANIMAL_VECTOR_SPREAD_BONUS*r->rural*Level(d,LIVESTOCK1);
+ case RODENTS1:return ANIMAL_VECTOR_SPREAD_BONUS*r->urban*Level(d,RODENTS1);
+ case INSECTS1:return ANIMAL_VECTOR_SPREAD_BONUS*r->heat*Level(d,INSECTS1);
+ case BLOOD1:return Level(d,BLOOD1)*(BLOOD_SPREAD_BONUS+BLOOD_HEALTHCARE_BONUS*(4-r->healthcare));
+ default:return 0;
+ }
+}
 void CalculateEffects(const disease_t *d, effects_t *e) {
  uint8_t i; uint16_t inf=BASE_INFECTIVITY,sev=0,leth=0;
  memset(e,0,sizeof(*e));
@@ -62,9 +74,7 @@ void CalculateEffects(const disease_t *d, effects_t *e) {
   p-= (int32_t)r->heat*HEAT_PENALTY*(100-ADAPTATION_REDUCTION*Level(d,HEAT1))/100;
   p-= (int32_t)r->cold*COLD_PENALTY*(100-ADAPTATION_REDUCTION*Level(d,COLD1))/100;
   p-= (int32_t)r->healthcare*MEDICAL_PENALTY*(100-ADAPTATION_REDUCTION*Level(d,MEDICAL1))/100;
-  p+=AIR_WATER_SPREAD_BONUS*(int32_t)(r->dry*Level(d,AIR1)+r->humid*Level(d,WATER1));
-  p+=ANIMAL_VECTOR_SPREAD_BONUS*(int32_t)(r->rural*Level(d,LIVESTOCK1)+r->urban*Level(d,RODENTS1)+r->heat*Level(d,INSECTS1));
-  p+=Level(d,BLOOD1)*(BLOOD_SPREAD_BONUS+BLOOD_HEALTHCARE_BONUS*(4-r->healthcare));
+  p+=(int32_t)TransmissionContribution(d,i,AIR1)+TransmissionContribution(d,i,WATER1)+TransmissionContribution(d,i,LIVESTOCK1)+TransmissionContribution(d,i,RODENTS1)+TransmissionContribution(d,i,INSECTS1)+TransmissionContribution(d,i,BLOOD1);
   if(Owns(d,AEROSOL)) p+=AEROSOL_SPREAD_BONUS;
   if(Owns(d,RESERVOIRS)) p+=RESERVOIR_SPREAD_BONUS+RESERVOIR_SPARSE_BONUS*(8-r->urban-r->rural);
   if(Owns(d,VECTOR)) p+=r->cold*VECTOR_COLD_BONUS;
@@ -93,6 +103,9 @@ void EvaluateOutcome(disease_t *d, counts_t total) {
  else if(d->cure>=PROB_SCALE) d->result=LOST_CURE;
 }
 uint8_t AdvanceDisease(disease_t *d, const counts_t regions[REGION_COUNT], const effects_t *e) {
+ return AdvanceDiseaseEvents(d,regions,e,100,100);
+}
+uint8_t AdvanceDiseaseEvents(disease_t *d,const counts_t regions[REGION_COUNT],const effects_t *e,uint16_t discovery_percent,uint16_t research_percent) {
  counts_t total={0,0,0}; uint8_t i,events=0,affected_regions=0; uint32_t pressure=0,increment;
  uint16_t land; uint8_t prevalence,deaths;
  if(!d->started || d->result!=PLAYING) return 0;
@@ -105,6 +118,7 @@ uint8_t AdvanceDisease(disease_t *d, const counts_t regions[REGION_COUNT], const
  AwardDNA(d,total);
  if(d->response==UNDETECTED) {
   pressure=pressure/DISCOVERY_HEALTHCARE_DIVISOR+prevalence+e->severity*DISCOVERY_SEVERITY_WEIGHT+deaths*DISCOVERY_DEATH_WEIGHT;
+  pressure=pressure*discovery_percent/100;
   d->discovery_pressure+=pressure;
   if(d->discovery_pressure>=DISCOVERY_LIMIT || prevalence>=DISCOVERY_ACTIVE_THRESHOLD || deaths>=DISCOVERY_DEATH_THRESHOLD) {
    d->discovery_pressure=DISCOVERY_LIMIT; d->response=DISCOVERED; d->discovery_cycle=d->cycles; events|=EVENT_DISCOVERY;
@@ -113,6 +127,7 @@ uint8_t AdvanceDisease(disease_t *d, const counts_t regions[REGION_COUNT], const
  if(d->response==DISCOVERED && d->cycles-d->discovery_cycle>=RESEARCH_DELAY) { d->response=RESEARCH; events|=EVENT_RESEARCH; }
  if(d->response>=RESEARCH && total.active) {
   increment=(uint32_t)(RESEARCH_BASE+prevalence/RESEARCH_ACTIVE_DIVISOR+deaths+e->severity*RESEARCH_SEVERITY_WEIGHT+affected_regions*RESEARCH_REGION_WEIGHT)*(100-e->resistance);
+  increment=increment*research_percent/100;if(!increment)increment=1;
   /* 1/200 of one basis point; positive even at maximum hardening. */
   increment+=d->cure_fraction;
   d->cure=ClampProbability((int32_t)d->cure+(int32_t)(increment/RESEARCH_FRACTION_SCALE));

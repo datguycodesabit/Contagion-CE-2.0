@@ -41,7 +41,7 @@ const diseaseType=Number(process.env.DISEASE_TYPE || 0);
 assert(Number.isInteger(diseaseType) && diseaseType>=0 && diseaseType<=2);
 for(let i=0;i<diseaseType;i++) key(7,0);
 key(6,0);for(let i=0;i<4;i++)key(7,0);key(6,0);key(6,0);run(180);snap('start');
-function save(){key(6,6);for(let i=0;i<(diseaseType===2?5:4);i++)key(7,0);key(6,0);}
+function save(){key(6,6);for(let i=0;i<(diseaseType===2?6:5);i++)key(7,0);key(6,0);}
 save();run(600);snap('only-save');
 const map=fs.readFileSync(process.env.CONTAGION_MAP || 'bin/CNTAGION.map','utf8');
 const address=n=>parseInt(map.match(new RegExp('0x([0-9a-f]+) +_'+n+'\\s'))[1],16);

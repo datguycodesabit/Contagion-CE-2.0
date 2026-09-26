@@ -78,16 +78,25 @@ bool ValidPort(const region_t r[REGION_COUNT], const port_t *p) {
  return x>=0 && y>=0 && x<r[p->region].width && y<r[p->region].height && r[p->region].data[(size_t)y*r[p->region].width+x]!=CELL_EMPTY;
 }
 bool Transport(region_t r[REGION_COUNT], port_t p[PORT_COUNT], disease_t *d, const effects_t *e, random_fn random, uint8_t *source, uint8_t *destination) {
+ return TransportEvents(r,p,d,e,random,source,destination,NULL);
+}
+bool TransportEvents(region_t r[REGION_COUNT],port_t p[PORT_COUNT],disease_t *d,const effects_t *e,random_fn random,uint8_t *source,uint8_t *destination,const event_modifiers_t *mods) {
  uint8_t i,count=0,s=NO_TRAIT,t=NO_TRAIT,mode=random(2)?PORT_AIR:PORT_SEA;
  uint16_t probability;
+ uint8_t blocked=mods?(mode==PORT_AIR?mods->blocked_air:mods->blocked_sea):0;
  *source=*destination=0;
- for(i=0;i<PORT_COUNT;i++) if(!p[i].closed && (p[i].modes&mode) && ValidPort(r,&p[i]) && r[p[i].region].counts.active) { count++; if(random(count)==0) s=i; }
+ for(i=0;i<PORT_COUNT;i++) if(!p[i].closed && ValidPort(r,&p[i]) && !(blocked&(1U<<p[i].region)) && (p[i].modes&mode) && r[p[i].region].counts.active) { count++; if(random(count)==0) s=i; }
  if(s==NO_TRAIT) return false;
  count=0;
- for(i=0;i<PORT_COUNT;i++) if(i!=s && p[i].region!=p[s].region && !p[i].closed && (p[i].modes&mode) && ValidPort(r,&p[i])) { count++; if(random(count)==0) t=i; }
+ for(i=0;i<PORT_COUNT;i++) if(i!=s && p[i].region!=p[s].region && !p[i].closed && ValidPort(r,&p[i]) && !(blocked&(1U<<p[i].region)) && (p[i].modes&mode)) { count++; if(random(count)==0) t=i; }
  if(t==NO_TRAIT) return false;
  *source=s; *destination=t;
  probability=mode==PORT_AIR?e->air:e->sea;
+ if(mods) {
+  int16_t percent=(mode==PORT_AIR?mods->air[p[s].region]+mods->air[p[t].region]:mods->sea[p[s].region]+mods->sea[p[t].region])-100;
+  if(percent<50)percent=50;if(percent>150)percent=150;
+  probability=ClampProbability((uint32_t)probability*percent/100);
+ }
  probability=(uint32_t)probability*r[p[s].region].counts.active/LandCount(r[p[s].region].counts);
  if(!Roll(random,probability)) return false;
  /* An arriving carrier seeds healthy land in the destination region. This also
@@ -95,10 +104,13 @@ bool Transport(region_t r[REGION_COUNT], port_t p[PORT_COUNT], disease_t *d, con
  return SeedRegion(r,d,p[t].region,random);
 }
 bool Migrate(region_t r[REGION_COUNT], disease_t *d, const effects_t *e, random_fn random) {
+ return MigrateEvents(r,d,e,random,NULL);
+}
+bool MigrateEvents(region_t r[REGION_COUNT],disease_t *d,const effects_t *e,random_fn random,const event_modifiers_t *mods) {
  uint8_t i,s=NO_TRAIT,t=NO_TRAIT,count=0;
  if(!d->started || d->result!=PLAYING || (d->cycles+1)%MIGRATION_INTERVAL || !e->migration) return false;
  for(i=0;i<REGION_COUNT;i++) if(r[i].counts.active) { count++; if(random(count)==0) s=i; }
- if(s==NO_TRAIT || !Roll(random,(uint32_t)e->migration*r[s].counts.active/LandCount(r[s].counts))) return false;
+ if(s==NO_TRAIT || !Roll(random,ClampProbability((uint32_t)e->migration*(mods?mods->migration[s]:100)/100*r[s].counts.active/LandCount(r[s].counts)))) return false;
  count=0;
  for(i=0;i<REGION_COUNT;i++) if((neighbors[s]&(1U<<i)) && r[i].counts.healthy) { count++; if(random(count)==0) t=i; }
  return t!=NO_TRAIT && SeedRegion(r,d,t,random);

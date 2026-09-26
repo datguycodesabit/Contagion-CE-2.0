@@ -138,3 +138,24 @@ The save copy remains bounded to 32 bytes; no new game allocations or production
 API/schema changes were needed. Separate test programs are excluded from the
 transfer ZIP. See VERIFICATION.md for exact evidence and the OS 5.3/physical 5.7
 boundary; archive allocation/GC and actual power-loss behavior are not verified.
+
+## Mechanical event extension (September 25)
+
+`events.c` owns bounded scheduling, validation, branch conditions, and modifiers;
+`event_ui.c` owns the paused inspection UI. `data/events.json` is authoritative;
+`tools/generate_events.py` emits checked-in C and `docs/EVENTS.md`. Native builds
+do not invoke Python. Event calculation uses cached counts, never scans pixels,
+and does not consume the simulation RNG. Candidate selection takes two bounded
+catalog/region passes only when a scheduled start succeeds.
+
+Four active records, a 25-byte occurrence mask, scheduling counters, RNG, and
+Reshuffle markers serialize to 50 additional bytes. No heap allocation or second
+map is introduced. The v3 codec validates before applying and preserves the
+32-byte streaming buffer. Legacy v2 decoding remains available only for explicit
+import; newer saves use separate CNTGN3 AppVars. The original audit's older save
+layout discussion above is historical; see SAVE_FORMAT.md for current details.
+
+Measured final linker BSS is 587 bytes: event state 50 bytes, cached modifiers
+48 bytes, and two extra alignment bytes relative to the 487-byte ticker build.
+Initialized data remains 10,843 bytes. Read-only data is 34,268 bytes and text
+55,133 bytes. Stack high-water and native performance were not measured.

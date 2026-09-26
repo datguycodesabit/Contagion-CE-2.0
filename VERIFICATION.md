@@ -393,3 +393,79 @@ Final build, full-run, smoke and native-diagnostic logs are retained locally und
 `tests/cemu/artifacts/release/` (ignored by Git, no firmware). The final rebuilt
 native diagnostic also passed the complete save/outcome/39-node UI sequence with
 its freshly exported archived-save fixture.
+
+## September 26: 200 mechanical events
+
+Delivered 100 standalone entries and 20 branching five-entry storylines, fixed
+four-slot event scheduling, paused World Events details, six-row Actions
+scrolling, and v3 event persistence with explicit v2 import. Catalog content,
+generated C, and the readable reference are checked together. No firmware was
+downloaded, and no commits or pushes were made.
+
+Commands run from the repository (all final checks passed):
+
+```sh
+python3 tools/generate_events.py --check
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_rules
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_ticker
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_events
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_event_saves
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh event_balance
+PATH=/tmp/contagion-cedev-mount/CEdev/bin:$PATH CEDEV=/tmp/contagion-cedev-mount/CEdev make OUTPUT_MAP=YES
+PATH=/tmp/contagion-cedev-mount/CEdev/bin:$PATH CEDEV=/tmp/contagion-cedev-mount/CEdev sh tests/event-native/build.sh
+TI84CE_ROOT=/tmp/ti84ce-eb90c33cfaebd19fbd0fea9c06a359e3efaf54c2 AUTOTESTER_ROM=/tmp/contagion-ti84ce.rom CE_LIBRARIES=bin/CONTAGION-CE-2.0 CONTAGION_PROGRAM=tests/cemu/artifacts/event-bin/CNTAGION.8xp CONTAGION_MAP=tests/cemu/artifacts/event-bin/CNTAGION.map TI84CE_OUTPUT=/tmp/contagion-events node tests/ti84ce/events.mjs
+CE_LIBRARIES=bin/CONTAGION-CE-2.0 python3 tests/package/build.py
+```
+
+Host tests use AddressSanitizer/UndefinedBehaviorSanitizer. Event checks cover
+all 200 entries with and without effect traits, exact regional contributions,
+modifier bounds/stacking, private deterministic RNG, expiry, cancellation,
+branches, Reshuffle delays, permanent/temporary closures, reset, and ticker text.
+Save checks cover active stages one cycle before branching, both continuations,
+recomputed-checksum semantic corruption, partial-cycle position, and v2 grace.
+The existing production rules and ticker suites also passed.
+
+The native fixture passed actual FileIOC backup recovery, v2 import with the
+old file hash unchanged, v3 reloads, both severity branches, timed expiry, chain
+cancellation, and permanent closures. Read-only emulator assertions passed
+World Events/detail navigation, paused disease/event state, Actions scrolling,
+and return paths. Inspected 320x240 captures showed readable text without
+overlap. Initial observer attempts used too little boot/save time and an
+ambiguous RAM locator; the final harness identifies RAM by the real map counts
+and waits for the diagnostic completion marker. These are targeted fixtures,
+not natural calculator playthroughs. Reference-core coverage is OS 5.3; physical
+OS 5.7, real hardware performance, and power-loss behavior remain unverified.
+
+Small actual-map policy comparison (two seeds per disease, 600-cycle limit):
+
+| Disease | Events off: winning cycles | Events on: winning cycles | Event starts |
+|---|---|---|---|
+| Bacteria | 348, 335 | 357, 346 | 11, 11 |
+| Virus | 352, 362 | 332, 335 | 10, 10 |
+| Fungus | 423, 402 | 465, 399 | 14, 14 |
+
+All twelve runs won; event-enabled runs used 13–15 purchases. This catches gross
+pacing failures for one automated policy, not human balance or run duration.
+No balance constants were retuned. Full disease/keypad playthroughs were not
+repeated for this feature.
+
+Final native artifact: 47,960 bytes (previous ticker build 29,685; +18,275).
+ZIP: 62,120 bytes; builder verified seven payload files plus the checksum
+manifest, and the directly transferable folder matches. Linker totals: text
+55,133 bytes; read-only data 34,268; initialized data 10,843 (unchanged); BSS
+587 (previous 487). Native event state is 50 bytes and modifier cache 48 bytes;
+the remaining BSS difference is alignment. Save size is 10,973 bytes (+50).
+Save streaming buffers remain 32 bytes, UI text buffers 80 bytes, with no new
+heap allocation or duplicate map. Stack high-water and native speed were not
+measured. Build warnings remain in legacy optix.c and SDK executable-stack notes.
+
+SHA-256:
+
+```text
+f620a8aee5a57ca00db2fc414b3738cc5b112e0f0a7a43585ce3fb72dbe42642  CNTAGION.8xp
+6bfb6873634861cb1b098c5d0d300fb8ad722394ae0a802f7f4898fc40bd411c  CONTAGION-CE-2.0.zip
+```
+
+Three GPT-6 Luna agents with max reasoning contributed catalog generation,
+save/native fixtures, and event tests. Root reviewed and completed remaining
+catalog/test fixes after delegated workers reached their usage limit.

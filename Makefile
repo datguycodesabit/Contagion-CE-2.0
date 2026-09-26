@@ -47,8 +47,11 @@ endif
 
 .PHONY: test-host
 test-host:
+	@python3 tools/generate_events.py --check
 	@sh tests/host/run.sh
 	@sh tests/host/run.sh test_ticker
+	@sh tests/host/run.sh test_events
+	@sh tests/host/run.sh test_event_saves
 
 .PHONY: test-cemu
 

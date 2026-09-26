@@ -24,8 +24,10 @@ installed native-program shell to launch CNTAGION.
 
 - Menus: Up/Down selects, Enter confirms, Clear goes back.
 - World: arrows select regions; Enter or Clear opens paused Actions.
-- Actions: Resume, Evolution, Region Details, Travel View, Spore Burst (Fungus),
-  Save & Main Menu, Save & Quit. Clear resumes gameplay.
+- Actions: Resume, Evolution, Region Details, Travel View, World Events, Spore Burst (Fungus),
+  Save & Main Menu, Save & Quit. Scroll with Up/Down; Clear resumes gameplay.
+- World Events: select an active event and press Enter to see its effects, region,
+  remaining cycles, and relevant upgrades. Clear returns; all timers stay paused.
 - Evolution: choose a category, then use arrows to follow connected nodes.
   Enter opens details; select Purchase, Devolve (symptoms), or Back with arrows
   and Enter. Devolution costs DNA and gives no refund.
@@ -45,14 +47,17 @@ automatically, and the ticker pauses with menus. No extra controls are needed.
 
 ## Saves
 
-CNTGN2 stores your run; CNTGN2B is the recovery copy. Both are created by the game.
+CNTGN3 stores your run; CNTGN3B is the recovery copy. Both are created by the game.
+If no valid version-3 save exists, you can import a validated CNTGN2/CNTGN2B run.
+The older files remain untouched. Events begin after a 24-cycle grace period.
+If RAM is low after importing, archive the older save copies through TI-OS.
 The game needs RAM for its working data and up to about 33 KB for three save
 copies during replacement. Saves remain in RAM unless you archive them yourself.
 Back up important calculator files before transferring or clearing memory.
 If saving fails, your previous validated save is retained. Free RAM by archiving
 unrelated files through TI-OS, then retry. Do not delete your only saved copy.
 A RAM reset can erase unarchived saves. Old CNTGNDAT saves remain untouched and
-cannot continue as version-2 runs.
+cannot continue under the current rules.
 
 ## First check on your calculator
 

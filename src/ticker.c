@@ -1,4 +1,5 @@
 #include "ticker.h"
+#include "events.h"
 #include <stdio.h>
 #include <string.h>
 ticker_t ticker;
@@ -7,6 +8,8 @@ static bool Same(news_event_t a,news_event_t b) {
  return a.kind==b.kind && a.subject==b.subject && a.value==b.value;
 }
 uint8_t TickerPriority(news_event_t e) {
+ if(e.kind==NEWS_EVENT)return 2;
+ if(e.kind==NEWS_EVENT_END)return 1;
  if(e.kind<=NEWS_CLOSURE || e.kind==NEWS_DEATH) return 2;
  return e.kind<NEWS_REACHED?1:0;
 }
@@ -23,6 +26,7 @@ static void Remove(uint8_t index) {
 bool TickerPost(news_kind_t kind,uint8_t subject,uint16_t value) {
  news_event_t event={(uint8_t)kind,subject,value}; uint8_t i;
  if(kind>=NEWS_COUNT) return false;
+ if((kind==NEWS_EVENT||kind==NEWS_EVENT_END) && (subject>=WORLD_EVENT_COUNT || value>=REGION_COUNT))return false;
  if((kind==NEWS_REGION || kind==NEWS_SPORE || kind==NEWS_HEALTHY || (kind==NEWS_CLOSURE && value==1)) && subject>=REGION_COUNT) return false;
  if(kind==NEWS_MUTATION && subject>=TRAIT_COUNT) return false;
  for(i=0;i<ticker.count;i++) {
@@ -46,6 +50,8 @@ const char *TickerText(void) {
  if(ticker.prepared) return ticker.text;
  e=ticker.queue[0];
  switch(e.kind) {
+ case NEWS_EVENT:snprintf(ticker.text,sizeof(ticker.text),"WORLD: %s - %s",event_catalog[e.subject].name,regions[e.value]);break;
+ case NEWS_EVENT_END:snprintf(ticker.text,sizeof(ticker.text),"WORLD: Ended: %s",event_catalog[e.subject].name);break;
  case NEWS_DISCOVERY: snprintf(ticker.text,sizeof(ticker.text),"ALERT: Outbreak discovered."); break;
  case NEWS_RESEARCH: snprintf(ticker.text,sizeof(ticker.text),"ALERT: Cure research has begun."); break;
  case NEWS_RESPONSE: snprintf(ticker.text,sizeof(ticker.text),"ALERT: Public response is escalating."); break;
