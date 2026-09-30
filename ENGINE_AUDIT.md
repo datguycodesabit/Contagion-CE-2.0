@@ -16,8 +16,8 @@
   Mutation and migration occur before the cycle's consistent outcome snapshot.
   Render functions neither award DNA nor advance cure. Modal timer time is discarded.
 - `disease.c` and `traits.c` hold pure rules and compact ownership. Effects are
-  cached after ownership changes. There is no trait traversal per pixel and no
-  repeated 64-bit arithmetic. Every probability has a bounded direct meaning.
+  rebuilt after ownership changes and completed cycles, including event modifiers.
+  There is no trait traversal per pixel and no repeated 64-bit arithmetic. Every probability has a bounded direct meaning.
 - Source transport requires current active infection, valid compatible endpoints,
   and open routes. Three misplaced Oceania endpoints were moved to nearby land.
   Arriving carriers can seed a healthy cell elsewhere in the same region, making
@@ -35,13 +35,14 @@
 
 ## Risks and verification boundaries
 
-The native v15 build and sanitizer-backed host rules/save tests are verified;
-UI clipping, actual held-key behavior, FileIOC storage failure/recovery on device,
-long-run timing, and the duration/balance targets still require CEmu/hardware.
-A headless strategy diagnostic is evidence that each type can win under the
-production rules, not a player playthrough or calculator performance measurement.
-The scheduler remains render-coupled intentionally. Do not retune it from host
-CPU time. Resource measurements and exact commands are in `VERIFICATION.md`.
+The native v15 build and sanitizer-backed host suites are verified. Earlier
+OS 5.3 reference-core runs cover menus, held keys, FileIOC failure/recovery,
+and full disease playthroughs; those historical results are recorded separately
+from the current cleanup checks in `VERIFICATION.md`. Physical OS 5.7 behavior,
+archive garbage collection, real power loss, stack high-water, and gameplay
+performance remain unverified. Automated host policies are regression evidence,
+not human playthroughs or calculator timing measurements. The scheduler remains
+render-coupled intentionally; do not retune it from host CPU time.
 
 ## Historical stabilization audit (preserved)
 
@@ -159,3 +160,28 @@ Measured final linker BSS is 587 bytes: event state 50 bytes, cached modifiers
 48 bytes, and two extra alignment bytes relative to the 487-byte ticker build.
 Initialized data remains 10,843 bytes. Read-only data is 34,268 bytes and text
 55,133 bytes. Stack high-water and native performance were not measured.
+
+## September 29 cleanup
+
+The v2 and v3 codecs now share header checks and map streaming/validation.
+Version-specific state remains separate, including the 50-byte v3 event record;
+v2 import does not allocate an event record. Both decode paths still validate
+before applying. The pixel buffer remains 32 bytes; the shared map helper adds
+a call frame, so this is not a claim of reduced peak stack usage.
+
+Event eligibility skips percentage calculations for zero thresholds and returns
+as soon as one meaningful effect is found. Of the 120 possible event starts,
+79 have no active-percentage minimum and 117 have no death-percentage minimum.
+Each such threshold now avoids its population sum and integer division when
+eligibility reaches it. Catalog order, selection passes, and RNG calls stay the
+same. Twelve deterministic production-rule runs matched the baseline output.
+
+The native package shrank from 47,960 to 46,976 bytes; linker text fell from
+55,133 to 53,082 bytes. Read-only data (34,268), initialized data (10,843), and
+BSS (587) are unchanged. No runtime speed or stack high-water claim is made.
+
+Retained deliberately: two-pass loading and recoverable FileIOC copying,
+in-place map updates, cycle-boundary effects refresh, and legacy OPTIX sources.
+These have compatibility or historical value; removing them or adding another
+cache would broaden the change without demonstrated benefit. Balance, catalog
+wording/IDs, controls, RNG sequencing, and save schemas were not changed.

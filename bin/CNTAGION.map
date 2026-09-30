@@ -77,7 +77,7 @@ Linker script and memory map
                 0x00d1aac7                ___exithl
                 0x00d1aac8                _exit.sp
 
-.text           0x00d1ab03     0xd75d
+.text           0x00d1ab03     0xcf5a
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -217,1714 +217,1716 @@ Linker script and memory map
                 0x00d1d5d2      0x384 obj/CNTAGION.o
                 0x00d1d5d2                _EventsValidate
  .text._EventsEligible
-                0x00d1d956      0x2f6 obj/CNTAGION.o
+                0x00d1d956      0x329 obj/CNTAGION.o
                 0x00d1d956                _EventsEligible
  .text._Capable
-                0x00d1dc4c       0x3a obj/CNTAGION.o
+                0x00d1dc7f       0x3a obj/CNTAGION.o
  .text._EventsRefreshTraits
-                0x00d1dc86       0xb4 obj/CNTAGION.o
-                0x00d1dc86                _EventsRefreshTraits
+                0x00d1dcb9       0xb4 obj/CNTAGION.o
+                0x00d1dcb9                _EventsRefreshTraits
  .text._EventsAdvance
-                0x00d1dd3a      0x728 obj/CNTAGION.o
-                0x00d1dd3a                _EventsAdvance
+                0x00d1dd6d      0x728 obj/CNTAGION.o
+                0x00d1dd6d                _EventsAdvance
  .text._RandomEvent
-                0x00d1e462       0x61 obj/CNTAGION.o
+                0x00d1e495       0x61 obj/CNTAGION.o
  .text._EventAmount
-                0x00d1e4c3       0x46 obj/CNTAGION.o
-                0x00d1e4c3                _EventAmount
+                0x00d1e4f6       0x46 obj/CNTAGION.o
+                0x00d1e4f6                _EventAmount
  .text._EventsApply
-                0x00d1e509      0x874 obj/CNTAGION.o
-                0x00d1e509                _EventsApply
+                0x00d1e53c      0x874 obj/CNTAGION.o
+                0x00d1e53c                _EventsApply
  .text._EvolutionMenu
-                0x00d1ed7d     0x1702 obj/CNTAGION.o
-                0x00d1ed7d                _EvolutionMenu
+                0x00d1edb0     0x1702 obj/CNTAGION.o
+                0x00d1edb0                _EvolutionMenu
  .text._StateSymbol
-                0x00d2047f       0x65 obj/CNTAGION.o
+                0x00d204b2       0x65 obj/CNTAGION.o
  .text._RegionInfo
-                0x00d204e4      0x315 obj/CNTAGION.o
-                0x00d204e4                _RegionInfo
+                0x00d20517      0x315 obj/CNTAGION.o
+                0x00d20517                _RegionInfo
  .text._SporeMenu
-                0x00d207f9      0x25c obj/CNTAGION.o
-                0x00d207f9                _SporeMenu
+                0x00d2082c      0x25c obj/CNTAGION.o
+                0x00d2082c                _SporeMenu
  .text._ResultScreen
-                0x00d20a55      0x2b7 obj/CNTAGION.o
-                0x00d20a55                _ResultScreen
+                0x00d20a88      0x2b7 obj/CNTAGION.o
+                0x00d20a88                _ResultScreen
  .text._GameRandom
-                0x00d20d0c       0x31 obj/CNTAGION.o
-                0x00d20d0c                _GameRandom
+                0x00d20d3f       0x31 obj/CNTAGION.o
+                0x00d20d3f                _GameRandom
  .text._ReadKey
-                0x00d20d3d       0xda obj/CNTAGION.o
-                0x00d20d3d                _ReadKey
+                0x00d20d70       0xda obj/CNTAGION.o
+                0x00d20d70                _ReadKey
  .text._ScannedKeyDown
-                0x00d20e17       0x2e obj/CNTAGION.o
+                0x00d20e4a       0x2e obj/CNTAGION.o
  .text._ReleaseKeys
-                0x00d20e45       0x13 obj/CNTAGION.o
-                0x00d20e45                _ReleaseKeys
+                0x00d20e78       0x13 obj/CNTAGION.o
+                0x00d20e78                _ReleaseKeys
  .text._WaitKey
-                0x00d20e58        0xe obj/CNTAGION.o
-                0x00d20e58                _WaitKey
+                0x00d20e8b        0xe obj/CNTAGION.o
+                0x00d20e8b                _WaitKey
  .text._EndModal
-                0x00d20e66       0x11 obj/CNTAGION.o
-                0x00d20e66                _EndModal
+                0x00d20e99       0x11 obj/CNTAGION.o
+                0x00d20e99                _EndModal
  .text._MenuMove
-                0x00d20e77       0x52 obj/CNTAGION.o
-                0x00d20e77                _MenuMove
+                0x00d20eaa       0x52 obj/CNTAGION.o
+                0x00d20eaa                _MenuMove
  .text._MenuItem
-                0x00d20ec9       0x7e obj/CNTAGION.o
-                0x00d20ec9                _MenuItem
- .text._Text    0x00d20f47       0x3e obj/CNTAGION.o
-                0x00d20f47                _Text
+                0x00d20efc       0x7e obj/CNTAGION.o
+                0x00d20efc                _MenuItem
+ .text._Text    0x00d20f7a       0x3e obj/CNTAGION.o
+                0x00d20f7a                _Text
  .text._ChooseMenu
-                0x00d20f85      0x107 obj/CNTAGION.o
-                0x00d20f85                _ChooseMenu
+                0x00d20fb8      0x107 obj/CNTAGION.o
+                0x00d20fb8                _ChooseMenu
  .text._BeginScreen
-                0x00d2108c       0x6d obj/CNTAGION.o
-                0x00d2108c                _BeginScreen
+                0x00d210bf       0x6d obj/CNTAGION.o
+                0x00d210bf                _BeginScreen
  .text._WrapText
-                0x00d210f9      0x127 obj/CNTAGION.o
-                0x00d210f9                _WrapText
+                0x00d2112c      0x127 obj/CNTAGION.o
+                0x00d2112c                _WrapText
  .text._Message
-                0x00d21220       0x67 obj/CNTAGION.o
-                0x00d21220                _Message
+                0x00d21253       0x67 obj/CNTAGION.o
+                0x00d21253                _Message
  .text._RefreshEffects
-                0x00d21287       0x87 obj/CNTAGION.o
-                0x00d21287                _RefreshEffects
+                0x00d212ba       0x87 obj/CNTAGION.o
+                0x00d212ba                _RefreshEffects
  .text._ResetGameState
-                0x00d2130e       0xfe obj/CNTAGION.o
-                0x00d2130e                _ResetGameState
+                0x00d21341       0xfe obj/CNTAGION.o
+                0x00d21341                _ResetGameState
  .text._UpdateSelectedRegion
-                0x00d2140c      0x2a6 obj/CNTAGION.o
-                0x00d2140c                _UpdateSelectedRegion
+                0x00d2143f      0x2a6 obj/CNTAGION.o
+                0x00d2143f                _UpdateSelectedRegion
  .text._ActionsMenu
-                0x00d216b2      0x359 obj/CNTAGION.o
-                0x00d216b2                _ActionsMenu
+                0x00d216e5      0x359 obj/CNTAGION.o
+                0x00d216e5                _ActionsMenu
  .text._SaveExit
-                0x00d21a0b       0xa2 obj/CNTAGION.o
- .text._main    0x00d21aad      0x887 obj/CNTAGION.o
-                0x00d21aad                _main
+                0x00d21a3e       0xa2 obj/CNTAGION.o
+ .text._main    0x00d21ae0      0x887 obj/CNTAGION.o
+                0x00d21ae0                _main
  .text._DrawMap
-                0x00d22334       0x74 obj/CNTAGION.o
- .text._Play    0x00d223a8      0x8aa obj/CNTAGION.o
+                0x00d22367       0x74 obj/CNTAGION.o
+ .text._Play    0x00d223db      0x8aa obj/CNTAGION.o
  .text._EventNotice
-                0x00d22c52       0x31 obj/CNTAGION.o
+                0x00d22c85       0x31 obj/CNTAGION.o
  .text._LoadData
-                0x00d22c83       0x4a obj/CNTAGION.o
-                0x00d22c83                _LoadData
+                0x00d22cb6       0x4a obj/CNTAGION.o
+                0x00d22cb6                _LoadData
  .text._ReadNamed
-                0x00d22ccd       0xb8 obj/CNTAGION.o
+                0x00d22d00       0xb8 obj/CNTAGION.o
  .text._FileRead
-                0x00d22d85       0x31 obj/CNTAGION.o
+                0x00d22db8       0x31 obj/CNTAGION.o
  .text._FileWrite
-                0x00d22db6       0x31 obj/CNTAGION.o
+                0x00d22de9       0x31 obj/CNTAGION.o
  .text._FileSeek
-                0x00d22de7       0x2c obj/CNTAGION.o
+                0x00d22e1a       0x2c obj/CNTAGION.o
  .text._HasLegacySave
-                0x00d22e13       0x28 obj/CNTAGION.o
-                0x00d22e13                _HasLegacySave
+                0x00d22e46       0x28 obj/CNTAGION.o
+                0x00d22e46                _HasLegacySave
  .text._ReadLegacyNamed
-                0x00d22e3b       0xb0 obj/CNTAGION.o
+                0x00d22e6e       0xb0 obj/CNTAGION.o
  .text._ImportLegacySave
-                0x00d22eeb      0x1a0 obj/CNTAGION.o
-                0x00d22eeb                _ImportLegacySave
+                0x00d22f1e      0x1a0 obj/CNTAGION.o
+                0x00d22f1e                _ImportLegacySave
  .text._SaveData
-                0x00d2308b      0x103 obj/CNTAGION.o
-                0x00d2308b                _SaveData
+                0x00d230be      0x103 obj/CNTAGION.o
+                0x00d230be                _SaveData
  .text._CopyNamed
-                0x00d2318e      0x105 obj/CNTAGION.o
+                0x00d231c1      0x105 obj/CNTAGION.o
  .text._SaveSize
-                0x00d23293       0x77 obj/CNTAGION.o
-                0x00d23293                _SaveSize
- .text._Header  0x00d2330a       0xac obj/CNTAGION.o
- .text._State   0x00d233b6      0x20f obj/CNTAGION.o
+                0x00d232c6       0x77 obj/CNTAGION.o
+                0x00d232c6                _SaveSize
+ .text._Header  0x00d2333d       0xa0 obj/CNTAGION.o
+ .text._State   0x00d233dd      0x20f obj/CNTAGION.o
+ .text._WriteMap
+                0x00d235ec       0x74 obj/CNTAGION.o
  .text._Geometry
-                0x00d235c5       0x69 obj/CNTAGION.o
- .text._Bytes   0x00d2362e       0xbd obj/CNTAGION.o
+                0x00d23660       0x69 obj/CNTAGION.o
+ .text._Bytes   0x00d236c9       0xbd obj/CNTAGION.o
  .text._Checksum
-                0x00d236eb       0x4e obj/CNTAGION.o
- .text._U32     0x00d23739       0xd2 obj/CNTAGION.o
- .text._U16     0x00d2380b       0x55 obj/CNTAGION.o
- .text._U8      0x00d23860       0x1a obj/CNTAGION.o
+                0x00d23786       0x4e obj/CNTAGION.o
+ .text._U32     0x00d237d4       0xd2 obj/CNTAGION.o
+ .text._U16     0x00d238a6       0x55 obj/CNTAGION.o
+ .text._U8      0x00d238fb       0x1a obj/CNTAGION.o
  .text._ValidateSave
-                0x00d2387a       0x1d obj/CNTAGION.o
-                0x00d2387a                _ValidateSave
+                0x00d23915       0x1d obj/CNTAGION.o
+                0x00d23915                _ValidateSave
  .text._ReadSave
-                0x00d23897      0x761 obj/CNTAGION.o
+                0x00d23932      0x1b9 obj/CNTAGION.o
+ .text._ReadMap
+                0x00d23aeb      0x342 obj/CNTAGION.o
  .text._DecodeSave
-                0x00d23ff8       0x40 obj/CNTAGION.o
-                0x00d23ff8                _DecodeSave
+                0x00d23e2d       0x40 obj/CNTAGION.o
+                0x00d23e2d                _DecodeSave
  .text._SaveSizeV3
-                0x00d24038       0x19 obj/CNTAGION.o
-                0x00d24038                _SaveSizeV3
+                0x00d23e6d       0x19 obj/CNTAGION.o
+                0x00d23e6d                _SaveSizeV3
  .text._EncodeSaveV3
-                0x00d24051      0x250 obj/CNTAGION.o
-                0x00d24051                _EncodeSaveV3
- .text._HeaderV3
-                0x00d242a1       0xac obj/CNTAGION.o
+                0x00d23e86      0x1da obj/CNTAGION.o
+                0x00d23e86                _EncodeSaveV3
  .text._EventState
-                0x00d2434d       0xd3 obj/CNTAGION.o
+                0x00d24060       0xd3 obj/CNTAGION.o
  .text._ValidateSaveV3
-                0x00d24420       0x1e obj/CNTAGION.o
-                0x00d24420                _ValidateSaveV3
+                0x00d24133       0x1e obj/CNTAGION.o
+                0x00d24133                _ValidateSaveV3
  .text._ReadSaveV3
-                0x00d2443e      0x834 obj/CNTAGION.o
+                0x00d24151      0x31e obj/CNTAGION.o
  .text._DecodeSaveV3
-                0x00d24c72       0x45 obj/CNTAGION.o
-                0x00d24c72                _DecodeSaveV3
+                0x00d2446f       0x45 obj/CNTAGION.o
+                0x00d2446f                _DecodeSaveV3
  .text._TickerInit
-                0x00d24cb7       0x44 obj/CNTAGION.o
-                0x00d24cb7                _TickerInit
+                0x00d244b4       0x44 obj/CNTAGION.o
+                0x00d244b4                _TickerInit
  .text._TickerPost
-                0x00d24cfb      0x274 obj/CNTAGION.o
-                0x00d24cfb                _TickerPost
- .text._Remove  0x00d24f6f       0x43 obj/CNTAGION.o
+                0x00d244f8      0x274 obj/CNTAGION.o
+                0x00d244f8                _TickerPost
+ .text._Remove  0x00d2476c       0x43 obj/CNTAGION.o
  .text._TickerText
-                0x00d24fb2      0x225 obj/CNTAGION.o
-                0x00d24fb2                _TickerText
+                0x00d247af      0x225 obj/CNTAGION.o
+                0x00d247af                _TickerText
  .text._TickerPrepare
-                0x00d251d7       0x96 obj/CNTAGION.o
-                0x00d251d7                _TickerPrepare
+                0x00d249d4       0x96 obj/CNTAGION.o
+                0x00d249d4                _TickerPrepare
  .text._TickerUpdate
-                0x00d2526d      0x17a obj/CNTAGION.o
-                0x00d2526d                _TickerUpdate
+                0x00d24a6a      0x17a obj/CNTAGION.o
+                0x00d24a6a                _TickerUpdate
  .text._TickerOffset
-                0x00d253e7       0x88 obj/CNTAGION.o
-                0x00d253e7                _TickerOffset
+                0x00d24be4       0x88 obj/CNTAGION.o
+                0x00d24be4                _TickerOffset
  .text._TickerObserve
-                0x00d2546f      0x392 obj/CNTAGION.o
-                0x00d2546f                _TickerObserve
+                0x00d24c6c      0x392 obj/CNTAGION.o
+                0x00d24c6c                _TickerObserve
  .text._TickerRender
-                0x00d25801       0xde obj/CNTAGION.o
-                0x00d25801                _TickerRender
+                0x00d24ffe       0xde obj/CNTAGION.o
+                0x00d24ffe                _TickerRender
  .text._RecountRegion
-                0x00d258df       0xb9 obj/CNTAGION.o
-                0x00d258df                _RecountRegion
+                0x00d250dc       0xb9 obj/CNTAGION.o
+                0x00d250dc                _RecountRegion
  .text._CountWorld
-                0x00d25998       0xb8 obj/CNTAGION.o
-                0x00d25998                _CountWorld
+                0x00d25195       0xb8 obj/CNTAGION.o
+                0x00d25195                _CountWorld
  .text._SetCell
-                0x00d25a50       0x97 obj/CNTAGION.o
-                0x00d25a50                _SetCell
+                0x00d2524d       0x97 obj/CNTAGION.o
+                0x00d2524d                _SetCell
  .text._InfectCoordinate
-                0x00d25ae7       0xe5 obj/CNTAGION.o
-                0x00d25ae7                _InfectCoordinate
+                0x00d252e4       0xe5 obj/CNTAGION.o
+                0x00d252e4                _InfectCoordinate
  .text._SeedRegion
-                0x00d25bcc       0xbc obj/CNTAGION.o
-                0x00d25bcc                _SeedRegion
+                0x00d253c9       0xbc obj/CNTAGION.o
+                0x00d253c9                _SeedRegion
  .text._StepRegion
-                0x00d25c88      0x192 obj/CNTAGION.o
-                0x00d25c88                _StepRegion
+                0x00d25485      0x192 obj/CNTAGION.o
+                0x00d25485                _StepRegion
  .text._StepWorldRegion
-                0x00d25e1a       0xa4 obj/CNTAGION.o
-                0x00d25e1a                _StepWorldRegion
+                0x00d25617       0xa4 obj/CNTAGION.o
+                0x00d25617                _StepWorldRegion
  .text._ValidPort
-                0x00d25ebe       0xd8 obj/CNTAGION.o
-                0x00d25ebe                _ValidPort
+                0x00d256bb       0xd8 obj/CNTAGION.o
+                0x00d256bb                _ValidPort
  .text._TransportEvents
-                0x00d25f96      0x43a obj/CNTAGION.o
-                0x00d25f96                _TransportEvents
+                0x00d25793      0x43a obj/CNTAGION.o
+                0x00d25793                _TransportEvents
  .text._MigrateEvents
-                0x00d263d0      0x270 obj/CNTAGION.o
-                0x00d263d0                _MigrateEvents
+                0x00d25bcd      0x270 obj/CNTAGION.o
+                0x00d25bcd                _MigrateEvents
  .text._SporeBurst
-                0x00d26640       0x9e obj/CNTAGION.o
-                0x00d26640                _SporeBurst
+                0x00d25e3d       0x9e obj/CNTAGION.o
+                0x00d25e3d                _SporeBurst
  .text._ClosePorts
-                0x00d266de      0x14f obj/CNTAGION.o
-                0x00d266de                _ClosePorts
+                0x00d25edb      0x14f obj/CNTAGION.o
+                0x00d25edb                _ClosePorts
  .text._npf_vpprintf
-                0x00d2682d     0x1775 obj/CNTAGION.o
-                0x00d2682d                _npf_vpprintf
+                0x00d2602a     0x1775 obj/CNTAGION.o
+                0x00d2602a                _npf_vpprintf
  .text._NPF_PUTC_IMPL
-                0x00d27fa2       0x2d obj/CNTAGION.o
+                0x00d2779f       0x2d obj/CNTAGION.o
  .text._npf_utoa_rev
-                0x00d27fcf       0xe6 obj/CNTAGION.o
+                0x00d277cc       0xe6 obj/CNTAGION.o
  .text._vsnprintf
-                0x00d280b5       0x88 obj/CNTAGION.o
-                0x00d280b5                _vsnprintf
+                0x00d278b2       0x88 obj/CNTAGION.o
+                0x00d278b2                _vsnprintf
  .text._npf_bufputc
-                0x00d2813d       0x25 obj/CNTAGION.o
+                0x00d2793a       0x25 obj/CNTAGION.o
  .text._npf_bufputc_nop
-                0x00d28162        0x7 obj/CNTAGION.o
+                0x00d2795f        0x7 obj/CNTAGION.o
  .text._snprintf
-                0x00d28169       0x28 obj/CNTAGION.o
-                0x00d28169                _snprintf
- .text.__bctlz  0x00d28191       0x22 obj/CNTAGION.o
-                0x00d28191                __bctlz
- .text.__sctlz  0x00d281b3        0xc obj/CNTAGION.o
-                0x00d281b3                __sctlz
- .text.__ictlz  0x00d281bf       0x12 obj/CNTAGION.o
-                0x00d281bf                __ictlz
+                0x00d27966       0x28 obj/CNTAGION.o
+                0x00d27966                _snprintf
+ .text.__bctlz  0x00d2798e       0x22 obj/CNTAGION.o
+                0x00d2798e                __bctlz
+ .text.__sctlz  0x00d279b0        0xc obj/CNTAGION.o
+                0x00d279b0                __sctlz
+ .text.__ictlz  0x00d279bc       0x12 obj/CNTAGION.o
+                0x00d279bc                __ictlz
  .text.__llctlz
-                0x00d281d1        0xe obj/CNTAGION.o
-                0x00d281d1                __llctlz
+                0x00d279ce        0xe obj/CNTAGION.o
+                0x00d279ce                __llctlz
  .text.__i48ctlz
-                0x00d281df       0x15 obj/CNTAGION.o
-                0x00d281df                __i48ctlz
- .text._random  0x00d281f4       0x55 obj/CNTAGION.o
-                0x00d281f4                _random
+                0x00d279dc       0x15 obj/CNTAGION.o
+                0x00d279dc                __i48ctlz
+ .text._random  0x00d279f1       0x55 obj/CNTAGION.o
+                0x00d279f1                _random
  .text._srandom
-                0x00d28249       0x17 obj/CNTAGION.o
-                0x00d28249                _srandom
-                0x00d28250                __setstate
+                0x00d27a46       0x17 obj/CNTAGION.o
+                0x00d27a46                _srandom
+                0x00d27a4d                __setstate
  *(.gnu.warning)
 
-.rodata         0x00d28260     0x85dc
+.rodata         0x00d27a5e     0x85dc
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata._TransmissionContribution
-                0x00d28260       0x27 obj/CNTAGION.o
+                0x00d27a5e       0x27 obj/CNTAGION.o
  .rodata._EventsEligible
-                0x00d28287       0x33 obj/CNTAGION.o
+                0x00d27a85       0x33 obj/CNTAGION.o
  .rodata._EventsAdvance
-                0x00d282ba       0x12 obj/CNTAGION.o
+                0x00d27ab8       0x12 obj/CNTAGION.o
  .rodata._EventsApply
-                0x00d282cc       0x18 obj/CNTAGION.o
+                0x00d27aca       0x18 obj/CNTAGION.o
  .rodata._SporeMenu
-                0x00d282e4        0xc obj/CNTAGION.o
+                0x00d27ae2        0xc obj/CNTAGION.o
  .rodata._ActionsMenu
-                0x00d282f0        0xc obj/CNTAGION.o
+                0x00d27aee        0xc obj/CNTAGION.o
  .rodata._TickerText
-                0x00d282fc       0x30 obj/CNTAGION.o
- .rodata._.str  0x00d2832c        0xd obj/CNTAGION.o
+                0x00d27afa       0x30 obj/CNTAGION.o
+ .rodata._.str  0x00d27b2a        0xd obj/CNTAGION.o
  .rodata._.str.1
-                0x00d28339        0xa obj/CNTAGION.o
+                0x00d27b37        0xa obj/CNTAGION.o
  .rodata._.str.2
-                0x00d28343        0xb obj/CNTAGION.o
+                0x00d27b41        0xb obj/CNTAGION.o
  .rodata._cure_thresholds
-                0x00d2834e        0x4 obj/CNTAGION.o
+                0x00d27b4c        0x4 obj/CNTAGION.o
  .rodata._.str.4
-                0x00d28352       0x1c obj/CNTAGION.o
+                0x00d27b50       0x1c obj/CNTAGION.o
  .rodata._.str.1.5
-                0x00d2836e       0x3e obj/CNTAGION.o
+                0x00d27b6c       0x3e obj/CNTAGION.o
  .rodata._.str.2.6
-                0x00d283ac       0x1b obj/CNTAGION.o
+                0x00d27baa       0x1b obj/CNTAGION.o
  .rodata._.str.3.7
-                0x00d283c7       0x49 obj/CNTAGION.o
+                0x00d27bc5       0x49 obj/CNTAGION.o
  .rodata._.str.4.8
-                0x00d28410       0x16 obj/CNTAGION.o
+                0x00d27c0e       0x16 obj/CNTAGION.o
  .rodata._.str.5
-                0x00d28426       0x54 obj/CNTAGION.o
+                0x00d27c24       0x54 obj/CNTAGION.o
  .rodata._.str.6
-                0x00d2847a       0x18 obj/CNTAGION.o
+                0x00d27c78       0x18 obj/CNTAGION.o
  .rodata._.str.7
-                0x00d28492       0x4b obj/CNTAGION.o
+                0x00d27c90       0x4b obj/CNTAGION.o
  .rodata._.str.8
-                0x00d284dd       0x15 obj/CNTAGION.o
+                0x00d27cdb       0x15 obj/CNTAGION.o
  .rodata._.str.9
-                0x00d284f2       0x50 obj/CNTAGION.o
+                0x00d27cf0       0x50 obj/CNTAGION.o
  .rodata._.str.10
-                0x00d28542       0x16 obj/CNTAGION.o
+                0x00d27d40       0x16 obj/CNTAGION.o
  .rodata._.str.11
-                0x00d28558       0x55 obj/CNTAGION.o
+                0x00d27d56       0x55 obj/CNTAGION.o
  .rodata._.str.12
-                0x00d285ad       0x15 obj/CNTAGION.o
+                0x00d27dab       0x15 obj/CNTAGION.o
  .rodata._.str.13
-                0x00d285c2       0x57 obj/CNTAGION.o
+                0x00d27dc0       0x57 obj/CNTAGION.o
  .rodata._.str.14
-                0x00d28619       0x15 obj/CNTAGION.o
+                0x00d27e17       0x15 obj/CNTAGION.o
  .rodata._.str.15
-                0x00d2862e       0x5a obj/CNTAGION.o
+                0x00d27e2c       0x5a obj/CNTAGION.o
  .rodata._.str.16
-                0x00d28688       0x14 obj/CNTAGION.o
+                0x00d27e86       0x14 obj/CNTAGION.o
  .rodata._.str.17
-                0x00d2869c       0x56 obj/CNTAGION.o
+                0x00d27e9a       0x56 obj/CNTAGION.o
  .rodata._.str.18
-                0x00d286f2       0x15 obj/CNTAGION.o
+                0x00d27ef0       0x15 obj/CNTAGION.o
  .rodata._.str.19
-                0x00d28707       0x4c obj/CNTAGION.o
+                0x00d27f05       0x4c obj/CNTAGION.o
  .rodata._.str.20
-                0x00d28753       0x16 obj/CNTAGION.o
+                0x00d27f51       0x16 obj/CNTAGION.o
  .rodata._.str.21
-                0x00d28769       0x4a obj/CNTAGION.o
+                0x00d27f67       0x4a obj/CNTAGION.o
  .rodata._.str.22
-                0x00d287b3       0x1c obj/CNTAGION.o
+                0x00d27fb1       0x1c obj/CNTAGION.o
  .rodata._.str.23
-                0x00d287cf       0x50 obj/CNTAGION.o
+                0x00d27fcd       0x50 obj/CNTAGION.o
  .rodata._.str.24
-                0x00d2881f       0x1d obj/CNTAGION.o
+                0x00d2801d       0x1d obj/CNTAGION.o
  .rodata._.str.25
-                0x00d2883c       0x58 obj/CNTAGION.o
+                0x00d2803a       0x58 obj/CNTAGION.o
  .rodata._.str.26
-                0x00d28894       0x17 obj/CNTAGION.o
+                0x00d28092       0x17 obj/CNTAGION.o
  .rodata._.str.27
-                0x00d288ab       0x53 obj/CNTAGION.o
+                0x00d280a9       0x53 obj/CNTAGION.o
  .rodata._.str.28
-                0x00d288fe       0x17 obj/CNTAGION.o
+                0x00d280fc       0x17 obj/CNTAGION.o
  .rodata._.str.29
-                0x00d28915       0x4c obj/CNTAGION.o
+                0x00d28113       0x4c obj/CNTAGION.o
  .rodata._.str.30
-                0x00d28961       0x12 obj/CNTAGION.o
+                0x00d2815f       0x12 obj/CNTAGION.o
  .rodata._.str.31
-                0x00d28973       0x53 obj/CNTAGION.o
+                0x00d28171       0x53 obj/CNTAGION.o
  .rodata._.str.32
-                0x00d289c6       0x19 obj/CNTAGION.o
+                0x00d281c4       0x19 obj/CNTAGION.o
  .rodata._.str.33
-                0x00d289df       0x5a obj/CNTAGION.o
+                0x00d281dd       0x5a obj/CNTAGION.o
  .rodata._.str.34
-                0x00d28a39       0x12 obj/CNTAGION.o
+                0x00d28237       0x12 obj/CNTAGION.o
  .rodata._.str.35
-                0x00d28a4b       0x5a obj/CNTAGION.o
+                0x00d28249       0x5a obj/CNTAGION.o
  .rodata._.str.36
-                0x00d28aa5       0x16 obj/CNTAGION.o
+                0x00d282a3       0x16 obj/CNTAGION.o
  .rodata._.str.37
-                0x00d28abb       0x55 obj/CNTAGION.o
+                0x00d282b9       0x55 obj/CNTAGION.o
  .rodata._.str.38
-                0x00d28b10       0x13 obj/CNTAGION.o
+                0x00d2830e       0x13 obj/CNTAGION.o
  .rodata._.str.39
-                0x00d28b23       0x54 obj/CNTAGION.o
+                0x00d28321       0x54 obj/CNTAGION.o
  .rodata._.str.40
-                0x00d28b77       0x14 obj/CNTAGION.o
+                0x00d28375       0x14 obj/CNTAGION.o
  .rodata._.str.41
-                0x00d28b8b       0x5c obj/CNTAGION.o
+                0x00d28389       0x5c obj/CNTAGION.o
  .rodata._.str.42
-                0x00d28be7       0x14 obj/CNTAGION.o
+                0x00d283e5       0x14 obj/CNTAGION.o
  .rodata._.str.43
-                0x00d28bfb       0x56 obj/CNTAGION.o
+                0x00d283f9       0x56 obj/CNTAGION.o
  .rodata._.str.44
-                0x00d28c51       0x17 obj/CNTAGION.o
+                0x00d2844f       0x17 obj/CNTAGION.o
  .rodata._.str.45
-                0x00d28c68       0x51 obj/CNTAGION.o
+                0x00d28466       0x51 obj/CNTAGION.o
  .rodata._.str.46
-                0x00d28cb9       0x14 obj/CNTAGION.o
+                0x00d284b7       0x14 obj/CNTAGION.o
  .rodata._.str.47
-                0x00d28ccd       0x4a obj/CNTAGION.o
+                0x00d284cb       0x4a obj/CNTAGION.o
  .rodata._.str.48
-                0x00d28d17       0x18 obj/CNTAGION.o
+                0x00d28515       0x18 obj/CNTAGION.o
  .rodata._.str.49
-                0x00d28d2f       0x52 obj/CNTAGION.o
+                0x00d2852d       0x52 obj/CNTAGION.o
  .rodata._.str.50
-                0x00d28d81       0x15 obj/CNTAGION.o
+                0x00d2857f       0x15 obj/CNTAGION.o
  .rodata._.str.51
-                0x00d28d96       0x59 obj/CNTAGION.o
+                0x00d28594       0x59 obj/CNTAGION.o
  .rodata._.str.52
-                0x00d28def       0x13 obj/CNTAGION.o
+                0x00d285ed       0x13 obj/CNTAGION.o
  .rodata._.str.53
-                0x00d28e02       0x50 obj/CNTAGION.o
+                0x00d28600       0x50 obj/CNTAGION.o
  .rodata._.str.54
-                0x00d28e52       0x13 obj/CNTAGION.o
+                0x00d28650       0x13 obj/CNTAGION.o
  .rodata._.str.55
-                0x00d28e65       0x54 obj/CNTAGION.o
+                0x00d28663       0x54 obj/CNTAGION.o
  .rodata._.str.56
-                0x00d28eb9       0x13 obj/CNTAGION.o
+                0x00d286b7       0x13 obj/CNTAGION.o
  .rodata._.str.57
-                0x00d28ecc       0x56 obj/CNTAGION.o
+                0x00d286ca       0x56 obj/CNTAGION.o
  .rodata._.str.58
-                0x00d28f22       0x17 obj/CNTAGION.o
+                0x00d28720       0x17 obj/CNTAGION.o
  .rodata._.str.59
-                0x00d28f39       0x55 obj/CNTAGION.o
+                0x00d28737       0x55 obj/CNTAGION.o
  .rodata._.str.60
-                0x00d28f8e       0x16 obj/CNTAGION.o
+                0x00d2878c       0x16 obj/CNTAGION.o
  .rodata._.str.61
-                0x00d28fa4       0x54 obj/CNTAGION.o
+                0x00d287a2       0x54 obj/CNTAGION.o
  .rodata._.str.62
-                0x00d28ff8       0x12 obj/CNTAGION.o
+                0x00d287f6       0x12 obj/CNTAGION.o
  .rodata._.str.63
-                0x00d2900a       0x4d obj/CNTAGION.o
+                0x00d28808       0x4d obj/CNTAGION.o
  .rodata._.str.64
-                0x00d29057       0x13 obj/CNTAGION.o
+                0x00d28855       0x13 obj/CNTAGION.o
  .rodata._.str.65
-                0x00d2906a       0x5d obj/CNTAGION.o
+                0x00d28868       0x5d obj/CNTAGION.o
  .rodata._.str.66
-                0x00d290c7       0x13 obj/CNTAGION.o
+                0x00d288c5       0x13 obj/CNTAGION.o
  .rodata._.str.67
-                0x00d290da       0x58 obj/CNTAGION.o
+                0x00d288d8       0x58 obj/CNTAGION.o
  .rodata._.str.68
-                0x00d29132       0x11 obj/CNTAGION.o
+                0x00d28930       0x11 obj/CNTAGION.o
  .rodata._.str.69
-                0x00d29143       0x42 obj/CNTAGION.o
+                0x00d28941       0x42 obj/CNTAGION.o
  .rodata._.str.70
-                0x00d29185       0x13 obj/CNTAGION.o
+                0x00d28983       0x13 obj/CNTAGION.o
  .rodata._.str.71
-                0x00d29198       0x49 obj/CNTAGION.o
+                0x00d28996       0x49 obj/CNTAGION.o
  .rodata._.str.72
-                0x00d291e1       0x16 obj/CNTAGION.o
+                0x00d289df       0x16 obj/CNTAGION.o
  .rodata._.str.73
-                0x00d291f7       0x4b obj/CNTAGION.o
+                0x00d289f5       0x4b obj/CNTAGION.o
  .rodata._.str.74
-                0x00d29242       0x10 obj/CNTAGION.o
+                0x00d28a40       0x10 obj/CNTAGION.o
  .rodata._.str.75
-                0x00d29252       0x51 obj/CNTAGION.o
+                0x00d28a50       0x51 obj/CNTAGION.o
  .rodata._.str.76
-                0x00d292a3       0x18 obj/CNTAGION.o
+                0x00d28aa1       0x18 obj/CNTAGION.o
  .rodata._.str.77
-                0x00d292bb       0x4b obj/CNTAGION.o
+                0x00d28ab9       0x4b obj/CNTAGION.o
  .rodata._.str.78
-                0x00d29306       0x15 obj/CNTAGION.o
+                0x00d28b04       0x15 obj/CNTAGION.o
  .rodata._.str.79
-                0x00d2931b       0x5e obj/CNTAGION.o
+                0x00d28b19       0x5e obj/CNTAGION.o
  .rodata._.str.80
-                0x00d29379       0x1a obj/CNTAGION.o
+                0x00d28b77       0x1a obj/CNTAGION.o
  .rodata._.str.81
-                0x00d29393       0x50 obj/CNTAGION.o
+                0x00d28b91       0x50 obj/CNTAGION.o
  .rodata._.str.82
-                0x00d293e3       0x15 obj/CNTAGION.o
+                0x00d28be1       0x15 obj/CNTAGION.o
  .rodata._.str.83
-                0x00d293f8       0x55 obj/CNTAGION.o
+                0x00d28bf6       0x55 obj/CNTAGION.o
  .rodata._.str.84
-                0x00d2944d       0x1a obj/CNTAGION.o
+                0x00d28c4b       0x1a obj/CNTAGION.o
  .rodata._.str.85
-                0x00d29467       0x4a obj/CNTAGION.o
+                0x00d28c65       0x4a obj/CNTAGION.o
  .rodata._.str.86
-                0x00d294b1       0x1a obj/CNTAGION.o
+                0x00d28caf       0x1a obj/CNTAGION.o
  .rodata._.str.87
-                0x00d294cb       0x5c obj/CNTAGION.o
+                0x00d28cc9       0x5c obj/CNTAGION.o
  .rodata._.str.88
-                0x00d29527       0x18 obj/CNTAGION.o
+                0x00d28d25       0x18 obj/CNTAGION.o
  .rodata._.str.89
-                0x00d2953f       0x5c obj/CNTAGION.o
+                0x00d28d3d       0x5c obj/CNTAGION.o
  .rodata._.str.90
-                0x00d2959b       0x16 obj/CNTAGION.o
+                0x00d28d99       0x16 obj/CNTAGION.o
  .rodata._.str.91
-                0x00d295b1       0x56 obj/CNTAGION.o
+                0x00d28daf       0x56 obj/CNTAGION.o
  .rodata._.str.92
-                0x00d29607       0x1c obj/CNTAGION.o
+                0x00d28e05       0x1c obj/CNTAGION.o
  .rodata._.str.93
-                0x00d29623       0x4a obj/CNTAGION.o
+                0x00d28e21       0x4a obj/CNTAGION.o
  .rodata._.str.94
-                0x00d2966d       0x1c obj/CNTAGION.o
+                0x00d28e6b       0x1c obj/CNTAGION.o
  .rodata._.str.95
-                0x00d29689       0x48 obj/CNTAGION.o
+                0x00d28e87       0x48 obj/CNTAGION.o
  .rodata._.str.96
-                0x00d296d1       0x19 obj/CNTAGION.o
+                0x00d28ecf       0x19 obj/CNTAGION.o
  .rodata._.str.97
-                0x00d296ea       0x59 obj/CNTAGION.o
+                0x00d28ee8       0x59 obj/CNTAGION.o
  .rodata._.str.98
-                0x00d29743       0x17 obj/CNTAGION.o
+                0x00d28f41       0x17 obj/CNTAGION.o
  .rodata._.str.99
-                0x00d2975a       0x6d obj/CNTAGION.o
+                0x00d28f58       0x6d obj/CNTAGION.o
  .rodata._.str.100
-                0x00d297c7       0x16 obj/CNTAGION.o
+                0x00d28fc5       0x16 obj/CNTAGION.o
  .rodata._.str.101
-                0x00d297dd       0x56 obj/CNTAGION.o
+                0x00d28fdb       0x56 obj/CNTAGION.o
  .rodata._.str.102
-                0x00d29833       0x18 obj/CNTAGION.o
+                0x00d29031       0x18 obj/CNTAGION.o
  .rodata._.str.103
-                0x00d2984b       0x5a obj/CNTAGION.o
+                0x00d29049       0x5a obj/CNTAGION.o
  .rodata._.str.104
-                0x00d298a5       0x15 obj/CNTAGION.o
+                0x00d290a3       0x15 obj/CNTAGION.o
  .rodata._.str.105
-                0x00d298ba       0x56 obj/CNTAGION.o
+                0x00d290b8       0x56 obj/CNTAGION.o
  .rodata._.str.106
-                0x00d29910       0x13 obj/CNTAGION.o
+                0x00d2910e       0x13 obj/CNTAGION.o
  .rodata._.str.107
-                0x00d29923       0x53 obj/CNTAGION.o
+                0x00d29121       0x53 obj/CNTAGION.o
  .rodata._.str.108
-                0x00d29976       0x16 obj/CNTAGION.o
+                0x00d29174       0x16 obj/CNTAGION.o
  .rodata._.str.109
-                0x00d2998c       0x51 obj/CNTAGION.o
+                0x00d2918a       0x51 obj/CNTAGION.o
  .rodata._.str.110
-                0x00d299dd       0x1a obj/CNTAGION.o
+                0x00d291db       0x1a obj/CNTAGION.o
  .rodata._.str.111
-                0x00d299f7       0x5c obj/CNTAGION.o
+                0x00d291f5       0x5c obj/CNTAGION.o
  .rodata._.str.112
-                0x00d29a53       0x19 obj/CNTAGION.o
+                0x00d29251       0x19 obj/CNTAGION.o
  .rodata._.str.113
-                0x00d29a6c       0x58 obj/CNTAGION.o
+                0x00d2926a       0x58 obj/CNTAGION.o
  .rodata._.str.114
-                0x00d29ac4       0x17 obj/CNTAGION.o
+                0x00d292c2       0x17 obj/CNTAGION.o
  .rodata._.str.115
-                0x00d29adb       0x53 obj/CNTAGION.o
+                0x00d292d9       0x53 obj/CNTAGION.o
  .rodata._.str.116
-                0x00d29b2e       0x15 obj/CNTAGION.o
+                0x00d2932c       0x15 obj/CNTAGION.o
  .rodata._.str.117
-                0x00d29b43       0x59 obj/CNTAGION.o
+                0x00d29341       0x59 obj/CNTAGION.o
  .rodata._.str.118
-                0x00d29b9c       0x18 obj/CNTAGION.o
+                0x00d2939a       0x18 obj/CNTAGION.o
  .rodata._.str.119
-                0x00d29bb4       0x52 obj/CNTAGION.o
+                0x00d293b2       0x52 obj/CNTAGION.o
  .rodata._.str.120
-                0x00d29c06       0x14 obj/CNTAGION.o
+                0x00d29404       0x14 obj/CNTAGION.o
  .rodata._.str.121
-                0x00d29c1a       0x53 obj/CNTAGION.o
+                0x00d29418       0x53 obj/CNTAGION.o
  .rodata._.str.122
-                0x00d29c6d       0x13 obj/CNTAGION.o
+                0x00d2946b       0x13 obj/CNTAGION.o
  .rodata._.str.123
-                0x00d29c80       0x5a obj/CNTAGION.o
+                0x00d2947e       0x5a obj/CNTAGION.o
  .rodata._.str.124
-                0x00d29cda       0x15 obj/CNTAGION.o
+                0x00d294d8       0x15 obj/CNTAGION.o
  .rodata._.str.125
-                0x00d29cef       0x6f obj/CNTAGION.o
+                0x00d294ed       0x6f obj/CNTAGION.o
  .rodata._.str.126
-                0x00d29d5e       0x16 obj/CNTAGION.o
+                0x00d2955c       0x16 obj/CNTAGION.o
  .rodata._.str.127
-                0x00d29d74       0x5f obj/CNTAGION.o
+                0x00d29572       0x5f obj/CNTAGION.o
  .rodata._.str.128
-                0x00d29dd3       0x18 obj/CNTAGION.o
+                0x00d295d1       0x18 obj/CNTAGION.o
  .rodata._.str.129
-                0x00d29deb       0x5b obj/CNTAGION.o
+                0x00d295e9       0x5b obj/CNTAGION.o
  .rodata._.str.130
-                0x00d29e46       0x14 obj/CNTAGION.o
+                0x00d29644       0x14 obj/CNTAGION.o
  .rodata._.str.131
-                0x00d29e5a       0x59 obj/CNTAGION.o
+                0x00d29658       0x59 obj/CNTAGION.o
  .rodata._.str.132
-                0x00d29eb3       0x15 obj/CNTAGION.o
+                0x00d296b1       0x15 obj/CNTAGION.o
  .rodata._.str.133
-                0x00d29ec8       0x59 obj/CNTAGION.o
+                0x00d296c6       0x59 obj/CNTAGION.o
  .rodata._.str.134
-                0x00d29f21       0x14 obj/CNTAGION.o
+                0x00d2971f       0x14 obj/CNTAGION.o
  .rodata._.str.135
-                0x00d29f35       0x56 obj/CNTAGION.o
+                0x00d29733       0x56 obj/CNTAGION.o
  .rodata._.str.136
-                0x00d29f8b       0x18 obj/CNTAGION.o
+                0x00d29789       0x18 obj/CNTAGION.o
  .rodata._.str.137
-                0x00d29fa3       0x49 obj/CNTAGION.o
+                0x00d297a1       0x49 obj/CNTAGION.o
  .rodata._.str.138
-                0x00d29fec       0x18 obj/CNTAGION.o
+                0x00d297ea       0x18 obj/CNTAGION.o
  .rodata._.str.139
-                0x00d2a004       0x58 obj/CNTAGION.o
+                0x00d29802       0x58 obj/CNTAGION.o
  .rodata._.str.140
-                0x00d2a05c       0x1b obj/CNTAGION.o
+                0x00d2985a       0x1b obj/CNTAGION.o
  .rodata._.str.141
-                0x00d2a077       0x3d obj/CNTAGION.o
+                0x00d29875       0x3d obj/CNTAGION.o
  .rodata._.str.142
-                0x00d2a0b4       0x14 obj/CNTAGION.o
+                0x00d298b2       0x14 obj/CNTAGION.o
  .rodata._.str.143
-                0x00d2a0c8       0x40 obj/CNTAGION.o
+                0x00d298c6       0x40 obj/CNTAGION.o
  .rodata._.str.144
-                0x00d2a108       0x16 obj/CNTAGION.o
+                0x00d29906       0x16 obj/CNTAGION.o
  .rodata._.str.145
-                0x00d2a11e       0x49 obj/CNTAGION.o
+                0x00d2991c       0x49 obj/CNTAGION.o
  .rodata._.str.146
-                0x00d2a167       0x15 obj/CNTAGION.o
+                0x00d29965       0x15 obj/CNTAGION.o
  .rodata._.str.147
-                0x00d2a17c       0x75 obj/CNTAGION.o
+                0x00d2997a       0x75 obj/CNTAGION.o
  .rodata._.str.148
-                0x00d2a1f1       0x1b obj/CNTAGION.o
+                0x00d299ef       0x1b obj/CNTAGION.o
  .rodata._.str.149
-                0x00d2a20c       0x6e obj/CNTAGION.o
+                0x00d29a0a       0x6e obj/CNTAGION.o
  .rodata._.str.150
-                0x00d2a27a       0x1d obj/CNTAGION.o
+                0x00d29a78       0x1d obj/CNTAGION.o
  .rodata._.str.151
-                0x00d2a297       0x6c obj/CNTAGION.o
+                0x00d29a95       0x6c obj/CNTAGION.o
  .rodata._.str.152
-                0x00d2a303       0x17 obj/CNTAGION.o
+                0x00d29b01       0x17 obj/CNTAGION.o
  .rodata._.str.153
-                0x00d2a31a       0x60 obj/CNTAGION.o
+                0x00d29b18       0x60 obj/CNTAGION.o
  .rodata._.str.154
-                0x00d2a37a       0x1c obj/CNTAGION.o
+                0x00d29b78       0x1c obj/CNTAGION.o
  .rodata._.str.155
-                0x00d2a396       0x3e obj/CNTAGION.o
+                0x00d29b94       0x3e obj/CNTAGION.o
  .rodata._.str.156
-                0x00d2a3d4       0x17 obj/CNTAGION.o
+                0x00d29bd2       0x17 obj/CNTAGION.o
  .rodata._.str.157
-                0x00d2a3eb       0x64 obj/CNTAGION.o
+                0x00d29be9       0x64 obj/CNTAGION.o
  .rodata._.str.158
-                0x00d2a44f       0x17 obj/CNTAGION.o
+                0x00d29c4d       0x17 obj/CNTAGION.o
  .rodata._.str.159
-                0x00d2a466       0x64 obj/CNTAGION.o
+                0x00d29c64       0x64 obj/CNTAGION.o
  .rodata._.str.160
-                0x00d2a4ca       0x12 obj/CNTAGION.o
+                0x00d29cc8       0x12 obj/CNTAGION.o
  .rodata._.str.161
-                0x00d2a4dc       0x4a obj/CNTAGION.o
+                0x00d29cda       0x4a obj/CNTAGION.o
  .rodata._.str.162
-                0x00d2a526       0x18 obj/CNTAGION.o
+                0x00d29d24       0x18 obj/CNTAGION.o
  .rodata._.str.163
-                0x00d2a53e       0x51 obj/CNTAGION.o
+                0x00d29d3c       0x51 obj/CNTAGION.o
  .rodata._.str.164
-                0x00d2a58f       0x14 obj/CNTAGION.o
+                0x00d29d8d       0x14 obj/CNTAGION.o
  .rodata._.str.165
-                0x00d2a5a3       0x54 obj/CNTAGION.o
+                0x00d29da1       0x54 obj/CNTAGION.o
  .rodata._.str.166
-                0x00d2a5f7       0x19 obj/CNTAGION.o
+                0x00d29df5       0x19 obj/CNTAGION.o
  .rodata._.str.167
-                0x00d2a610       0x59 obj/CNTAGION.o
+                0x00d29e0e       0x59 obj/CNTAGION.o
  .rodata._.str.168
-                0x00d2a669       0x19 obj/CNTAGION.o
+                0x00d29e67       0x19 obj/CNTAGION.o
  .rodata._.str.169
-                0x00d2a682       0x57 obj/CNTAGION.o
+                0x00d29e80       0x57 obj/CNTAGION.o
  .rodata._.str.170
-                0x00d2a6d9       0x17 obj/CNTAGION.o
+                0x00d29ed7       0x17 obj/CNTAGION.o
  .rodata._.str.171
-                0x00d2a6f0       0x5f obj/CNTAGION.o
+                0x00d29eee       0x5f obj/CNTAGION.o
  .rodata._.str.172
-                0x00d2a74f       0x14 obj/CNTAGION.o
+                0x00d29f4d       0x14 obj/CNTAGION.o
  .rodata._.str.173
-                0x00d2a763       0x5a obj/CNTAGION.o
+                0x00d29f61       0x5a obj/CNTAGION.o
  .rodata._.str.174
-                0x00d2a7bd       0x14 obj/CNTAGION.o
+                0x00d29fbb       0x14 obj/CNTAGION.o
  .rodata._.str.175
-                0x00d2a7d1       0x69 obj/CNTAGION.o
+                0x00d29fcf       0x69 obj/CNTAGION.o
  .rodata._.str.176
-                0x00d2a83a       0x17 obj/CNTAGION.o
+                0x00d2a038       0x17 obj/CNTAGION.o
  .rodata._.str.177
-                0x00d2a851       0x55 obj/CNTAGION.o
+                0x00d2a04f       0x55 obj/CNTAGION.o
  .rodata._.str.178
-                0x00d2a8a6       0x19 obj/CNTAGION.o
+                0x00d2a0a4       0x19 obj/CNTAGION.o
  .rodata._.str.179
-                0x00d2a8bf       0x5c obj/CNTAGION.o
+                0x00d2a0bd       0x5c obj/CNTAGION.o
  .rodata._.str.180
-                0x00d2a91b       0x17 obj/CNTAGION.o
+                0x00d2a119       0x17 obj/CNTAGION.o
  .rodata._.str.181
-                0x00d2a932       0x45 obj/CNTAGION.o
+                0x00d2a130       0x45 obj/CNTAGION.o
  .rodata._.str.182
-                0x00d2a977       0x15 obj/CNTAGION.o
+                0x00d2a175       0x15 obj/CNTAGION.o
  .rodata._.str.183
-                0x00d2a98c       0x67 obj/CNTAGION.o
+                0x00d2a18a       0x67 obj/CNTAGION.o
  .rodata._.str.184
-                0x00d2a9f3       0x1b obj/CNTAGION.o
+                0x00d2a1f1       0x1b obj/CNTAGION.o
  .rodata._.str.185
-                0x00d2aa0e       0x5a obj/CNTAGION.o
+                0x00d2a20c       0x5a obj/CNTAGION.o
  .rodata._.str.186
-                0x00d2aa68       0x17 obj/CNTAGION.o
+                0x00d2a266       0x17 obj/CNTAGION.o
  .rodata._.str.187
-                0x00d2aa7f       0x52 obj/CNTAGION.o
+                0x00d2a27d       0x52 obj/CNTAGION.o
  .rodata._.str.188
-                0x00d2aad1       0x1a obj/CNTAGION.o
+                0x00d2a2cf       0x1a obj/CNTAGION.o
  .rodata._.str.189
-                0x00d2aaeb       0x48 obj/CNTAGION.o
+                0x00d2a2e9       0x48 obj/CNTAGION.o
  .rodata._.str.190
-                0x00d2ab33       0x16 obj/CNTAGION.o
+                0x00d2a331       0x16 obj/CNTAGION.o
  .rodata._.str.191
-                0x00d2ab49       0x55 obj/CNTAGION.o
+                0x00d2a347       0x55 obj/CNTAGION.o
  .rodata._.str.192
-                0x00d2ab9e       0x18 obj/CNTAGION.o
+                0x00d2a39c       0x18 obj/CNTAGION.o
  .rodata._.str.193
-                0x00d2abb6       0x49 obj/CNTAGION.o
+                0x00d2a3b4       0x49 obj/CNTAGION.o
  .rodata._.str.194
-                0x00d2abff       0x15 obj/CNTAGION.o
+                0x00d2a3fd       0x15 obj/CNTAGION.o
  .rodata._.str.195
-                0x00d2ac14       0x63 obj/CNTAGION.o
+                0x00d2a412       0x63 obj/CNTAGION.o
  .rodata._.str.196
-                0x00d2ac77       0x16 obj/CNTAGION.o
+                0x00d2a475       0x16 obj/CNTAGION.o
  .rodata._.str.197
-                0x00d2ac8d       0x65 obj/CNTAGION.o
+                0x00d2a48b       0x65 obj/CNTAGION.o
  .rodata._.str.198
-                0x00d2acf2       0x1b obj/CNTAGION.o
+                0x00d2a4f0       0x1b obj/CNTAGION.o
  .rodata._.str.199
-                0x00d2ad0d       0x50 obj/CNTAGION.o
+                0x00d2a50b       0x50 obj/CNTAGION.o
  .rodata._.str.200
-                0x00d2ad5d       0x19 obj/CNTAGION.o
+                0x00d2a55b       0x19 obj/CNTAGION.o
  .rodata._.str.201
-                0x00d2ad76       0x51 obj/CNTAGION.o
+                0x00d2a574       0x51 obj/CNTAGION.o
  .rodata._.str.202
-                0x00d2adc7       0x11 obj/CNTAGION.o
+                0x00d2a5c5       0x11 obj/CNTAGION.o
  .rodata._.str.203
-                0x00d2add8       0x4b obj/CNTAGION.o
+                0x00d2a5d6       0x4b obj/CNTAGION.o
  .rodata._.str.204
-                0x00d2ae23        0xf obj/CNTAGION.o
+                0x00d2a621        0xf obj/CNTAGION.o
  .rodata._.str.205
-                0x00d2ae32       0x50 obj/CNTAGION.o
+                0x00d2a630       0x50 obj/CNTAGION.o
  .rodata._.str.206
-                0x00d2ae82       0x13 obj/CNTAGION.o
+                0x00d2a680       0x13 obj/CNTAGION.o
  .rodata._.str.207
-                0x00d2ae95       0x54 obj/CNTAGION.o
+                0x00d2a693       0x54 obj/CNTAGION.o
  .rodata._.str.208
-                0x00d2aee9       0x1a obj/CNTAGION.o
+                0x00d2a6e7       0x1a obj/CNTAGION.o
  .rodata._.str.209
-                0x00d2af03       0x37 obj/CNTAGION.o
+                0x00d2a701       0x37 obj/CNTAGION.o
  .rodata._.str.210
-                0x00d2af3a       0x1a obj/CNTAGION.o
+                0x00d2a738       0x1a obj/CNTAGION.o
  .rodata._.str.211
-                0x00d2af54       0x5c obj/CNTAGION.o
+                0x00d2a752       0x5c obj/CNTAGION.o
  .rodata._.str.212
-                0x00d2afb0       0x17 obj/CNTAGION.o
+                0x00d2a7ae       0x17 obj/CNTAGION.o
  .rodata._.str.213
-                0x00d2afc7       0x53 obj/CNTAGION.o
+                0x00d2a7c5       0x53 obj/CNTAGION.o
  .rodata._.str.214
-                0x00d2b01a       0x14 obj/CNTAGION.o
+                0x00d2a818       0x14 obj/CNTAGION.o
  .rodata._.str.215
-                0x00d2b02e       0x53 obj/CNTAGION.o
+                0x00d2a82c       0x53 obj/CNTAGION.o
  .rodata._.str.216
-                0x00d2b081       0x19 obj/CNTAGION.o
+                0x00d2a87f       0x19 obj/CNTAGION.o
  .rodata._.str.217
-                0x00d2b09a       0x59 obj/CNTAGION.o
+                0x00d2a898       0x59 obj/CNTAGION.o
  .rodata._.str.218
-                0x00d2b0f3       0x16 obj/CNTAGION.o
+                0x00d2a8f1       0x16 obj/CNTAGION.o
  .rodata._.str.219
-                0x00d2b109       0x36 obj/CNTAGION.o
+                0x00d2a907       0x36 obj/CNTAGION.o
  .rodata._.str.220
-                0x00d2b13f       0x13 obj/CNTAGION.o
+                0x00d2a93d       0x13 obj/CNTAGION.o
  .rodata._.str.221
-                0x00d2b152       0x66 obj/CNTAGION.o
+                0x00d2a950       0x66 obj/CNTAGION.o
  .rodata._.str.222
-                0x00d2b1b8       0x18 obj/CNTAGION.o
+                0x00d2a9b6       0x18 obj/CNTAGION.o
  .rodata._.str.223
-                0x00d2b1d0       0x56 obj/CNTAGION.o
+                0x00d2a9ce       0x56 obj/CNTAGION.o
  .rodata._.str.224
-                0x00d2b226       0x16 obj/CNTAGION.o
+                0x00d2aa24       0x16 obj/CNTAGION.o
  .rodata._.str.225
-                0x00d2b23c       0x39 obj/CNTAGION.o
+                0x00d2aa3a       0x39 obj/CNTAGION.o
  .rodata._.str.226
-                0x00d2b275       0x16 obj/CNTAGION.o
+                0x00d2aa73       0x16 obj/CNTAGION.o
  .rodata._.str.227
-                0x00d2b28b       0x67 obj/CNTAGION.o
+                0x00d2aa89       0x67 obj/CNTAGION.o
  .rodata._.str.228
-                0x00d2b2f2       0x1c obj/CNTAGION.o
+                0x00d2aaf0       0x1c obj/CNTAGION.o
  .rodata._.str.229
-                0x00d2b30e       0x3e obj/CNTAGION.o
+                0x00d2ab0c       0x3e obj/CNTAGION.o
  .rodata._.str.230
-                0x00d2b34c       0x15 obj/CNTAGION.o
+                0x00d2ab4a       0x15 obj/CNTAGION.o
  .rodata._.str.231
-                0x00d2b361       0x60 obj/CNTAGION.o
+                0x00d2ab5f       0x60 obj/CNTAGION.o
  .rodata._.str.232
-                0x00d2b3c1       0x1a obj/CNTAGION.o
+                0x00d2abbf       0x1a obj/CNTAGION.o
  .rodata._.str.233
-                0x00d2b3db       0x53 obj/CNTAGION.o
+                0x00d2abd9       0x53 obj/CNTAGION.o
  .rodata._.str.234
-                0x00d2b42e       0x1b obj/CNTAGION.o
+                0x00d2ac2c       0x1b obj/CNTAGION.o
  .rodata._.str.235
-                0x00d2b449       0x6c obj/CNTAGION.o
+                0x00d2ac47       0x6c obj/CNTAGION.o
  .rodata._.str.236
-                0x00d2b4b5       0x1b obj/CNTAGION.o
+                0x00d2acb3       0x1b obj/CNTAGION.o
  .rodata._.str.237
-                0x00d2b4d0       0x67 obj/CNTAGION.o
+                0x00d2acce       0x67 obj/CNTAGION.o
  .rodata._.str.238
-                0x00d2b537       0x1b obj/CNTAGION.o
+                0x00d2ad35       0x1b obj/CNTAGION.o
  .rodata._.str.239
-                0x00d2b552       0x68 obj/CNTAGION.o
+                0x00d2ad50       0x68 obj/CNTAGION.o
  .rodata._.str.240
-                0x00d2b5ba       0x1b obj/CNTAGION.o
+                0x00d2adb8       0x1b obj/CNTAGION.o
  .rodata._.str.241
-                0x00d2b5d5       0x56 obj/CNTAGION.o
+                0x00d2add3       0x56 obj/CNTAGION.o
  .rodata._.str.242
-                0x00d2b62b       0x16 obj/CNTAGION.o
+                0x00d2ae29       0x16 obj/CNTAGION.o
  .rodata._.str.243
-                0x00d2b641       0x4d obj/CNTAGION.o
+                0x00d2ae3f       0x4d obj/CNTAGION.o
  .rodata._.str.244
-                0x00d2b68e       0x1a obj/CNTAGION.o
+                0x00d2ae8c       0x1a obj/CNTAGION.o
  .rodata._.str.245
-                0x00d2b6a8       0x4d obj/CNTAGION.o
+                0x00d2aea6       0x4d obj/CNTAGION.o
  .rodata._.str.246
-                0x00d2b6f5       0x1c obj/CNTAGION.o
+                0x00d2aef3       0x1c obj/CNTAGION.o
  .rodata._.str.247
-                0x00d2b711       0x50 obj/CNTAGION.o
+                0x00d2af0f       0x50 obj/CNTAGION.o
  .rodata._.str.248
-                0x00d2b761       0x15 obj/CNTAGION.o
+                0x00d2af5f       0x15 obj/CNTAGION.o
  .rodata._.str.249
-                0x00d2b776       0x1a obj/CNTAGION.o
+                0x00d2af74       0x1a obj/CNTAGION.o
  .rodata._.str.250
-                0x00d2b790       0x51 obj/CNTAGION.o
+                0x00d2af8e       0x51 obj/CNTAGION.o
  .rodata._.str.251
-                0x00d2b7e1       0x14 obj/CNTAGION.o
+                0x00d2afdf       0x14 obj/CNTAGION.o
  .rodata._.str.252
-                0x00d2b7f5       0x4c obj/CNTAGION.o
+                0x00d2aff3       0x4c obj/CNTAGION.o
  .rodata._.str.253
-                0x00d2b841       0x18 obj/CNTAGION.o
+                0x00d2b03f       0x18 obj/CNTAGION.o
  .rodata._.str.254
-                0x00d2b859       0x4a obj/CNTAGION.o
+                0x00d2b057       0x4a obj/CNTAGION.o
  .rodata._.str.255
-                0x00d2b8a3       0x1a obj/CNTAGION.o
+                0x00d2b0a1       0x1a obj/CNTAGION.o
  .rodata._.str.256
-                0x00d2b8bd       0x56 obj/CNTAGION.o
+                0x00d2b0bb       0x56 obj/CNTAGION.o
  .rodata._.str.257
-                0x00d2b913       0x15 obj/CNTAGION.o
+                0x00d2b111       0x15 obj/CNTAGION.o
  .rodata._.str.258
-                0x00d2b928       0x16 obj/CNTAGION.o
+                0x00d2b126       0x16 obj/CNTAGION.o
  .rodata._.str.259
-                0x00d2b93e       0x56 obj/CNTAGION.o
+                0x00d2b13c       0x56 obj/CNTAGION.o
  .rodata._.str.260
-                0x00d2b994       0x13 obj/CNTAGION.o
+                0x00d2b192       0x13 obj/CNTAGION.o
  .rodata._.str.261
-                0x00d2b9a7       0x4c obj/CNTAGION.o
+                0x00d2b1a5       0x4c obj/CNTAGION.o
  .rodata._.str.262
-                0x00d2b9f3       0x16 obj/CNTAGION.o
+                0x00d2b1f1       0x16 obj/CNTAGION.o
  .rodata._.str.263
-                0x00d2ba09       0x52 obj/CNTAGION.o
+                0x00d2b207       0x52 obj/CNTAGION.o
  .rodata._.str.264
-                0x00d2ba5b       0x18 obj/CNTAGION.o
+                0x00d2b259       0x18 obj/CNTAGION.o
  .rodata._.str.265
-                0x00d2ba73       0x4f obj/CNTAGION.o
+                0x00d2b271       0x4f obj/CNTAGION.o
  .rodata._.str.266
-                0x00d2bac2       0x17 obj/CNTAGION.o
+                0x00d2b2c0       0x17 obj/CNTAGION.o
  .rodata._.str.267
-                0x00d2bad9       0x4b obj/CNTAGION.o
+                0x00d2b2d7       0x4b obj/CNTAGION.o
  .rodata._.str.268
-                0x00d2bb24       0x13 obj/CNTAGION.o
+                0x00d2b322       0x13 obj/CNTAGION.o
  .rodata._.str.269
-                0x00d2bb37       0x52 obj/CNTAGION.o
+                0x00d2b335       0x52 obj/CNTAGION.o
  .rodata._.str.270
-                0x00d2bb89       0x16 obj/CNTAGION.o
+                0x00d2b387       0x16 obj/CNTAGION.o
  .rodata._.str.271
-                0x00d2bb9f       0x4c obj/CNTAGION.o
+                0x00d2b39d       0x4c obj/CNTAGION.o
  .rodata._.str.272
-                0x00d2bbeb       0x16 obj/CNTAGION.o
+                0x00d2b3e9       0x16 obj/CNTAGION.o
  .rodata._.str.273
-                0x00d2bc01       0x61 obj/CNTAGION.o
+                0x00d2b3ff       0x61 obj/CNTAGION.o
  .rodata._.str.274
-                0x00d2bc62       0x1a obj/CNTAGION.o
+                0x00d2b460       0x1a obj/CNTAGION.o
  .rodata._.str.275
-                0x00d2bc7c       0x57 obj/CNTAGION.o
+                0x00d2b47a       0x57 obj/CNTAGION.o
  .rodata._.str.276
-                0x00d2bcd3       0x17 obj/CNTAGION.o
+                0x00d2b4d1       0x17 obj/CNTAGION.o
  .rodata._.str.277
-                0x00d2bcea       0x12 obj/CNTAGION.o
+                0x00d2b4e8       0x12 obj/CNTAGION.o
  .rodata._.str.278
-                0x00d2bcfc       0x15 obj/CNTAGION.o
+                0x00d2b4fa       0x15 obj/CNTAGION.o
  .rodata._.str.279
-                0x00d2bd11       0x45 obj/CNTAGION.o
+                0x00d2b50f       0x45 obj/CNTAGION.o
  .rodata._.str.280
-                0x00d2bd56       0x1b obj/CNTAGION.o
+                0x00d2b554       0x1b obj/CNTAGION.o
  .rodata._.str.281
-                0x00d2bd71       0x59 obj/CNTAGION.o
+                0x00d2b56f       0x59 obj/CNTAGION.o
  .rodata._.str.282
-                0x00d2bdca       0x1d obj/CNTAGION.o
+                0x00d2b5c8       0x1d obj/CNTAGION.o
  .rodata._.str.283
-                0x00d2bde7       0x57 obj/CNTAGION.o
+                0x00d2b5e5       0x57 obj/CNTAGION.o
  .rodata._.str.284
-                0x00d2be3e       0x16 obj/CNTAGION.o
+                0x00d2b63c       0x16 obj/CNTAGION.o
  .rodata._.str.285
-                0x00d2be54       0x13 obj/CNTAGION.o
+                0x00d2b652       0x13 obj/CNTAGION.o
  .rodata._.str.286
-                0x00d2be67       0x54 obj/CNTAGION.o
+                0x00d2b665       0x54 obj/CNTAGION.o
  .rodata._.str.287
-                0x00d2bebb       0x14 obj/CNTAGION.o
+                0x00d2b6b9       0x14 obj/CNTAGION.o
  .rodata._.str.288
-                0x00d2becf       0x50 obj/CNTAGION.o
+                0x00d2b6cd       0x50 obj/CNTAGION.o
  .rodata._.str.289
-                0x00d2bf1f       0x10 obj/CNTAGION.o
+                0x00d2b71d       0x10 obj/CNTAGION.o
  .rodata._.str.290
-                0x00d2bf2f       0x5d obj/CNTAGION.o
+                0x00d2b72d       0x5d obj/CNTAGION.o
  .rodata._.str.291
-                0x00d2bf8c       0x17 obj/CNTAGION.o
+                0x00d2b78a       0x17 obj/CNTAGION.o
  .rodata._.str.292
-                0x00d2bfa3       0x59 obj/CNTAGION.o
+                0x00d2b7a1       0x59 obj/CNTAGION.o
  .rodata._.str.293
-                0x00d2bffc       0x12 obj/CNTAGION.o
+                0x00d2b7fa       0x12 obj/CNTAGION.o
  .rodata._.str.294
-                0x00d2c00e       0x3f obj/CNTAGION.o
+                0x00d2b80c       0x3f obj/CNTAGION.o
  .rodata._.str.295
-                0x00d2c04d       0x15 obj/CNTAGION.o
+                0x00d2b84b       0x15 obj/CNTAGION.o
  .rodata._.str.296
-                0x00d2c062       0x64 obj/CNTAGION.o
+                0x00d2b860       0x64 obj/CNTAGION.o
  .rodata._.str.297
-                0x00d2c0c6       0x18 obj/CNTAGION.o
+                0x00d2b8c4       0x18 obj/CNTAGION.o
  .rodata._.str.298
-                0x00d2c0de       0x4d obj/CNTAGION.o
+                0x00d2b8dc       0x4d obj/CNTAGION.o
  .rodata._.str.299
-                0x00d2c12b       0x18 obj/CNTAGION.o
+                0x00d2b929       0x18 obj/CNTAGION.o
  .rodata._.str.300
-                0x00d2c143       0x67 obj/CNTAGION.o
+                0x00d2b941       0x67 obj/CNTAGION.o
  .rodata._.str.301
-                0x00d2c1aa       0x1d obj/CNTAGION.o
+                0x00d2b9a8       0x1d obj/CNTAGION.o
  .rodata._.str.302
-                0x00d2c1c7       0x56 obj/CNTAGION.o
+                0x00d2b9c5       0x56 obj/CNTAGION.o
  .rodata._.str.303
-                0x00d2c21d       0x17 obj/CNTAGION.o
+                0x00d2ba1b       0x17 obj/CNTAGION.o
  .rodata._.str.304
-                0x00d2c234       0x56 obj/CNTAGION.o
+                0x00d2ba32       0x56 obj/CNTAGION.o
  .rodata._.str.305
-                0x00d2c28a       0x15 obj/CNTAGION.o
+                0x00d2ba88       0x15 obj/CNTAGION.o
  .rodata._.str.306
-                0x00d2c29f       0x4e obj/CNTAGION.o
+                0x00d2ba9d       0x4e obj/CNTAGION.o
  .rodata._.str.307
-                0x00d2c2ed       0x14 obj/CNTAGION.o
+                0x00d2baeb       0x14 obj/CNTAGION.o
  .rodata._.str.308
-                0x00d2c301       0x4a obj/CNTAGION.o
+                0x00d2baff       0x4a obj/CNTAGION.o
  .rodata._.str.309
-                0x00d2c34b       0x1c obj/CNTAGION.o
+                0x00d2bb49       0x1c obj/CNTAGION.o
  .rodata._.str.310
-                0x00d2c367       0x6c obj/CNTAGION.o
+                0x00d2bb65       0x6c obj/CNTAGION.o
  .rodata._.str.311
-                0x00d2c3d3       0x1c obj/CNTAGION.o
+                0x00d2bbd1       0x1c obj/CNTAGION.o
  .rodata._.str.312
-                0x00d2c3ef       0x64 obj/CNTAGION.o
+                0x00d2bbed       0x64 obj/CNTAGION.o
  .rodata._.str.313
-                0x00d2c453       0x1a obj/CNTAGION.o
+                0x00d2bc51       0x1a obj/CNTAGION.o
  .rodata._.str.314
-                0x00d2c46d       0x1a obj/CNTAGION.o
+                0x00d2bc6b       0x1a obj/CNTAGION.o
  .rodata._.str.315
-                0x00d2c487       0x53 obj/CNTAGION.o
+                0x00d2bc85       0x53 obj/CNTAGION.o
  .rodata._.str.316
-                0x00d2c4da       0x16 obj/CNTAGION.o
+                0x00d2bcd8       0x16 obj/CNTAGION.o
  .rodata._.str.317
-                0x00d2c4f0       0x4c obj/CNTAGION.o
+                0x00d2bcee       0x4c obj/CNTAGION.o
  .rodata._.str.318
-                0x00d2c53c       0x1a obj/CNTAGION.o
+                0x00d2bd3a       0x1a obj/CNTAGION.o
  .rodata._.str.319
-                0x00d2c556       0x53 obj/CNTAGION.o
+                0x00d2bd54       0x53 obj/CNTAGION.o
  .rodata._.str.320
-                0x00d2c5a9       0x18 obj/CNTAGION.o
+                0x00d2bda7       0x18 obj/CNTAGION.o
  .rodata._.str.321
-                0x00d2c5c1       0x4e obj/CNTAGION.o
+                0x00d2bdbf       0x4e obj/CNTAGION.o
  .rodata._.str.322
-                0x00d2c60f       0x17 obj/CNTAGION.o
+                0x00d2be0d       0x17 obj/CNTAGION.o
  .rodata._.str.323
-                0x00d2c626       0x56 obj/CNTAGION.o
+                0x00d2be24       0x56 obj/CNTAGION.o
  .rodata._.str.324
-                0x00d2c67c       0x18 obj/CNTAGION.o
+                0x00d2be7a       0x18 obj/CNTAGION.o
  .rodata._.str.325
-                0x00d2c694       0x5f obj/CNTAGION.o
+                0x00d2be92       0x5f obj/CNTAGION.o
  .rodata._.str.326
-                0x00d2c6f3       0x18 obj/CNTAGION.o
+                0x00d2bef1       0x18 obj/CNTAGION.o
  .rodata._.str.327
-                0x00d2c70b       0x5f obj/CNTAGION.o
+                0x00d2bf09       0x5f obj/CNTAGION.o
  .rodata._.str.328
-                0x00d2c76a       0x1f obj/CNTAGION.o
+                0x00d2bf68       0x1f obj/CNTAGION.o
  .rodata._.str.329
-                0x00d2c789       0x5f obj/CNTAGION.o
+                0x00d2bf87       0x5f obj/CNTAGION.o
  .rodata._.str.330
-                0x00d2c7e8       0x14 obj/CNTAGION.o
+                0x00d2bfe6       0x14 obj/CNTAGION.o
  .rodata._.str.331
-                0x00d2c7fc       0x5f obj/CNTAGION.o
+                0x00d2bffa       0x5f obj/CNTAGION.o
  .rodata._.str.332
-                0x00d2c85b       0x18 obj/CNTAGION.o
+                0x00d2c059       0x18 obj/CNTAGION.o
  .rodata._.str.333
-                0x00d2c873       0x16 obj/CNTAGION.o
+                0x00d2c071       0x16 obj/CNTAGION.o
  .rodata._.str.334
-                0x00d2c889       0x5f obj/CNTAGION.o
+                0x00d2c087       0x5f obj/CNTAGION.o
  .rodata._.str.335
-                0x00d2c8e8       0x16 obj/CNTAGION.o
+                0x00d2c0e6       0x16 obj/CNTAGION.o
  .rodata._.str.336
-                0x00d2c8fe       0x5f obj/CNTAGION.o
+                0x00d2c0fc       0x5f obj/CNTAGION.o
  .rodata._.str.337
-                0x00d2c95d       0x1a obj/CNTAGION.o
+                0x00d2c15b       0x1a obj/CNTAGION.o
  .rodata._.str.338
-                0x00d2c977       0x5f obj/CNTAGION.o
+                0x00d2c175       0x5f obj/CNTAGION.o
  .rodata._.str.339
-                0x00d2c9d6       0x19 obj/CNTAGION.o
+                0x00d2c1d4       0x19 obj/CNTAGION.o
  .rodata._.str.340
-                0x00d2c9ef       0x5f obj/CNTAGION.o
+                0x00d2c1ed       0x5f obj/CNTAGION.o
  .rodata._.str.341
-                0x00d2ca4e       0x1a obj/CNTAGION.o
+                0x00d2c24c       0x1a obj/CNTAGION.o
  .rodata._.str.342
-                0x00d2ca68       0x1e obj/CNTAGION.o
+                0x00d2c266       0x1e obj/CNTAGION.o
  .rodata._.str.343
-                0x00d2ca86       0x56 obj/CNTAGION.o
+                0x00d2c284       0x56 obj/CNTAGION.o
  .rodata._.str.344
-                0x00d2cadc       0x14 obj/CNTAGION.o
+                0x00d2c2da       0x14 obj/CNTAGION.o
  .rodata._.str.345
-                0x00d2caf0       0x53 obj/CNTAGION.o
+                0x00d2c2ee       0x53 obj/CNTAGION.o
  .rodata._.str.346
-                0x00d2cb43       0x19 obj/CNTAGION.o
+                0x00d2c341       0x19 obj/CNTAGION.o
  .rodata._.str.347
-                0x00d2cb5c       0x4d obj/CNTAGION.o
+                0x00d2c35a       0x4d obj/CNTAGION.o
  .rodata._.str.348
-                0x00d2cba9       0x16 obj/CNTAGION.o
+                0x00d2c3a7       0x16 obj/CNTAGION.o
  .rodata._.str.349
-                0x00d2cbbf       0x59 obj/CNTAGION.o
+                0x00d2c3bd       0x59 obj/CNTAGION.o
  .rodata._.str.350
-                0x00d2cc18       0x1b obj/CNTAGION.o
+                0x00d2c416       0x1b obj/CNTAGION.o
  .rodata._.str.351
-                0x00d2cc33       0x19 obj/CNTAGION.o
+                0x00d2c431       0x19 obj/CNTAGION.o
  .rodata._.str.352
-                0x00d2cc4c       0x53 obj/CNTAGION.o
+                0x00d2c44a       0x53 obj/CNTAGION.o
  .rodata._.str.353
-                0x00d2cc9f       0x18 obj/CNTAGION.o
+                0x00d2c49d       0x18 obj/CNTAGION.o
  .rodata._.str.354
-                0x00d2ccb7       0x4a obj/CNTAGION.o
+                0x00d2c4b5       0x4a obj/CNTAGION.o
  .rodata._.str.355
-                0x00d2cd01       0x1c obj/CNTAGION.o
+                0x00d2c4ff       0x1c obj/CNTAGION.o
  .rodata._.str.356
-                0x00d2cd1d       0x5a obj/CNTAGION.o
+                0x00d2c51b       0x5a obj/CNTAGION.o
  .rodata._.str.357
-                0x00d2cd77       0x1a obj/CNTAGION.o
+                0x00d2c575       0x1a obj/CNTAGION.o
  .rodata._.str.358
-                0x00d2cd91       0x59 obj/CNTAGION.o
+                0x00d2c58f       0x59 obj/CNTAGION.o
  .rodata._.str.359
-                0x00d2cdea       0x19 obj/CNTAGION.o
+                0x00d2c5e8       0x19 obj/CNTAGION.o
  .rodata._.str.360
-                0x00d2ce03       0x55 obj/CNTAGION.o
+                0x00d2c601       0x55 obj/CNTAGION.o
  .rodata._.str.361
-                0x00d2ce58       0x18 obj/CNTAGION.o
+                0x00d2c656       0x18 obj/CNTAGION.o
  .rodata._.str.362
-                0x00d2ce70       0x6b obj/CNTAGION.o
+                0x00d2c66e       0x6b obj/CNTAGION.o
  .rodata._.str.363
-                0x00d2cedb       0x19 obj/CNTAGION.o
+                0x00d2c6d9       0x19 obj/CNTAGION.o
  .rodata._.str.364
-                0x00d2cef4       0x4d obj/CNTAGION.o
+                0x00d2c6f2       0x4d obj/CNTAGION.o
  .rodata._.str.365
-                0x00d2cf41       0x19 obj/CNTAGION.o
+                0x00d2c73f       0x19 obj/CNTAGION.o
  .rodata._.str.366
-                0x00d2cf5a       0x48 obj/CNTAGION.o
+                0x00d2c758       0x48 obj/CNTAGION.o
  .rodata._.str.367
-                0x00d2cfa2       0x1e obj/CNTAGION.o
+                0x00d2c7a0       0x1e obj/CNTAGION.o
  .rodata._.str.368
-                0x00d2cfc0       0x6a obj/CNTAGION.o
+                0x00d2c7be       0x6a obj/CNTAGION.o
  .rodata._.str.369
-                0x00d2d02a       0x16 obj/CNTAGION.o
+                0x00d2c828       0x16 obj/CNTAGION.o
  .rodata._.str.370
-                0x00d2d040       0x38 obj/CNTAGION.o
+                0x00d2c83e       0x38 obj/CNTAGION.o
  .rodata._.str.371
-                0x00d2d078       0x1a obj/CNTAGION.o
+                0x00d2c876       0x1a obj/CNTAGION.o
  .rodata._.str.372
-                0x00d2d092       0x68 obj/CNTAGION.o
+                0x00d2c890       0x68 obj/CNTAGION.o
  .rodata._.str.373
-                0x00d2d0fa       0x18 obj/CNTAGION.o
+                0x00d2c8f8       0x18 obj/CNTAGION.o
  .rodata._.str.374
-                0x00d2d112       0x4c obj/CNTAGION.o
+                0x00d2c910       0x4c obj/CNTAGION.o
  .rodata._.str.375
-                0x00d2d15e       0x1b obj/CNTAGION.o
+                0x00d2c95c       0x1b obj/CNTAGION.o
  .rodata._.str.376
-                0x00d2d179       0x59 obj/CNTAGION.o
+                0x00d2c977       0x59 obj/CNTAGION.o
  .rodata._.str.377
-                0x00d2d1d2       0x1c obj/CNTAGION.o
+                0x00d2c9d0       0x1c obj/CNTAGION.o
  .rodata._.str.378
-                0x00d2d1ee       0x53 obj/CNTAGION.o
+                0x00d2c9ec       0x53 obj/CNTAGION.o
  .rodata._.str.379
-                0x00d2d241       0x1d obj/CNTAGION.o
+                0x00d2ca3f       0x1d obj/CNTAGION.o
  .rodata._.str.380
-                0x00d2d25e       0x1d obj/CNTAGION.o
+                0x00d2ca5c       0x1d obj/CNTAGION.o
  .rodata._.str.381
-                0x00d2d27b       0x67 obj/CNTAGION.o
+                0x00d2ca79       0x67 obj/CNTAGION.o
  .rodata._.str.382
-                0x00d2d2e2       0x14 obj/CNTAGION.o
+                0x00d2cae0       0x14 obj/CNTAGION.o
  .rodata._.str.383
-                0x00d2d2f6       0x55 obj/CNTAGION.o
+                0x00d2caf4       0x55 obj/CNTAGION.o
  .rodata._.str.384
-                0x00d2d34b       0x17 obj/CNTAGION.o
+                0x00d2cb49       0x17 obj/CNTAGION.o
  .rodata._.str.385
-                0x00d2d362       0x54 obj/CNTAGION.o
+                0x00d2cb60       0x54 obj/CNTAGION.o
  .rodata._.str.386
-                0x00d2d3b6       0x15 obj/CNTAGION.o
+                0x00d2cbb4       0x15 obj/CNTAGION.o
  .rodata._.str.387
-                0x00d2d3cb       0x59 obj/CNTAGION.o
+                0x00d2cbc9       0x59 obj/CNTAGION.o
  .rodata._.str.388
-                0x00d2d424       0x1a obj/CNTAGION.o
+                0x00d2cc22       0x1a obj/CNTAGION.o
  .rodata._.str.389
-                0x00d2d43e       0x50 obj/CNTAGION.o
+                0x00d2cc3c       0x50 obj/CNTAGION.o
  .rodata._.str.390
-                0x00d2d48e       0x15 obj/CNTAGION.o
+                0x00d2cc8c       0x15 obj/CNTAGION.o
  .rodata._.str.1.391
-                0x00d2d4a3       0x18 obj/CNTAGION.o
+                0x00d2cca1       0x18 obj/CNTAGION.o
  .rodata._.str.2.392
-                0x00d2d4bb        0xf obj/CNTAGION.o
+                0x00d2ccb9        0xf obj/CNTAGION.o
  .rodata._.str.4.394
-                0x00d2d4ca       0x1f obj/CNTAGION.o
+                0x00d2ccc8       0x1f obj/CNTAGION.o
  .rodata._.str.6.396
-                0x00d2d4e9       0x14 obj/CNTAGION.o
+                0x00d2cce7       0x14 obj/CNTAGION.o
  .rodata._.str.7.397
-                0x00d2d4fd       0x13 obj/CNTAGION.o
+                0x00d2ccfb       0x13 obj/CNTAGION.o
  .rodata._.str.8.398
-                0x00d2d510        0x3 obj/CNTAGION.o
+                0x00d2cd0e        0x3 obj/CNTAGION.o
  .rodata._effect_names
-                0x00d2d513       0x1b obj/CNTAGION.o
+                0x00d2cd11       0x1b obj/CNTAGION.o
  .rodata._.str.9.399
-                0x00d2d52e       0x17 obj/CNTAGION.o
+                0x00d2cd2c       0x17 obj/CNTAGION.o
  .rodata._.str.10.400
-                0x00d2d545        0xa obj/CNTAGION.o
+                0x00d2cd43        0xa obj/CNTAGION.o
  .rodata._.str.11.403
-                0x00d2d54f        0xe obj/CNTAGION.o
+                0x00d2cd4d        0xe obj/CNTAGION.o
  .rodata._.str.12.401
-                0x00d2d55d        0xa obj/CNTAGION.o
+                0x00d2cd5b        0xa obj/CNTAGION.o
  .rodata._.str.14.404
-                0x00d2d567       0x30 obj/CNTAGION.o
+                0x00d2cd65       0x30 obj/CNTAGION.o
  .rodata._.str.15.405
-                0x00d2d597       0x16 obj/CNTAGION.o
+                0x00d2cd95       0x16 obj/CNTAGION.o
  .rodata._.str.16.406
-                0x00d2d5ad       0x26 obj/CNTAGION.o
+                0x00d2cdab       0x26 obj/CNTAGION.o
  .rodata._.str.17.407
-                0x00d2d5d3       0x23 obj/CNTAGION.o
+                0x00d2cdd1       0x23 obj/CNTAGION.o
  .rodata._EventDetail.checks
-                0x00d2d5f6       0x15 obj/CNTAGION.o
+                0x00d2cdf4       0x15 obj/CNTAGION.o
  .rodata._.str.18.413
-                0x00d2d60b       0x15 obj/CNTAGION.o
+                0x00d2ce09       0x15 obj/CNTAGION.o
  .rodata._.str.19.414
-                0x00d2d620       0x1d obj/CNTAGION.o
+                0x00d2ce1e       0x1d obj/CNTAGION.o
  .rodata._.str.20.415
-                0x00d2d63d       0x27 obj/CNTAGION.o
+                0x00d2ce3b       0x27 obj/CNTAGION.o
  .rodata._.str.21.416
-                0x00d2d664       0x1b obj/CNTAGION.o
+                0x00d2ce62       0x1b obj/CNTAGION.o
  .rodata._.str.22.417
-                0x00d2d67f       0x1b obj/CNTAGION.o
+                0x00d2ce7d       0x1b obj/CNTAGION.o
  .rodata._.str.23.408
-                0x00d2d69a        0xf obj/CNTAGION.o
+                0x00d2ce98        0xf obj/CNTAGION.o
  .rodata._.str.24.409
-                0x00d2d6a9       0x22 obj/CNTAGION.o
+                0x00d2cea7       0x22 obj/CNTAGION.o
  .rodata._.str.25.410
-                0x00d2d6cb       0x1f obj/CNTAGION.o
+                0x00d2cec9       0x1f obj/CNTAGION.o
  .rodata._.str.26.411
-                0x00d2d6ea       0x21 obj/CNTAGION.o
+                0x00d2cee8       0x21 obj/CNTAGION.o
  .rodata._.str.29.419
-                0x00d2d70b        0xd obj/CNTAGION.o
+                0x00d2cf09        0xd obj/CNTAGION.o
  .rodata._.str.30.420
-                0x00d2d718        0xb obj/CNTAGION.o
+                0x00d2cf16        0xb obj/CNTAGION.o
  .rodata._.str.31.421
-                0x00d2d723        0xb obj/CNTAGION.o
+                0x00d2cf21        0xb obj/CNTAGION.o
  .rodata._.str.32.422
-                0x00d2d72e        0xf obj/CNTAGION.o
+                0x00d2cf2c        0xf obj/CNTAGION.o
  .rodata._.str.33.423
-                0x00d2d73d       0x13 obj/CNTAGION.o
+                0x00d2cf3b       0x13 obj/CNTAGION.o
  .rodata._.str.34.424
-                0x00d2d750       0x12 obj/CNTAGION.o
+                0x00d2cf4e       0x12 obj/CNTAGION.o
  .rodata._.str.35.425
-                0x00d2d762       0x13 obj/CNTAGION.o
+                0x00d2cf60       0x13 obj/CNTAGION.o
  .rodata._.str.36.426
-                0x00d2d775       0x13 obj/CNTAGION.o
+                0x00d2cf73       0x13 obj/CNTAGION.o
  .rodata._.str.433
-                0x00d2d788       0x1b obj/CNTAGION.o
+                0x00d2cf86       0x1b obj/CNTAGION.o
  .rodata._categories
-                0x00d2d7a3        0x9 obj/CNTAGION.o
+                0x00d2cfa1        0x9 obj/CNTAGION.o
  .rodata._.str.1.434
-                0x00d2d7ac        0x7 obj/CNTAGION.o
+                0x00d2cfaa        0x7 obj/CNTAGION.o
  .rodata._branch_labels
-                0x00d2d7b3       0x3f obj/CNTAGION.o
+                0x00d2cfb1       0x3f obj/CNTAGION.o
  .rodata._.str.2.435
-                0x00d2d7f2        0x8 obj/CNTAGION.o
+                0x00d2cff0        0x8 obj/CNTAGION.o
  .rodata._.str.3.436
-                0x00d2d7fa        0xb obj/CNTAGION.o
+                0x00d2cff8        0xb obj/CNTAGION.o
  .rodata._.str.4.437
-                0x00d2d805        0x7 obj/CNTAGION.o
+                0x00d2d003        0x7 obj/CNTAGION.o
  .rodata._.str.5.438
-                0x00d2d80c       0x29 obj/CNTAGION.o
+                0x00d2d00a       0x29 obj/CNTAGION.o
  .rodata._.str.6.439
-                0x00d2d835       0x1e obj/CNTAGION.o
+                0x00d2d033       0x1e obj/CNTAGION.o
  .rodata._.str.7.440
-                0x00d2d853       0x12 obj/CNTAGION.o
+                0x00d2d051       0x12 obj/CNTAGION.o
  .rodata._first_node
-                0x00d2d865        0x3 obj/CNTAGION.o
+                0x00d2d063        0x3 obj/CNTAGION.o
  .rodata._environments
-                0x00d2d868       0x31 obj/CNTAGION.o
-                0x00d2d868                _environments
+                0x00d2d066       0x31 obj/CNTAGION.o
+                0x00d2d066                _environments
  .rodata._.str.8.487
-                0x00d2d899       0x21 obj/CNTAGION.o
+                0x00d2d097       0x21 obj/CNTAGION.o
  .rodata._.str.9.488
-                0x00d2d8ba       0x11 obj/CNTAGION.o
+                0x00d2d0b8       0x11 obj/CNTAGION.o
  .rodata._.str.10.489
-                0x00d2d8cb       0x1d obj/CNTAGION.o
+                0x00d2d0c9       0x1d obj/CNTAGION.o
  .rodata._.str.11.490
-                0x00d2d8e8       0x12 obj/CNTAGION.o
+                0x00d2d0e6       0x12 obj/CNTAGION.o
  .rodata._.str.12.491
-                0x00d2d8fa       0x19 obj/CNTAGION.o
+                0x00d2d0f8       0x19 obj/CNTAGION.o
  .rodata._.str.13.492
-                0x00d2d913       0x14 obj/CNTAGION.o
+                0x00d2d111       0x14 obj/CNTAGION.o
  .rodata._.str.14.493
-                0x00d2d927        0xe obj/CNTAGION.o
+                0x00d2d125        0xe obj/CNTAGION.o
  .rodata._.str.15.494
-                0x00d2d935       0x1c obj/CNTAGION.o
+                0x00d2d133       0x1c obj/CNTAGION.o
  .rodata._.str.16.495
-                0x00d2d951       0x1f obj/CNTAGION.o
+                0x00d2d14f       0x1f obj/CNTAGION.o
  .rodata._.str.19.497
-                0x00d2d970       0x14 obj/CNTAGION.o
+                0x00d2d16e       0x14 obj/CNTAGION.o
  .rodata._.str.20.499
-                0x00d2d984       0x19 obj/CNTAGION.o
+                0x00d2d182       0x19 obj/CNTAGION.o
  .rodata._.str.21.498
-                0x00d2d99d       0x1e obj/CNTAGION.o
+                0x00d2d19b       0x1e obj/CNTAGION.o
  .rodata._.str.22.500
-                0x00d2d9bb       0x26 obj/CNTAGION.o
+                0x00d2d1b9       0x26 obj/CNTAGION.o
  .rodata._.str.23.501
-                0x00d2d9e1       0x12 obj/CNTAGION.o
+                0x00d2d1df       0x12 obj/CNTAGION.o
  .rodata._.str.24.502
-                0x00d2d9f3       0x21 obj/CNTAGION.o
+                0x00d2d1f1       0x21 obj/CNTAGION.o
  .rodata._.str.25.503
-                0x00d2da14       0x17 obj/CNTAGION.o
+                0x00d2d212       0x17 obj/CNTAGION.o
  .rodata._.str.26.505
-                0x00d2da2b       0x19 obj/CNTAGION.o
+                0x00d2d229       0x19 obj/CNTAGION.o
  .rodata._.str.27.506
-                0x00d2da44       0x20 obj/CNTAGION.o
+                0x00d2d242       0x20 obj/CNTAGION.o
  .rodata._.str.28.507
-                0x00d2da64       0x20 obj/CNTAGION.o
+                0x00d2d262       0x20 obj/CNTAGION.o
  .rodata._.str.29.504
-                0x00d2da84       0x19 obj/CNTAGION.o
+                0x00d2d282       0x19 obj/CNTAGION.o
  .rodata._.str.30.508
-                0x00d2da9d       0x25 obj/CNTAGION.o
+                0x00d2d29b       0x25 obj/CNTAGION.o
  .rodata._.str.31.509
-                0x00d2dac2       0x14 obj/CNTAGION.o
+                0x00d2d2c0       0x14 obj/CNTAGION.o
  .rodata._.str.32.510
-                0x00d2dad6        0xf obj/CNTAGION.o
+                0x00d2d2d4        0xf obj/CNTAGION.o
  .rodata._.str.33.511
-                0x00d2dae5        0x8 obj/CNTAGION.o
+                0x00d2d2e3        0x8 obj/CNTAGION.o
  .rodata._.str.34.512
-                0x00d2daed       0x1c obj/CNTAGION.o
+                0x00d2d2eb       0x1c obj/CNTAGION.o
  .rodata._.str.35.513
-                0x00d2db09       0x25 obj/CNTAGION.o
+                0x00d2d307       0x25 obj/CNTAGION.o
  .rodata._.str.36.514
-                0x00d2db2e       0x24 obj/CNTAGION.o
+                0x00d2d32c       0x24 obj/CNTAGION.o
  .rodata._.str.37.517
-                0x00d2db52       0x1d obj/CNTAGION.o
+                0x00d2d350       0x1d obj/CNTAGION.o
  .rodata._.str.38.515
-                0x00d2db6f       0x1d obj/CNTAGION.o
+                0x00d2d36d       0x1d obj/CNTAGION.o
  .rodata._.str.39.516
-                0x00d2db8c       0x3c obj/CNTAGION.o
+                0x00d2d38a       0x3c obj/CNTAGION.o
  .rodata._.str.40.518
-                0x00d2dbc8       0x1a obj/CNTAGION.o
+                0x00d2d3c6       0x1a obj/CNTAGION.o
  .rodata._.str.41.484
-                0x00d2dbe2        0xd obj/CNTAGION.o
+                0x00d2d3e0        0xd obj/CNTAGION.o
  .rodata._.str.42.485
-                0x00d2dbef        0x9 obj/CNTAGION.o
+                0x00d2d3ed        0x9 obj/CNTAGION.o
  .rodata._.str.43.486
-                0x00d2dbf8        0xa obj/CNTAGION.o
+                0x00d2d3f6        0xa obj/CNTAGION.o
  .rodata._.str.44.469
-                0x00d2dc02        0x4 obj/CNTAGION.o
+                0x00d2d400        0x4 obj/CNTAGION.o
  .rodata._.str.45.470
-                0x00d2dc06        0x6 obj/CNTAGION.o
+                0x00d2d404        0x6 obj/CNTAGION.o
  .rodata._.str.46.471
-                0x00d2dc0c        0x5 obj/CNTAGION.o
+                0x00d2d40a        0x5 obj/CNTAGION.o
  .rodata._.str.47.472
-                0x00d2dc11        0x4 obj/CNTAGION.o
+                0x00d2d40f        0x4 obj/CNTAGION.o
  .rodata._.str.48.473
-                0x00d2dc15        0x7 obj/CNTAGION.o
+                0x00d2d413        0x7 obj/CNTAGION.o
  .rodata._.str.49.474
-                0x00d2dc1c        0x5 obj/CNTAGION.o
+                0x00d2d41a        0x5 obj/CNTAGION.o
  .rodata._.str.50.475
-                0x00d2dc21        0x6 obj/CNTAGION.o
+                0x00d2d41f        0x6 obj/CNTAGION.o
  .rodata._.str.51.476
-                0x00d2dc27        0xc obj/CNTAGION.o
+                0x00d2d425        0xc obj/CNTAGION.o
  .rodata._.str.52.477
-                0x00d2dc33        0xa obj/CNTAGION.o
+                0x00d2d431        0xa obj/CNTAGION.o
  .rodata._.str.53.478
-                0x00d2dc3d        0x9 obj/CNTAGION.o
+                0x00d2d43b        0x9 obj/CNTAGION.o
  .rodata._.str.54.479
-                0x00d2dc46        0x5 obj/CNTAGION.o
+                0x00d2d444        0x5 obj/CNTAGION.o
  .rodata._.str.55.480
-                0x00d2dc4b        0x5 obj/CNTAGION.o
+                0x00d2d449        0x5 obj/CNTAGION.o
  .rodata._.str.56.481
-                0x00d2dc50        0x8 obj/CNTAGION.o
+                0x00d2d44e        0x8 obj/CNTAGION.o
  .rodata._.str.57.482
-                0x00d2dc58        0x7 obj/CNTAGION.o
+                0x00d2d456        0x7 obj/CNTAGION.o
  .rodata._.str.58.483
-                0x00d2dc5f        0x8 obj/CNTAGION.o
+                0x00d2d45d        0x8 obj/CNTAGION.o
  .rodata._.str.59.442
-                0x00d2dc67       0x12 obj/CNTAGION.o
+                0x00d2d465       0x12 obj/CNTAGION.o
  .rodata._.str.60.443
-                0x00d2dc79       0x1c obj/CNTAGION.o
+                0x00d2d477       0x1c obj/CNTAGION.o
  .rodata._.str.61.444
-                0x00d2dc95        0xa obj/CNTAGION.o
+                0x00d2d493        0xa obj/CNTAGION.o
  .rodata._.str.62.445
-                0x00d2dc9f        0x5 obj/CNTAGION.o
+                0x00d2d49d        0x5 obj/CNTAGION.o
  .rodata._.str.63.446
-                0x00d2dca4       0x24 obj/CNTAGION.o
+                0x00d2d4a2       0x24 obj/CNTAGION.o
  .rodata._.str.64.447
-                0x00d2dcc8       0x11 obj/CNTAGION.o
+                0x00d2d4c6       0x11 obj/CNTAGION.o
  .rodata._.str.65.448
-                0x00d2dcd9       0x12 obj/CNTAGION.o
+                0x00d2d4d7       0x12 obj/CNTAGION.o
  .rodata._.str.66.449
-                0x00d2dceb       0x15 obj/CNTAGION.o
+                0x00d2d4e9       0x15 obj/CNTAGION.o
  .rodata._.str.67.450
-                0x00d2dd00       0x1a obj/CNTAGION.o
+                0x00d2d4fe       0x1a obj/CNTAGION.o
  .rodata._reshuffle_reductions
-                0x00d2dd1a        0x4 obj/CNTAGION.o
-                0x00d2dd1a                _reshuffle_reductions
+                0x00d2d518        0x4 obj/CNTAGION.o
+                0x00d2d518                _reshuffle_reductions
  .rodata._.str.68.451
-                0x00d2dd1e       0x21 obj/CNTAGION.o
+                0x00d2d51c       0x21 obj/CNTAGION.o
  .rodata._.str.69.452
-                0x00d2dd3f       0x19 obj/CNTAGION.o
+                0x00d2d53d       0x19 obj/CNTAGION.o
  .rodata._.str.70.453
-                0x00d2dd58       0x1e obj/CNTAGION.o
+                0x00d2d556       0x1e obj/CNTAGION.o
  .rodata._.str.71.454
-                0x00d2dd76       0x20 obj/CNTAGION.o
+                0x00d2d574       0x20 obj/CNTAGION.o
  .rodata._.str.72.455
-                0x00d2dd96       0x21 obj/CNTAGION.o
+                0x00d2d594       0x21 obj/CNTAGION.o
  .rodata._.str.73.459
-                0x00d2ddb7       0x13 obj/CNTAGION.o
+                0x00d2d5b5       0x13 obj/CNTAGION.o
  .rodata._.str.74.457
-                0x00d2ddca        0x9 obj/CNTAGION.o
+                0x00d2d5c8        0x9 obj/CNTAGION.o
  .rodata._.str.75.458
-                0x00d2ddd3        0xa obj/CNTAGION.o
+                0x00d2d5d1        0xa obj/CNTAGION.o
  .rodata._.str.76.456
-                0x00d2dddd        0xc obj/CNTAGION.o
+                0x00d2d5db        0xc obj/CNTAGION.o
  .rodata._.str.77.461
-                0x00d2dde9       0x12 obj/CNTAGION.o
+                0x00d2d5e7       0x12 obj/CNTAGION.o
  .rodata._.str.78.460
-                0x00d2ddfb       0x13 obj/CNTAGION.o
+                0x00d2d5f9       0x13 obj/CNTAGION.o
  .rodata._.str.79.462
-                0x00d2de0e        0x5 obj/CNTAGION.o
+                0x00d2d60c        0x5 obj/CNTAGION.o
  .rodata._.str.80.465
-                0x00d2de13        0xf obj/CNTAGION.o
+                0x00d2d611        0xf obj/CNTAGION.o
  .rodata._.str.81.466
-                0x00d2de22       0x16 obj/CNTAGION.o
+                0x00d2d620       0x16 obj/CNTAGION.o
  .rodata._.str.82.467
-                0x00d2de38       0x10 obj/CNTAGION.o
+                0x00d2d636       0x10 obj/CNTAGION.o
  .rodata._.str.83.463
-                0x00d2de48        0xb obj/CNTAGION.o
+                0x00d2d646        0xb obj/CNTAGION.o
  .rodata._.str.84.468
-                0x00d2de53       0x1e obj/CNTAGION.o
+                0x00d2d651       0x1e obj/CNTAGION.o
  .rodata._.str.85.464
-                0x00d2de71       0x15 obj/CNTAGION.o
+                0x00d2d66f       0x15 obj/CNTAGION.o
  .rodata._.str.541
-                0x00d2de86        0x2 obj/CNTAGION.o
+                0x00d2d684        0x2 obj/CNTAGION.o
  .rodata._.str.1.542
-                0x00d2de88        0x2 obj/CNTAGION.o
+                0x00d2d686        0x2 obj/CNTAGION.o
  .rodata._.str.2.549
-                0x00d2de8a       0x21 obj/CNTAGION.o
+                0x00d2d688       0x21 obj/CNTAGION.o
  .rodata._.str.3.550
-                0x00d2deab        0xc obj/CNTAGION.o
+                0x00d2d6a9        0xc obj/CNTAGION.o
  .rodata._.str.4.553
-                0x00d2deb7       0x15 obj/CNTAGION.o
+                0x00d2d6b5       0x15 obj/CNTAGION.o
  .rodata._.str.5.556
-                0x00d2decc        0x7 obj/CNTAGION.o
+                0x00d2d6ca        0x7 obj/CNTAGION.o
  .rodata._.str.6.557
-                0x00d2ded3        0xa obj/CNTAGION.o
+                0x00d2d6d1        0xa obj/CNTAGION.o
  .rodata._.str.7.558
-                0x00d2dedd        0xf obj/CNTAGION.o
+                0x00d2d6db        0xf obj/CNTAGION.o
  .rodata._.str.8.560
-                0x00d2deec       0x19 obj/CNTAGION.o
+                0x00d2d6ea       0x19 obj/CNTAGION.o
  .rodata._.str.9.559
-                0x00d2df05       0x1a obj/CNTAGION.o
+                0x00d2d703       0x1a obj/CNTAGION.o
  .rodata._.str.10.561
-                0x00d2df1f        0xd obj/CNTAGION.o
+                0x00d2d71d        0xd obj/CNTAGION.o
  .rodata._.str.11.562
-                0x00d2df2c       0x1d obj/CNTAGION.o
+                0x00d2d72a       0x1d obj/CNTAGION.o
  .rodata._.str.12.563
-                0x00d2df49       0x1d obj/CNTAGION.o
+                0x00d2d747       0x1d obj/CNTAGION.o
  .rodata._.str.13.564
-                0x00d2df66       0x11 obj/CNTAGION.o
+                0x00d2d764       0x11 obj/CNTAGION.o
  .rodata._.str.14.565
-                0x00d2df77        0xc obj/CNTAGION.o
+                0x00d2d775        0xc obj/CNTAGION.o
  .rodata._.str.15.566
-                0x00d2df83       0x10 obj/CNTAGION.o
+                0x00d2d781       0x10 obj/CNTAGION.o
  .rodata._.str.16.567
-                0x00d2df93        0x7 obj/CNTAGION.o
+                0x00d2d791        0x7 obj/CNTAGION.o
  .rodata._.str.17.568
-                0x00d2df9a        0x7 obj/CNTAGION.o
+                0x00d2d798        0x7 obj/CNTAGION.o
  .rodata._.str.18.569
-                0x00d2dfa1        0xe obj/CNTAGION.o
+                0x00d2d79f        0xe obj/CNTAGION.o
  .rodata._main.choices
-                0x00d2dfaf        0x6 obj/CNTAGION.o
+                0x00d2d7ad        0x6 obj/CNTAGION.o
  .rodata._.str.19.609
-                0x00d2dfb5       0x18 obj/CNTAGION.o
+                0x00d2d7b3       0x18 obj/CNTAGION.o
  .rodata._.str.20.610
-                0x00d2dfcd        0xc obj/CNTAGION.o
+                0x00d2d7cb        0xc obj/CNTAGION.o
  .rodata._.str.21.576
-                0x00d2dfd9       0x11 obj/CNTAGION.o
+                0x00d2d7d7       0x11 obj/CNTAGION.o
  .rodata._.str.22.577
-                0x00d2dfea        0xe obj/CNTAGION.o
+                0x00d2d7e8        0xe obj/CNTAGION.o
  .rodata._.str.23.578
-                0x00d2dff8       0x3d obj/CNTAGION.o
+                0x00d2d7f6       0x3d obj/CNTAGION.o
  .rodata._.str.24.579
-                0x00d2e035       0x11 obj/CNTAGION.o
+                0x00d2d833       0x11 obj/CNTAGION.o
  .rodata._.str.25.580
-                0x00d2e046       0x29 obj/CNTAGION.o
+                0x00d2d844       0x29 obj/CNTAGION.o
  .rodata._.str.26.581
-                0x00d2e06f       0x5a obj/CNTAGION.o
+                0x00d2d86d       0x5a obj/CNTAGION.o
  .rodata._.str.27.582
-                0x00d2e0c9        0x9 obj/CNTAGION.o
+                0x00d2d8c7        0x9 obj/CNTAGION.o
  .rodata._.str.28.583
-                0x00d2e0d2        0x9 obj/CNTAGION.o
+                0x00d2d8d0        0x9 obj/CNTAGION.o
  .rodata._.str.29.584
-                0x00d2e0db        0x8 obj/CNTAGION.o
+                0x00d2d8d9        0x8 obj/CNTAGION.o
  .rodata._.str.30.585
-                0x00d2e0e3       0x1a obj/CNTAGION.o
+                0x00d2d8e1       0x1a obj/CNTAGION.o
  .rodata._SaveExit.choices
-                0x00d2e0fd        0x9 obj/CNTAGION.o
+                0x00d2d8fb        0x9 obj/CNTAGION.o
  .rodata._.str.31.574
-                0x00d2e106       0x14 obj/CNTAGION.o
+                0x00d2d904       0x14 obj/CNTAGION.o
  .rodata._.str.32.575
-                0x00d2e11a        0xb obj/CNTAGION.o
+                0x00d2d918        0xb obj/CNTAGION.o
  .rodata._.str.33.573
-                0x00d2e125       0x14 obj/CNTAGION.o
+                0x00d2d923       0x14 obj/CNTAGION.o
  .rodata._.str.34.570
-                0x00d2e139       0x21 obj/CNTAGION.o
+                0x00d2d937       0x21 obj/CNTAGION.o
  .rodata._SaveExit.confirm
-                0x00d2e15a        0x6 obj/CNTAGION.o
+                0x00d2d958        0x6 obj/CNTAGION.o
  .rodata._.str.35.572
-                0x00d2e160        0x8 obj/CNTAGION.o
+                0x00d2d95e        0x8 obj/CNTAGION.o
  .rodata._.str.36.571
-                0x00d2e168       0x1a obj/CNTAGION.o
+                0x00d2d966       0x1a obj/CNTAGION.o
  .rodata._InitializeMap.x
-                0x00d2e182        0x7 obj/CNTAGION.o
+                0x00d2d980        0x7 obj/CNTAGION.o
  .rodata._InitializeMap.y
-                0x00d2e189        0x7 obj/CNTAGION.o
+                0x00d2d987        0x7 obj/CNTAGION.o
  .rodata._map_sprites
-                0x00d2e190       0x15 obj/CNTAGION.o
+                0x00d2d98e       0x15 obj/CNTAGION.o
  .rodata._.str.44.606
-                0x00d2e1a5       0x47 obj/CNTAGION.o
+                0x00d2d9a3       0x47 obj/CNTAGION.o
  .rodata._.str.45.607
-                0x00d2e1ec       0x59 obj/CNTAGION.o
+                0x00d2d9ea       0x59 obj/CNTAGION.o
  .rodata._.str.46.608
-                0x00d2e245       0x54 obj/CNTAGION.o
+                0x00d2da43       0x54 obj/CNTAGION.o
  .rodata.___const.StartGame.descriptions
-                0x00d2e299        0x9 obj/CNTAGION.o
+                0x00d2da97        0x9 obj/CNTAGION.o
  .rodata._.str.47.586
-                0x00d2e2a2       0x17 obj/CNTAGION.o
+                0x00d2daa0       0x17 obj/CNTAGION.o
  .rodata._disease_names
-                0x00d2e2b9        0x9 obj/CNTAGION.o
-                0x00d2e2b9                _disease_names
+                0x00d2dab7        0x9 obj/CNTAGION.o
+                0x00d2dab7                _disease_names
  .rodata._.str.48.587
-                0x00d2e2c2       0x1e obj/CNTAGION.o
+                0x00d2dac0       0x1e obj/CNTAGION.o
  .rodata._.str.49.588
-                0x00d2e2e0        0xe obj/CNTAGION.o
+                0x00d2dade        0xe obj/CNTAGION.o
  .rodata._.str.50.594
-                0x00d2e2ee       0x29 obj/CNTAGION.o
+                0x00d2daec       0x29 obj/CNTAGION.o
  .rodata._.str.51.595
-                0x00d2e317       0x29 obj/CNTAGION.o
+                0x00d2db15       0x29 obj/CNTAGION.o
  .rodata._NameDisease.alphabet
-                0x00d2e340       0x27 obj/CNTAGION.o
+                0x00d2db3e       0x27 obj/CNTAGION.o
  .rodata._.str.52.589
-                0x00d2e367       0x12 obj/CNTAGION.o
+                0x00d2db65       0x12 obj/CNTAGION.o
  .rodata._.str.53.590
-                0x00d2e379        0x5 obj/CNTAGION.o
+                0x00d2db77        0x5 obj/CNTAGION.o
  .rodata._.str.54.591
-                0x00d2e37e       0x1e obj/CNTAGION.o
+                0x00d2db7c       0x1e obj/CNTAGION.o
  .rodata._.str.55.592
-                0x00d2e39c       0x23 obj/CNTAGION.o
+                0x00d2db9a       0x23 obj/CNTAGION.o
  .rodata._.str.56.593
-                0x00d2e3bf        0x9 obj/CNTAGION.o
+                0x00d2dbbd        0x9 obj/CNTAGION.o
  .rodata._.str.57.600
-                0x00d2e3c8        0xc obj/CNTAGION.o
+                0x00d2dbc6        0xc obj/CNTAGION.o
  .rodata._.str.58.601
-                0x00d2e3d4       0x5d obj/CNTAGION.o
+                0x00d2dbd2       0x5d obj/CNTAGION.o
  .rodata._.str.59.596
-                0x00d2e431       0x1f obj/CNTAGION.o
+                0x00d2dc2f       0x1f obj/CNTAGION.o
  .rodata._responses
-                0x00d2e450        0xc obj/CNTAGION.o
+                0x00d2dc4e        0xc obj/CNTAGION.o
  .rodata._.str.60.597
-                0x00d2e45c       0x1b obj/CNTAGION.o
+                0x00d2dc5a       0x1b obj/CNTAGION.o
  .rodata._.str.61.598
-                0x00d2e477       0x20 obj/CNTAGION.o
+                0x00d2dc75       0x20 obj/CNTAGION.o
  .rodata._.str.62.599
-                0x00d2e497       0x26 obj/CNTAGION.o
+                0x00d2dc95       0x26 obj/CNTAGION.o
  .rodata._.str.63.602
-                0x00d2e4bd        0xb obj/CNTAGION.o
+                0x00d2dcbb        0xb obj/CNTAGION.o
  .rodata._.str.64.603
-                0x00d2e4c8        0xb obj/CNTAGION.o
+                0x00d2dcc6        0xb obj/CNTAGION.o
  .rodata._.str.65.604
-                0x00d2e4d3       0x12 obj/CNTAGION.o
+                0x00d2dcd1       0x12 obj/CNTAGION.o
  .rodata._.str.66.605
-                0x00d2e4e5       0x14 obj/CNTAGION.o
+                0x00d2dce3       0x14 obj/CNTAGION.o
  .rodata._.str.620
-                0x00d2e4f9        0x7 obj/CNTAGION.o
+                0x00d2dcf7        0x7 obj/CNTAGION.o
  .rodata._.str.1.621
-                0x00d2e500        0x8 obj/CNTAGION.o
+                0x00d2dcfe        0x8 obj/CNTAGION.o
  .rodata._.str.2.625
-                0x00d2e508        0x7 obj/CNTAGION.o
+                0x00d2dd06        0x7 obj/CNTAGION.o
  .rodata._.str.3.626
-                0x00d2e50f        0x8 obj/CNTAGION.o
+                0x00d2dd0d        0x8 obj/CNTAGION.o
  .rodata._.str.4.631
-                0x00d2e517        0x8 obj/CNTAGION.o
+                0x00d2dd15        0x8 obj/CNTAGION.o
  .rodata._.str.5.632
-                0x00d2e51f        0x2 obj/CNTAGION.o
+                0x00d2dd1d        0x2 obj/CNTAGION.o
  .rodata._.str.6.622
-                0x00d2e521        0x2 obj/CNTAGION.o
+                0x00d2dd1f        0x2 obj/CNTAGION.o
  .rodata._.str.633
-                0x00d2e523        0x5 obj/CNTAGION.o
+                0x00d2dd21        0x5 obj/CNTAGION.o
  .rodata._.str.692
-                0x00d2e528        0x1 obj/CNTAGION.o
+                0x00d2dd26        0x1 obj/CNTAGION.o
  .rodata._.str.1.674
-                0x00d2e529        0xf obj/CNTAGION.o
+                0x00d2dd27        0xf obj/CNTAGION.o
  .rodata._event_catalog
-                0x00d2e538     0x15e0 obj/CNTAGION.o
-                0x00d2e538                _event_catalog
+                0x00d2dd36     0x15e0 obj/CNTAGION.o
+                0x00d2dd36                _event_catalog
  .rodata._regions
-                0x00d2fb18       0x15 obj/CNTAGION.o
+                0x00d2f316       0x15 obj/CNTAGION.o
  .rodata._.str.2.675
-                0x00d2fb2d       0x11 obj/CNTAGION.o
+                0x00d2f32b       0x11 obj/CNTAGION.o
  .rodata._.str.3.676
-                0x00d2fb3e       0x1c obj/CNTAGION.o
+                0x00d2f33c       0x1c obj/CNTAGION.o
  .rodata._.str.4.677
-                0x00d2fb5a       0x20 obj/CNTAGION.o
+                0x00d2f358       0x20 obj/CNTAGION.o
  .rodata._.str.5.678
-                0x00d2fb7a       0x26 obj/CNTAGION.o
+                0x00d2f378       0x26 obj/CNTAGION.o
  .rodata._.str.6.679
-                0x00d2fba0       0x1a obj/CNTAGION.o
+                0x00d2f39e       0x1a obj/CNTAGION.o
  .rodata._.str.7.680
-                0x00d2fbba       0x1c obj/CNTAGION.o
+                0x00d2f3b8       0x1c obj/CNTAGION.o
  .rodata._.str.8.681
-                0x00d2fbd6       0x23 obj/CNTAGION.o
+                0x00d2f3d4       0x23 obj/CNTAGION.o
  .rodata._.str.9.682
-                0x00d2fbf9       0x15 obj/CNTAGION.o
+                0x00d2f3f7       0x15 obj/CNTAGION.o
  .rodata._.str.10.683
-                0x00d2fc0e       0x1d obj/CNTAGION.o
+                0x00d2f40c       0x1d obj/CNTAGION.o
  .rodata._.str.11.684
-                0x00d2fc2b       0x23 obj/CNTAGION.o
+                0x00d2f429       0x23 obj/CNTAGION.o
  .rodata._.str.12.685
-                0x00d2fc4e       0x22 obj/CNTAGION.o
+                0x00d2f44c       0x22 obj/CNTAGION.o
  .rodata._.str.13.686
-                0x00d2fc70       0x22 obj/CNTAGION.o
+                0x00d2f46e       0x22 obj/CNTAGION.o
  .rodata._.str.14.687
-                0x00d2fc92       0x24 obj/CNTAGION.o
+                0x00d2f490       0x24 obj/CNTAGION.o
  .rodata._.str.15.688
-                0x00d2fcb6       0x2e obj/CNTAGION.o
+                0x00d2f4b4       0x2e obj/CNTAGION.o
  .rodata._.str.16.689
-                0x00d2fce4       0x28 obj/CNTAGION.o
+                0x00d2f4e2       0x28 obj/CNTAGION.o
  .rodata._.str.17.690
-                0x00d2fd0c       0x2a obj/CNTAGION.o
+                0x00d2f50a       0x2a obj/CNTAGION.o
  .rodata._.str.18.691
-                0x00d2fd36       0x2e obj/CNTAGION.o
+                0x00d2f534       0x2e obj/CNTAGION.o
  .rodata._TickerObserve.affected
-                0x00d2fd64        0x9 obj/CNTAGION.o
+                0x00d2f562        0x9 obj/CNTAGION.o
  .rodata._TickerObserve.deaths
-                0x00d2fd6d        0x6 obj/CNTAGION.o
+                0x00d2f56b        0x6 obj/CNTAGION.o
  .rodata._.str.19.693
-                0x00d2fd73        0x7 obj/CNTAGION.o
+                0x00d2f571        0x7 obj/CNTAGION.o
  .rodata._.str.20.694
-                0x00d2fd7a        0x5 obj/CNTAGION.o
+                0x00d2f578        0x5 obj/CNTAGION.o
  .rodata._.str.21.695
-                0x00d2fd7f        0x7 obj/CNTAGION.o
+                0x00d2f57d        0x7 obj/CNTAGION.o
  .rodata._.str.22.696
-                0x00d2fd86        0xa obj/CNTAGION.o
+                0x00d2f584        0xa obj/CNTAGION.o
  .rodata._.str.23.697
-                0x00d2fd90        0xe obj/CNTAGION.o
+                0x00d2f58e        0xe obj/CNTAGION.o
  .rodata._.str.24.698
-                0x00d2fd9e        0xe obj/CNTAGION.o
+                0x00d2f59c        0xe obj/CNTAGION.o
  .rodata._.str.25.699
-                0x00d2fdac        0x8 obj/CNTAGION.o
+                0x00d2f5aa        0x8 obj/CNTAGION.o
  .rodata._switch.table.TickerUpdate.27
-                0x00d2fdb4       0x10 obj/CNTAGION.o
+                0x00d2f5b2       0x10 obj/CNTAGION.o
  .rodata._.str.708
-                0x00d2fdc4        0x6 obj/CNTAGION.o
+                0x00d2f5c2        0x6 obj/CNTAGION.o
  .rodata._.str.1.709
-                0x00d2fdca       0x2f obj/CNTAGION.o
+                0x00d2f5c8       0x2f obj/CNTAGION.o
  .rodata._.str.2.710
-                0x00d2fdf9        0x7 obj/CNTAGION.o
+                0x00d2f5f7        0x7 obj/CNTAGION.o
  .rodata._.str.3.711
-                0x00d2fe00        0x8 obj/CNTAGION.o
+                0x00d2f5fe        0x8 obj/CNTAGION.o
  .rodata._.str.4.712
-                0x00d2fe08       0x31 obj/CNTAGION.o
+                0x00d2f606       0x31 obj/CNTAGION.o
  .rodata._.str.5.713
-                0x00d2fe39        0x9 obj/CNTAGION.o
+                0x00d2f637        0x9 obj/CNTAGION.o
  .rodata._.str.6.714
-                0x00d2fe42        0xc obj/CNTAGION.o
+                0x00d2f640        0xc obj/CNTAGION.o
  .rodata._.str.7.715
-                0x00d2fe4e       0x1f obj/CNTAGION.o
+                0x00d2f64c       0x1f obj/CNTAGION.o
  .rodata._.str.8.716
-                0x00d2fe6d        0xd obj/CNTAGION.o
+                0x00d2f66b        0xd obj/CNTAGION.o
  .rodata._.str.9.717
-                0x00d2fe7a        0xa obj/CNTAGION.o
+                0x00d2f678        0xa obj/CNTAGION.o
  .rodata._.str.10.718
-                0x00d2fe84       0x1f obj/CNTAGION.o
+                0x00d2f682       0x1f obj/CNTAGION.o
  .rodata._.str.11.719
-                0x00d2fea3        0xb obj/CNTAGION.o
+                0x00d2f6a1        0xb obj/CNTAGION.o
  .rodata._.str.12.720
-                0x00d2feae        0xa obj/CNTAGION.o
+                0x00d2f6ac        0xa obj/CNTAGION.o
  .rodata._.str.13.721
-                0x00d2feb8       0x1e obj/CNTAGION.o
+                0x00d2f6b6       0x1e obj/CNTAGION.o
  .rodata._.str.14.722
-                0x00d2fed6        0xb obj/CNTAGION.o
+                0x00d2f6d4        0xb obj/CNTAGION.o
  .rodata._.str.15.723
-                0x00d2fee1        0x8 obj/CNTAGION.o
+                0x00d2f6df        0x8 obj/CNTAGION.o
  .rodata._.str.16.724
-                0x00d2fee9       0x2a obj/CNTAGION.o
+                0x00d2f6e7       0x2a obj/CNTAGION.o
  .rodata._.str.17.725
-                0x00d2ff13        0x9 obj/CNTAGION.o
+                0x00d2f711        0x9 obj/CNTAGION.o
  .rodata._.str.18.726
-                0x00d2ff1c        0x8 obj/CNTAGION.o
+                0x00d2f71a        0x8 obj/CNTAGION.o
  .rodata._.str.19.727
-                0x00d2ff24       0x29 obj/CNTAGION.o
+                0x00d2f722       0x29 obj/CNTAGION.o
  .rodata._.str.20.728
-                0x00d2ff4d        0x9 obj/CNTAGION.o
+                0x00d2f74b        0x9 obj/CNTAGION.o
  .rodata._.str.21.729
-                0x00d2ff56       0x14 obj/CNTAGION.o
+                0x00d2f754       0x14 obj/CNTAGION.o
  .rodata._.str.22.730
-                0x00d2ff6a       0x1f obj/CNTAGION.o
+                0x00d2f768       0x1f obj/CNTAGION.o
  .rodata._.str.23.731
-                0x00d2ff89       0x12 obj/CNTAGION.o
+                0x00d2f787       0x12 obj/CNTAGION.o
  .rodata._.str.24.732
-                0x00d2ff9b       0x2e obj/CNTAGION.o
+                0x00d2f799       0x2e obj/CNTAGION.o
  .rodata._.str.25.733
-                0x00d2ffc9       0x12 obj/CNTAGION.o
+                0x00d2f7c7       0x12 obj/CNTAGION.o
  .rodata._.str.26.734
-                0x00d2ffdb       0x23 obj/CNTAGION.o
+                0x00d2f7d9       0x23 obj/CNTAGION.o
  .rodata._.str.27.735
-                0x00d2fffe        0x6 obj/CNTAGION.o
+                0x00d2f7fc        0x6 obj/CNTAGION.o
  .rodata._.str.28.736
-                0x00d30004       0x24 obj/CNTAGION.o
+                0x00d2f802       0x24 obj/CNTAGION.o
  .rodata._.str.29.737
-                0x00d30028        0x9 obj/CNTAGION.o
+                0x00d2f826        0x9 obj/CNTAGION.o
  .rodata._.str.30.738
-                0x00d30031       0x24 obj/CNTAGION.o
+                0x00d2f82f       0x24 obj/CNTAGION.o
  .rodata._.str.31.739
-                0x00d30055        0xa obj/CNTAGION.o
+                0x00d2f853        0xa obj/CNTAGION.o
  .rodata._.str.32.740
-                0x00d3005f       0x20 obj/CNTAGION.o
+                0x00d2f85d       0x20 obj/CNTAGION.o
  .rodata._.str.33.741
-                0x00d3007f       0x14 obj/CNTAGION.o
+                0x00d2f87d       0x14 obj/CNTAGION.o
  .rodata._.str.34.742
-                0x00d30093       0x27 obj/CNTAGION.o
+                0x00d2f891       0x27 obj/CNTAGION.o
  .rodata._.str.35.743
-                0x00d300ba        0x7 obj/CNTAGION.o
+                0x00d2f8b8        0x7 obj/CNTAGION.o
  .rodata._.str.36.744
-                0x00d300c1        0x9 obj/CNTAGION.o
+                0x00d2f8bf        0x9 obj/CNTAGION.o
  .rodata._.str.37.745
-                0x00d300ca        0x9 obj/CNTAGION.o
+                0x00d2f8c8        0x9 obj/CNTAGION.o
  .rodata._.str.38.746
-                0x00d300d3       0x12 obj/CNTAGION.o
+                0x00d2f8d1       0x12 obj/CNTAGION.o
  .rodata._.str.39.747
-                0x00d300e5        0x5 obj/CNTAGION.o
+                0x00d2f8e3        0x5 obj/CNTAGION.o
  .rodata._.str.40.748
-                0x00d300ea        0x6 obj/CNTAGION.o
+                0x00d2f8e8        0x6 obj/CNTAGION.o
  .rodata._.str.41.749
-                0x00d300f0       0x13 obj/CNTAGION.o
+                0x00d2f8ee       0x13 obj/CNTAGION.o
  .rodata._.str.42.750
-                0x00d30103        0xe obj/CNTAGION.o
+                0x00d2f901        0xe obj/CNTAGION.o
  .rodata._.str.43.751
-                0x00d30111       0x12 obj/CNTAGION.o
+                0x00d2f90f       0x12 obj/CNTAGION.o
  .rodata._.str.44.752
-                0x00d30123       0x1c obj/CNTAGION.o
+                0x00d2f921       0x1c obj/CNTAGION.o
  .rodata._.str.45.753
-                0x00d3013f       0x13 obj/CNTAGION.o
+                0x00d2f93d       0x13 obj/CNTAGION.o
  .rodata._.str.46.754
-                0x00d30152       0x24 obj/CNTAGION.o
+                0x00d2f950       0x24 obj/CNTAGION.o
  .rodata._.str.47.755
-                0x00d30176       0x12 obj/CNTAGION.o
+                0x00d2f974       0x12 obj/CNTAGION.o
  .rodata._.str.48.756
-                0x00d30188       0x1c obj/CNTAGION.o
+                0x00d2f986       0x1c obj/CNTAGION.o
  .rodata._.str.49.757
-                0x00d301a4       0x13 obj/CNTAGION.o
+                0x00d2f9a2       0x13 obj/CNTAGION.o
  .rodata._.str.50.758
-                0x00d301b7       0x24 obj/CNTAGION.o
+                0x00d2f9b5       0x24 obj/CNTAGION.o
  .rodata._.str.51.759
-                0x00d301db       0x15 obj/CNTAGION.o
+                0x00d2f9d9       0x15 obj/CNTAGION.o
  .rodata._.str.52.760
-                0x00d301f0       0x22 obj/CNTAGION.o
+                0x00d2f9ee       0x22 obj/CNTAGION.o
  .rodata._.str.53.761
-                0x00d30212       0x16 obj/CNTAGION.o
+                0x00d2fa10       0x16 obj/CNTAGION.o
  .rodata._.str.54.762
-                0x00d30228       0x2a obj/CNTAGION.o
+                0x00d2fa26       0x2a obj/CNTAGION.o
  .rodata._.str.55.763
-                0x00d30252       0x14 obj/CNTAGION.o
+                0x00d2fa50       0x14 obj/CNTAGION.o
  .rodata._.str.56.764
-                0x00d30266       0x1d obj/CNTAGION.o
+                0x00d2fa64       0x1d obj/CNTAGION.o
  .rodata._.str.57.765
-                0x00d30283       0x15 obj/CNTAGION.o
+                0x00d2fa81       0x15 obj/CNTAGION.o
  .rodata._.str.58.766
-                0x00d30298       0x1e obj/CNTAGION.o
+                0x00d2fa96       0x1e obj/CNTAGION.o
  .rodata._.str.59.767
-                0x00d302b6       0x14 obj/CNTAGION.o
+                0x00d2fab4       0x14 obj/CNTAGION.o
  .rodata._.str.60.768
-                0x00d302ca       0x28 obj/CNTAGION.o
+                0x00d2fac8       0x28 obj/CNTAGION.o
  .rodata._.str.61.769
-                0x00d302f2       0x15 obj/CNTAGION.o
+                0x00d2faf0       0x15 obj/CNTAGION.o
  .rodata._.str.62.770
-                0x00d30307       0x28 obj/CNTAGION.o
- *fill*         0x00d3032f        0x1
+                0x00d2fb05       0x28 obj/CNTAGION.o
+ *fill*         0x00d2fb2d        0x1 
  .rodata._traits
-                0x00d30330      0x35a obj/CNTAGION.o
-                0x00d30330                _traits
+                0x00d2fb2e      0x35a obj/CNTAGION.o
+                0x00d2fb2e                _traits
  .rodata._port_definitions
-                0x00d3068a       0x84 obj/CNTAGION.o
-                0x00d3068a                _port_definitions
+                0x00d2fe88       0x84 obj/CNTAGION.o
+                0x00d2fe88                _port_definitions
  .rodata._neighbors
-                0x00d3070e        0x7 obj/CNTAGION.o
+                0x00d2ff0c        0x7 obj/CNTAGION.o
  .rodata._spore_costs
-                0x00d30715        0x3 obj/CNTAGION.o
-                0x00d30715                _spore_costs
+                0x00d2ff13        0x3 obj/CNTAGION.o
+                0x00d2ff13                _spore_costs
  .rodata._npf_vpprintf
-                0x00d30718      0x102 obj/CNTAGION.o
+                0x00d2ff16      0x102 obj/CNTAGION.o
  .rodata.libload
-                0x00d3081a       0x22 obj/crt0.o
+                0x00d30018       0x22 obj/crt0.o
 
-.init_array     0x00d3083c        0x0
+.init_array     0x00d3003a        0x0
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(.preinit_array)
  *(SORT_BY_INIT_PRIORITY(.init_array.*))
  *(.init_array)
                 [!provide]                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x00d3083c        0x0
+.fini_array     0x00d3003a        0x0
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*))
  *(.fini_array)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x00d3083c                        ___data_low = .
+                0x00d3003a                        ___data_low = .
 
-.data           0x00d3083c     0x2a5b
+.data           0x00d3003a     0x2a5b
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00d3083c       0x10 obj/CNTAGION.o
+ .data          0x00d3003a       0x10 obj/CNTAGION.o
  .data._africa_data
-                0x00d3084c      0x75a obj/CNTAGION.o
-                0x00d3084c                _africa_data
+                0x00d3004a      0x75a obj/CNTAGION.o
+                0x00d3004a                _africa_data
  .data._asia_data
-                0x00d30fa6      0xdf9 obj/CNTAGION.o
-                0x00d30fa6                _asia_data
+                0x00d307a4      0xdf9 obj/CNTAGION.o
+                0x00d307a4                _asia_data
  .data._europe_data
-                0x00d31d9f      0x302 obj/CNTAGION.o
-                0x00d31d9f                _europe_data
+                0x00d3159d      0x302 obj/CNTAGION.o
+                0x00d3159d                _europe_data
  .data._greenland_data
-                0x00d320a1      0x152 obj/CNTAGION.o
-                0x00d320a1                _greenland_data
+                0x00d3189f      0x152 obj/CNTAGION.o
+                0x00d3189f                _greenland_data
  .data._northamerica_data
-                0x00d321f3      0x7b2 obj/CNTAGION.o
-                0x00d321f3                _northamerica_data
+                0x00d319f1      0x7b2 obj/CNTAGION.o
+                0x00d319f1                _northamerica_data
  .data._oceania_data
-                0x00d329a5      0x420 obj/CNTAGION.o
-                0x00d329a5                _oceania_data
+                0x00d321a3      0x420 obj/CNTAGION.o
+                0x00d321a3                _oceania_data
  .data._southamerica_data
-                0x00d32dc5      0x4d2 obj/CNTAGION.o
-                0x00d32dc5                _southamerica_data
+                0x00d325c3      0x4d2 obj/CNTAGION.o
+                0x00d325c3                _southamerica_data
  *(.data1)
-                0x00d33297                        ___runprgm_reloc_start = .
+                0x00d32a95                        ___runprgm_reloc_start = .
  *(.runprgm.reloc)
-                0x00d33297                        ___runprgm_reloc_end = .
-                0x00d33297                        ___data_high = .
+                0x00d32a95                        ___runprgm_reloc_end = .
+                0x00d32a95                        ___data_high = .
                 0x00002a5b                        ___data_len = (___data_high - ___data_low)
                 0x00d052c6                        . = BSSHEAP_LOW
                 0x00d052c6                        ___bss_low = .
@@ -1934,7 +1936,7 @@ Linker script and memory map
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss._canpress
                 0x00d052c6        0x1 obj/CNTAGION.o
- *fill*         0x00d052c7        0x1
+ *fill*         0x00d052c7        0x1 
  .bss._effects  0x00d052c8       0x1c obj/CNTAGION.o
                 0x00d052c8                _effects
  .bss._event_modifiers
@@ -1949,12 +1951,12 @@ Linker script and memory map
  .bss._world_events
                 0x00d05317       0x32 obj/CNTAGION.o
                 0x00d05317                _world_events
- *fill*         0x00d05349        0x1
+ *fill*         0x00d05349        0x1 
  .bss._disease  0x00d0534a       0x3a obj/CNTAGION.o
                 0x00d0534a                _disease
  .bss._session  0x00d05384        0x9 obj/CNTAGION.o
                 0x00d05384                _session
- *fill*         0x00d0538d        0x1
+ *fill*         0x00d0538d        0x1 
  .bss._region   0x00d0538e       0x70 obj/CNTAGION.o
                 0x00d0538e                _region
  .bss._port     0x00d053fe       0x84 obj/CNTAGION.o

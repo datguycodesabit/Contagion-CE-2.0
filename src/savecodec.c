@@ -22,10 +22,10 @@ uint32_t SaveSize(const region_t r[REGION_COUNT]) {
  for(i=0;i<REGION_COUNT;i++) size+=(uint32_t)r[i].width*r[i].height;
  return size;
 }
-static void Header(stream_t *st, const region_t r[REGION_COUNT]) {
- uint8_t magic[4]={'C','N','T','G'}, version=2; uint32_t length=SaveSize(r);
+static void Header(stream_t *st, uint8_t expected_version, uint32_t expected_length) {
+ uint8_t magic[4]={'C','N','T','G'}, version=expected_version; uint32_t length=expected_length;
  Bytes(st,magic,4); U8(st,&version); U32(st,&length);
- if(memcmp(magic,"CNTG",4) || version!=2 || length!=SaveSize(r)) st->ok=false;
+ if(memcmp(magic,"CNTG",4) || version!=expected_version || length!=expected_length) st->ok=false;
 }
 static void State(stream_t *st, disease_t *d, session_t *s, uint8_t ports[3]) {
  U32(st,&d->owned[0]); U32(st,&d->owned[1]); U32(st,&d->cycles); U32(st,&d->discovery_cycle); U32(st,&d->discovery_pressure);
@@ -45,45 +45,57 @@ static void Checksum(stream_t *st) {
  uint32_t expected=st->hash,actual=expected; U32(st,&actual);
  if(actual!=expected) st->ok=false;
 }
-bool EncodeSave(save_io_t *io, const disease_t *d, const session_t *s, const region_t r[REGION_COUNT], const port_t p[PORT_COUNT]) {
- stream_t st={io,UINT32_C(2166136261),true,true};
- disease_t copy=*d; session_t session=*s; uint8_t bits[3]={0,0,0},i;
- for(i=0;i<PORT_COUNT;i++) if(p[i].closed) bits[i/8]|=1U<<(i%8);
- Header(&st,r); State(&st,&copy,&session,bits);
- for(i=0;i<REGION_COUNT;i++) { Geometry(&st,&r[i]); Bytes(&st,r[i].data,(size_t)r[i].width*r[i].height); }
- Checksum(&st); return st.ok;
-}
-static bool ReadSave(save_io_t *io, disease_t *out, session_t *session, region_t r[REGION_COUNT], port_t p[PORT_COUNT], bool apply) {
- stream_t st={io,UINT32_C(2166136261),true,false};
- disease_t d={0}; session_t s={0}; uint8_t bits[3]={0},buffer[32],i,seen=0;
- counts_t total={0,0,0};
- if(io->size!=SaveSize(r) || !io->seek(io->context,0)) return false;
- Header(&st,r); State(&st,&d,&s,bits);
- for(i=0;i<REGION_COUNT && st.ok;i++) {
+/* Both formats use the same geometry, pixels, checksum, and outcome rules.
+ * The validation pass never modifies map data or cached counts. */
+static bool ReadMap(stream_t *st, const disease_t *d, const session_t *session,
+                    region_t r[REGION_COUNT], bool apply) {
+ uint8_t buffer[32],i,seen=0; counts_t total={0,0,0};
+ for(i=0;i<REGION_COUNT && st->ok;i++) {
   size_t offset=0,n=(size_t)r[i].width*r[i].height;
-  Geometry(&st,&r[i]);
-  while(offset<n && st.ok) {
+  Geometry(st,&r[i]);
+  while(offset<n && st->ok) {
    size_t j,count=n-offset; if(count>sizeof(buffer)) count=sizeof(buffer);
-   Bytes(&st,buffer,count);
-   if(!st.ok) break;
+   Bytes(st,buffer,count);
+   if(!st->ok) break;
    for(j=0;j<count;j++) {
     uint8_t v=buffer[j]; bool land=r[i].data[offset+j]!=CELL_EMPTY;
-    if((!land && v!=CELL_EMPTY) || (land && v!=CELL_HEALTHY && v!=CELL_INFECTED && v!=CELL_DEAD)) { st.ok=false; break; }
+    if((!land && v!=CELL_EMPTY) || (land && v!=CELL_HEALTHY && v!=CELL_INFECTED && v!=CELL_DEAD)) { st->ok=false; break; }
     if(v==CELL_HEALTHY) total.healthy++;
     if(v==CELL_INFECTED) { total.active++; seen|=1U<<i; }
     if(v==CELL_DEAD) { total.dead++; seen|=1U<<i; }
    }
-   if(apply && st.ok) memcpy(r[i].data+offset,buffer,count);
+   if(apply && st->ok) memcpy(r[i].data+offset,buffer,count);
    offset+=count;
   }
  }
- Checksum(&st);
- if((seen!=d.seen_regions) || (!d.started && seen) || (d.started && !seen)) st.ok=false;
- if(d.result!=PLAYING) {
-  disease_t check=d; check.result=PLAYING; EvaluateOutcome(&check,total);
-  if(check.result!=d.result || s.next_region!=0) st.ok=false;
+ Checksum(st);
+ if((seen!=d->seen_regions) || (!d->started && seen) || (d->started && !seen)) st->ok=false;
+ if(d->result!=PLAYING) {
+  disease_t check=*d; check.result=PLAYING; EvaluateOutcome(&check,total);
+  if(check.result!=d->result || session->next_region!=0) st->ok=false;
  }
- if(!st.ok) return false;
+ return st->ok;
+}
+static bool WriteMap(stream_t *st, const region_t r[REGION_COUNT]) {
+ uint8_t i;
+ for(i=0;i<REGION_COUNT;i++) {
+  Geometry(st,&r[i]); Bytes(st,r[i].data,(size_t)r[i].width*r[i].height);
+ }
+ Checksum(st); return st->ok;
+}
+bool EncodeSave(save_io_t *io, const disease_t *d, const session_t *s, const region_t r[REGION_COUNT], const port_t p[PORT_COUNT]) {
+ stream_t st={io,UINT32_C(2166136261),true,true};
+ disease_t copy=*d; session_t session=*s; uint8_t bits[3]={0,0,0},i;
+ for(i=0;i<PORT_COUNT;i++) if(p[i].closed) bits[i/8]|=1U<<(i%8);
+ Header(&st,2,SaveSize(r)); State(&st,&copy,&session,bits);
+ return WriteMap(&st,r);
+}
+static bool ReadSave(save_io_t *io, disease_t *out, session_t *session, region_t r[REGION_COUNT], port_t p[PORT_COUNT], bool apply) {
+ stream_t st={io,UINT32_C(2166136261),true,false};
+ disease_t d={0}; session_t s={0}; uint8_t bits[3]={0},i;
+ if(io->size!=SaveSize(r) || !io->seek(io->context,0)) return false;
+ Header(&st,2,SaveSize(r)); State(&st,&d,&s,bits);
+ if(!ReadMap(&st,&d,&s,r,apply)) return false;
  if(apply) {
   *out=d; *session=s;
   for(i=0;i<PORT_COUNT;i++) p[i].closed=(bits[i/8]&(1U<<(i%8)))!=0;
@@ -104,11 +116,6 @@ bool DecodeSave(save_io_t *io, disease_t *d, session_t *s, region_t r[REGION_COU
  * scheduler before map geometry. Event fields are written one scalar at a
  * time so their representation stays explicitly little-endian. */
 uint32_t SaveSizeV3(const region_t r[REGION_COUNT]) { return SaveSize(r)+50U; }
-static void HeaderV3(stream_t *st, const region_t r[REGION_COUNT]) {
- uint8_t magic[4]={'C','N','T','G'},version=SAVE_VERSION; uint32_t length=SaveSizeV3(r);
- Bytes(st,magic,4); U8(st,&version); U32(st,&length);
- if(memcmp(magic,"CNTG",4) || version!=SAVE_VERSION || length!=SaveSizeV3(r)) st->ok=false;
-}
 static void EventState(stream_t *st, event_state_t *events, const disease_t *d) {
  uint8_t i;
  U32(st,&events->rng); U32(st,&events->last_cycle); U32(st,&events->next_start);
@@ -125,43 +132,18 @@ bool EncodeSaveV3(save_io_t *io, const disease_t *d, const session_t *s,
  disease_t copy=*d; session_t session=*s; event_state_t event_copy=*events;
  uint8_t bits[3]={0,0,0},i;
  for(i=0;i<PORT_COUNT;i++) if(p[i].closed) bits[i/8]|=(uint8_t)(1U<<(i%8));
- HeaderV3(&st,r); State(&st,&copy,&session,bits); EventState(&st,&event_copy,&copy);
- for(i=0;i<REGION_COUNT;i++) { Geometry(&st,&r[i]); Bytes(&st,r[i].data,(size_t)r[i].width*r[i].height); }
- Checksum(&st); return st.ok;
+ Header(&st,SAVE_VERSION,SaveSizeV3(r)); State(&st,&copy,&session,bits); EventState(&st,&event_copy,&copy);
+ return WriteMap(&st,r);
 }
 static bool ReadSaveV3(save_io_t *io, disease_t *out, session_t *session,
                        region_t r[REGION_COUNT], port_t p[PORT_COUNT],
                        event_state_t *event_out, bool apply) {
  stream_t st={io,UINT32_C(2166136261),true,false};
  disease_t d={0}; session_t s={0}; event_state_t events={0};
- uint8_t bits[3]={0},buffer[32],i,seen=0; counts_t total={0,0,0};
+ uint8_t bits[3]={0},i;
  if(io->size!=SaveSizeV3(r) || !io->seek(io->context,0)) return false;
- HeaderV3(&st,r); State(&st,&d,&s,bits); EventState(&st,&events,&d);
- for(i=0;i<REGION_COUNT && st.ok;i++) {
-  size_t offset=0,n=(size_t)r[i].width*r[i].height;
-  Geometry(&st,&r[i]);
-  while(offset<n && st.ok) {
-   size_t j,count=n-offset; if(count>sizeof(buffer)) count=sizeof(buffer);
-   Bytes(&st,buffer,count);
-   if(!st.ok) break;
-   for(j=0;j<count;j++) {
-    uint8_t v=buffer[j]; bool land=r[i].data[offset+j]!=CELL_EMPTY;
-    if((!land && v!=CELL_EMPTY) || (land && v!=CELL_HEALTHY && v!=CELL_INFECTED && v!=CELL_DEAD)) { st.ok=false; break; }
-    if(v==CELL_HEALTHY) total.healthy++;
-    if(v==CELL_INFECTED) { total.active++; seen|=(uint8_t)(1U<<i); }
-    if(v==CELL_DEAD) { total.dead++; seen|=(uint8_t)(1U<<i); }
-   }
-   if(apply && st.ok) memcpy(r[i].data+offset,buffer,count);
-   offset+=count;
-  }
- }
- Checksum(&st);
- if((seen!=d.seen_regions) || (!d.started && seen) || (d.started && !seen)) st.ok=false;
- if(d.result!=PLAYING) {
-  disease_t check=d; check.result=PLAYING; EvaluateOutcome(&check,total);
-  if(check.result!=d.result || s.next_region!=0) st.ok=false;
- }
- if(!st.ok) return false;
+ Header(&st,SAVE_VERSION,SaveSizeV3(r)); State(&st,&d,&s,bits); EventState(&st,&events,&d);
+ if(!ReadMap(&st,&d,&s,r,apply)) return false;
  if(apply) {
   *out=d; *session=s; *event_out=events;
   for(i=0;i<PORT_COUNT;i++) p[i].closed=(bits[i/8]&(1U<<(i%8)))!=0;

@@ -5324,16 +5324,16 @@ _EventsEligible:                        ; @EventsEligible
 	ld	d, 0
 	ld	a, (ix + 15)
 	cp	a, 7
-	jp	nc, .LBB25_19
+	jr	nc, .LBB25_6
 ; %bb.1:
 	ld	iy, (ix + 9)
 	ld	a, (iy + 33)
 	or	a, a
-	jp	z, .LBB25_19
+	jr	z, .LBB25_6
 ; %bb.2:
 	ld	a, (iy + 34)
 	or	a, a
-	jp	nz, .LBB25_19
+	jr	nz, .LBB25_6
 ; %bb.3:
 	ld	bc, (ix + 6)
 	ld	hl, (iy + 8)
@@ -5349,18 +5349,18 @@ _EventsEligible:                        ; @EventsEligible
 	ld	iy, 0
 	ld	a, iyl
 	call	__lcmpu
-	jp	c, .LBB25_19
+	jr	c, .LBB25_6
 ; %bb.4:
 	ld	hl, (ix + 9)
 	push	hl
 	pop	iy
-	ld	b, (iy + 35)
+	ld	a, (iy + 35)
 	ld	iy, (ix + 6)
 	ld	l, (iy + 18)
-	ld	a, b
 	cp	a, l
-	jp	c, .LBB25_19
+	jr	c, .LBB25_6
 ; %bb.5:
+	ld	(ix - 5), a                     ; 1-byte Folded Spill
 	ld	hl, 1
 	ld	e, (iy + 20)
 	ld	iy, (ix + 9)
@@ -5370,14 +5370,20 @@ _EventsEligible:                        ; @EventsEligible
 	and	a, e
 	ld	l, a
 	or	a, a
-	jp	z, .LBB25_19
-; %bb.6:
-	ld	(ix - 14), b                    ; 1-byte Folded Spill
+	jr	nz, .LBB25_7
+	.local	.LBB25_6
+.LBB25_6:                               ; %.thread18
+	ld	a, d
+	ld	sp, ix
+	pop	ix
+	ret
+	.local	.LBB25_7
+.LBB25_7:
 	ld	iy, (ix + 6)
 	ld	a, (iy + 19)
 	cp	a, -1
-	jr	z, .LBB25_8
-; %bb.7:
+	jr	z, .LBB25_9
+; %bb.8:
 	ld	l, a
 	push	hl
 	ld	hl, (ix + 9)
@@ -5386,9 +5392,9 @@ _EventsEligible:                        ; @EventsEligible
 	pop	hl
 	pop	hl
 	bit	0, a
-	jp	z, .LBB25_16
-	.local	.LBB25_8
-.LBB25_8:
+	jr	z, .LBB25_12
+	.local	.LBB25_9
+.LBB25_9:
 	ld	iy, (ix + 12)
 	ld	hl, _environments
 	ld	(ix - 4), hl
@@ -5402,185 +5408,197 @@ _EventsEligible:                        ; @EventsEligible
 	pop	bc
 	add	iy, bc
 	ld	hl, (iy)
-	ld	(ix - 7), hl
+	ld	(ix - 8), hl
 	ld	hl, (iy + 2)
-	ld	(ix - 10), hl
+	ld	(ix - 11), hl
 	ld	hl, (iy + 4)
-	ld	(ix - 13), hl
+	ld	(ix - 14), hl
 	ld	bc, 7
 	ex	de, hl
 	call	__imulu
-	ld	bc, (ix - 10)
 	ex	de, hl
 	ld	hl, (ix - 4)
 	add	hl, de
 	ld	(ix - 4), hl
-	ld	hl, (ix - 7)
+	ld	hl, (ix - 8)
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	ld	d, 0
-	jr	nz, .LBB25_13
-; %bb.9:
-	sbc.sis	hl, hl
-	adc.sis	hl, bc
-	jr	nz, .LBB25_11
+	ld	d, b
+	ld	iy, (ix + 6)
+	jr	nz, .LBB25_15
 ; %bb.10:
+	ld	hl, (ix - 11)
+	add.sis	hl, bc
+	or	a, a
+	sbc.sis	hl, bc
+	jr	nz, .LBB25_13
+; %bb.11:
 	ld	a, 0
-	jr	.LBB25_12
-	.local	.LBB25_11
-.LBB25_11:
-	ld	a, -1
+	jr	.LBB25_14
 	.local	.LBB25_12
 .LBB25_12:
-	bit	0, a
-	jp	z, .LBB25_19
+	ld	d, 0
+	jp	.LBB25_6
 	.local	.LBB25_13
 .LBB25_13:
-	ld	e, 0
+	ld	a, -1
+	.local	.LBB25_14
+.LBB25_14:
+	bit	0, a
+	jp	z, .LBB25_6
+	.local	.LBB25_15
+.LBB25_15:
+	ld	e, (iy + 21)
+	ld	a, e
+	or	a, a
+	jp	z, .LBB25_19
+; %bb.16:
+	ld	hl, (ix - 11)
+                                        ; kill: def $hl killed $hl killed $uhl
+	ld	bc, (ix - 8)
+	add.sis	hl, bc
+	ld	bc, (ix - 14)
+	add.sis	hl, bc
+	ex	de, hl
+	ld	iyl, e
+	ld	iyh, d
+	ex	de, hl
+	add.sis	hl, bc
+	or	a, a
+	sbc.sis	hl, bc
+	ld	a, 0
+	ld	l, a
+	jr	z, .LBB25_18
+; %bb.17:
+	or	a, a
+	sbc	hl, hl
+	ld	bc, (ix - 11)
 	ld	l, c
 	ld	h, b
-	push	bc
-	pop	iy
-	ld	bc, (ix - 7)
+	ld	bc, 100
+	call	__imulu
+	ld	bc, 0
+	ld	c, iyl
+	ld	b, iyh
+	call	__idivu
+	.local	.LBB25_18
+.LBB25_18:                              ; %Percentage.exit
+	ld	a, l
+	cp	a, e
+	jp	c, .LBB25_6
+	.local	.LBB25_19
+.LBB25_19:
+	ld	iy, (ix + 6)
+	ld	e, (iy + 22)
+	ld	a, e
+	or	a, a
+	jp	z, .LBB25_23
+; %bb.20:
+	ld	hl, (ix - 11)
+                                        ; kill: def $hl killed $hl killed $uhl
+	ld	bc, (ix - 8)
 	add.sis	hl, bc
-	ld	bc, (ix - 13)
+	ld	bc, (ix - 14)
 	add.sis	hl, bc
 	ld	(ix - 16), l
 	ld	(ix - 15), h
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	nz, .LBB25_15
-; %bb.14:                               ; %Percentage.exit
-	ld	hl, (ix + 6)
-	push	hl
-	pop	iy
-	ld	a, (iy + 21)
-	or	a, a
-	ld	l, e
-	ld	bc, 0
-	jr	z, .LBB25_18
-	jr	.LBB25_19
-	.local	.LBB25_15
-.LBB25_15:                              ; %Percentage.exit.thread
-	ld	bc, 100
-	lea	de, iy + 0
+	ld	a, 0
+	ld	l, a
+	jr	z, .LBB25_22
+; %bb.21:
 	ld	iy, 0
 	lea	hl, iy + 0
-	ld	l, e
-	ld	h, d
-	call	__imulu
-	lea	de, iy + 0
-	ld	c, (ix - 16)
-	ld	b, (ix - 15)
-	ld	e, c
-	ld	d, b
-	push	de
-	pop	bc
-	call	__idivu
-	ld	iy, (ix + 6)
-	ld	c, (iy + 21)
-	ld	a, l
-	cp	a, c
-	jr	nc, .LBB25_17
-	.local	.LBB25_16
-.LBB25_16:
-	ld	d, 0
-	jr	.LBB25_19
-	.local	.LBB25_17
-.LBB25_17:
-	ld	iy, 0
-	lea	hl, iy + 0
-	ld	bc, (ix - 13)
 	ld	l, c
 	ld	h, b
 	ld	bc, 100
 	call	__imulu
-	push	de
-	pop	bc
-	call	__idivu
-	ld	d, iyh
 	lea	bc, iy + 0
-	.local	.LBB25_18
-.LBB25_18:                              ; %Percentage.exit5
-	ld	iy, (ix + 6)
-	ld	e, (iy + 22)
+	ld	iyl, d
+	ld	a, e
+	ld	e, (ix - 16)
+	ld	d, (ix - 15)
+	ld	c, e
+	ld	b, d
+	ld	e, a
+	ld	d, iyl
+	call	__idivu
+	.local	.LBB25_22
+.LBB25_22:                              ; %Percentage.exit10
 	ld	a, l
 	cp	a, e
-	jr	nc, .LBB25_20
-	.local	.LBB25_19
-.LBB25_19:                              ; %.loopexit
-	ld	a, d
-	ld	sp, ix
-	pop	ix
-	ret
-	.local	.LBB25_20
-.LBB25_20:
+	jp	c, .LBB25_6
+	.local	.LBB25_23
+.LBB25_23:
+	ld	iy, (ix + 6)
 	ld	a, (iy + 17)
 	dec	a
 	cp	a, 11
-	jr	nc, .LBB25_37
-; %bb.21:
-	ld	c, a
+	jr	nc, .LBB25_40
+; %bb.24:
+	ld	de, 0
+	ld	e, a
 	ld	hl, JTI25_0
-	add	hl, bc
-	add	hl, bc
-	add	hl, bc
+	add	hl, de
+	add	hl, de
+	add	hl, de
 	ld	hl, (hl)
 	jp	(hl)
-	.local	.LBB25_22
-.LBB25_22:
-	ld	hl, (ix - 10)
-	jr	.LBB25_29
-	.local	.LBB25_23
-.LBB25_23:
-	ld	iy, (ix - 4)
-	ld	a, (iy + 2)
-	jr	.LBB25_36
-	.local	.LBB25_24
-.LBB25_24:
-	ld	hl, 2
-	jr	.LBB25_33
 	.local	.LBB25_25
 .LBB25_25:
-	ld	hl, (ix - 4)
-	ld	a, (hl)
-	jr	.LBB25_36
+	ld	hl, (ix - 11)
+	jr	.LBB25_32
 	.local	.LBB25_26
 .LBB25_26:
 	ld	iy, (ix - 4)
-	ld	a, (iy + 1)
-	jr	.LBB25_36
+	ld	a, (iy + 2)
+	jr	.LBB25_39
 	.local	.LBB25_27
 .LBB25_27:
-	ld	iy, (ix - 4)
-	ld	a, (iy + 5)
+	ld	hl, 2
 	jr	.LBB25_36
 	.local	.LBB25_28
 .LBB25_28:
-	ld	hl, (ix - 7)
+	ld	hl, (ix - 4)
+	ld	a, (hl)
+	jr	.LBB25_39
 	.local	.LBB25_29
 .LBB25_29:
-	add.sis	hl, bc
-	or	a, a
-	sbc.sis	hl, bc
-	jr	.LBB25_34
+	ld	iy, (ix - 4)
+	ld	a, (iy + 1)
+	jr	.LBB25_39
 	.local	.LBB25_30
 .LBB25_30:
 	ld	iy, (ix - 4)
-	ld	a, (iy + 3)
-	jr	.LBB25_36
+	ld	a, (iy + 5)
+	jr	.LBB25_39
 	.local	.LBB25_31
 .LBB25_31:
-	ld	iy, (ix - 4)
-	ld	a, (iy + 4)
-	jr	.LBB25_36
+	ld	hl, (ix - 8)
 	.local	.LBB25_32
 .LBB25_32:
-	ld	hl, 1
+	add.sis	hl, bc
+	or	a, a
+	sbc.sis	hl, bc
+	jr	.LBB25_37
 	.local	.LBB25_33
 .LBB25_33:
+	ld	iy, (ix - 4)
+	ld	a, (iy + 3)
+	jr	.LBB25_39
+	.local	.LBB25_34
+.LBB25_34:
+	ld	iy, (ix - 4)
+	ld	a, (iy + 4)
+	jr	.LBB25_39
+	.local	.LBB25_35
+.LBB25_35:
+	ld	hl, 1
+	.local	.LBB25_36
+.LBB25_36:
 	push	hl
 	ld	l, (ix + 15)
 	push	hl
@@ -5588,57 +5606,80 @@ _EventsEligible:                        ; @EventsEligible
 	pop	hl
 	pop	hl
 	bit	0, a
-	.local	.LBB25_34
-.LBB25_34:
-	ld	d, 0
-	jr	z, .LBB25_19
-	jr	.LBB25_37
-	.local	.LBB25_35
-.LBB25_35:
-	ld	iy, (ix - 4)
-	ld	a, (iy + 6)
-	.local	.LBB25_36
-.LBB25_36:
-	cp	a, 3
-	ld	d, 0
-	jr	c, .LBB25_19
 	.local	.LBB25_37
 .LBB25_37:
-	or	a, a
-	sbc	hl, hl
-	ld	d, h
-	ld	a, h
-	ld	(ix - 7), a
+	ld	d, 0
+	jp	z, .LBB25_6
+	jr	.LBB25_40
 	.local	.LBB25_38
-.LBB25_38:                              ; =>This Inner Loop Header: Depth=1
-	ld	(ix - 4), hl
+.LBB25_38:
+	ld	iy, (ix - 4)
+	ld	a, (iy + 6)
+	.local	.LBB25_39
+.LBB25_39:
+	cp	a, 3
+	ld	d, 0
+	jp	c, .LBB25_6
+	.local	.LBB25_40
+.LBB25_40:
+	ld	bc, 0
+	ld	a, -1
+	ld	l, b
+	ld	(ix - 8), l
+	.local	.LBB25_41
+.LBB25_41:                              ; =>This Inner Loop Header: Depth=1
+	push	bc
+	pop	hl
+	ld	de, 6
+	or	a, a
+	sbc	hl, de
+	ld	d, a
+	ld	iy, (ix + 6)
+	jr	nz, .LBB25_43
+; %bb.42:                               ;   in Loop: Header=BB25_41 Depth=1
+	ld	d, 0
+	.local	.LBB25_43
+.LBB25_43:                              ;   in Loop: Header=BB25_41 Depth=1
+	push	bc
+	pop	hl
+	ld	(ix - 4), bc
 	ld	bc, 6
 	or	a, a
 	sbc	hl, bc
-	ld	iy, (ix + 6)
-	jp	z, .LBB25_19
-; %bb.39:                               ;   in Loop: Header=BB25_38 Depth=1
+	jp	z, .LBB25_6
+; %bb.44:                               ;   in Loop: Header=BB25_41 Depth=1
 	ld	bc, (ix - 4)
 	add	iy, bc
 	ld	l, (iy + 6)
 	ld	a, l
 	or	a, a
-	jp	z, .LBB25_54
-; %bb.40:                               ;   in Loop: Header=BB25_38 Depth=1
+	jr	z, .LBB25_46
+; %bb.45:                               ;   in Loop: Header=BB25_41 Depth=1
 	ld	a, (iy + 8)
 	or	a, a
-	jp	z, .LBB25_54
-; %bb.41:                               ;   in Loop: Header=BB25_38 Depth=1
+	jr	nz, .LBB25_47
+	.local	.LBB25_46
+.LBB25_46:                              ;   in Loop: Header=BB25_41 Depth=1
+	push	bc
+	pop	hl
+	ld	de, 3
+	add	hl, de
+	push	hl
+	pop	bc
+	ld	a, -1
+	jr	.LBB25_41
+	.local	.LBB25_47
+.LBB25_47:                              ;   in Loop: Header=BB25_41 Depth=1
 	ld	a, (iy + 7)
 	cp	a, -1
-	jr	nz, .LBB25_44
-; %bb.42:                               ;   in Loop: Header=BB25_38 Depth=1
+	jr	nz, .LBB25_50
+; %bb.48:                               ;   in Loop: Header=BB25_41 Depth=1
 	ld	a, l
 	cp	a, 4
+	jp	nz, .LBB25_54
+	.local	.LBB25_49
+.LBB25_49:                              ;   in Loop: Header=BB25_41 Depth=1
 	ld	iy, (ix + 9)
-	jr	nz, .LBB25_48
-	.local	.LBB25_43
-.LBB25_43:                              ;   in Loop: Header=BB25_38 Depth=1
 	ld	hl, (iy)
 	ld	e, (iy + 3)
 	push	bc
@@ -5648,118 +5689,108 @@ _EventsEligible:                        ; @EventsEligible
 	call	__land
 	lea	bc, iy + 0
 	ld	a, h
-	ld	l, (ix - 7)
+	ld	l, (ix - 8)
 	cp	a, l
-	jr	nz, .LBB25_53
-	jr	.LBB25_54
-	.local	.LBB25_44
-.LBB25_44:                              ;   in Loop: Header=BB25_38 Depth=1
-	ld	(ix - 13), l                    ; 1-byte Folded Spill
-	ld	(ix - 10), d                    ; 1-byte Folded Spill
+	jp	nz, .LBB25_6
+	jr	.LBB25_46
+	.local	.LBB25_50
+.LBB25_50:                              ;   in Loop: Header=BB25_41 Depth=1
+	ld	(ix - 14), l                    ; 1-byte Folded Spill
 	ld	(ix - 16), a                    ; 1-byte Folded Spill
 	ld	l, a
 	push	hl
 	ld	hl, (ix + 9)
 	push	hl
+	ld	(ix - 11), d                    ; 1-byte Folded Spill
 	call	_Owns
-	pop	hl
-	pop	hl
-	bit	0, a
-	jr	z, .LBB25_50
-; %bb.45:                               ;   in Loop: Header=BB25_38 Depth=1
-	ld	a, (ix - 13)                    ; 1-byte Folded Reload
-	dec	a
-	cp	a, 6
-	ld	de, 0
-	ld	iy, (ix + 9)
 	ld	bc, (ix - 4)
-	jr	nc, .LBB25_53
-; %bb.46:                               ;   in Loop: Header=BB25_38 Depth=1
-	ld	e, a
+	ld	d, (ix - 11)                    ; 1-byte Folded Reload
+	pop	hl
+	pop	hl
+	ld	l, (ix - 14)                    ; 1-byte Folded Reload
+	bit	0, a
+	jr	z, .LBB25_46
+; %bb.51:                               ; %.thread
+                                        ;   in Loop: Header=BB25_41 Depth=1
+	dec	l
+	ld	a, l
+	cp	a, 6
+	jp	nc, .LBB25_6
+; %bb.52:                               ; %.thread
+                                        ;   in Loop: Header=BB25_41 Depth=1
+	ld	de, 0
+	ld	e, l
 	ld	hl, JTI25_1
 	add	hl, de
 	add	hl, de
 	add	hl, de
-	ld	d, (ix - 10)                    ; 1-byte Folded Reload
+	ld	d, (ix - 11)                    ; 1-byte Folded Reload
 	ld	hl, (hl)
 	jp	(hl)
-	.local	.LBB25_47
-.LBB25_47:                              ;   in Loop: Header=BB25_38 Depth=1
+	.local	.LBB25_53
+.LBB25_53:                              ;   in Loop: Header=BB25_41 Depth=1
 	ld	l, (ix - 16)                    ; 1-byte Folded Reload
 	push	hl
 	ld	l, (ix + 15)
 	push	hl
-	push	iy
+	ld	hl, (ix + 9)
+	push	hl
 	call	_TransmissionContribution
 	ld	bc, (ix - 4)
 	pop	de
 	pop	de
 	pop	de
-	ld	d, (ix - 10)                    ; 1-byte Folded Reload
+	ld	d, (ix - 11)                    ; 1-byte Folded Reload
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	nz, .LBB25_53
-	jr	.LBB25_54
-	.local	.LBB25_48
-.LBB25_48:                              ;   in Loop: Header=BB25_38 Depth=1
+	jp	nz, .LBB25_6
+	jp	.LBB25_46
+	.local	.LBB25_54
+.LBB25_54:                              ;   in Loop: Header=BB25_41 Depth=1
 	ld	a, l
 	cp	a, 5
-	jr	nz, .LBB25_51
-	.local	.LBB25_49
-.LBB25_49:                              ;   in Loop: Header=BB25_38 Depth=1
-	ld	a, (ix - 14)                    ; 1-byte Folded Reload
+	jr	nz, .LBB25_56
+	.local	.LBB25_55
+.LBB25_55:                              ;   in Loop: Header=BB25_41 Depth=1
+	ld	a, (ix - 5)                     ; 1-byte Folded Reload
 	or	a, a
-	jr	z, .LBB25_53
-	jr	.LBB25_54
-	.local	.LBB25_50
-.LBB25_50:                              ;   in Loop: Header=BB25_38 Depth=1
-	ld	d, (ix - 10)                    ; 1-byte Folded Reload
-	ld	bc, (ix - 4)
-	jr	.LBB25_54
-	.local	.LBB25_51
-.LBB25_51:                              ;   in Loop: Header=BB25_38 Depth=1
+	jp	z, .LBB25_6
+	jp	.LBB25_46
+	.local	.LBB25_56
+.LBB25_56:                              ;   in Loop: Header=BB25_41 Depth=1
 	ld	a, l
 	cp	a, 6
-	jr	nz, .LBB25_53
-	.local	.LBB25_52
-.LBB25_52:                              ;   in Loop: Header=BB25_38 Depth=1
-	ld	a, (ix - 14)                    ; 1-byte Folded Reload
+	jp	nz, .LBB25_6
+	.local	.LBB25_57
+.LBB25_57:                              ;   in Loop: Header=BB25_41 Depth=1
+	ld	a, (ix - 5)                     ; 1-byte Folded Reload
 	cp	a, 2
-	jr	c, .LBB25_54
-	.local	.LBB25_53
-.LBB25_53:                              ;   in Loop: Header=BB25_38 Depth=1
-	ld	d, 1
-	.local	.LBB25_54
-.LBB25_54:                              ;   in Loop: Header=BB25_38 Depth=1
-	push	bc
-	pop	hl
-	ld	bc, 3
-	add	hl, bc
-	jp	.LBB25_38
+	jp	nc, .LBB25_6
+	jp	.LBB25_46
 	.local	.Lfunc_end25
 .Lfunc_end25:
 	.size	_EventsEligible, .Lfunc_end25-_EventsEligible
 	.section	.rodata._EventsEligible,"a",@progbits
 JTI25_0:
-	d24	.LBB25_22
-	d24	.LBB25_28
 	d24	.LBB25_25
-	d24	.LBB25_26
-	d24	.LBB25_23
-	d24	.LBB25_30
 	d24	.LBB25_31
+	d24	.LBB25_28
+	d24	.LBB25_29
+	d24	.LBB25_26
+	d24	.LBB25_33
+	d24	.LBB25_34
+	d24	.LBB25_30
+	d24	.LBB25_38
 	d24	.LBB25_27
 	d24	.LBB25_35
-	d24	.LBB25_24
-	d24	.LBB25_32
 JTI25_1:
-	d24	.LBB25_47
 	d24	.LBB25_53
-	d24	.LBB25_53
-	d24	.LBB25_43
+	d24	.LBB25_6
+	d24	.LBB25_6
 	d24	.LBB25_49
-	d24	.LBB25_52
+	d24	.LBB25_55
+	d24	.LBB25_57
                                         ; -- End function
 	.section	.text._Capable,"ax",@progbits
 	.type	_Capable,@function              ; -- Begin function Capable
@@ -17179,37 +17210,36 @@ _EncodeSave:                            ; @EncodeSave
 ; %bb.0:
 	ld	hl, -93
 	call	__frameset
-	ld	hl, 1875397
-	ld	bc, 58
+	ld	bc, 1875397
 	xor	a, a
-	lea	iy, ix - 9
-	ld	(ix - 82), iy
-	lea	iy, ix - 67
-	lea	de, ix - 76
-	ld	(ix - 85), de
-	lea	de, ix - 79
-	ld	(ix - 88), de
-	ld	de, (ix + 6)
-	ld	(ix - 9), de
-	ld	(ix - 6), hl
+	lea	de, ix - 9
+	ld	(ix - 82), de
+	lea	de, ix - 67
+	lea	iy, ix - 76
+	lea	hl, ix - 79
+	ld	(ix - 85), hl
+	ld	hl, (ix + 6)
+	ld	(ix - 9), hl
+	ld	(ix - 6), bc
 	ld	(ix - 3), -127
 	ld	(ix - 2), 1
 	ld	(ix - 1), 1
+	ld	(ix - 88), de
+	ld	hl, (ix + 9)
+	ld	bc, 58
+	ldir
 	ld	(ix - 91), iy
 	lea	de, iy + 0
-	ld	hl, (ix + 9)
-	ldir
-	ld	de, (ix - 85)
 	ld	hl, (ix + 12)
 	ld	bc, 9
 	ldir
+	ld	de, 0
 	ld	(ix - 79), a
 	ld	(ix - 78), a
 	ld	(ix - 77), a
 	ld	iy, (ix + 18)
 	lea	iy, iy + 5
 	ld	bc, 22
-	ld	de, 0
 	.local	.LBB70_1
 .LBB70_1:                               ; =>This Inner Loop Header: Depth=1
 	push	de
@@ -17218,12 +17248,13 @@ _EncodeSave:                            ; @EncodeSave
 	sbc	hl, bc
 	jr	z, .LBB70_5
 ; %bb.2:                                ;   in Loop: Header=BB70_1 Depth=1
-	bit	0, (iy)
+	lea	hl, iy + 0
+	bit	0, (hl)
 	jr	z, .LBB70_4
 ; %bb.3:                                ;   in Loop: Header=BB70_1 Depth=1
 	ld	(ix - 92), a                    ; 1-byte Folded Spill
-	ld	a, (ix - 92)
 	ld	l, 7
+	ld	a, (ix - 92)
 	and	a, l
 	ld	b, a
 	ld	a, 1
@@ -17233,16 +17264,19 @@ _EncodeSave:                            ; @EncodeSave
 	pop	hl
 	ld	c, 3
 	call	__ishru
-	push	hl
+	push	de
 	pop	bc
-	ld	hl, (ix - 88)
-	add	hl, bc
+	ex	de, hl
+	ld	hl, (ix - 85)
+	add	hl, de
 	ld	a, (hl)
-	ld	c, (ix - 93)
-	or	a, c
-	ld	c, a
+	ld	e, (ix - 93)
+	or	a, e
+	ld	e, a
 	ld	a, (ix - 92)                    ; 1-byte Folded Reload
-	ld	(hl), c
+	ld	(hl), e
+	push	bc
+	pop	de
 	ld	bc, 22
 	.local	.LBB70_4
 .LBB70_4:                               ;   in Loop: Header=BB70_1 Depth=1
@@ -17254,16 +17288,25 @@ _EncodeSave:                            ; @EncodeSave
 .LBB70_5:
 	ld	hl, (ix + 15)
 	push	hl
+	call	_SaveSize
+                                        ; kill: def $e killed $e def $ude
+	pop	bc
+	push	de
+	push	hl
+	ld	hl, 2
+	push	hl
 	ld	hl, (ix - 82)
 	push	hl
 	call	_Header
 	pop	hl
 	pop	hl
-	ld	hl, (ix - 88)
-	push	hl
+	pop	hl
+	pop	hl
 	ld	hl, (ix - 85)
 	push	hl
 	ld	hl, (ix - 91)
+	push	hl
+	ld	hl, (ix - 88)
 	push	hl
 	ld	hl, (ix - 82)
 	push	hl
@@ -17272,58 +17315,11 @@ _EncodeSave:                            ; @EncodeSave
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	bc, 112
-	ld	de, 0
-	.local	.LBB70_6
-.LBB70_6:                               ; =>This Inner Loop Header: Depth=1
-	push	de
-	pop	hl
-	or	a, a
-	sbc	hl, bc
-	jr	z, .LBB70_8
-; %bb.7:                                ;   in Loop: Header=BB70_6 Depth=1
 	ld	hl, (ix + 15)
-	add	hl, de
-	ld	(ix - 88), hl
 	push	hl
 	ld	hl, (ix - 82)
 	push	hl
-	ld	(ix - 85), de
-	call	_Geometry
-	pop	hl
-	pop	hl
-	ld	iy, (ix - 88)
-	ld	de, (iy + 3)
-	ld	a, (iy + 6)
-	or	a, a
-	sbc	hl, hl
-	push	hl
-	pop	bc
-	ld	c, a
-	ld	a, (iy + 7)
-	ld	l, a
-	call	__imulu
-	push	hl
-	push	de
-	ld	hl, (ix - 82)
-	push	hl
-	call	_Bytes
-	ld	bc, 112
-	pop	hl
-	pop	hl
-	pop	hl
-	ld	hl, (ix - 85)
-	ld	de, 16
-	add	hl, de
-	ex	de, hl
-	jr	.LBB70_6
-	.local	.LBB70_8
-.LBB70_8:
-	ld	hl, (ix - 82)
-	push	hl
-	call	_Checksum
-	pop	hl
-	ld	a, (ix - 2)
+	call	_WriteMap
 	ld	sp, ix
 	pop	ix
 	ret
@@ -17335,24 +17331,25 @@ _EncodeSave:                            ; @EncodeSave
 	.type	_Header,@function               ; -- Begin function Header
 _Header:                                ; @Header
 ; %bb.0:
-	ld	hl, -13
+	ld	hl, -15
 	call	__frameset
-	ld	de, (ix + 9)
+	ld	c, (ix + 9)
+	ld	a, (ix + 15)
+	lea	de, ix - 4
+	ld	(ix - 12), de
+	lea	iy, ix - 9
+	ld	(ix - 15), iy
 	ld	hl, 5525059
-	lea	bc, ix - 4
-	ld	(ix - 12), bc
 	ld	(ix - 4), hl
 	ld	(ix - 1), 71
-	ld	(ix - 5), 2
-	push	de
-	call	_SaveSize
-	pop	bc
+	ld	(ix - 5), c
+	ld	hl, (ix + 12)
 	ld	(ix - 9), hl
-	ld	(ix - 6), e
+	lea	hl, iy + 3
+	ld	(hl), a
 	ld	hl, 4
 	push	hl
-	ld	hl, (ix - 12)
-	push	hl
+	push	de
 	ld	hl, (ix + 6)
 	push	hl
 	call	_Bytes
@@ -17365,7 +17362,8 @@ _Header:                                ; @Header
 	call	_U8
 	pop	hl
 	pop	hl
-	pea	ix - 9
+	ld	hl, (ix - 15)
+	push	hl
 	ld	hl, (ix + 6)
 	push	hl
 	call	_U32
@@ -17387,22 +17385,14 @@ _Header:                                ; @Header
 	jr	nz, .LBB71_3
 ; %bb.1:
 	ld	a, (ix - 5)
-	cp	a, 2
+	ld	l, (ix + 9)
+	cp	a, l
 	jr	nz, .LBB71_3
 ; %bb.2:
 	ld	hl, (ix - 9)
-	ld	(ix - 12), hl
-	ld	a, (ix - 6)
-	ld	(ix - 13), a
-	ld	hl, (ix + 9)
-	push	hl
-	call	_SaveSize
-	push	hl
-	pop	bc
-	ld	a, e
-	pop	hl
-	ld	hl, (ix - 12)
-	ld	e, (ix - 13)                    ; 1-byte Folded Reload
+	ld	e, (ix - 6)
+	ld	bc, (ix + 12)
+	ld	a, (ix + 15)
 	call	__lcmpu
 	jr	z, .LBB71_4
 	.local	.LBB71_3
@@ -17675,6 +17665,73 @@ _State:                                 ; @State
 .Lfunc_end72:
 	.size	_State, .Lfunc_end72-_State
                                         ; -- End function
+	.section	.text._WriteMap,"ax",@progbits
+	.type	_WriteMap,@function             ; -- Begin function WriteMap
+_WriteMap:                              ; @WriteMap
+; %bb.0:
+	ld	hl, -6
+	call	__frameset
+	ld	bc, 0
+	ld	de, 112
+	.local	.LBB73_1
+.LBB73_1:                               ; =>This Inner Loop Header: Depth=1
+	push	bc
+	pop	hl
+	or	a, a
+	sbc	hl, de
+	jr	z, .LBB73_3
+; %bb.2:                                ;   in Loop: Header=BB73_1 Depth=1
+	ld	hl, (ix + 9)
+	add	hl, bc
+	ld	(ix - 6), hl
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	ld	(ix - 3), bc
+	call	_Geometry
+	pop	hl
+	pop	hl
+	ld	iy, (ix - 6)
+	ld	de, (iy + 3)
+	ld	a, (iy + 6)
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	pop	bc
+	ld	c, a
+	ld	a, (iy + 7)
+	ld	l, a
+	call	__imulu
+	push	hl
+	push	de
+	ld	hl, (ix + 6)
+	push	hl
+	call	_Bytes
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	hl, (ix - 3)
+	ld	de, 16
+	add	hl, de
+	ld	de, 112
+	push	hl
+	pop	bc
+	jr	.LBB73_1
+	.local	.LBB73_3
+.LBB73_3:
+	ld	hl, (ix + 6)
+	push	hl
+	call	_Checksum
+	pop	hl
+	ld	iy, (ix + 6)
+	ld	a, (iy + 7)
+	ld	sp, ix
+	pop	ix
+	ret
+	.local	.Lfunc_end73
+.Lfunc_end73:
+	.size	_WriteMap, .Lfunc_end73-_WriteMap
+                                        ; -- End function
 	.section	.text._Geometry,"ax",@progbits
 	.type	_Geometry,@function             ; -- Begin function Geometry
 _Geometry:                              ; @Geometry
@@ -17703,34 +17760,34 @@ _Geometry:                              ; @Geometry
 	ld	a, (ix - 4)
 	ld	l, (iy + 6)
 	cp	a, l
-	jr	nz, .LBB73_4
+	jr	nz, .LBB74_4
 ; %bb.1:
 	ld	l, (iy + 7)
 	ld	a, (ix - 3)
 	cp	a, l
-	jr	nz, .LBB73_4
+	jr	nz, .LBB74_4
 ; %bb.2:
 	ld	l, (iy + 8)
 	ld	a, (ix - 2)
 	cp	a, l
-	jr	nz, .LBB73_4
+	jr	nz, .LBB74_4
 ; %bb.3:
 	ld	l, (iy + 9)
 	ld	a, (ix - 1)
 	cp	a, l
-	jr	z, .LBB73_5
-	.local	.LBB73_4
-.LBB73_4:
+	jr	z, .LBB74_5
+	.local	.LBB74_4
+.LBB74_4:
 	ld	iy, (ix + 6)
 	ld	(iy + 7), 0
-	.local	.LBB73_5
-.LBB73_5:
+	.local	.LBB74_5
+.LBB74_5:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end73
-.Lfunc_end73:
-	.size	_Geometry, .Lfunc_end73-_Geometry
+	.local	.Lfunc_end74
+.Lfunc_end74:
+	.size	_Geometry, .Lfunc_end74-_Geometry
                                         ; -- End function
 	.section	.text._Bytes,"ax",@progbits
 	.type	_Bytes,@function                ; -- Begin function Bytes
@@ -17740,7 +17797,7 @@ _Bytes:                                 ; @Bytes
 	call	__frameset
 	ld	iy, (ix + 6)
 	bit	0, (iy + 7)
-	jp	z, .LBB74_8
+	jp	z, .LBB75_8
 ; %bb.1:
 	lea	hl, iy + 0
 	ld	iy, (hl)
@@ -17749,19 +17806,19 @@ _Bytes:                                 ; @Bytes
 	push	hl
 	pop	iy
 	bit	0, (iy + 8)
-	jr	z, .LBB74_3
+	jr	z, .LBB75_3
 ; %bb.2:
 	push	bc
 	pop	iy
 	ld	iy, (iy + 6)
-	jr	.LBB74_4
-	.local	.LBB74_3
-.LBB74_3:
+	jr	.LBB75_4
+	.local	.LBB75_3
+.LBB75_3:
 	push	bc
 	pop	iy
 	ld	iy, (iy + 3)
-	.local	.LBB74_4
-.LBB74_4:
+	.local	.LBB75_4
+.LBB75_4:
 	ld	hl, (ix + 12)
 	push	hl
 	ld	hl, (ix + 9)
@@ -17780,7 +17837,7 @@ _Bytes:                                 ; @Bytes
 	ld	iy, (ix + 6)
 	ld	(iy + 7), e
 	bit	0, l
-	jr	z, .LBB74_8
+	jr	z, .LBB75_8
 ; %bb.5:
 	ld	e, 0
 	or	a, a
@@ -17791,15 +17848,15 @@ _Bytes:                                 ; @Bytes
 	lea	hl, iy + 3
 	ld	(ix - 8), hl
 	ld	hl, (ix + 12)
-	.local	.LBB74_6
-.LBB74_6:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB75_6
+.LBB75_6:                               ; =>This Inner Loop Header: Depth=1
 	push	hl
 	pop	bc
 	sbc	hl, hl
 	adc	hl, bc
 	ld	iy, (ix + 6)
-	jr	z, .LBB74_8
-; %bb.7:                                ;   in Loop: Header=BB74_6 Depth=1
+	jr	z, .LBB75_8
+; %bb.7:                                ;   in Loop: Header=BB75_6 Depth=1
 	ld	hl, (ix - 4)
 	ld	a, (hl)
 	ld	(ix - 1), e
@@ -17824,15 +17881,15 @@ _Bytes:                                 ; @Bytes
 	ld	(ix - 4), hl
 	ld	hl, (ix - 11)
 	dec	hl
-	jr	.LBB74_6
-	.local	.LBB74_8
-.LBB74_8:                               ; %.loopexit
+	jr	.LBB75_6
+	.local	.LBB75_8
+.LBB75_8:                               ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end74
-.Lfunc_end74:
-	.size	_Bytes, .Lfunc_end74-_Bytes
+	.local	.Lfunc_end75
+.Lfunc_end75:
+	.size	_Bytes, .Lfunc_end75-_Bytes
                                         ; -- End function
 	.section	.text._Checksum,"ax",@progbits
 	.type	_Checksum,@function             ; -- Begin function Checksum
@@ -17863,18 +17920,18 @@ _Checksum:                              ; @Checksum
 	ld	bc, (ix - 7)
 	ld	a, (ix - 8)                     ; 1-byte Folded Reload
 	call	__lcmpu
-	jr	z, .LBB75_2
+	jr	z, .LBB76_2
 ; %bb.1:
 	ld	iy, (ix + 6)
 	ld	(iy + 7), 0
-	.local	.LBB75_2
-.LBB75_2:
+	.local	.LBB76_2
+.LBB76_2:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end75
-.Lfunc_end75:
-	.size	_Checksum, .Lfunc_end75-_Checksum
+	.local	.Lfunc_end76
+.Lfunc_end76:
+	.size	_Checksum, .Lfunc_end76-_Checksum
                                         ; -- End function
 	.section	.text._U32,"ax",@progbits
 	.type	_U32,@function                  ; -- Begin function U32
@@ -17914,10 +17971,10 @@ _U32:                                   ; @U32
 	pop	hl
 	pop	hl
 	bit	0, (iy + 8)
-	jr	nz, .LBB76_3
+	jr	nz, .LBB77_3
 ; %bb.1:
 	bit	0, (iy + 7)
-	jr	z, .LBB76_3
+	jr	z, .LBB77_3
 ; %bb.2:
 	ld	a, (ix - 4)
 	ld	e, 0
@@ -17973,14 +18030,14 @@ _U32:                                   ; @U32
 	pop	iy
 	ld	(iy), hl
 	ld	(iy + 3), e
-	.local	.LBB76_3
-.LBB76_3:
+	.local	.LBB77_3
+.LBB77_3:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end76
-.Lfunc_end76:
-	.size	_U32, .Lfunc_end76-_U32
+	.local	.Lfunc_end77
+.Lfunc_end77:
+	.size	_U32, .Lfunc_end77-_U32
                                         ; -- End function
 	.section	.text._U16,"ax",@progbits
 	.type	_U16,@function                  ; -- Begin function U16
@@ -18005,10 +18062,10 @@ _U16:                                   ; @U16
 	pop	hl
 	pop	hl
 	bit	0, (iy + 8)
-	jr	nz, .LBB77_3
+	jr	nz, .LBB78_3
 ; %bb.1:
 	bit	0, (iy + 7)
-	jr	z, .LBB77_3
+	jr	z, .LBB78_3
 ; %bb.2:
 	ld	e, (ix - 2)
 	ld	d, 0
@@ -18021,14 +18078,14 @@ _U16:                                   ; @U16
 	ld	iy, (ix + 9)
 	ld	(iy), l
 	ld	(iy + 1), h
-	.local	.LBB77_3
-.LBB77_3:
+	.local	.LBB78_3
+.LBB78_3:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end77
-.Lfunc_end77:
-	.size	_U16, .Lfunc_end77-_U16
+	.local	.Lfunc_end78
+.Lfunc_end78:
+	.size	_U16, .Lfunc_end78-_U16
                                         ; -- End function
 	.section	.text._U8,"ax",@progbits
 	.type	_U8,@function                   ; -- Begin function U8
@@ -18045,9 +18102,9 @@ _U8:                                    ; @U8
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end78
-.Lfunc_end78:
-	.size	_U8, .Lfunc_end78-_U8
+	.local	.Lfunc_end79
+.Lfunc_end79:
+	.size	_U8, .Lfunc_end79-_U8
                                         ; -- End function
 	.section	.text._ValidateSave,"ax",@progbits
 	.globl	_ValidateSave                   ; -- Begin function ValidateSave
@@ -18068,59 +18125,47 @@ _ValidateSave:                          ; @ValidateSave
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end79
-.Lfunc_end79:
-	.size	_ValidateSave, .Lfunc_end79-_ValidateSave
+	.local	.Lfunc_end80
+.Lfunc_end80:
+	.size	_ValidateSave, .Lfunc_end80-_ValidateSave
                                         ; -- End function
 	.section	.text._ReadSave,"ax",@progbits
 	.type	_ReadSave,@function             ; -- Begin function ReadSave
 _ReadSave:                              ; @ReadSave
 ; %bb.0:
-	ld	hl, -234
+	ld	hl, -91
 	call	__frameset
 	ld	de, (ix + 6)
 	ld	bc, 1875397
-	lea	hl, ix - 75
-	lea	iy, ix - 84
-	ld	(ix - 16), de
-	ld	(ix - 13), bc
-	ld	(ix - 10), -127
-	ld	(ix - 9), 1
-	ld	(ix - 8), 0
-	ld	(ix - 75), 0
+	lea	hl, ix - 67
+	lea	iy, ix - 76
+	ld	(ix - 9), de
+	ld	(ix - 6), bc
+	ld	(ix - 3), -127
+	ld	(ix - 2), 1
+	ld	(ix - 1), 0
+	ld	(ix - 67), 0
 	push	hl
 	pop	de
 	inc	de
 	ld	bc, 57
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 64), hl
-	pop	ix
+	ld	(ix - 91), hl
 	ldir
-	ld	(ix - 84), 0
+	ld	(ix - 76), 0
 	lea	de, iy + 0
 	inc	de
-	ld	bc, -195
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	(hl), iy
+	ld	(ix - 88), iy
 	lea	hl, iy + 0
 	ld	bc, 8
 	ldir
-	ld	(ix - 87), 0
-	ld	(ix - 86), 0
-	ld	(ix - 85), 0
+	ld	(ix - 79), 0
+	ld	(ix - 78), 0
+	ld	(ix - 77), 0
 	ld	iy, (ix + 6)
 	ld	hl, (iy + 12)
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 58), hl
-	pop	ix
+	ld	(ix - 82), hl
 	ld	a, (iy + 15)
-	ld	de, -189
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), a
+	ld	(ix - 85), a
 	ld	hl, (ix + 15)
 	push	hl
 	call	_SaveSize
@@ -18128,16 +18173,10 @@ _ReadSave:                              ; @ReadSave
 	pop	bc
 	ld	a, e
 	pop	hl
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 61
-	ld	e, (iy + 0)                     ; 1-byte Folded Reload
+	ld	hl, (ix - 82)
+	ld	e, (ix - 85)                    ; 1-byte Folded Reload
 	call	__lcmpu
-	jp	nz, .LBB80_34
+	jp	nz, .LBB81_9
 ; %bb.1:
 	ld	bc, 0
 	ld	hl, (ix + 6)
@@ -18154,734 +18193,95 @@ _ReadSave:                              ; @ReadSave
 	pop	hl
 	bit	0, a
 	ld	a, 0
-	jp	z, .LBB80_35
+	jp	z, .LBB81_10
 ; %bb.2:
-	ld	de, -183
-	lea	iy, ix + 0
-	add	iy, de
-	lea	de, ix - 16
-	ld	bc, -186
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	(hl), de
-	lea	hl, ix - 87
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 70), hl
-	pop	ix
-	lea	hl, ix - 119
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 86), hl
-	pop	ix
-	lea	hl, ix - 125
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 83), hl
-	pop	ix
-	ld	bc, -205
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	(hl), iy
-	lea	hl, iy + 0
-	ld	bc, -208
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), hl
+	lea	hl, ix - 9
+	ld	(ix - 82), hl
+	lea	hl, ix - 79
+	ld	(ix - 85), hl
 	ld	hl, (ix + 15)
 	push	hl
+	call	_SaveSize
+                                        ; kill: def $e killed $e def $ude
+	pop	bc
 	push	de
+	push	hl
+	ld	hl, 2
+	push	hl
+	ld	hl, (ix - 82)
+	push	hl
 	call	_Header
 	pop	hl
 	pop	hl
-	ld	de, -198
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	pop	hl
+	pop	hl
+	ld	hl, (ix - 85)
 	push	hl
-	ld	de, -195
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	ld	hl, (ix - 88)
 	push	hl
-	ld	de, -192
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	ld	hl, (ix - 91)
 	push	hl
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	ld	hl, (ix - 82)
 	push	hl
 	call	_State
-	ld.sis	bc, 0
-	ld	de, 7
 	pop	hl
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	a, (ix - 9)
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 71
-	ld	(iy + 0), a
-	ld	iyl, c
-	ld	iyh, b
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 74), c
-	ld	(ix - 73), b
-	pop	ix
-	or	a, a
-	sbc	hl, hl
-	xor	a, a
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 72), a                    ; 1-byte Folded Spill
-	pop	ix
-	.local	.LBB80_3
-.LBB80_3:                               ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB80_6 Depth 2
-                                        ;       Child Loop BB80_12 Depth 3
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 61), hl
-	pop	ix
-	or	a, a
-	sbc	hl, de
-	jp	nc, .LBB80_36
-; %bb.4:                                ;   in Loop: Header=BB80_3 Depth=1
-	ld	de, -199
-	lea	hl, ix + 0
-	push	af
-	add	hl, de
-	pop	af
-	bit	0, (hl)                         ; 1-byte Folded Reload
-	jp	z, .LBB80_36
-; %bb.5:                                ;   in Loop: Header=BB80_3 Depth=1
-	ld	de, -221
-	lea	hl, ix + 0
-	add	hl, de
-	push	de
-	ld	e, iyl
-	ld	d, iyh
-	ld	(hl), e
-	inc	hl
-	ld	(hl), d
-	dec	hl
-	pop	de
-	ld	de, -216
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), c
-	ld	(iy + 1), b
-	ld	de, -189
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	add	hl, hl
-	add	hl, hl
-	add	hl, hl
-	add	hl, hl
-	ex	de, hl
+	ld	l, (ix + 21)
+	push	hl
 	ld	hl, (ix + 15)
 	push	hl
-	pop	iy
-	add	iy, de
-	ld	a, (iy + 6)
-	or	a, a
-	sbc	hl, hl
+	ld	hl, (ix - 88)
 	push	hl
-	pop	bc
-	ld	c, a
-	ld	a, (iy + 7)
-	ld	l, a
-	call	__imulu
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 91), hl
-	pop	ix
-	ld	de, -227
-	lea	hl, ix + 0
-	add	hl, de
-	ld	(hl), iy
-	push	iy
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	ld	hl, (ix - 91)
 	push	hl
-	call	_Geometry
-	ld	bc, -219
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
+	ld	hl, (ix - 82)
+	push	hl
+	call	_ReadMap
 	pop	hl
 	pop	hl
-	ld	hl, 1
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 61
-	ld	bc, (iy + 0)
-                                        ; kill: def $c killed $c killed $ubc
-	call	__ishl
-	ld	c, l
-	ld	a, (ix - 9)
-	or	a, a
-	sbc	hl, hl
-	.local	.LBB80_6
-.LBB80_6:                               ;   Parent Loop BB80_3 Depth=1
-                                        ; =>  This Loop Header: Depth=2
-                                        ;       Child Loop BB80_12 Depth 3
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 96
-	ld	(iy + 0), hl
-	or	a, a
-	sbc	hl, de
-	jp	nc, .LBB80_32
-; %bb.7:                                ;   in Loop: Header=BB80_6 Depth=2
-	ld	de, -228
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), c                     ; 1-byte Folded Spill
+	pop	hl
+	pop	hl
+	pop	hl
 	bit	0, a
-	ld	de, 7
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 88
-	ld	c, (iy + 0)
-	ld	b, (iy + 1)
-	push	ix
-	lea	ix, ix - 128
-	push	hl
-	ld	l, (ix - 93)
-	ld	h, (ix - 92)
-	ex	(sp), hl
-	pop	iy
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	hl, (ix - 61)
-	pop	ix
-	jp	z, .LBB80_33
-; %bb.8:                                ;   in Loop: Header=BB80_6 Depth=2
-	ld	de, -219
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	ld	bc, -224
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	or	a, a
-	sbc	hl, de
-	push	hl
-	pop	bc
-	ld	de, 32
-	or	a, a
-	sbc	hl, de
-	jr	c, .LBB80_10
-; %bb.9:                                ;   in Loop: Header=BB80_6 Depth=2
-	ld	bc, 32
-	.local	.LBB80_10
-.LBB80_10:                              ;   in Loop: Header=BB80_6 Depth=2
-	ld	de, -231
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), bc
-	push	bc
-	ld	de, -214
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_Bytes
-	pop	hl
-	pop	hl
-	pop	hl
-	ld	a, (ix - 9)
-	bit	0, a
-	jp	z, .LBB80_32
-; %bb.11:                               ; %.preheader7.preheader
-                                        ;   in Loop: Header=BB80_6 Depth=2
-	ld	bc, 0
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 88
-	ld	e, (iy + 0)
-	ld	d, (iy + 1)
-	push	ix
-	lea	ix, ix - 128
-	ld	iy, (ix - 103)
-	.local	.LBB80_12
-.LBB80_12:                              ; %.preheader7
-                                        ;   Parent Loop BB80_3 Depth=1
-                                        ;     Parent Loop BB80_6 Depth=2
-                                        ; =>    This Inner Loop Header: Depth=3
-	pop	ix
-	lea	hl, iy + 0
-	or	a, a
-	sbc	hl, bc
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 88), e
-	ld	(ix - 87), d
-	pop	ix
-	jp	z, .LBB80_26
-; %bb.13:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	de, -199
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), a                     ; 1-byte Folded Spill
-	ld	de, -214
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	add	hl, bc
-	ld	a, (hl)
-	ld	de, -227
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	hl, (iy + 3)
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 96
-	ld	de, (iy + 0)
-	add	hl, de
-	ld	de, -234
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), bc
-	add	hl, bc
-	ld	e, (hl)
-	ld	l, a
-	ld	a, e
-	or	a, a
-	jr	nz, .LBB80_15
-; %bb.14:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	or	a, a
-	jp	nz, .LBB80_27
-	.local	.LBB80_15
-.LBB80_15:                              ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, e
-	or	a, a
-	jr	z, .LBB80_19
-; %bb.16:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, 64
-	jr	z, .LBB80_19
-; %bb.17:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, -1
-	jr	z, .LBB80_19
-; %bb.18:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, -32
-	jp	nz, .LBB80_27
-	.local	.LBB80_19
-.LBB80_19:                              ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, -32
-	jr	nz, .LBB80_21
-; %bb.20:                               ;   in Loop: Header=BB80_12 Depth=3
-	ld	de, -221
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	ld	h, (iy + 1)
-	inc.sis	hl
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), l
-	ld	(iy + 1), h
-	ld	de, -200
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	ld	bc, -228
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	e, (iy + 0)
-	ld	a, l
-	or	a, e
-	ld	l, a
-	ld	de, -200
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), l
-	ld	de, -231
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	bc, -216
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	e, (hl)
-	inc	hl
-	ld	d, (hl)
-	dec	hl
-	jr	.LBB80_25
-	.local	.LBB80_21
-.LBB80_21:                              ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, -1
-	push	ix
-	lea	ix, ix - 128
-	ld	iy, (ix - 103)
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	e, (ix - 88)
-	ld	d, (ix - 87)
-	pop	ix
-	jr	nz, .LBB80_23
-; %bb.22:                               ;   in Loop: Header=BB80_12 Depth=3
-	inc.sis	de
-	jr	.LBB80_25
-	.local	.LBB80_23
-.LBB80_23:                              ;   in Loop: Header=BB80_12 Depth=3
-	ld	a, l
-	cp	a, 64
-	jr	nz, .LBB80_25
-; %bb.24:                               ;   in Loop: Header=BB80_12 Depth=3
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 74)
-	ld	h, (ix - 73)
-	pop	ix
-	inc.sis	hl
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 74), l
-	ld	(ix - 73), h
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 72)
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	c, (ix - 100)
-	pop	ix
-	ld	a, l
-	or	a, c
-	ld	l, a
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 72), l
-	pop	ix
-	.local	.LBB80_25
-.LBB80_25:                              ;   in Loop: Header=BB80_12 Depth=3
-	push	ix
-	lea	ix, ix - 128
-	ld	bc, (ix - 106)
-	pop	ix
-	inc	bc
-	push	ix
-	lea	ix, ix - 128
-	ld	a, (ix - 71)                    ; 1-byte Folded Reload
-	jp	.LBB80_12
-	.local	.LBB80_26
-.LBB80_26:                              ;   in Loop: Header=BB80_6 Depth=2
-	ld	bc, -219
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	de, (hl)
-	jr	.LBB80_28
-	.local	.LBB80_27
-.LBB80_27:                              ;   in Loop: Header=BB80_6 Depth=2
-	ld	(ix - 9), 0
-	xor	a, a
-	ld	bc, -219
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	ld	bc, -231
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	iy, (hl)
-	.local	.LBB80_28
-.LBB80_28:                              ; %.loopexit8
-                                        ;   in Loop: Header=BB80_6 Depth=2
+	jp	z, .LBB81_10
+; %bb.3:
 	bit	0, (ix + 21)
-	jr	z, .LBB80_31
-; %bb.29:                               ;   in Loop: Header=BB80_6 Depth=2
-	bit	0, a
-	jr	z, .LBB80_31
-; %bb.30:                               ;   in Loop: Header=BB80_6 Depth=2
-	ld	de, -227
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	hl, (iy + 3)
-	ld	bc, -224
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	add	hl, de
-	ld	bc, -231
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	push	de
-	ld	bc, -214
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	push	de
-	push	hl
-	ld	de, -199
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), a                     ; 1-byte Folded Spill
-	call	_memcpy
-	ld	de, -231
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	bc, -219
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	de, (hl)
-	ld	bc, -199
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	a, (hl)                         ; 1-byte Folded Reload
-	pop	hl
-	pop	hl
-	pop	hl
-	.local	.LBB80_31
-.LBB80_31:                              ;   in Loop: Header=BB80_6 Depth=2
-	push	ix
-	lea	ix, ix - 128
-	ld	bc, (ix - 96)
-	pop	ix
-	add	iy, bc
-	push	ix
-	lea	ix, ix - 128
-	ld	c, (ix - 100)                   ; 1-byte Folded Reload
-	pop	ix
-	lea	hl, iy + 0
-	jp	.LBB80_6
-	.local	.LBB80_32
-.LBB80_32:                              ;   in Loop: Header=BB80_3 Depth=1
-	ld	de, 7
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 88
-	ld	c, (iy + 0)
-	ld	b, (iy + 1)
-	push	ix
-	lea	ix, ix - 128
-	push	hl
-	ld	l, (ix - 93)
-	ld	h, (ix - 92)
-	ex	(sp), hl
-	pop	iy
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	hl, (ix - 61)
-	pop	ix
-	.local	.LBB80_33
-.LBB80_33:                              ;   in Loop: Header=BB80_3 Depth=1
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 71), a
-	pop	ix
-	inc	hl
-	jp	.LBB80_3
-	.local	.LBB80_34
-.LBB80_34:
-	xor	a, a
-	.local	.LBB80_35
-.LBB80_35:                              ; %.loopexit
-	ld	sp, ix
-	pop	ix
-	ret
-	.local	.LBB80_36
-.LBB80_36:
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 74)
-	ld	h, (ix - 73)
-	pop	ix
-	ld	(ix - 121), l
-	ld	(ix - 120), h
-	push	iy
-	ex	(sp), hl
-	ld	(ix - 123), l
-	ld	(ix - 122), h
-	pop	hl
-	ld	(ix - 125), c
-	ld	(ix - 124), b
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_Checksum
-	pop	hl
-	ld	l, (ix - 45)
-	ld	de, -200
-	lea	iy, ix + 0
-	add	iy, de
-	ld	a, (iy + 0)                     ; 1-byte Folded Reload
-	cp	a, l
-	jr	nz, .LBB80_42
-; %bb.37:
-	or	a, a
-	ld	l, -1
-	ld	c, 0
-	ld	e, l
-	jr	nz, .LBB80_39
-; %bb.38:
-	ld	e, c
-	.local	.LBB80_39
-.LBB80_39:
-	ld	a, (ix - 42)
-	or	a, a
-	jr	z, .LBB80_41
-; %bb.40:
-	ld	l, c
-	.local	.LBB80_41
-.LBB80_41:
-	ld	a, e
-	xor	a, l
-	ld	l, a
-	bit	0, l
-	jr	nz, .LBB80_43
-	.local	.LBB80_42
-.LBB80_42:
-	ld	(ix - 9), 0
-	.local	.LBB80_43
-.LBB80_43:
-	ld	l, (ix - 41)
-	ld	a, l
-	or	a, a
-	jp	z, .LBB80_47
-; %bb.44:
-	ld	bc, -208
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	ld	bc, -186
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), l                     ; 1-byte Folded Spill
-	ld	bc, -192
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	ld	bc, 58
-	ldir
-	ld	de, -205
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	(iy + 34), 0
-	push	hl
-	push	hl
-	dec	sp
-	ex	de, hl
-	ld	hl, 0
-	add	hl, sp
-	ex	de, hl
-	inc	de
-	ld	bc, 6
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 83
-	ld	hl, (iy + 0)
-	ldir
-	ld	de, -208
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_EvaluateOutcome
-	pop	hl
-	pop	hl
-	pop	hl
-	inc	sp
-	ld	de, -205
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	a, (iy + 34)
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	cp	a, l
-	jr	nz, .LBB80_46
-; %bb.45:
-	ld	a, (ix - 79)
-	or	a, a
-	jr	z, .LBB80_47
-	.local	.LBB80_46
-.LBB80_46:
-	ld	(ix - 9), 0
-	.local	.LBB80_47
-.LBB80_47:
-	ld	a, (ix - 9)
-	bit	0, a
-	jp	z, .LBB80_35
-; %bb.48:
-	bit	0, (ix + 21)
-	jp	z, .LBB80_35
-; %bb.49:
+	jp	z, .LBB81_10
+; %bb.4:
 	ld	de, (ix + 9)
-	ld	bc, -192
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
 	ld	bc, 58
+	ld	iy, 9
+	ld	a, 1
+	ld	hl, (ix - 91)
 	ldir
 	ld	de, (ix + 12)
-	ld	bc, -195
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	ld	bc, 9
+	ld	hl, (ix - 88)
+	lea	bc, iy + 0
 	ldir
 	ld	iy, (ix + 18)
 	lea	iy, iy + 5
 	ld	bc, 22
 	ld	de, 0
-	.local	.LBB80_50
-.LBB80_50:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB81_5
+.LBB81_5:                               ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB80_54
-; %bb.51:                               ;   in Loop: Header=BB80_50 Depth=1
+	jp	z, .LBB81_11
+; %bb.6:                                ;   in Loop: Header=BB81_5 Depth=1
 	push	de
 	pop	hl
 	ld	c, 3
 	call	__ishru
 	push	hl
 	pop	bc
-	push	ix
-	lea	ix, ix - 128
-	ld	hl, (ix - 70)
-	pop	ix
+	ld	hl, (ix - 85)
 	add	hl, bc
 	ld	a, (hl)
-	ld	bc, -186
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	(hl), de
+	ld	(ix - 82), de
 	ex	de, hl
 	ld	bc, 7
 	call	__iand
@@ -18896,58 +18296,492 @@ _ReadSave:                              ; @ReadSave
 	ld	l, a
 	or	a, a
 	ld	a, 1
-	jr	nz, .LBB80_53
-; %bb.52:                               ;   in Loop: Header=BB80_50 Depth=1
+	jr	nz, .LBB81_8
+; %bb.7:                                ;   in Loop: Header=BB81_5 Depth=1
 	ld	a, 0
-	.local	.LBB80_53
-.LBB80_53:                              ;   in Loop: Header=BB80_50 Depth=1
+	.local	.LBB81_8
+.LBB81_8:                               ;   in Loop: Header=BB81_5 Depth=1
 	ld	(iy), a
-	ld	bc, -186
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	de, (hl)
+	ld	de, (ix - 82)
 	inc	de
 	lea	iy, iy + 6
+	ld	a, 1
 	ld	bc, 22
-	jp	.LBB80_50
-	.local	.LBB80_54
-.LBB80_54:
+	jp	.LBB81_5
+	.local	.LBB81_9
+.LBB81_9:
+	xor	a, a
+	.local	.LBB81_10
+.LBB81_10:                              ; %.loopexit
+	ld	sp, ix
+	pop	ix
+	ret
+	.local	.LBB81_11
+.LBB81_11:
 	ld	bc, 112
 	ld	de, 0
-	.local	.LBB80_55
-.LBB80_55:                              ; %.preheader
+	.local	.LBB81_12
+.LBB81_12:                              ; %.preheader
                                         ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB80_57
-; %bb.56:                               ;   in Loop: Header=BB80_55 Depth=1
+	jr	z, .LBB81_10
+; %bb.13:                               ;   in Loop: Header=BB81_12 Depth=1
 	ld	hl, (ix + 15)
 	add	hl, de
 	push	hl
-	ld	bc, -186
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), de
+	ld	(ix - 82), de
 	call	_RecountRegion
 	ld	bc, 112
+	ld	a, 1
 	pop	hl
-	ld	de, -186
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
+	ld	hl, (ix - 82)
 	ld	de, 16
 	add	hl, de
 	ex	de, hl
-	jr	.LBB80_55
-	.local	.LBB80_57
-.LBB80_57:
-	ld	a, 1
-	jp	.LBB80_35
-	.local	.Lfunc_end80
-.Lfunc_end80:
-	.size	_ReadSave, .Lfunc_end80-_ReadSave
+	jr	.LBB81_12
+	.local	.Lfunc_end81
+.Lfunc_end81:
+	.size	_ReadSave, .Lfunc_end81-_ReadSave
+                                        ; -- End function
+	.section	.text._ReadMap,"ax",@progbits
+	.type	_ReadMap,@function              ; -- Begin function ReadMap
+_ReadMap:                               ; @ReadMap
+; %bb.0:
+	ld	hl, -136
+	call	__frameset
+	xor	a, a
+	ld.sis	de, 0
+	ld	iy, 0
+	lea	hl, ix - 38
+	ld	(ix - 120), hl
+	lea	hl, ix - 45
+	ld	(ix - 117), hl
+	lea	hl, ix - 103
+	ld	(ix - 114), hl
+	ld	bc, 7
+	ld	(ix - 109), e
+	ld	(ix - 108), d
+	ld	(ix - 111), e
+	ld	(ix - 110), d
+	lea	hl, iy + 0
+	ld	(ix - 107), a                   ; 1-byte Folded Spill
+	.local	.LBB82_1
+.LBB82_1:                               ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB82_4 Depth 2
+                                        ;       Child Loop BB82_10 Depth 3
+	ld	(ix - 106), hl
+	or	a, a
+	sbc	hl, bc
+	jp	z, .LBB82_32
+; %bb.2:                                ;   in Loop: Header=BB82_1 Depth=1
+	ld	iy, (ix + 6)
+	bit	0, (iy + 7)
+	jp	z, .LBB82_32
+; %bb.3:                                ;   in Loop: Header=BB82_1 Depth=1
+	ld	(ix - 125), e
+	ld	(ix - 124), d
+	ld	hl, (ix - 106)
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	ex	de, hl
+	ld	iy, (ix + 15)
+	add	iy, de
+	ld	a, (iy + 6)
+	or	a, a
+	sbc	hl, hl
+	push	hl
+	pop	bc
+	ld	c, a
+	ld	a, (iy + 7)
+	ld	l, a
+	call	__imulu
+	ld	(ix - 123), hl
+	ld	de, -131
+	lea	hl, ix + 0
+	add	hl, de
+	ld	(hl), iy
+	push	iy
+	ld	hl, (ix + 6)
+	push	hl
+	call	_Geometry
+	ld	de, (ix - 123)
+	pop	hl
+	pop	hl
+	ld	hl, 1
+	ld	bc, (ix - 106)
+                                        ; kill: def $c killed $c killed $ubc
+	call	__ishl
+	ld	bc, 32
+	ld	a, l
+	or	a, a
+	sbc	hl, hl
+	.local	.LBB82_4
+.LBB82_4:                               ;   Parent Loop BB82_1 Depth=1
+                                        ; =>  This Loop Header: Depth=2
+                                        ;       Child Loop BB82_10 Depth 3
+	ld	(ix - 128), hl
+	or	a, a
+	sbc	hl, de
+	jp	nc, .LBB82_31
+; %bb.5:                                ;   in Loop: Header=BB82_4 Depth=2
+	ld	iy, (ix + 6)
+	bit	0, (iy + 7)
+	jp	z, .LBB82_31
+; %bb.6:                                ;   in Loop: Header=BB82_4 Depth=2
+	ld	de, -135
+	lea	iy, ix + 0
+	add	iy, de
+	ld	(iy + 0), a                     ; 1-byte Folded Spill
+	ld	hl, (ix - 123)
+	ld	de, (ix - 128)
+	or	a, a
+	sbc	hl, de
+	push	hl
+	pop	de
+	or	a, a
+	sbc	hl, bc
+	jr	c, .LBB82_8
+; %bb.7:                                ;   in Loop: Header=BB82_4 Depth=2
+	push	bc
+	pop	de
+	.local	.LBB82_8
+.LBB82_8:                               ;   in Loop: Header=BB82_4 Depth=2
+	ld	bc, -134
+	lea	iy, ix + 0
+	add	iy, bc
+	ld	(iy + 0), de
+	push	de
+	ld	hl, (ix - 120)
+	push	hl
+	ld	hl, (ix + 6)
+	push	hl
+	call	_Bytes
+	ld	bc, 32
+	ld	iy, (ix + 6)
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	a, (iy + 7)
+	bit	0, a
+	jp	z, .LBB82_31
+; %bb.9:                                ; %.preheader.preheader
+                                        ;   in Loop: Header=BB82_4 Depth=2
+	ld	de, 0
+	push	ix
+	lea	ix, ix - 128
+	ld	iy, (ix - 6)
+	.local	.LBB82_10
+.LBB82_10:                              ; %.preheader
+                                        ;   Parent Loop BB82_1 Depth=1
+                                        ;     Parent Loop BB82_4 Depth=2
+                                        ; =>    This Inner Loop Header: Depth=3
+	pop	ix
+	lea	hl, iy + 0
+	or	a, a
+	sbc	hl, de
+	jp	z, .LBB82_25
+; %bb.11:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	bc, -136
+	lea	iy, ix + 0
+	add	iy, bc
+	ld	(iy + 0), a                     ; 1-byte Folded Spill
+	ld	hl, (ix - 120)
+	add	hl, de
+	ld	a, (hl)
+	ld	bc, -131
+	lea	hl, ix + 0
+	add	hl, bc
+	ld	iy, (hl)
+	ld	hl, (iy + 3)
+	ld	bc, (ix - 128)
+	add	hl, bc
+	ld	c, a
+	add	hl, de
+	ld	l, (hl)
+	ld	a, l
+	or	a, a
+	jr	nz, .LBB82_13
+; %bb.12:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	or	a, a
+	jp	nz, .LBB82_26
+	.local	.LBB82_13
+.LBB82_13:                              ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, l
+	or	a, a
+	jr	z, .LBB82_17
+; %bb.14:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, 64
+	jr	z, .LBB82_17
+; %bb.15:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, -1
+	jr	z, .LBB82_17
+; %bb.16:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, -32
+	jp	nz, .LBB82_26
+	.local	.LBB82_17
+.LBB82_17:                              ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, -32
+	jr	nz, .LBB82_19
+; %bb.18:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	l, (ix - 109)
+	ld	h, (ix - 108)
+	inc.sis	hl
+	ld	(ix - 109), l
+	ld	(ix - 108), h
+	ld	l, (ix - 107)
+	lea	iy, ix + 0
+	lea	iy, iy - 128
+	lea	iy, iy - 7
+	ld	c, (iy + 0)
+	ld	a, l
+	or	a, c
+	ld	l, a
+	ld	(ix - 107), l
+	ld	bc, 32
+	push	ix
+	lea	ix, ix - 128
+	ld	iy, (ix - 6)
+	pop	ix
+	jr	.LBB82_24
+	.local	.LBB82_19
+.LBB82_19:                              ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, -1
+	push	ix
+	lea	ix, ix - 128
+	ld	iy, (ix - 6)
+	pop	ix
+	jr	nz, .LBB82_21
+; %bb.20:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	l, (ix - 125)
+	ld	h, (ix - 124)
+	inc.sis	hl
+	ld	(ix - 125), l
+	ld	(ix - 124), h
+	jr	.LBB82_23
+	.local	.LBB82_21
+.LBB82_21:                              ;   in Loop: Header=BB82_10 Depth=3
+	ld	a, c
+	cp	a, 64
+	jr	nz, .LBB82_23
+; %bb.22:                               ;   in Loop: Header=BB82_10 Depth=3
+	ld	l, (ix - 111)
+	ld	h, (ix - 110)
+	inc.sis	hl
+	ld	(ix - 111), l
+	ld	(ix - 110), h
+	ld	l, (ix - 107)
+	push	ix
+	lea	ix, ix - 128
+	ld	c, (ix - 7)
+	pop	ix
+	ld	a, l
+	or	a, c
+	ld	l, a
+	ld	(ix - 107), l
+	.local	.LBB82_23
+.LBB82_23:                              ;   in Loop: Header=BB82_10 Depth=3
+	ld	bc, 32
+	.local	.LBB82_24
+.LBB82_24:                              ;   in Loop: Header=BB82_10 Depth=3
+	inc	de
+	push	ix
+	lea	ix, ix - 128
+	ld	a, (ix - 8)                     ; 1-byte Folded Reload
+	jp	.LBB82_10
+	.local	.LBB82_25
+.LBB82_25:                              ;   in Loop: Header=BB82_4 Depth=2
+	push	ix
+	lea	ix, ix - 128
+	ld	e, (ix - 7)                     ; 1-byte Folded Reload
+	jr	.LBB82_27
+	.local	.LBB82_26
+.LBB82_26:                              ;   in Loop: Header=BB82_4 Depth=2
+	ld	iy, (ix + 6)
+	ld	(iy + 7), 0
+	ld	d, 0
+	ld	a, d
+	ld	bc, 32
+	lea	iy, ix + 0
+	lea	iy, iy - 128
+	lea	iy, iy - 7
+	ld	e, (iy + 0)                     ; 1-byte Folded Reload
+	push	ix
+	lea	ix, ix - 128
+	ld	iy, (ix - 6)
+	.local	.LBB82_27
+.LBB82_27:                              ; %.loopexit
+                                        ;   in Loop: Header=BB82_4 Depth=2
+	pop	ix
+	bit	0, (ix + 18)
+	jr	z, .LBB82_30
+; %bb.28:                               ;   in Loop: Header=BB82_4 Depth=2
+	bit	0, a
+	jr	z, .LBB82_30
+; %bb.29:                               ;   in Loop: Header=BB82_4 Depth=2
+	ld	de, -131
+	lea	hl, ix + 0
+	add	hl, de
+	ld	iy, (hl)
+	ld	hl, (iy + 3)
+	ld	de, (ix - 128)
+	add	hl, de
+	ld	bc, -134
+	lea	iy, ix + 0
+	add	iy, bc
+	ld	de, (iy + 0)
+	push	de
+	ld	de, (ix - 120)
+	push	de
+	push	hl
+	call	_memcpy
+	ld	de, -134
+	lea	hl, ix + 0
+	add	hl, de
+	ld	iy, (hl)
+	ld	bc, -135
+	lea	hl, ix + 0
+	add	hl, bc
+	ld	e, (hl)                         ; 1-byte Folded Reload
+	ld	bc, 32
+	pop	hl
+	pop	hl
+	pop	hl
+	.local	.LBB82_30
+.LBB82_30:                              ;   in Loop: Header=BB82_4 Depth=2
+	ld	a, e
+	ld	de, (ix - 128)
+	add	iy, de
+	lea	hl, iy + 0
+	ld	de, (ix - 123)
+	jp	.LBB82_4
+	.local	.LBB82_31
+.LBB82_31:                              ;   in Loop: Header=BB82_1 Depth=1
+	ld	hl, (ix - 106)
+	inc	hl
+	ld	e, (ix - 125)
+	ld	d, (ix - 124)
+	ld	bc, 7
+	jp	.LBB82_1
+	.local	.LBB82_32
+.LBB82_32:
+	ld	l, (ix - 111)
+	ld	h, (ix - 110)
+	ld	(ix - 41), l
+	ld	(ix - 40), h
+	ld	l, (ix - 109)
+	ld	h, (ix - 108)
+	ld	(ix - 43), l
+	ld	(ix - 42), h
+	ld	(ix - 45), e
+	ld	(ix - 44), d
+	ld	hl, (ix + 6)
+	push	hl
+	call	_Checksum
+	ld	bc, (ix + 6)
+	pop	hl
+	ld	iy, (ix + 9)
+	ld	l, (iy + 30)
+	ld	a, (ix - 107)                   ; 1-byte Folded Reload
+	cp	a, l
+	jr	nz, .LBB82_38
+; %bb.33:
+	or	a, a
+	ld	l, -1
+	ld	h, 0
+	ld	e, l
+	jr	nz, .LBB82_35
+; %bb.34:
+	ld	e, h
+	.local	.LBB82_35
+.LBB82_35:
+	ld	a, (iy + 33)
+	or	a, a
+	jr	z, .LBB82_37
+; %bb.36:
+	ld	l, h
+	.local	.LBB82_37
+.LBB82_37:
+	ld	a, e
+	xor	a, l
+	ld	l, a
+	bit	0, l
+	jr	nz, .LBB82_39
+	.local	.LBB82_38
+.LBB82_38:
+	lea	hl, iy + 0
+	push	bc
+	pop	iy
+	ld	(iy + 7), 0
+	push	hl
+	pop	iy
+	.local	.LBB82_39
+.LBB82_39:
+	ld	l, (iy + 34)
+	ld	a, l
+	or	a, a
+	jr	z, .LBB82_43
+; %bb.40:
+	ld	(ix - 106), l                   ; 1-byte Folded Spill
+	lea	hl, iy + 0
+	ld	iy, (ix - 114)
+	lea	de, iy + 0
+	ld	bc, 58
+	ldir
+	ld	(ix - 69), 0
+	push	hl
+	push	hl
+	dec	sp
+	ex	de, hl
+	ld	hl, 0
+	add	hl, sp
+	ex	de, hl
+	inc	de
+	ld	bc, 6
+	ld	hl, (ix - 117)
+	ldir
+	push	iy
+	call	_EvaluateOutcome
+	ld	bc, (ix + 6)
+	pop	hl
+	pop	hl
+	pop	hl
+	inc	sp
+	ld	a, (ix - 69)
+	ld	l, (ix - 106)
+	cp	a, l
+	jr	nz, .LBB82_42
+; %bb.41:
+	ld	iy, (ix + 12)
+	ld	a, (iy + 5)
+	or	a, a
+	jr	z, .LBB82_43
+	.local	.LBB82_42
+.LBB82_42:
+	push	bc
+	pop	iy
+	ld	(iy + 7), 0
+	.local	.LBB82_43
+.LBB82_43:
+	push	bc
+	pop	iy
+	ld	a, (iy + 7)
+	ld	sp, ix
+	pop	ix
+	ret
+	.local	.Lfunc_end82
+.Lfunc_end82:
+	.size	_ReadMap, .Lfunc_end82-_ReadMap
                                         ; -- End function
 	.section	.text._DecodeSave,"ax",@progbits
 	.globl	_DecodeSave                     ; -- Begin function DecodeSave
@@ -18963,7 +18797,7 @@ _DecodeSave:                            ; @DecodeSave
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	z, .LBB81_2
+	jr	z, .LBB83_2
 ; %bb.1:
 	ld	iy, (ix + 9)
 	ld	de, (ix + 12)
@@ -18984,17 +18818,17 @@ _DecodeSave:                            ; @DecodeSave
 	pop	hl
 	pop	hl
 	pop	hl
-	jr	.LBB81_3
-	.local	.LBB81_2
-.LBB81_2:
+	jr	.LBB83_3
+	.local	.LBB83_2
+.LBB83_2:
 	xor	a, a
-	.local	.LBB81_3
-.LBB81_3:
+	.local	.LBB83_3
+.LBB83_3:
 	pop	ix
 	ret
-	.local	.Lfunc_end81
-.Lfunc_end81:
-	.size	_DecodeSave, .Lfunc_end81-_DecodeSave
+	.local	.Lfunc_end83
+.Lfunc_end83:
+	.size	_DecodeSave, .Lfunc_end83-_DecodeSave
                                         ; -- End function
 	.section	.text._SaveSizeV3,"ax",@progbits
 	.globl	_SaveSizeV3                     ; -- Begin function SaveSizeV3
@@ -19011,9 +18845,9 @@ _SaveSizeV3:                            ; @SaveSizeV3
 	call	__ladd
 	pop	ix
 	ret
-	.local	.Lfunc_end82
-.Lfunc_end82:
-	.size	_SaveSizeV3, .Lfunc_end82-_SaveSizeV3
+	.local	.Lfunc_end84
+.Lfunc_end84:
+	.size	_SaveSizeV3, .Lfunc_end84-_SaveSizeV3
                                         ; -- End function
 	.section	.text._EncodeSaveV3,"ax",@progbits
 	.globl	_EncodeSaveV3                   ; -- Begin function EncodeSaveV3
@@ -19025,25 +18859,27 @@ _EncodeSaveV3:                          ; @EncodeSaveV3
 	ld	de, -137
 	lea	iy, ix + 0
 	add	iy, de
+	ld	bc, 1875397
 	xor	a, a
 	lea	de, ix - 16
-	ld	bc, -140
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	(hl), de
+	push	ix
+	lea	ix, ix - 128
+	ld	(ix - 12), de
+	pop	ix
 	lea	de, ix - 75
-	lea	bc, ix - 84
+	lea	hl, ix - 84
 	push	ix
 	lea	ix, ix - 128
-	ld	(ix - 21), bc
+	ld	(ix - 21), hl
 	pop	ix
+	push	de
+	ld	de, -134
+	lea	hl, ix + 0
+	add	hl, de
+	pop	de
 	push	ix
 	lea	ix, ix - 128
-	lea	bc, ix - 6
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 18), bc
+	ld	(ix - 18), hl
 	pop	ix
 	lea	hl, iy + 0
 	push	ix
@@ -19052,8 +18888,7 @@ _EncodeSaveV3:                          ; @EncodeSaveV3
 	pop	ix
 	ld	hl, (ix + 6)
 	ld	(ix - 16), hl
-	ld	hl, 1875397
-	ld	(ix - 13), hl
+	ld	(ix - 13), bc
 	ld	(ix - 10), -127
 	ld	(ix - 9), 1
 	ld	(ix - 8), 1
@@ -19078,35 +18913,37 @@ _EncodeSaveV3:                          ; @EncodeSaveV3
 	ld	hl, (ix + 21)
 	ld	bc, 50
 	ldir
+	ld	de, 0
 	ld	(iy + 0), a
 	ld	(iy + 1), a
-	ld	de, -135
+	ld	bc, -135
 	lea	iy, ix + 0
-	add	iy, de
+	add	iy, bc
 	ld	(iy + 0), a
 	ld	iy, (ix + 18)
 	lea	iy, iy + 5
 	ld	bc, 22
-	ld	de, 0
-	.local	.LBB83_1
-.LBB83_1:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB85_1
+.LBB85_1:                               ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB83_5
-; %bb.2:                                ;   in Loop: Header=BB83_1 Depth=1
-	bit	0, (iy)
-	jr	z, .LBB83_4
-; %bb.3:                                ;   in Loop: Header=BB83_1 Depth=1
+	jr	z, .LBB85_5
+; %bb.2:                                ;   in Loop: Header=BB85_1 Depth=1
+	lea	hl, iy + 0
+	bit	0, (hl)
+	jr	z, .LBB85_4
+; %bb.3:                                ;   in Loop: Header=BB85_1 Depth=1
 	ld	bc, -153
 	lea	hl, ix + 0
 	add	hl, bc
 	ld	(hl), a                         ; 1-byte Folded Spill
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	a, (hl)
 	ld	l, 7
+	push	ix
+	lea	ix, ix - 128
+	ld	a, (ix - 25)
+	pop	ix
 	and	a, l
 	ld	b, a
 	ld	a, 1
@@ -19119,42 +18956,54 @@ _EncodeSaveV3:                          ; @EncodeSaveV3
 	pop	hl
 	ld	c, 3
 	call	__ishru
-	push	hl
+	push	de
 	pop	bc
+	ex	de, hl
 	push	ix
 	lea	ix, ix - 128
 	ld	hl, (ix - 24)
 	pop	ix
-	add	hl, bc
+	add	hl, de
 	ld	a, (hl)
 	push	ix
 	lea	ix, ix - 128
-	ld	c, (ix - 26)
+	ld	e, (ix - 26)
 	pop	ix
-	or	a, c
-	ld	c, a
+	or	a, e
+	ld	e, a
 	push	ix
 	lea	ix, ix - 128
 	ld	a, (ix - 25)                    ; 1-byte Folded Reload
 	pop	ix
-	ld	(hl), c
+	ld	(hl), e
+	push	bc
+	pop	de
 	ld	bc, 22
-	.local	.LBB83_4
-.LBB83_4:                               ;   in Loop: Header=BB83_1 Depth=1
+	.local	.LBB85_4
+.LBB85_4:                               ;   in Loop: Header=BB85_1 Depth=1
 	inc	de
 	lea	iy, iy + 6
 	inc	a
-	jr	.LBB83_1
-	.local	.LBB83_5
-.LBB83_5:
+	jr	.LBB85_1
+	.local	.LBB85_5
+.LBB85_5:
 	ld	hl, (ix + 15)
+	push	hl
+	call	_SaveSizeV3
+                                        ; kill: def $e killed $e def $ude
+	pop	bc
+	push	de
+	push	hl
+	ld	hl, 3
 	push	hl
 	ld	de, -140
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	call	_HeaderV3
+	call	_Header
+	pop	hl
+	pop	hl
 	pop	hl
 	pop	hl
 	ld	de, -152
@@ -19201,172 +19050,20 @@ _EncodeSaveV3:                          ; @EncodeSaveV3
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	bc, 112
-	ld	de, 0
-	.local	.LBB83_6
-.LBB83_6:                               ; =>This Inner Loop Header: Depth=1
-	push	de
-	pop	hl
-	or	a, a
-	sbc	hl, bc
-	jr	z, .LBB83_8
-; %bb.7:                                ;   in Loop: Header=BB83_6 Depth=1
 	ld	hl, (ix + 15)
-	add	hl, de
-	ld	bc, -146
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), hl
 	push	hl
-	ld	bc, -140
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	push	hl
-	ld	bc, -143
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), de
-	call	_Geometry
-	pop	hl
-	pop	hl
-	ld	de, -146
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	de, (iy + 3)
-	ld	a, (iy + 6)
-	or	a, a
-	sbc	hl, hl
-	push	hl
-	pop	bc
-	ld	c, a
-	ld	a, (iy + 7)
-	ld	l, a
-	call	__imulu
-	push	hl
-	push	de
 	ld	de, -140
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	call	_Bytes
-	ld	bc, 112
-	pop	hl
-	pop	hl
-	pop	hl
-	ld	de, -143
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	ld	de, 16
-	add	hl, de
-	ex	de, hl
-	jp	.LBB83_6
-	.local	.LBB83_8
-.LBB83_8:
-	ld	de, -140
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_Checksum
-	pop	hl
-	ld	a, (ix - 9)
+	call	_WriteMap
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end83
-.Lfunc_end83:
-	.size	_EncodeSaveV3, .Lfunc_end83-_EncodeSaveV3
-                                        ; -- End function
-	.section	.text._HeaderV3,"ax",@progbits
-	.type	_HeaderV3,@function             ; -- Begin function HeaderV3
-_HeaderV3:                              ; @HeaderV3
-; %bb.0:
-	ld	hl, -13
-	call	__frameset
-	ld	de, (ix + 9)
-	ld	hl, 5525059
-	lea	bc, ix - 4
-	ld	(ix - 12), bc
-	ld	(ix - 4), hl
-	ld	(ix - 1), 71
-	ld	(ix - 5), 3
-	push	de
-	call	_SaveSizeV3
-	pop	bc
-	ld	(ix - 9), hl
-	ld	(ix - 6), e
-	ld	hl, 4
-	push	hl
-	ld	hl, (ix - 12)
-	push	hl
-	ld	hl, (ix + 6)
-	push	hl
-	call	_Bytes
-	pop	hl
-	pop	hl
-	pop	hl
-	pea	ix - 5
-	ld	hl, (ix + 6)
-	push	hl
-	call	_U8
-	pop	hl
-	pop	hl
-	pea	ix - 9
-	ld	hl, (ix + 6)
-	push	hl
-	call	_U32
-	pop	hl
-	pop	hl
-	ld	hl, 4
-	push	hl
-	ld	hl, _.str.633
-	push	hl
-	ld	hl, (ix - 12)
-	push	hl
-	call	_memcmp
-	pop	de
-	pop	de
-	pop	de
-	add	hl, bc
-	or	a, a
-	sbc	hl, bc
-	jr	nz, .LBB84_3
-; %bb.1:
-	ld	a, (ix - 5)
-	cp	a, 3
-	jr	nz, .LBB84_3
-; %bb.2:
-	ld	hl, (ix - 9)
-	ld	(ix - 12), hl
-	ld	a, (ix - 6)
-	ld	(ix - 13), a
-	ld	hl, (ix + 9)
-	push	hl
-	call	_SaveSizeV3
-	push	hl
-	pop	bc
-	ld	a, e
-	pop	hl
-	ld	hl, (ix - 12)
-	ld	e, (ix - 13)                    ; 1-byte Folded Reload
-	call	__lcmpu
-	jr	z, .LBB84_4
-	.local	.LBB84_3
-.LBB84_3:
-	ld	iy, (ix + 6)
-	ld	(iy + 7), 0
-	.local	.LBB84_4
-.LBB84_4:
-	ld	sp, ix
-	pop	ix
-	ret
-	.local	.Lfunc_end84
-.Lfunc_end84:
-	.size	_HeaderV3, .Lfunc_end84-_HeaderV3
+	.local	.Lfunc_end85
+.Lfunc_end85:
+	.size	_EncodeSaveV3, .Lfunc_end85-_EncodeSaveV3
                                         ; -- End function
 	.section	.text._EventState,"ax",@progbits
 	.type	_EventState,@function           ; -- Begin function EventState
@@ -19413,12 +19110,12 @@ _EventState:                            ; @EventState
 	ld	de, -12
 	pop	hl
 	pop	hl
-	.local	.LBB85_1
-.LBB85_1:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB86_1
+.LBB86_1:                               ; =>This Inner Loop Header: Depth=1
 	sbc	hl, hl
 	adc	hl, de
-	jr	z, .LBB85_3
-; %bb.2:                                ;   in Loop: Header=BB85_1 Depth=1
+	jr	z, .LBB86_3
+; %bb.2:                                ;   in Loop: Header=BB86_1 Depth=1
 	ld	hl, (ix + 9)
 	push	hl
 	pop	iy
@@ -19449,12 +19146,12 @@ _EventState:                            ; @EventState
 	ld	de, 3
 	add	hl, de
 	ex	de, hl
-	jr	.LBB85_1
-	.local	.LBB85_3
-.LBB85_3:
+	jr	.LBB86_1
+	.local	.LBB86_3
+.LBB86_3:
 	ld	iy, (ix + 6)
 	bit	0, (iy + 7)
-	jr	z, .LBB85_6
+	jr	z, .LBB86_6
 ; %bb.4:
 	ld	hl, (ix + 12)
 	push	hl
@@ -19464,18 +19161,18 @@ _EventState:                            ; @EventState
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	nz, .LBB85_6
+	jr	nz, .LBB86_6
 ; %bb.5:
 	ld	iy, (ix + 6)
 	ld	(iy + 7), 0
-	.local	.LBB85_6
-.LBB85_6:
+	.local	.LBB86_6
+.LBB86_6:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end85
-.Lfunc_end85:
-	.size	_EventState, .Lfunc_end85-_EventState
+	.local	.Lfunc_end86
+.Lfunc_end86:
+	.size	_EventState, .Lfunc_end86-_EventState
                                         ; -- End function
 	.section	.text._ValidateSaveV3,"ax",@progbits
 	.globl	_ValidateSaveV3                 ; -- Begin function ValidateSaveV3
@@ -19497,20 +19194,20 @@ _ValidateSaveV3:                        ; @ValidateSaveV3
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end86
-.Lfunc_end86:
-	.size	_ValidateSaveV3, .Lfunc_end86-_ValidateSaveV3
+	.local	.Lfunc_end87
+.Lfunc_end87:
+	.size	_ValidateSaveV3, .Lfunc_end87-_ValidateSaveV3
                                         ; -- End function
 	.section	.text._ReadSaveV3,"ax",@progbits
 	.type	_ReadSaveV3,@function           ; -- Begin function ReadSaveV3
 _ReadSaveV3:                            ; @ReadSaveV3
 ; %bb.0:
-	ld	hl, -287
+	ld	hl, -153
 	call	__frameset
-	ld	de, -233
+	ld	de, -137
 	lea	hl, ix + 0
 	add	hl, de
-	ld	de, -236
+	ld	de, -143
 	lea	iy, ix + 0
 	add	iy, de
 	ld	(iy + 0), hl
@@ -19523,7 +19220,7 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	pop	ix
 	push	ix
 	lea	ix, ix - 128
-	ld	(ix - 111), bc
+	ld	(ix - 12), bc
 	pop	ix
 	ld	(ix - 16), de
 	ld	de, 1875397
@@ -19538,13 +19235,13 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	ld	bc, 57
 	push	ix
 	lea	ix, ix - 128
-	ld	(ix - 120), hl
+	ld	(ix - 22), hl
 	pop	ix
 	ldir
 	ld	(ix - 84), 0
 	lea	de, iy + 0
 	inc	de
-	ld	bc, -251
+	ld	bc, -153
 	lea	hl, ix + 0
 	add	hl, bc
 	ld	(hl), iy
@@ -19555,7 +19252,7 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	lea	iy, ix + 0
 	add	iy, de
 	ld	(iy + 0), 0
-	ld	de, -239
+	ld	de, -140
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
@@ -19564,12 +19261,12 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	inc	de
 	ld	bc, 49
 	ldir
-	ld	de, -236
+	ld	de, -143
 	lea	hl, ix + 0
 	add	hl, de
 	ld	iy, (hl)
-	ld	(iy + 96), 0
-	ld	(iy + 97), 0
+	ld	(iy + 0), 0
+	ld	(iy + 1), 0
 	ld	de, -135
 	lea	iy, ix + 0
 	add	iy, de
@@ -19578,10 +19275,10 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	ld	hl, (iy + 12)
 	push	ix
 	lea	ix, ix - 128
-	ld	(ix - 114), hl
+	ld	(ix - 18), hl
 	pop	ix
 	ld	a, (iy + 15)
-	ld	de, -245
+	ld	de, -147
 	lea	iy, ix + 0
 	add	iy, de
 	ld	(iy + 0), a
@@ -19592,16 +19289,16 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	pop	bc
 	ld	a, e
 	pop	hl
-	ld	de, -242
+	ld	de, -146
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	lea	iy, ix + 0
 	lea	iy, iy - 128
-	lea	iy, iy - 117
+	lea	iy, iy - 19
 	ld	e, (iy + 0)                     ; 1-byte Folded Reload
 	call	__lcmpu
-	jp	nz, .LBB87_37
+	jp	nz, .LBB88_9
 ; %bb.1:
 	ld	bc, 0
 	ld	hl, (ix + 6)
@@ -19618,61 +19315,56 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	pop	hl
 	bit	0, a
 	ld	a, 0
-	jp	z, .LBB87_38
+	jp	z, .LBB88_10
 ; %bb.2:
-	lea	de, ix - 16
-	ld	bc, -242
+	lea	hl, ix - 16
+	ld	de, -146
 	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), de
-	ld	bc, -236
+	add	iy, de
+	ld	(iy + 0), hl
+	ld	de, -143
 	lea	hl, ix + 0
-	add	hl, bc
+	add	hl, de
 	ld	iy, (hl)
-	lea	hl, iy + 96
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 117), hl
-	pop	ix
-	lea	hl, iy + 64
-	push	ix
-	ld	bc, -265
-	add	ix, bc
-	ld	(ix + 0), hl
-	pop	ix
-	lea	hl, iy + 58
-	push	ix
-	ld	bc, -262
-	add	ix, bc
-	ld	(ix + 0), hl
-	pop	ix
 	lea	hl, iy + 0
-	ld	bc, -259
 	lea	iy, ix + 0
-	add	iy, bc
+	add	iy, de
 	ld	(iy + 0), hl
 	ld	hl, (ix + 15)
 	push	hl
+	call	_SaveSizeV3
+                                        ; kill: def $e killed $e def $ude
+	pop	bc
 	push	de
-	call	_HeaderV3
+	push	hl
+	ld	hl, 3
+	push	hl
+	ld	de, -146
+	lea	iy, ix + 0
+	add	iy, de
+	ld	hl, (iy + 0)
+	push	hl
+	call	_Header
 	pop	hl
 	pop	hl
-	ld	de, -245
+	pop	hl
+	pop	hl
+	ld	de, -143
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	ld	de, -251
+	ld	de, -153
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	ld	de, -248
+	ld	de, -150
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	ld	de, -242
+	ld	de, -146
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
@@ -19682,677 +19374,74 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	de, -248
+	ld	de, -150
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	ld	de, -239
+	ld	de, -140
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	ld	de, -242
+	ld	de, -146
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
 	call	_EventState
-	ld.sis	bc, 0
-	ld	de, 7
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	a, (ix - 9)
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 126
-	ld	(iy + 0), c
-	ld	(iy + 1), b
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 128
-	ld	(iy + 0), c
-	ld	(iy + 1), b
-	ld	iy, 0
-	ld	l, b
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 124), l                   ; 1-byte Folded Spill
-	pop	ix
-	.local	.LBB87_3
-.LBB87_3:                               ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB87_6 Depth 2
-                                        ;       Child Loop BB87_12 Depth 3
-	lea	hl, iy + 0
-	or	a, a
-	sbc	hl, de
-	jp	nc, .LBB87_39
-; %bb.4:                                ;   in Loop: Header=BB87_3 Depth=1
-	bit	0, a
-	jp	z, .LBB87_39
-; %bb.5:                                ;   in Loop: Header=BB87_3 Depth=1
-	ld	de, -267
-	lea	hl, ix + 0
-	add	hl, de
-	ld	(hl), c
-	inc	hl
-	ld	(hl), b
-	dec	hl
-	lea	hl, iy + 0
-	add	hl, hl
-	add	hl, hl
-	add	hl, hl
-	add	hl, hl
-	ex	de, hl
+	ld	l, (ix + 24)
+	push	hl
 	ld	hl, (ix + 15)
-	push	ix
-	ld	bc, -273
-	add	ix, bc
-	ld	(ix + 0), iy
-	pop	ix
 	push	hl
-	pop	iy
-	add	iy, de
-	ld	a, (iy + 6)
-	or	a, a
-	sbc	hl, hl
-	push	hl
-	pop	bc
-	ld	c, a
-	ld	a, (iy + 7)
-	ld	l, a
-	call	__imulu
-	push	ix
-	ld	de, -270
-	add	ix, de
-	ld	(ix + 0), hl
-	pop	ix
-	ld	de, -279
-	lea	hl, ix + 0
-	add	hl, de
-	ld	(hl), iy
-	push	iy
-	ld	de, -242
+	ld	de, -153
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	push	hl
-	call	_Geometry
-	ld	bc, -270
+	ld	de, -150
 	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	ld	bc, -273
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	iy, (hl)
+	add	iy, de
+	ld	hl, (iy + 0)
+	push	hl
+	ld	de, -146
+	lea	iy, ix + 0
+	add	iy, de
+	ld	hl, (iy + 0)
+	push	hl
+	call	_ReadMap
 	pop	hl
 	pop	hl
-	ld	hl, 1
-	ld	c, iyl
-	call	__ishl
-	ld	c, l
-	ld	a, (ix - 9)
-	or	a, a
-	sbc	hl, hl
-	.local	.LBB87_6
-.LBB87_6:                               ;   Parent Loop BB87_3 Depth=1
-                                        ; =>  This Loop Header: Depth=2
-                                        ;       Child Loop BB87_12 Depth 3
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 20
-	ld	(ix + 0), hl
-	pop	ix
-	or	a, a
-	sbc	hl, de
-	jp	nc, .LBB87_33
-; %bb.7:                                ;   in Loop: Header=BB87_6 Depth=2
-	ld	de, -280
-	lea	hl, ix + 0
-	add	hl, de
-	ld	(hl), c                         ; 1-byte Folded Spill
+	pop	hl
+	pop	hl
+	pop	hl
 	bit	0, a
-	ld	de, 7
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 11
-	ld	c, (ix + 0)
-	ld	b, (ix + 1)
-	pop	ix
-	jp	z, .LBB87_35
-; %bb.8:                                ;   in Loop: Header=BB87_6 Depth=2
-	ld	de, -270
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	ld	bc, -276
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	or	a, a
-	sbc	hl, de
-	push	hl
-	pop	bc
-	ld	de, 32
-	or	a, a
-	sbc	hl, de
-	jr	c, .LBB87_10
-; %bb.9:                                ;   in Loop: Header=BB87_6 Depth=2
-	ld	bc, 32
-	.local	.LBB87_10
-.LBB87_10:                              ;   in Loop: Header=BB87_6 Depth=2
-	ld	de, -283
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), bc
-	push	bc
-	ld	de, -265
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	ld	de, -242
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_Bytes
-	pop	hl
-	pop	hl
-	pop	hl
-	ld	a, (ix - 9)
-	bit	0, a
-	jp	z, .LBB87_36
-; %bb.11:                               ; %.preheader7.preheader
-                                        ;   in Loop: Header=BB87_6 Depth=2
-	or	a, a
-	sbc	hl, hl
-	ex	de, hl
-	ld	bc, -267
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	l, (iy + 0)
-	ld	h, (iy + 1)
-	push	ix
-	ld	bc, -273
-	add	ix, bc
-	ld	iy, (ix + 0)
-	.local	.LBB87_12
-.LBB87_12:                              ; %.preheader7
-                                        ;   Parent Loop BB87_3 Depth=1
-                                        ;     Parent Loop BB87_6 Depth=2
-                                        ; =>    This Inner Loop Header: Depth=3
-	pop	ix
-	push	ix
-	ld	bc, -267
-	add	ix, bc
-	ld	(ix + 0), l
-	ld	(ix + 1), h
-	pop	ix
-	push	ix
-	ld	bc, -283
-	add	ix, bc
-	ld	hl, (ix + 0)
-	pop	ix
-	or	a, a
-	sbc	hl, de
-	jp	z, .LBB87_29
-; %bb.13:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	bc, -284
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), a                     ; 1-byte Folded Spill
-	ld	bc, -265
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	add	hl, de
-	ld	a, (hl)
-	ld	bc, -279
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	iy, (hl)
-	ld	hl, (iy + 3)
-	push	de
-	pop	bc
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 128
-	lea	iy, iy - 20
-	ld	de, (iy + 0)
-	add	hl, de
-	ld	de, -287
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), bc
-	add	hl, bc
-	ld	e, (hl)
-	ld	l, a
-	ld	a, e
-	or	a, a
-	jr	nz, .LBB87_15
-; %bb.14:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	or	a, a
-	jp	nz, .LBB87_28
-	.local	.LBB87_15
-.LBB87_15:                              ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, e
-	or	a, a
-	jr	z, .LBB87_19
-; %bb.16:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, 64
-	jr	z, .LBB87_19
-; %bb.17:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, -1
-	jr	z, .LBB87_19
-; %bb.18:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, -32
-	jp	nz, .LBB87_28
-	.local	.LBB87_19
-.LBB87_19:                              ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, -32
-	ld	de, -280
-	lea	iy, ix + 0
-	push	af
-	add	iy, de
-	pop	af
-	ld	c, (iy + 0)                     ; 1-byte Folded Reload
-	jr	nz, .LBB87_21
-; %bb.20:                               ;   in Loop: Header=BB87_12 Depth=3
-	ld	de, -254
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	ld	h, (iy + 1)
-	inc.sis	hl
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), l
-	ld	(iy + 1), h
-	ld	de, -252
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	ld	a, l
-	or	a, c
-	ld	l, a
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), l
-	ld	de, -267
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	ld	h, (iy + 1)
-	push	ix
-	ld	de, -273
-	add	ix, de
-	ld	iy, (ix + 0)
-	pop	ix
-	push	ix
-	ld	bc, -287
-	add	ix, bc
-	ld	de, (ix + 0)
-	jr	.LBB87_26
-	.local	.LBB87_21
-.LBB87_21:                              ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, -1
-	push	ix
-	ld	de, -273
-	push	af
-	add	ix, de
-	pop	af
-	ld	iy, (ix + 0)
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 31
-	ld	de, (ix + 0)
-	pop	ix
-	jr	nz, .LBB87_23
-; %bb.22:                               ;   in Loop: Header=BB87_12 Depth=3
-	push	ix
-	ld	bc, -267
-	add	ix, bc
-	ld	l, (ix + 0)
-	ld	h, (ix + 1)
-	pop	ix
-	inc.sis	hl
-	jr	.LBB87_27
-	.local	.LBB87_23
-.LBB87_23:                              ;   in Loop: Header=BB87_12 Depth=3
-	ld	a, l
-	cp	a, 64
-	jr	nz, .LBB87_25
-; %bb.24:                               ;   in Loop: Header=BB87_12 Depth=3
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 128)
-	ld	h, (ix - 127)
-	pop	ix
-	inc.sis	hl
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 128), l
-	ld	(ix - 127), h
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 124)
-	pop	ix
-	ld	a, l
-	or	a, c
-	ld	l, a
-	push	ix
-	lea	ix, ix - 128
-	ld	(ix - 124), l
-	pop	ix
-	.local	.LBB87_25
-.LBB87_25:                              ;   in Loop: Header=BB87_12 Depth=3
-	push	ix
-	ld	bc, -267
-	add	ix, bc
-	ld	l, (ix + 0)
-	ld	h, (ix + 1)
-	.local	.LBB87_26
-.LBB87_26:                              ;   in Loop: Header=BB87_12 Depth=3
-	pop	ix
-	.local	.LBB87_27
-.LBB87_27:                              ;   in Loop: Header=BB87_12 Depth=3
-	inc	de
-	push	ix
-	ld	bc, -284
-	add	ix, bc
-	ld	a, (ix + 0)                     ; 1-byte Folded Reload
-	jp	.LBB87_12
-	.local	.LBB87_28
-.LBB87_28:                              ;   in Loop: Header=BB87_6 Depth=2
-	ld	(ix - 9), 0
-	xor	a, a
-	ld	de, -273
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	.local	.LBB87_29
-.LBB87_29:                              ;   in Loop: Header=BB87_6 Depth=2
-	ld	bc, -270
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	de, (hl)
+	jp	z, .LBB88_10
+; %bb.3:
 	bit	0, (ix + 24)
-	jr	z, .LBB87_32
-; %bb.30:                               ;   in Loop: Header=BB87_6 Depth=2
-	bit	0, a
-	jr	z, .LBB87_32
-; %bb.31:                               ;   in Loop: Header=BB87_6 Depth=2
-	ld	de, -279
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	hl, (iy + 3)
-	ld	bc, -276
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	add	hl, de
-	ld	bc, -283
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	push	de
-	ld	bc, -265
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	push	de
-	push	hl
-	ld	de, -284
-	lea	iy, ix + 0
-	add	iy, de
-	ld	(iy + 0), a                     ; 1-byte Folded Spill
-	call	_memcpy
-	ld	bc, -270
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	ld	bc, -284
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	a, (iy + 0)                     ; 1-byte Folded Reload
-	ld	bc, -273
-	lea	hl, ix + 0
-	add	hl, bc
-	ld	iy, (hl)
-	pop	hl
-	pop	hl
-	pop	hl
-	.local	.LBB87_32
-.LBB87_32:                              ;   in Loop: Header=BB87_6 Depth=2
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 20
-	ld	bc, (ix + 0)
-	pop	ix
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 27
-	ld	hl, (ix + 0)
-	pop	ix
-	add	hl, bc
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 24
-	ld	c, (ix + 0)                     ; 1-byte Folded Reload
-	pop	ix
-	jp	.LBB87_6
-	.local	.LBB87_33
-.LBB87_33:                              ;   in Loop: Header=BB87_3 Depth=1
-	ld	de, 7
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 11
-	ld	c, (ix + 0)
-	ld	b, (ix + 1)
-	.local	.LBB87_34
-.LBB87_34:                              ;   in Loop: Header=BB87_3 Depth=1
-	pop	ix
-	.local	.LBB87_35
-.LBB87_35:                              ;   in Loop: Header=BB87_3 Depth=1
-	inc	iy
-	jp	.LBB87_3
-	.local	.LBB87_36
-.LBB87_36:                              ;   in Loop: Header=BB87_3 Depth=1
-	ld	de, 7
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 128
-	lea	iy, iy - 11
-	ld	c, (iy + 0)
-	ld	b, (iy + 1)
-	push	ix
-	lea	ix, ix - 128
-	lea	ix, ix - 128
-	lea	ix, ix - 17
-	ld	iy, (ix + 0)
-	jr	.LBB87_34
-	.local	.LBB87_37
-.LBB87_37:
-	xor	a, a
-	.local	.LBB87_38
-.LBB87_38:                              ; %.loopexit
-	ld	sp, ix
-	pop	ix
-	ret
-	.local	.LBB87_39
-.LBB87_39:
-	ld	de, -236
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 128)
-	ld	h, (ix - 127)
-	pop	ix
-	ld	(iy + 62), l
-	ld	(iy + 63), h
-	push	ix
-	lea	ix, ix - 128
-	ld	l, (ix - 126)
-	ld	h, (ix - 125)
-	pop	ix
-	ld	(iy + 60), l
-	ld	(iy + 61), h
-	ld	(iy + 58), c
-	ld	(iy + 59), b
-	ld	de, -242
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_Checksum
-	pop	hl
-	ld	l, (ix - 45)
-	ld	de, -252
-	lea	iy, ix + 0
-	add	iy, de
-	ld	a, (iy + 0)                     ; 1-byte Folded Reload
-	cp	a, l
-	jr	nz, .LBB87_45
-; %bb.40:
-	or	a, a
-	ld	l, -1
-	ld	c, 0
-	ld	e, l
-	jr	nz, .LBB87_42
-; %bb.41:
-	ld	e, c
-	.local	.LBB87_42
-.LBB87_42:
-	ld	a, (ix - 42)
-	or	a, a
-	jr	z, .LBB87_44
-; %bb.43:
-	ld	l, c
-	.local	.LBB87_44
-.LBB87_44:
-	ld	a, e
-	xor	a, l
-	ld	l, a
-	bit	0, l
-	jr	nz, .LBB87_46
-	.local	.LBB87_45
-.LBB87_45:
-	ld	(ix - 9), 0
-	.local	.LBB87_46
-.LBB87_46:
-	ld	l, (ix - 41)
-	ld	a, l
-	or	a, a
-	jp	z, .LBB87_50
-; %bb.47:
-	ld	bc, -259
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	de, (iy + 0)
-	ld	bc, -242
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	(iy + 0), l                     ; 1-byte Folded Spill
-	ld	bc, -248
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	ld	bc, 58
-	ldir
-	ld	de, -236
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	(iy + 34), 0
-	push	hl
-	push	hl
-	dec	sp
-	ex	de, hl
-	ld	hl, 0
-	add	hl, sp
-	ex	de, hl
-	inc	de
-	ld	bc, 6
-	lea	iy, ix + 0
-	lea	iy, iy - 128
-	lea	iy, iy - 128
-	lea	iy, iy - 6
-	ld	hl, (iy + 0)
-	ldir
-	ld	de, -259
-	lea	iy, ix + 0
-	add	iy, de
-	ld	hl, (iy + 0)
-	push	hl
-	call	_EvaluateOutcome
-	pop	hl
-	pop	hl
-	pop	hl
-	inc	sp
-	ld	de, -236
-	lea	hl, ix + 0
-	add	hl, de
-	ld	iy, (hl)
-	ld	a, (iy + 34)
-	ld	de, -242
-	lea	iy, ix + 0
-	add	iy, de
-	ld	l, (iy + 0)
-	cp	a, l
-	jr	nz, .LBB87_49
-; %bb.48:
-	ld	a, (ix - 79)
-	or	a, a
-	jr	z, .LBB87_50
-	.local	.LBB87_49
-.LBB87_49:
-	ld	(ix - 9), 0
-	.local	.LBB87_50
-.LBB87_50:
-	ld	a, (ix - 9)
-	bit	0, a
-	jp	z, .LBB87_38
-; %bb.51:
-	bit	0, (ix + 24)
-	jp	z, .LBB87_38
-; %bb.52:
+	jp	z, .LBB88_10
+; %bb.4:
 	ld	de, (ix + 9)
-	ld	bc, -248
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
 	ld	bc, 58
+	ld	iy, 9
+	ld	a, 1
+	push	ix
+	lea	ix, ix - 128
+	ld	hl, (ix - 22)
+	pop	ix
 	ldir
 	ld	de, (ix + 12)
-	ld	bc, -251
-	lea	iy, ix + 0
-	add	iy, bc
-	ld	hl, (iy + 0)
-	ld	bc, 9
+	push	ix
+	lea	ix, ix - 128
+	ld	hl, (ix - 25)
+	pop	ix
+	lea	bc, iy + 0
 	ldir
 	ld	de, (ix + 21)
-	ld	bc, -239
+	ld	bc, -140
 	lea	iy, ix + 0
 	add	iy, bc
 	ld	hl, (iy + 0)
@@ -20362,14 +19451,14 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	lea	iy, iy + 5
 	ld	bc, 22
 	ld	de, 0
-	.local	.LBB87_53
-.LBB87_53:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB88_5
+.LBB88_5:                               ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB87_57
-; %bb.54:                               ;   in Loop: Header=BB87_53 Depth=1
+	jp	z, .LBB88_11
+; %bb.6:                                ;   in Loop: Header=BB88_5 Depth=1
 	push	de
 	pop	hl
 	ld	c, 3
@@ -20378,11 +19467,11 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	pop	bc
 	push	ix
 	lea	ix, ix - 128
-	ld	hl, (ix - 117)
+	ld	hl, (ix - 15)
 	pop	ix
 	add	hl, bc
 	ld	a, (hl)
-	ld	bc, -236
+	ld	bc, -140
 	lea	hl, ix + 0
 	add	hl, bc
 	ld	(hl), de
@@ -20400,58 +19489,64 @@ _ReadSaveV3:                            ; @ReadSaveV3
 	ld	l, a
 	or	a, a
 	ld	a, 1
-	jr	nz, .LBB87_56
-; %bb.55:                               ;   in Loop: Header=BB87_53 Depth=1
+	jr	nz, .LBB88_8
+; %bb.7:                                ;   in Loop: Header=BB88_5 Depth=1
 	ld	a, 0
-	.local	.LBB87_56
-.LBB87_56:                              ;   in Loop: Header=BB87_53 Depth=1
+	.local	.LBB88_8
+.LBB88_8:                               ;   in Loop: Header=BB88_5 Depth=1
 	ld	(iy), a
-	ld	bc, -236
+	ld	bc, -140
 	lea	hl, ix + 0
 	add	hl, bc
 	ld	de, (hl)
 	inc	de
 	lea	iy, iy + 6
+	ld	a, 1
 	ld	bc, 22
-	jp	.LBB87_53
-	.local	.LBB87_57
-.LBB87_57:
+	jp	.LBB88_5
+	.local	.LBB88_9
+.LBB88_9:
+	xor	a, a
+	.local	.LBB88_10
+.LBB88_10:                              ; %.loopexit
+	ld	sp, ix
+	pop	ix
+	ret
+	.local	.LBB88_11
+.LBB88_11:
 	ld	bc, 112
 	ld	de, 0
-	.local	.LBB87_58
-.LBB87_58:                              ; %.preheader
+	.local	.LBB88_12
+.LBB88_12:                              ; %.preheader
                                         ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB87_60
-; %bb.59:                               ;   in Loop: Header=BB87_58 Depth=1
+	jr	z, .LBB88_10
+; %bb.13:                               ;   in Loop: Header=BB88_12 Depth=1
 	ld	hl, (ix + 15)
 	add	hl, de
 	push	hl
-	ld	bc, -236
+	ld	bc, -140
 	lea	iy, ix + 0
 	add	iy, bc
 	ld	(iy + 0), de
 	call	_RecountRegion
 	ld	bc, 112
+	ld	a, 1
 	pop	hl
-	ld	de, -236
+	ld	de, -140
 	lea	iy, ix + 0
 	add	iy, de
 	ld	hl, (iy + 0)
 	ld	de, 16
 	add	hl, de
 	ex	de, hl
-	jr	.LBB87_58
-	.local	.LBB87_60
-.LBB87_60:
-	ld	a, 1
-	jp	.LBB87_38
-	.local	.Lfunc_end87
-.Lfunc_end87:
-	.size	_ReadSaveV3, .Lfunc_end87-_ReadSaveV3
+	jr	.LBB88_12
+	.local	.Lfunc_end88
+.Lfunc_end88:
+	.size	_ReadSaveV3, .Lfunc_end88-_ReadSaveV3
                                         ; -- End function
 	.section	.text._DecodeSaveV3,"ax",@progbits
 	.globl	_DecodeSaveV3                   ; -- Begin function DecodeSaveV3
@@ -20467,7 +19562,7 @@ _DecodeSaveV3:                          ; @DecodeSaveV3
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	z, .LBB88_2
+	jr	z, .LBB89_2
 ; %bb.1:
 	ld	de, (ix + 12)
 	ld	bc, (ix + 18)
@@ -20487,17 +19582,17 @@ _DecodeSaveV3:                          ; @DecodeSaveV3
 	ld	hl, 21
 	add	hl, sp
 	ld	sp, hl
-	jr	.LBB88_3
-	.local	.LBB88_2
-.LBB88_2:
+	jr	.LBB89_3
+	.local	.LBB89_2
+.LBB89_2:
 	xor	a, a
-	.local	.LBB88_3
-.LBB88_3:
+	.local	.LBB89_3
+.LBB89_3:
 	pop	ix
 	ret
-	.local	.Lfunc_end88
-.Lfunc_end88:
-	.size	_DecodeSaveV3, .Lfunc_end88-_DecodeSaveV3
+	.local	.Lfunc_end89
+.Lfunc_end89:
+	.size	_DecodeSaveV3, .Lfunc_end89-_DecodeSaveV3
                                         ; -- End function
 	.section	.text._optix_HandleGUI,"ax",@progbits
 	.globl	_optix_HandleGUI                ; -- Begin function optix_HandleGUI
@@ -20509,12 +19604,12 @@ _optix_HandleGUI:                       ; @optix_HandleGUI
 	ld	(_optix_guidata+3), a
 	call	_kb_AnyKey
 	or	a, a
-	jr	nz, .LBB89_2
+	jr	nz, .LBB90_2
 ; %bb.1:
 	ld	a, 1
 	ld	(_optix_guidata+2), a
-	.local	.LBB89_2
-.LBB89_2:
+	.local	.LBB90_2
+.LBB90_2:
 	ld	a, (_optix_guicolors)
 	ld	l, a
 	push	hl
@@ -20523,9 +19618,9 @@ _optix_HandleGUI:                       ; @optix_HandleGUI
 	call	_optix_RenderButtons
 	call	_optix_HandleCursor
 	jp	_optix_CheckForAltKey
-	.local	.Lfunc_end89
-.Lfunc_end89:
-	.size	_optix_HandleGUI, .Lfunc_end89-_optix_HandleGUI
+	.local	.Lfunc_end90
+.Lfunc_end90:
+	.size	_optix_HandleGUI, .Lfunc_end90-_optix_HandleGUI
                                         ; -- End function
 	.section	.text._optix_RenderButtons,"ax",@progbits
 	.globl	_optix_RenderButtons            ; -- Begin function optix_RenderButtons
@@ -20544,15 +19639,15 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	sbc	hl, hl
 	ld	(ix - 6), hl
 	ld	iy, 0
-	.local	.LBB90_1
-.LBB90_1:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB91_1
+.LBB91_1:                               ; =>This Inner Loop Header: Depth=1
 	ld	a, (_optix_buttoninfo)
 	ld	e, a
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, de
-	jp	nc, .LBB90_8
-; %bb.2:                                ;   in Loop: Header=BB90_1 Depth=1
+	jp	nc, .LBB91_8
+; %bb.2:                                ;   in Loop: Header=BB91_1 Depth=1
 	ld	hl, (_optix_button)
 	ld	(ix - 3), hl
 	ld	a, (_optix_guicolors+1)
@@ -20567,8 +19662,8 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	ld	hl, (ix - 9)
 	or	a, a
 	sbc	hl, de
-	jp	nz, .LBB90_7
-; %bb.3:                                ;   in Loop: Header=BB90_1 Depth=1
+	jp	nz, .LBB91_7
+; %bb.3:                                ;   in Loop: Header=BB91_1 Depth=1
 	ld	iy, (ix - 3)
 	ld	de, (ix - 6)
 	add	iy, de
@@ -20581,8 +19676,8 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	nz, .LBB90_5
-; %bb.4:                                ;   in Loop: Header=BB90_1 Depth=1
+	jr	nz, .LBB91_5
+; %bb.4:                                ;   in Loop: Header=BB91_1 Depth=1
 	ld	a, (iy + 2)
 	ld	bc, 0
 	push	bc
@@ -20601,9 +19696,9 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	push	hl
 	call	_gfx_FillRectangle
 	pop	hl
-	jr	.LBB90_6
-	.local	.LBB90_5
-.LBB90_5:                               ;   in Loop: Header=BB90_1 Depth=1
+	jr	.LBB91_6
+	.local	.LBB91_5
+.LBB91_5:                               ;   in Loop: Header=BB91_1 Depth=1
 	ld	de, -2
 	ld	hl, (ix - 12)
 	add	hl, de
@@ -20652,13 +19747,13 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	push	bc
 	push	hl
 	call	_gfx_TransparentSprite
-	.local	.LBB90_6
-.LBB90_6:                               ;   in Loop: Header=BB90_1 Depth=1
+	.local	.LBB91_6
+.LBB91_6:                               ;   in Loop: Header=BB91_1 Depth=1
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB90_7
-.LBB90_7:                               ;   in Loop: Header=BB90_1 Depth=1
+	.local	.LBB91_7
+.LBB91_7:                               ;   in Loop: Header=BB91_1 Depth=1
 	ld	iy, (ix - 3)
 	ld	de, (ix - 6)
 	add	iy, de
@@ -20727,15 +19822,15 @@ _optix_RenderButtons:                   ; @optix_RenderButtons
 	or	a, a
 	sbc	hl, hl
 	ex	de, hl
-	jp	.LBB90_1
-	.local	.LBB90_8
-.LBB90_8:
+	jp	.LBB91_1
+	.local	.LBB91_8
+.LBB91_8:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end90
-.Lfunc_end90:
-	.size	_optix_RenderButtons, .Lfunc_end90-_optix_RenderButtons
+	.local	.Lfunc_end91
+.Lfunc_end91:
+	.size	_optix_RenderButtons, .Lfunc_end91-_optix_RenderButtons
                                         ; -- End function
 	.section	.text._optix_HandleCursor,"ax",@progbits
 	.globl	_optix_HandleCursor             ; -- Begin function optix_HandleCursor
@@ -20745,20 +19840,20 @@ _optix_HandleCursor:                    ; @optix_HandleCursor
 	call	_optix_HandleTrackPad
 	ld	a, (_optix_cursor+3)
 	bit	0, a
-	jr	z, .LBB91_2
+	jr	z, .LBB92_2
 ; %bb.1:
 	call	_optix_UpdateCursor
 	call	_optix_ClickCursor
 	call	_optix_RenderCursor
 	ret
-	.local	.LBB91_2
-.LBB91_2:
+	.local	.LBB92_2
+.LBB92_2:
 	call	_optix_UpdateSelectedButton
 	call	_optix_ClickButton
 	ret
-	.local	.Lfunc_end91
-.Lfunc_end91:
-	.size	_optix_HandleCursor, .Lfunc_end91-_optix_HandleCursor
+	.local	.Lfunc_end92
+.Lfunc_end92:
+	.size	_optix_HandleCursor, .Lfunc_end92-_optix_HandleCursor
                                         ; -- End function
 	.section	.text._optix_CheckForAltKey,"ax",@progbits
 	.globl	_optix_CheckForAltKey           ; -- Begin function optix_CheckForAltKey
@@ -20772,15 +19867,15 @@ _optix_CheckForAltKey:                  ; @optix_CheckForAltKey
 	ld	(ix - 3), bc
 	push	bc
 	pop	de
-	.local	.LBB92_1
-.LBB92_1:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB93_1
+.LBB93_1:                               ; =>This Inner Loop Header: Depth=1
 	ld	c, a
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	nc, .LBB92_7
-; %bb.2:                                ;   in Loop: Header=BB92_1 Depth=1
+	jr	nc, .LBB93_7
+; %bb.2:                                ;   in Loop: Header=BB93_1 Depth=1
 	ld	h, a
 	ld	iy, (_optix_button)
 	ld	bc, (ix - 3)
@@ -20790,39 +19885,39 @@ _optix_CheckForAltKey:                  ; @optix_CheckForAltKey
 	ld	c, a
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB92_4
-; %bb.3:                                ;   in Loop: Header=BB92_1 Depth=1
+	jr	nz, .LBB93_4
+; %bb.3:                                ;   in Loop: Header=BB93_1 Depth=1
 	ld	a, h
-	jr	.LBB92_6
-	.local	.LBB92_4
-.LBB92_4:                               ;   in Loop: Header=BB92_1 Depth=1
+	jr	.LBB93_6
+	.local	.LBB93_4
+.LBB93_4:                               ;   in Loop: Header=BB93_1 Depth=1
 	ld	a, l
 	cp	a, c
 	ld	a, h
-	jr	nz, .LBB92_6
-; %bb.5:                                ;   in Loop: Header=BB92_1 Depth=1
+	jr	nz, .LBB93_6
+; %bb.5:                                ;   in Loop: Header=BB93_1 Depth=1
 	ld	hl, (iy + 25)
 	ld	(ix - 6), de
 	call	__indcallhl
 	ld	de, (ix - 6)
 	ld	a, (_optix_buttoninfo)
-	.local	.LBB92_6
-.LBB92_6:                               ;   in Loop: Header=BB92_1 Depth=1
+	.local	.LBB93_6
+.LBB93_6:                               ;   in Loop: Header=BB93_1 Depth=1
 	inc	de
 	ld	hl, (ix - 3)
 	ld	bc, 30
 	add	hl, bc
 	ld	(ix - 3), hl
 	ld	bc, 0
-	jr	.LBB92_1
-	.local	.LBB92_7
-.LBB92_7:
+	jr	.LBB93_1
+	.local	.LBB93_7
+.LBB93_7:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end92
-.Lfunc_end92:
-	.size	_optix_CheckForAltKey, .Lfunc_end92-_optix_CheckForAltKey
+	.local	.Lfunc_end93
+.Lfunc_end93:
+	.size	_optix_CheckForAltKey, .Lfunc_end93-_optix_CheckForAltKey
                                         ; -- End function
 	.section	.text._optix_HandleTrackPad,"ax",@progbits
 	.globl	_optix_HandleTrackPad           ; -- Begin function optix_HandleTrackPad
@@ -20845,7 +19940,7 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	dec	hl
 	ld	a, e
 	or	a, a
-	jr	nz, .LBB93_2
+	jr	nz, .LBB94_2
 ; %bb.1:
 	ld.sis	de, 0
 	push	af
@@ -20856,9 +19951,9 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	(ix - 8), a
 	ld	a, 85
 	ld	(ix - 11), a
-	jr	.LBB93_15
-	.local	.LBB93_2
-.LBB93_2:
+	jr	.LBB94_15
+	.local	.LBB94_2
+.LBB94_2:
 	push	de
 	ld	e, (hl)
 	inc	hl
@@ -20869,67 +19964,67 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	call	__sand
 	ld	a, l
 	cp	a, 2
-	jr	z, .LBB93_4
+	jr	z, .LBB94_4
 ; %bb.3:
 	ld	iyh, 0
-	.local	.LBB93_4
-.LBB93_4:
+	.local	.LBB94_4
+.LBB94_4:
 	ld	a, l
 	cp	a, 4
 	ld	c, -102
 	ld	a, 51
 	ld	(ix - 8), a
-	jr	z, .LBB93_6
+	jr	z, .LBB94_6
 ; %bb.5:
 	ld	c, iyh
-	.local	.LBB93_6
-.LBB93_6:
+	.local	.LBB94_6
+.LBB94_6:
 	ld	a, l
 	cp	a, 8
 	ld	e, 120
 	ld	a, 85
 	ld	(ix - 11), a
-	jr	z, .LBB93_8
+	jr	z, .LBB94_8
 ; %bb.7:
 	ld	e, c
-	.local	.LBB93_8
-.LBB93_8:
+	.local	.LBB94_8
+.LBB94_8:
 	ld	a, l
 	cp	a, 16
 	ld	c, 85
-	jr	z, .LBB93_10
+	jr	z, .LBB94_10
 ; %bb.9:
 	ld	c, e
-	.local	.LBB93_10
-.LBB93_10:
+	.local	.LBB94_10
+.LBB94_10:
 	ld	a, l
 	cp	a, 32
 	ld	e, 51
-	jr	z, .LBB93_12
+	jr	z, .LBB94_12
 ; %bb.11:
 	ld	e, c
-	.local	.LBB93_12
-.LBB93_12:
+	.local	.LBB94_12
+.LBB94_12:
 	ld	a, l
 	cp	a, 64
 	ld	l, 17
 	ld	a, l
-	jr	z, .LBB93_14
+	jr	z, .LBB94_14
 ; %bb.13:
 	ld	a, e
-	.local	.LBB93_14
-.LBB93_14:
+	.local	.LBB94_14
+.LBB94_14:
 	ld	(ix - 3), a
 	ld.sis	de, 32
 	ld.sis	bc, 255
-	.local	.LBB93_15
-.LBB93_15:
+	.local	.LBB94_15
+.LBB94_15:
 	ld	iy, -720874
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	ld	a, l
 	or	a, a
-	jr	z, .LBB93_31
+	jr	z, .LBB94_31
 ; %bb.16:
 	ld	l, (iy)
 	ld	h, (iy + 1)
@@ -20937,71 +20032,71 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	a, l
 	cp	a, 1
 	ld	c, -34
-	jr	z, .LBB93_18
+	jr	z, .LBB94_18
 ; %bb.17:
 	ld	c, (ix - 3)                     ; 1-byte Folded Reload
-	.local	.LBB93_18
-.LBB93_18:
+	.local	.LBB94_18
+.LBB94_18:
 	ld	a, l
 	cp	a, 2
 	ld	d, -68
-	jr	z, .LBB93_20
+	jr	z, .LBB94_20
 ; %bb.19:
 	ld	d, c
-	.local	.LBB93_20
-.LBB93_20:
+	.local	.LBB94_20
+.LBB94_20:
 	ld	a, l
 	cp	a, 4
 	ld	c, -102
-	jr	z, .LBB93_22
+	jr	z, .LBB94_22
 ; %bb.21:
 	ld	c, d
-	.local	.LBB93_22
-.LBB93_22:
+	.local	.LBB94_22
+.LBB94_22:
 	ld	a, l
 	cp	a, 8
 	ld	d, 120
-	jr	z, .LBB93_24
+	jr	z, .LBB94_24
 ; %bb.23:
 	ld	d, c
-	.local	.LBB93_24
-.LBB93_24:
+	.local	.LBB94_24
+.LBB94_24:
 	ld	a, l
 	cp	a, 16
 	ld	c, 85
-	jr	z, .LBB93_26
+	jr	z, .LBB94_26
 ; %bb.25:
 	ld	c, d
-	.local	.LBB93_26
-.LBB93_26:
+	.local	.LBB94_26
+.LBB94_26:
 	ld	a, l
 	cp	a, 32
 	ld	b, 51
-	jr	z, .LBB93_28
+	jr	z, .LBB94_28
 ; %bb.27:
 	ld	b, c
-	.local	.LBB93_28
-.LBB93_28:
+	.local	.LBB94_28
+.LBB94_28:
 	ld	a, l
 	cp	a, 64
 	ld	l, 17
 	ld	a, l
-	jr	z, .LBB93_30
+	jr	z, .LBB94_30
 ; %bb.29:
 	ld	a, b
-	.local	.LBB93_30
-.LBB93_30:
+	.local	.LBB94_30
+.LBB94_30:
 	ld	(ix - 3), a
 	ld.sis	de, 96
 	ld.sis	bc, 255
-	.local	.LBB93_31
-.LBB93_31:
+	.local	.LBB94_31
+.LBB94_31:
 	ld	iy, -720872
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	ld	a, l
 	or	a, a
-	jr	z, .LBB93_47
+	jr	z, .LBB94_47
 ; %bb.32:
 	ld	l, (iy)
 	ld	h, (iy + 1)
@@ -21009,213 +20104,213 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	a, l
 	cp	a, 1
 	ld	c, -34
-	jr	z, .LBB93_34
+	jr	z, .LBB94_34
 ; %bb.33:
 	ld	c, (ix - 3)                     ; 1-byte Folded Reload
-	.local	.LBB93_34
-.LBB93_34:
+	.local	.LBB94_34
+.LBB94_34:
 	ld	a, l
 	cp	a, 2
 	ld	d, -68
-	jr	z, .LBB93_36
+	jr	z, .LBB94_36
 ; %bb.35:
 	ld	d, c
-	.local	.LBB93_36
-.LBB93_36:
+	.local	.LBB94_36
+.LBB94_36:
 	ld	a, l
 	cp	a, 4
 	ld	c, -102
-	jr	z, .LBB93_38
+	jr	z, .LBB94_38
 ; %bb.37:
 	ld	c, d
-	.local	.LBB93_38
-.LBB93_38:
+	.local	.LBB94_38
+.LBB94_38:
 	ld	a, l
 	cp	a, 8
 	ld	d, 120
-	jr	z, .LBB93_40
+	jr	z, .LBB94_40
 ; %bb.39:
 	ld	d, c
-	.local	.LBB93_40
-.LBB93_40:
+	.local	.LBB94_40
+.LBB94_40:
 	ld	a, l
 	cp	a, 16
 	ld	c, 85
-	jr	z, .LBB93_42
+	jr	z, .LBB94_42
 ; %bb.41:
 	ld	c, d
-	.local	.LBB93_42
-.LBB93_42:
+	.local	.LBB94_42
+.LBB94_42:
 	ld	a, l
 	cp	a, 32
 	ld	b, 51
-	jr	z, .LBB93_44
+	jr	z, .LBB94_44
 ; %bb.43:
 	ld	b, c
-	.local	.LBB93_44
-.LBB93_44:
+	.local	.LBB94_44
+.LBB94_44:
 	ld	a, l
 	cp	a, 64
 	ld	l, 17
 	ld	a, l
-	jr	z, .LBB93_46
+	jr	z, .LBB94_46
 ; %bb.45:
 	ld	a, b
-	.local	.LBB93_46
-.LBB93_46:
+	.local	.LBB94_46
+.LBB94_46:
 	ld	(ix - 3), a
 	ld.sis	de, 160
 	ld.sis	bc, 255
-	.local	.LBB93_47
-.LBB93_47:
+	.local	.LBB94_47
+.LBB94_47:
 	ld	iy, -720870
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB93_49
+	jr	nz, .LBB94_49
 ; %bb.48:
 	ld	iy, -720868
-	jr	.LBB93_64
-	.local	.LBB93_49
-.LBB93_49:
+	jr	.LBB94_64
+	.local	.LBB94_49
+.LBB94_49:
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	call	__sand
 	ld	a, l
 	cp	a, 1
 	ld	c, -34
-	jr	z, .LBB93_51
+	jr	z, .LBB94_51
 ; %bb.50:
 	ld	c, (ix - 3)                     ; 1-byte Folded Reload
-	.local	.LBB93_51
-.LBB93_51:
+	.local	.LBB94_51
+.LBB94_51:
 	ld	a, l
 	cp	a, 2
 	ld	d, -68
-	jr	z, .LBB93_53
+	jr	z, .LBB94_53
 ; %bb.52:
 	ld	d, c
-	.local	.LBB93_53
-.LBB93_53:
+	.local	.LBB94_53
+.LBB94_53:
 	ld	a, l
 	cp	a, 4
 	ld	c, -102
 	ld	iy, -720868
-	jr	z, .LBB93_55
+	jr	z, .LBB94_55
 ; %bb.54:
 	ld	c, d
-	.local	.LBB93_55
-.LBB93_55:
+	.local	.LBB94_55
+.LBB94_55:
 	ld	a, l
 	cp	a, 8
 	ld	d, 120
-	jr	z, .LBB93_57
+	jr	z, .LBB94_57
 ; %bb.56:
 	ld	d, c
-	.local	.LBB93_57
-.LBB93_57:
+	.local	.LBB94_57
+.LBB94_57:
 	ld	a, l
 	cp	a, 16
 	ld	c, 85
-	jr	z, .LBB93_59
+	jr	z, .LBB94_59
 ; %bb.58:
 	ld	c, d
-	.local	.LBB93_59
-.LBB93_59:
+	.local	.LBB94_59
+.LBB94_59:
 	ld	a, l
 	cp	a, 32
 	ld	b, 51
-	jr	z, .LBB93_61
+	jr	z, .LBB94_61
 ; %bb.60:
 	ld	b, c
-	.local	.LBB93_61
-.LBB93_61:
+	.local	.LBB94_61
+.LBB94_61:
 	ld	a, l
 	cp	a, 64
 	ld	l, 17
 	ld	(ix - 3), l                     ; 1-byte Folded Spill
-	jr	z, .LBB93_63
+	jr	z, .LBB94_63
 ; %bb.62:
 	ld	(ix - 3), b                     ; 1-byte Folded Spill
-	.local	.LBB93_63
-.LBB93_63:
+	.local	.LBB94_63
+.LBB94_63:
 	ld.sis	de, 224
 	ld.sis	bc, 255
-	.local	.LBB93_64
-.LBB93_64:
+	.local	.LBB94_64
+.LBB94_64:
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB93_66
+	jr	nz, .LBB94_66
 ; %bb.65:
 	ld	c, (ix - 3)                     ; 1-byte Folded Reload
 	ex.sis	de, hl
-	jr	.LBB93_81
-	.local	.LBB93_66
-.LBB93_66:
+	jr	.LBB94_81
+	.local	.LBB94_66
+.LBB94_66:
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	call	__sand
 	ld	a, l
 	cp	a, 1
 	ld	e, -34
-	jr	z, .LBB93_68
+	jr	z, .LBB94_68
 ; %bb.67:
 	ld	e, (ix - 3)                     ; 1-byte Folded Reload
-	.local	.LBB93_68
-.LBB93_68:
+	.local	.LBB94_68
+.LBB94_68:
 	ld	a, l
 	cp	a, 2
 	ld	c, -68
-	jr	z, .LBB93_70
+	jr	z, .LBB94_70
 ; %bb.69:
 	ld	c, e
-	.local	.LBB93_70
-.LBB93_70:
+	.local	.LBB94_70
+.LBB94_70:
 	ld	a, l
 	cp	a, 4
-	jr	z, .LBB93_72
+	jr	z, .LBB94_72
 ; %bb.71:
 	ld	(ix - 6), c                     ; 1-byte Folded Spill
-	.local	.LBB93_72
-.LBB93_72:
+	.local	.LBB94_72
+.LBB94_72:
 	ld	a, l
 	cp	a, 8
-	jr	z, .LBB93_74
+	jr	z, .LBB94_74
 ; %bb.73:
 	ld	a, (ix - 6)
 	ld	(ix - 5), a                     ; 1-byte Folded Spill
-	.local	.LBB93_74
-.LBB93_74:
+	.local	.LBB94_74
+.LBB94_74:
 	ld	a, l
 	cp	a, 16
 	ld	c, 17
-	jr	z, .LBB93_76
+	jr	z, .LBB94_76
 ; %bb.75:
 	ld	a, (ix - 5)                     ; 1-byte Folded Reload
 	ld	(ix - 11), a
-	.local	.LBB93_76
-.LBB93_76:
+	.local	.LBB94_76
+.LBB94_76:
 	ld	a, l
 	cp	a, 32
-	jr	z, .LBB93_78
+	jr	z, .LBB94_78
 ; %bb.77:
 	ld	a, (ix - 11)
 	ld	(ix - 8), a                     ; 1-byte Folded Spill
-	.local	.LBB93_78
-.LBB93_78:
+	.local	.LBB94_78
+.LBB94_78:
 	ld	a, l
 	cp	a, 64
-	jr	z, .LBB93_80
+	jr	z, .LBB94_80
 ; %bb.79:
 	ld	c, (ix - 8)                     ; 1-byte Folded Reload
-	.local	.LBB93_80
-.LBB93_80:
+	.local	.LBB94_80
+.LBB94_80:
 	ld.sis	hl, 288
-	.local	.LBB93_81
-.LBB93_81:
+	.local	.LBB94_81
+.LBB94_81:
 	ld	b, 0
 	ld	a, (_optix_guidata+13)
 	ld	e, a
@@ -21226,11 +20321,11 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB93_85
+	jr	z, .LBB94_85
 ; %bb.82:
 	ld	a, c
 	or	a, a
-	jr	z, .LBB93_85
+	jr	z, .LBB94_85
 ; %bb.83:
 	ld	(ix - 5), c
 	ld	(ix - 4), b
@@ -21242,7 +20337,7 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	b, iyh
 	ld	a, e
 	cp	a, 3
-	jr	c, .LBB93_86
+	jr	c, .LBB94_86
 ; %bb.84:
 	ld	e, iyl
 	ld	d, iyh
@@ -21270,14 +20365,14 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	(ix - 8), e
 	ld	(ix - 7), d
 	ld	(ix - 3), bc
-	jr	.LBB93_87
-	.local	.LBB93_85
-.LBB93_85:
+	jr	.LBB94_87
+	.local	.LBB94_85
+.LBB94_85:
 	inc	e
 	ld	a, e
-	jp	.LBB93_88
-	.local	.LBB93_86
-.LBB93_86:
+	jp	.LBB94_88
+	.local	.LBB94_86
+.LBB94_86:
 	ld	iy, _optix_guidata+10
 	ld	de, (iy)
 	ld	(ix - 11), de
@@ -21301,8 +20396,8 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	iy, (ix - 11)
 	ld	e, (ix - 5)
 	ld	d, (ix - 4)
-	.local	.LBB93_87
-.LBB93_87:
+	.local	.LBB94_87
+.LBB94_87:
 	push	bc
 	pop	hl
 	ld	bc, (ix - 3)
@@ -21334,15 +20429,15 @@ _optix_HandleTrackPad:                  ; @optix_HandleTrackPad
 	ld	l, a
 	ld	(_optix_cursor+2), a
 	xor	a, a
-	.local	.LBB93_88
-.LBB93_88:
+	.local	.LBB94_88
+.LBB94_88:
 	ld	(_optix_guidata+13), a
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end93
-.Lfunc_end93:
-	.size	_optix_HandleTrackPad, .Lfunc_end93-_optix_HandleTrackPad
+	.local	.Lfunc_end94
+.Lfunc_end94:
+	.size	_optix_HandleTrackPad, .Lfunc_end94-_optix_HandleTrackPad
                                         ; -- End function
 	.section	.text._optix_UpdateCursor,"ax",@progbits
 	.globl	_optix_UpdateCursor             ; -- Begin function optix_UpdateCursor
@@ -21366,14 +20461,14 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	ld	hl, _optix_cursor
 	ld	hl, (hl)
 	bit	1, a
-	jr	z, .LBB94_3
+	jr	z, .LBB95_3
 ; %bb.1:
 	push	hl
 	pop	iy
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB94_4
+	jr	z, .LBB95_4
 ; %bb.2:
 	ld.sis	de, -2
 	add.sis	iy, de
@@ -21386,16 +20481,16 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	inc	hl
 	ld	(hl), d
 	pop	de
-	jr	.LBB94_5
-	.local	.LBB94_3
-.LBB94_3:
+	jr	.LBB95_5
+	.local	.LBB95_3
+.LBB95_3:
 	ld	(ix - 3), hl
-	jr	.LBB94_5
-	.local	.LBB94_4
-.LBB94_4:
+	jr	.LBB95_5
+	.local	.LBB95_4
+.LBB95_4:
 	ld	(ix - 3), iy
-	.local	.LBB94_5
-.LBB94_5:
+	.local	.LBB95_5
+.LBB95_5:
 	push	bc
 	pop	iy
 	ld.sis	de, 320
@@ -21403,7 +20498,7 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	ld	h, (iy + 1)
 	ld	a, l
 	bit	2, a
-	jr	z, .LBB94_9
+	jr	z, .LBB95_9
 ; %bb.6:
 	ld	iy, (ix - 3)
 	ex	de, hl
@@ -21412,7 +20507,7 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	ex	de, hl
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB94_8
+	jr	nc, .LBB95_8
 ; %bb.7:
 	ld.sis	de, 2
 	add.sis	iy, de
@@ -21425,12 +20520,12 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	inc	hl
 	ld	(hl), d
 	pop	de
-	.local	.LBB94_8
-.LBB94_8:
+	.local	.LBB95_8
+.LBB95_8:
 	push	bc
 	pop	iy
-	.local	.LBB94_9
-.LBB94_9:
+	.local	.LBB95_9
+.LBB95_9:
 	ld.sis	bc, 1
 	ld	l, (iy)
 	ld	h, (iy + 1)
@@ -21438,64 +20533,64 @@ _optix_UpdateCursor:                    ; @optix_UpdateCursor
 	ld	a, (_optix_cursor+2)
 	ld	e, a
 	bit	3, l
-	jr	z, .LBB94_12
+	jr	z, .LBB95_12
 ; %bb.10:
 	ld	a, e
 	or	a, a
-	jr	z, .LBB94_12
+	jr	z, .LBB95_12
 ; %bb.11:
 	ld	l, -2
 	ld	a, e
 	add	a, l
 	ld	e, a
 	ld	(_optix_cursor+2), a
-	.local	.LBB94_12
-.LBB94_12:
+	.local	.LBB95_12
+.LBB95_12:
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	call	__sand
 	bit	0, l
-	jr	z, .LBB94_15
+	jr	z, .LBB95_15
 ; %bb.13:
 	ld	a, e
 	cp	a, -16
-	jr	nc, .LBB94_15
+	jr	nc, .LBB95_15
 ; %bb.14:
 	ld	l, 2
 	ld	a, e
 	add	a, l
 	ld	e, a
 	ld	(_optix_cursor+2), a
-	.local	.LBB94_15
-.LBB94_15:
+	.local	.LBB95_15
+.LBB95_15:
 	ld	hl, (ix - 3)
 	ld.sis	bc, 321
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, bc
-	jr	c, .LBB94_17
+	jr	c, .LBB95_17
 ; %bb.16:
 	ld	hl, _optix_cursor
 	ld.sis	bc, 320
 	ld	(hl), c
 	inc	hl
 	ld	(hl), b
-	.local	.LBB94_17
-.LBB94_17:
+	.local	.LBB95_17
+.LBB95_17:
 	ld	a, e
 	cp	a, -15
-	jr	c, .LBB94_19
+	jr	c, .LBB95_19
 ; %bb.18:
 	ld	a, -16
 	ld	(_optix_cursor+2), a
-	.local	.LBB94_19
-.LBB94_19:
+	.local	.LBB95_19
+.LBB95_19:
 	pop	hl
 	pop	ix
 	ret
-	.local	.Lfunc_end94
-.Lfunc_end94:
-	.size	_optix_UpdateCursor, .Lfunc_end94-_optix_UpdateCursor
+	.local	.Lfunc_end95
+.Lfunc_end95:
+	.size	_optix_UpdateCursor, .Lfunc_end95-_optix_UpdateCursor
                                         ; -- End function
 	.section	.text._optix_ClickCursor,"ax",@progbits
 	.globl	_optix_ClickCursor              ; -- Begin function optix_ClickCursor
@@ -21517,11 +20612,11 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	pop	de
 	call	__sand
 	bit	0, l
-	jp	z, .LBB95_9
+	jp	z, .LBB96_9
 ; %bb.1:
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jp	z, .LBB95_9
+	jp	z, .LBB96_9
 ; %bb.2:
 	ld	a, (_optix_buttoninfo)
 	ld	(ix - 3), a                     ; 1-byte Folded Spill
@@ -21542,12 +20637,12 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	push	bc
 	pop	de
 	ld	e, (ix - 3)                     ; 1-byte Folded Reload
-	.local	.LBB95_3
-.LBB95_3:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB96_3
+.LBB96_3:                               ; =>This Inner Loop Header: Depth=1
 	sbc	hl, hl
 	adc	hl, de
-	jp	z, .LBB95_18
-; %bb.4:                                ;   in Loop: Header=BB95_3 Depth=1
+	jp	z, .LBB96_18
+; %bb.4:                                ;   in Loop: Header=BB96_3 Depth=1
 	ld	(ix - 9), de
 	ld	hl, (iy)
 	ld	bc, 0
@@ -21566,8 +20661,8 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB95_8
-; %bb.5:                                ;   in Loop: Header=BB95_3 Depth=1
+	jp	p, .LBB96_8
+; %bb.5:                                ;   in Loop: Header=BB96_3 Depth=1
 	ld	a, (iy + 2)
 	ld	bc, 0
 	ld	c, a
@@ -21580,29 +20675,29 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB95_8
-; %bb.6:                                ;   in Loop: Header=BB95_3 Depth=1
+	jp	m, .LBB96_8
+; %bb.6:                                ;   in Loop: Header=BB96_3 Depth=1
 	ld	hl, (ix - 3)
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB95_8
-; %bb.7:                                ;   in Loop: Header=BB95_3 Depth=1
+	jp	m, .LBB96_8
+; %bb.7:                                ;   in Loop: Header=BB96_3 Depth=1
 	ld	bc, 0
 	ld	c, a
 	ld	hl, (ix - 15)
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB95_17
-	.local	.LBB95_8
-.LBB95_8:                               ;   in Loop: Header=BB95_3 Depth=1
+	jp	m, .LBB96_17
+	.local	.LBB96_8
+.LBB96_8:                               ;   in Loop: Header=BB96_3 Depth=1
 	lea	iy, iy + 30
 	ld	de, (ix - 9)
 	dec	de
-	jp	.LBB95_3
-	.local	.LBB95_9
-.LBB95_9:
+	jp	.LBB96_3
+	.local	.LBB96_9
+.LBB96_9:
 	ld	a, (_optix_buttoninfo)
 	ld	d, a
 	ld	hl, (_optix_button)
@@ -21624,12 +20719,12 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	inc	d
 	ld	iy, (ix - 3)
 	lea	iy, iy + 4
-	.local	.LBB95_10
-.LBB95_10:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB96_10
+.LBB96_10:                              ; =>This Inner Loop Header: Depth=1
 	sbc	hl, hl
 	adc	hl, bc
-	jp	z, .LBB95_19
-; %bb.11:                               ;   in Loop: Header=BB95_10 Depth=1
+	jp	z, .LBB96_19
+; %bb.11:                               ;   in Loop: Header=BB96_10 Depth=1
 	ld	(ix - 12), bc
 	ld	(ix - 9), d                     ; 1-byte Folded Spill
 	ld	(ix - 3), e                     ; 1-byte Folded Spill
@@ -21655,8 +20750,8 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB95_15
-; %bb.12:                               ;   in Loop: Header=BB95_10 Depth=1
+	jp	p, .LBB96_15
+; %bb.12:                               ;   in Loop: Header=BB96_10 Depth=1
 	ld	a, (iy - 2)
 	ld	de, 0
 	ld	e, a
@@ -21670,14 +20765,14 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB95_15
-; %bb.13:                               ;   in Loop: Header=BB95_10 Depth=1
+	jp	m, .LBB96_15
+; %bb.13:                               ;   in Loop: Header=BB96_10 Depth=1
 	ld	hl, (ix - 18)
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB95_15
-; %bb.14:                               ;   in Loop: Header=BB95_10 Depth=1
+	jp	m, .LBB96_15
+; %bb.14:                               ;   in Loop: Header=BB96_10 Depth=1
 	ld	de, 0
 	ld	e, a
 	push	bc
@@ -21685,9 +20780,9 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB95_16
-	.local	.LBB95_15
-.LBB95_15:                              ;   in Loop: Header=BB95_10 Depth=1
+	jp	m, .LBB96_16
+	.local	.LBB96_15
+.LBB96_15:                              ;   in Loop: Header=BB96_10 Depth=1
 	ld	d, (ix - 9)                     ; 1-byte Folded Reload
 	ld	a, d
 	ld	(_optix_buttoninfo+1), a
@@ -21696,28 +20791,28 @@ _optix_ClickCursor:                     ; @optix_ClickCursor
 	lea	iy, iy + 30
 	ld	bc, (ix - 12)
 	dec	bc
-	jp	.LBB95_10
-	.local	.LBB95_16
-.LBB95_16:
+	jp	.LBB96_10
+	.local	.LBB96_16
+.LBB96_16:
 	ld	a, (ix - 3)                     ; 1-byte Folded Reload
 	ld	(_optix_buttoninfo+1), a
-	jr	.LBB95_19
-	.local	.LBB95_17
-.LBB95_17:
+	jr	.LBB96_19
+	.local	.LBB96_17
+.LBB96_17:
 	ld	hl, (iy + 25)
 	call	__indcallhl
-	.local	.LBB95_18
-.LBB95_18:                              ; %.loopexit4
+	.local	.LBB96_18
+.LBB96_18:                              ; %.loopexit4
 	xor	a, a
 	ld	(_optix_guidata+2), a
-	.local	.LBB95_19
-.LBB95_19:                              ; %.loopexit
+	.local	.LBB96_19
+.LBB96_19:                              ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end95
-.Lfunc_end95:
-	.size	_optix_ClickCursor, .Lfunc_end95-_optix_ClickCursor
+	.local	.Lfunc_end96
+.Lfunc_end96:
+	.size	_optix_ClickCursor, .Lfunc_end96-_optix_ClickCursor
                                         ; -- End function
 	.section	.text._optix_RenderCursor,"ax",@progbits
 	.globl	_optix_RenderCursor             ; -- Begin function optix_RenderCursor
@@ -21766,9 +20861,9 @@ _optix_RenderCursor:                    ; @optix_RenderCursor
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end96
-.Lfunc_end96:
-	.size	_optix_RenderCursor, .Lfunc_end96-_optix_RenderCursor
+	.local	.Lfunc_end97
+.Lfunc_end97:
+	.size	_optix_RenderCursor, .Lfunc_end97-_optix_RenderCursor
                                         ; -- End function
 	.section	.text._optix_UpdateSelectedButton,"ax",@progbits
 	.globl	_optix_UpdateSelectedButton     ; -- Begin function optix_UpdateSelectedButton
@@ -21779,7 +20874,7 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	call	__frameset
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jp	z, .LBB97_35
+	jp	z, .LBB98_35
 ; %bb.1:
 	call	_kb_Scan
 	ld	hl, -720866
@@ -21862,25 +20957,25 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	nz, .LBB97_6
+	jr	nz, .LBB98_6
 ; %bb.2:
 	ld	hl, (ix - 9)
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB97_4
+	jr	z, .LBB98_4
 ; %bb.3:
 	ld	a, 0
-	jr	.LBB97_5
-	.local	.LBB97_4
-.LBB97_4:
+	jr	.LBB98_5
+	.local	.LBB98_4
+.LBB98_4:
 	ld	a, -1
-	.local	.LBB97_5
-.LBB97_5:
+	.local	.LBB98_5
+.LBB98_5:
 	bit	0, a
-	jp	nz, .LBB97_35
-	.local	.LBB97_6
-.LBB97_6:
+	jp	nz, .LBB98_35
+	.local	.LBB98_6
+.LBB98_6:
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 12), hl
@@ -21908,16 +21003,16 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	c, b
 	ld	hl, 10000
 	ld	(ix - 3), hl
-	.local	.LBB97_7
-.LBB97_7:                               ; =>This Inner Loop Header: Depth=1
+	.local	.LBB98_7
+.LBB98_7:                               ; =>This Inner Loop Header: Depth=1
 	sbc	hl, hl
 	adc	hl, de
-	jp	z, .LBB97_32
-; %bb.8:                                ;   in Loop: Header=BB97_7 Depth=1
+	jp	z, .LBB98_32
+; %bb.8:                                ;   in Loop: Header=BB98_7 Depth=1
 	ld	a, (iy + 28)
 	or	a, a
-	jp	nz, .LBB97_31
-; %bb.9:                                ;   in Loop: Header=BB97_7 Depth=1
+	jp	nz, .LBB98_31
+; %bb.9:                                ;   in Loop: Header=BB98_7 Depth=1
 	ld	(ix - 26), b                    ; 1-byte Folded Spill
 	ld	(ix - 16), c                    ; 1-byte Folded Spill
 	ld	(ix - 25), de
@@ -21928,8 +21023,8 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	or	a, a
 	sbc	hl, de
 	ld	(ix - 22), iy
-	jr	nz, .LBB97_12
-; %bb.10:                               ;   in Loop: Header=BB97_7 Depth=1
+	jr	nz, .LBB98_12
+; %bb.10:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	de, (iy)
 	ld	hl, (ix - 15)
 	ld	bc, (hl)
@@ -21937,8 +21032,8 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	h, d
 	or	a, a
 	sbc.sis	hl, bc
-	jp	nc, .LBB97_15
-; %bb.11:                               ;   in Loop: Header=BB97_7 Depth=1
+	jp	nc, .LBB98_15
+; %bb.11:                               ;   in Loop: Header=BB98_7 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 12), de
@@ -21980,16 +21075,16 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	pop	bc
 	add	iy, bc
 	ld	bc, (ix - 3)
-	jr	.LBB97_16
-	.local	.LBB97_12
-.LBB97_12:                              ;   in Loop: Header=BB97_7 Depth=1
+	jr	.LBB98_16
+	.local	.LBB98_12
+.LBB98_12:                              ;   in Loop: Header=BB98_7 Depth=1
 	push	bc
 	pop	hl
 	ld	de, 1
 	or	a, a
 	sbc	hl, de
-	jr	nz, .LBB97_17
-; %bb.13:                               ;   in Loop: Header=BB97_7 Depth=1
+	jr	nz, .LBB98_17
+; %bb.13:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	de, (iy)
 	ld	hl, (ix - 15)
 	ld	bc, (hl)
@@ -21999,8 +21094,8 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	or	a, a
 	sbc.sis	hl, de
 	ld	de, (ix - 25)
-	jp	nc, .LBB97_25
-; %bb.14:                               ;   in Loop: Header=BB97_7 Depth=1
+	jp	nc, .LBB98_25
+; %bb.14:                               ;   in Loop: Header=BB98_7 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 12), hl
@@ -22025,33 +21120,33 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	iy, (ix - 15)
 	ld	a, (iy + 2)
 	ld	c, a
-	jp	.LBB97_24
-	.local	.LBB97_15
-.LBB97_15:                              ;   in Loop: Header=BB97_7 Depth=1
+	jp	.LBB98_24
+	.local	.LBB98_15
+.LBB98_15:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	bc, (ix - 3)
 	ld	iy, 10000
-	.local	.LBB97_16
-.LBB97_16:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_16
+.LBB98_16:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	de, (ix - 25)
-	jp	.LBB97_26
-	.local	.LBB97_17
-.LBB97_17:                              ;   in Loop: Header=BB97_7 Depth=1
+	jp	.LBB98_26
+	.local	.LBB98_17
+.LBB98_17:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	bc, (ix - 9)
 	push	bc
 	pop	hl
 	ld	de, -1
 	or	a, a
 	sbc	hl, de
-	jr	nz, .LBB97_20
-; %bb.18:                               ;   in Loop: Header=BB97_7 Depth=1
+	jr	nz, .LBB98_20
+; %bb.18:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	a, (iy + 2)
 	lea	hl, iy + 0
 	ld	iy, (ix - 15)
 	ld	c, (iy + 2)
 	cp	a, c
 	ld	de, (ix - 25)
-	jp	nc, .LBB97_25
-; %bb.19:                               ;   in Loop: Header=BB97_7 Depth=1
+	jp	nc, .LBB98_25
+; %bb.19:                               ;   in Loop: Header=BB98_7 Depth=1
 	push	hl
 	pop	iy
 	or	a, a
@@ -22063,9 +21158,9 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	sbc	hl, bc
 	ld	(ix - 12), hl
 	ld	bc, (iy)
-	jr	.LBB97_23
-	.local	.LBB97_20
-.LBB97_20:                              ;   in Loop: Header=BB97_7 Depth=1
+	jr	.LBB98_23
+	.local	.LBB98_20
+.LBB98_20:                              ;   in Loop: Header=BB98_7 Depth=1
 	push	bc
 	pop	hl
 	ld	de, 1
@@ -22074,15 +21169,15 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	bc, 10000
 	ld	de, (ix - 25)
 	ld	iy, (ix - 12)
-	jr	nz, .LBB97_26
-; %bb.21:                               ;   in Loop: Header=BB97_7 Depth=1
+	jr	nz, .LBB98_26
+; %bb.21:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	iy, (ix - 22)
 	ld	c, (iy + 2)
 	ld	iy, (ix - 15)
 	ld	a, (iy + 2)
 	cp	a, c
-	jr	nc, .LBB97_25
-; %bb.22:                               ;   in Loop: Header=BB97_7 Depth=1
+	jr	nc, .LBB98_25
+; %bb.22:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	iy, 0
 	ld	iyl, a
 	or	a, a
@@ -22093,8 +21188,8 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	(ix - 12), hl
 	ld	hl, (ix - 22)
 	ld	bc, (hl)
-	.local	.LBB97_23
-.LBB97_23:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_23
+.LBB98_23:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	iy, 0
 	lea	hl, iy + 0
 	ld	l, c
@@ -22104,8 +21199,8 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	bc, 0
 	ld	c, iyl
 	ld	b, iyh
-	.local	.LBB97_24
-.LBB97_24:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_24
+.LBB98_24:                              ;   in Loop: Header=BB98_7 Depth=1
 	or	a, a
 	sbc	hl, bc
 	push	hl
@@ -22124,23 +21219,23 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	pop	bc
 	add	iy, bc
 	ld	bc, (ix - 3)
-	jr	.LBB97_26
-	.local	.LBB97_25
-.LBB97_25:                              ;   in Loop: Header=BB97_7 Depth=1
+	jr	.LBB98_26
+	.local	.LBB98_25
+.LBB98_25:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	bc, (ix - 3)
 	ld	iy, 10000
-	.local	.LBB97_26
-.LBB97_26:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_26
+.LBB98_26:                              ;   in Loop: Header=BB98_7 Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
 	ld	a, (ix - 16)                    ; 1-byte Folded Reload
-	jp	m, .LBB97_28
-; %bb.27:                               ;   in Loop: Header=BB97_7 Depth=1
+	jp	m, .LBB98_28
+; %bb.27:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	a, (ix - 26)                    ; 1-byte Folded Reload
-	.local	.LBB97_28
-.LBB97_28:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_28
+.LBB98_28:                              ;   in Loop: Header=BB98_7 Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
@@ -22148,42 +21243,42 @@ _optix_UpdateSelectedButton:            ; @optix_UpdateSelectedButton
 	ld	(ix - 12), iy
 	ld	(ix - 3), iy
 	ld	iy, (ix - 22)
-	jp	m, .LBB97_30
-; %bb.29:                               ;   in Loop: Header=BB97_7 Depth=1
+	jp	m, .LBB98_30
+; %bb.29:                               ;   in Loop: Header=BB98_7 Depth=1
 	ld	(ix - 3), bc
-	.local	.LBB97_30
-.LBB97_30:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_30
+.LBB98_30:                              ;   in Loop: Header=BB98_7 Depth=1
 	ld	b, a
 	ld	c, (ix - 16)                    ; 1-byte Folded Reload
-	.local	.LBB97_31
-.LBB97_31:                              ;   in Loop: Header=BB97_7 Depth=1
+	.local	.LBB98_31
+.LBB98_31:                              ;   in Loop: Header=BB98_7 Depth=1
 	lea	iy, iy + 30
 	inc	c
 	dec	de
-	jp	.LBB97_7
-	.local	.LBB97_32
-.LBB97_32:
+	jp	.LBB98_7
+	.local	.LBB98_32
+.LBB98_32:
 	ld	de, 5000
 	ld	hl, (ix - 3)
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB97_34
+	jp	p, .LBB98_34
 ; %bb.33:
 	ld	a, b
 	ld	(_optix_buttoninfo+1), a
-	.local	.LBB97_34
-.LBB97_34:
+	.local	.LBB98_34
+.LBB98_34:
 	xor	a, a
 	ld	(_optix_guidata+2), a
-	.local	.LBB97_35
-.LBB97_35:
+	.local	.LBB98_35
+.LBB98_35:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end97
-.Lfunc_end97:
-	.size	_optix_UpdateSelectedButton, .Lfunc_end97-_optix_UpdateSelectedButton
+	.local	.Lfunc_end98
+.Lfunc_end98:
+	.size	_optix_UpdateSelectedButton, .Lfunc_end98-_optix_UpdateSelectedButton
                                         ; -- End function
 	.section	.text._optix_ClickButton,"ax",@progbits
 	.globl	_optix_ClickButton              ; -- Begin function optix_ClickButton
@@ -22204,13 +21299,13 @@ _optix_ClickButton:                     ; @optix_ClickButton
 	pop	de
 	call	__sand
 	bit	0, l
-	jr	z, .LBB98_3
+	jr	z, .LBB99_3
 ; %bb.1:
 	ld	l, a
 	ld	a, (_optix_guidata+2)
 	bit	0, a
 	ld	a, l
-	jr	z, .LBB98_3
+	jr	z, .LBB99_3
 ; %bb.2:
 	ld	e, a
 	ld	bc, 30
@@ -22222,12 +21317,12 @@ _optix_ClickButton:                     ; @optix_ClickButton
 	call	__indcallhl
 	xor	a, a
 	ld	(_optix_guidata+2), a
-	.local	.LBB98_3
-.LBB98_3:
+	.local	.LBB99_3
+.LBB99_3:
 	ret
-	.local	.Lfunc_end98
-.Lfunc_end98:
-	.size	_optix_ClickButton, .Lfunc_end98-_optix_ClickButton
+	.local	.Lfunc_end99
+.Lfunc_end99:
+	.size	_optix_ClickButton, .Lfunc_end99-_optix_ClickButton
                                         ; -- End function
 	.section	.text._optix_CusText,"ax",@progbits
 	.globl	_optix_CusText                  ; -- Begin function optix_CusText
@@ -22240,15 +21335,15 @@ _optix_CusText:                         ; @optix_CusText
 	ld	hl, _optix_guicolors
 	ld	(ix - 4), a                     ; 1-byte Folded Spill
 	bit	0, a
-	jr	nz, .LBB99_2
+	jr	nz, .LBB100_2
 ; %bb.1:
 	ld	de, 5
-	jr	.LBB99_3
-	.local	.LBB99_2
-.LBB99_2:
+	jr	.LBB100_3
+	.local	.LBB100_2
+.LBB100_2:
 	ld	de, 7
-	.local	.LBB99_3
-.LBB99_3:
+	.local	.LBB100_3
+.LBB100_3:
 	add	hl, de
 	ld	(ix - 3), hl
 	ld	a, (hl)
@@ -22260,11 +21355,11 @@ _optix_CusText:                         ; @optix_CusText
 	ld	l, a
 	ld	a, (_optix_guicolors+4)
 	bit	0, (ix - 4)                     ; 1-byte Folded Reload
-	jr	nz, .LBB99_5
+	jr	nz, .LBB100_5
 ; %bb.4:
 	ld	l, a
-	.local	.LBB99_5
-.LBB99_5:
+	.local	.LBB100_5
+.LBB100_5:
 	push	hl
 	call	_gfx_SetTextFGColor
 	pop	hl
@@ -22274,9 +21369,9 @@ _optix_CusText:                         ; @optix_CusText
 	ld	sp, ix
 	pop	ix
 	jp	_gfx_SetTextTransparentColor
-	.local	.Lfunc_end99
-.Lfunc_end99:
-	.size	_optix_CusText, .Lfunc_end99-_optix_CusText
+	.local	.Lfunc_end100
+.Lfunc_end100:
+	.size	_optix_CusText, .Lfunc_end100-_optix_CusText
                                         ; -- End function
 	.section	.text._optix_WhiText,"ax",@progbits
 	.globl	_optix_WhiText                  ; -- Begin function optix_WhiText
@@ -22298,9 +21393,9 @@ _optix_WhiText:                         ; @optix_WhiText
 	call	_gfx_SetTextTransparentColor
 	pop	hl
 	ret
-	.local	.Lfunc_end100
-.Lfunc_end100:
-	.size	_optix_WhiText, .Lfunc_end100-_optix_WhiText
+	.local	.Lfunc_end101
+.Lfunc_end101:
+	.size	_optix_WhiText, .Lfunc_end101-_optix_WhiText
                                         ; -- End function
 	.section	.text._optix_BlaText,"ax",@progbits
 	.globl	_optix_BlaText                  ; -- Begin function optix_BlaText
@@ -22321,9 +21416,9 @@ _optix_BlaText:                         ; @optix_BlaText
 	call	_gfx_SetTextTransparentColor
 	pop	hl
 	ret
-	.local	.Lfunc_end101
-.Lfunc_end101:
-	.size	_optix_BlaText, .Lfunc_end101-_optix_BlaText
+	.local	.Lfunc_end102
+.Lfunc_end102:
+	.size	_optix_BlaText, .Lfunc_end102-_optix_BlaText
                                         ; -- End function
 	.section	.text._optix_SetDefaultColors,"ax",@progbits
 	.globl	_optix_SetDefaultColors         ; -- Begin function optix_SetDefaultColors
@@ -22350,9 +21445,9 @@ _optix_SetDefaultColors:                ; @optix_SetDefaultColors
 	ld	a, h
 	ld	(_optix_guicolors+8), a
 	ret
-	.local	.Lfunc_end102
-.Lfunc_end102:
-	.size	_optix_SetDefaultColors, .Lfunc_end102-_optix_SetDefaultColors
+	.local	.Lfunc_end103
+.Lfunc_end103:
+	.size	_optix_SetDefaultColors, .Lfunc_end103-_optix_SetDefaultColors
                                         ; -- End function
 	.section	.text._optix_SetDefaultSettings,"ax",@progbits
 	.globl	_optix_SetDefaultSettings       ; -- Begin function optix_SetDefaultSettings
@@ -22382,9 +21477,9 @@ _optix_SetDefaultSettings:              ; @optix_SetDefaultSettings
 	ld	(_optix_buttoninfo+1), a
 	ld	(_optix_guidata+2), a
 	ret
-	.local	.Lfunc_end103
-.Lfunc_end103:
-	.size	_optix_SetDefaultSettings, .Lfunc_end103-_optix_SetDefaultSettings
+	.local	.Lfunc_end104
+.Lfunc_end104:
+	.size	_optix_SetDefaultSettings, .Lfunc_end104-_optix_SetDefaultSettings
                                         ; -- End function
 	.section	.text._optix_VertScrollbar,"ax",@progbits
 	.globl	_optix_VertScrollbar            ; -- Begin function optix_VertScrollbar
@@ -22418,9 +21513,9 @@ _optix_VertScrollbar:                   ; @optix_VertScrollbar
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end104
-.Lfunc_end104:
-	.size	_optix_VertScrollbar, .Lfunc_end104-_optix_VertScrollbar
+	.local	.Lfunc_end105
+.Lfunc_end105:
+	.size	_optix_VertScrollbar, .Lfunc_end105-_optix_VertScrollbar
                                         ; -- End function
 	.section	.text._optix_Scrollbar,"ax",@progbits
 	.globl	_optix_Scrollbar                ; -- Begin function optix_Scrollbar
@@ -22475,15 +21570,15 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	pop	hl
 	pop	hl
 	bit	0, (ix + 24)
-	jr	z, .LBB105_2
+	jr	z, .LBB106_2
 ; %bb.1:
 	ld	a, (_optix_guicolors+3)
 	ld	l, a
 	push	hl
 	call	_gfx_SetColor
 	pop	hl
-	.local	.LBB105_2
-.LBB105_2:
+	.local	.LBB106_2
+.LBB106_2:
 	ld	a, (ix + 27)
 	ld	bc, 2
 	ld	iy, 0
@@ -22500,13 +21595,13 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	sbc	hl, de
 	call	pe, __setflag
 	ld	(ix - 15), iy
-	jp	p, .LBB105_5
+	jp	p, .LBB106_5
 ; %bb.3:
 	ld	hl, (ix + 6)
 	add	hl, bc
 	ld	(ix - 18), hl
 	bit	0, a
-	jp	z, .LBB105_7
+	jp	z, .LBB106_7
 ; %bb.4:
 	ld	b, 0
 	ld	c, (ix + 21)
@@ -22541,11 +21636,11 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	iy
 	push	hl
 	ld	hl, (ix - 18)
-	jp	.LBB105_8
-	.local	.LBB105_5
-.LBB105_5:
+	jp	.LBB106_8
+	.local	.LBB106_5
+.LBB106_5:
 	bit	0, a
-	jp	z, .LBB105_10
+	jp	z, .LBB106_10
 ; %bb.6:
 	ld	iy, (ix + 6)
 	add	iy, bc
@@ -22581,9 +21676,9 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	ld	hl, (ix - 12)
 	push	hl
 	push	iy
-	jp	.LBB105_11
-	.local	.LBB105_7
-.LBB105_7:
+	jp	.LBB106_11
+	.local	.LBB106_7
+.LBB106_7:
 	ld	hl, (ix + 18)
 	ld	de, -4
 	add	hl, de
@@ -22606,8 +21701,8 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	de
 	push	iy
 	ld	hl, (ix - 21)
-	.local	.LBB105_8
-.LBB105_8:
+	.local	.LBB106_8
+.LBB106_8:
 	push	hl
 	call	_gfx_FillRectangle
 	pop	hl
@@ -22620,7 +21715,7 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	call	_gfx_SetColor
 	pop	hl
 	bit	0, (ix + 27)
-	jp	z, .LBB105_13
+	jp	z, .LBB106_13
 ; %bb.9:
 	ld	b, 0
 	ld	c, (ix + 21)
@@ -22655,9 +21750,9 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	iy
 	push	hl
 	ld	hl, (ix - 18)
-	jp	.LBB105_16
-	.local	.LBB105_10
-.LBB105_10:
+	jp	.LBB106_16
+	.local	.LBB106_10
+.LBB106_10:
 	ld	de, (ix + 18)
 	push	de
 	pop	hl
@@ -22685,8 +21780,8 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	iy
 	ld	hl, (ix - 12)
 	push	hl
-	.local	.LBB105_11
-.LBB105_11:
+	.local	.LBB106_11
+.LBB106_11:
 	call	_gfx_FillRectangle
 	pop	hl
 	pop	hl
@@ -22698,7 +21793,7 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	call	_gfx_SetColor
 	pop	hl
 	bit	0, (ix + 27)
-	jr	z, .LBB105_14
+	jr	z, .LBB106_14
 ; %bb.12:
 	ld	de, 2
 	ld	hl, (ix + 6)
@@ -22734,9 +21829,9 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	iy
 	push	hl
 	ld	hl, (ix - 12)
-	jr	.LBB105_16
-	.local	.LBB105_13
-.LBB105_13:
+	jr	.LBB106_16
+	.local	.LBB106_13
+.LBB106_13:
 	ld	hl, (ix + 18)
 	ld	de, -4
 	add	hl, de
@@ -22748,9 +21843,9 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	call	__imulu
 	ld	bc, (ix - 18)
 	add	hl, bc
-	jr	.LBB105_15
-	.local	.LBB105_14
-.LBB105_14:
+	jr	.LBB106_15
+	.local	.LBB106_14
+.LBB106_14:
 	ld	hl, (ix + 18)
 	push	hl
 	pop	de
@@ -22768,8 +21863,8 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	add	hl, bc
 	or	a, a
 	sbc	hl, de
-	.local	.LBB105_15
-.LBB105_15:
+	.local	.LBB106_15
+.LBB106_15:
 	ld	(ix - 9), hl
 	ld	hl, (ix - 3)
 	ld	bc, 2
@@ -22781,8 +21876,8 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	push	de
 	push	hl
 	ld	hl, (ix - 9)
-	.local	.LBB105_16
-.LBB105_16:
+	.local	.LBB106_16
+.LBB106_16:
 	push	hl
 	call	_gfx_Rectangle
 	pop	hl
@@ -22792,9 +21887,9 @@ _optix_Scrollbar:                       ; @optix_Scrollbar
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end105
-.Lfunc_end105:
-	.size	_optix_Scrollbar, .Lfunc_end105-_optix_Scrollbar
+	.local	.Lfunc_end106
+.Lfunc_end106:
+	.size	_optix_Scrollbar, .Lfunc_end106-_optix_Scrollbar
                                         ; -- End function
 	.section	.text._optix_HorizScrollbar,"ax",@progbits
 	.globl	_optix_HorizScrollbar           ; -- Begin function optix_HorizScrollbar
@@ -22825,9 +21920,9 @@ _optix_HorizScrollbar:                  ; @optix_HorizScrollbar
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end106
-.Lfunc_end106:
-	.size	_optix_HorizScrollbar, .Lfunc_end106-_optix_HorizScrollbar
+	.local	.Lfunc_end107
+.Lfunc_end107:
+	.size	_optix_HorizScrollbar, .Lfunc_end107-_optix_HorizScrollbar
                                         ; -- End function
 	.section	.text._optix_RenderWindow,"ax",@progbits
 	.globl	_optix_RenderWindow             ; -- Begin function optix_RenderWindow
@@ -22956,9 +22051,9 @@ _optix_RenderWindow:                    ; @optix_RenderWindow
 	ld	sp, ix
 	pop	ix
 	jp	_gfx_PrintStringXY
-	.local	.Lfunc_end107
-.Lfunc_end107:
-	.size	_optix_RenderWindow, .Lfunc_end107-_optix_RenderWindow
+	.local	.Lfunc_end108
+.Lfunc_end108:
+	.size	_optix_RenderWindow, .Lfunc_end108-_optix_RenderWindow
                                         ; -- End function
 	.section	.text._optix_WordWrap,"ax",@progbits
 	.globl	_optix_WordWrap                 ; -- Begin function optix_WordWrap
@@ -23030,17 +22125,17 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	lea	ix, ix - 128
 	ld	(ix - 93), hl
 	pop	ix
-	.local	.LBB108_1
-.LBB108_1:                              ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB108_2 Depth 2
+	.local	.LBB109_1
+.LBB109_1:                              ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB109_2 Depth 2
 	ld	(ix - 107), 0
 	xor	a, a
 	ld	de, -218
 	lea	hl, ix + 0
 	add	hl, de
 	ld	(hl), a                         ; 1-byte Folded Spill
-	.local	.LBB108_2
-.LBB108_2:                              ;   Parent Loop BB108_1 Depth=1
+	.local	.LBB109_2
+.LBB109_2:                              ;   Parent Loop BB109_1 Depth=1
                                         ; =>  This Inner Loop Header: Depth=2
 	lea	de, iy + 0
 	ld	e, c
@@ -23049,8 +22144,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	add	hl, de
 	ld	a, (hl)
 	cp	a, 32
-	jp	z, .LBB108_9
-; %bb.3:                                ;   in Loop: Header=BB108_2 Depth=2
+	jp	z, .LBB109_9
+; %bb.3:                                ;   in Loop: Header=BB109_2 Depth=2
 	ld	de, -215
 	lea	hl, ix + 0
 	add	hl, de
@@ -23059,8 +22154,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	(hl), b
 	dec	hl
 	cp	a, 96
-	jr	nz, .LBB108_5
-; %bb.4:                                ;   in Loop: Header=BB108_2 Depth=2
+	jr	nz, .LBB109_5
+; %bb.4:                                ;   in Loop: Header=BB109_2 Depth=2
 	ld	de, -233
 	lea	iy, ix + 0
 	add	iy, de
@@ -23102,9 +22197,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	add	hl, de
 	pop	af
 	ld	a, (hl)                         ; 1-byte Folded Reload
-	jp	nc, .LBB108_8
-	.local	.LBB108_5
-.LBB108_5:                              ;   in Loop: Header=BB108_2 Depth=2
+	jp	nc, .LBB109_8
+	.local	.LBB109_5
+.LBB109_5:                              ;   in Loop: Header=BB109_2 Depth=2
 	lea	de, iy + 0
 	ld	bc, -218
 	lea	iy, ix + 0
@@ -23132,8 +22227,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	de, (iy + 0)
 	or	a, a
 	sbc	hl, de
-	jr	nc, .LBB108_7
-; %bb.6:                                ;   in Loop: Header=BB108_2 Depth=2
+	jr	nc, .LBB109_7
+; %bb.6:                                ;   in Loop: Header=BB109_2 Depth=2
 	ld	de, -218
 	lea	iy, ix + 0
 	add	iy, de
@@ -23159,10 +22254,10 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB108_2
-	jp	.LBB108_9
-	.local	.LBB108_7
-.LBB108_7:                              ;   in Loop: Header=BB108_1 Depth=1
+	jp	m, .LBB109_2
+	jp	.LBB109_9
+	.local	.LBB109_7
+.LBB109_7:                              ;   in Loop: Header=BB109_1 Depth=1
 	ld	bc, -213
 	lea	iy, ix + 0
 	add	iy, bc
@@ -23206,9 +22301,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	(iy + 0), 0
 	ld	(ix - 107), 0
 	ld	iy, 0
-	jr	.LBB108_9
-	.local	.LBB108_8
-.LBB108_8:                              ;   in Loop: Header=BB108_1 Depth=1
+	jr	.LBB109_9
+	.local	.LBB109_8
+.LBB109_8:                              ;   in Loop: Header=BB109_1 Depth=1
 	lea	de, iy + 0
 	ld	bc, -218
 	lea	iy, ix + 0
@@ -23258,9 +22353,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	inc	hl
 	ld	b, (hl)
 	dec	hl
-	.local	.LBB108_9
-.LBB108_9:                              ; %.loopexit
-                                        ;   in Loop: Header=BB108_1 Depth=1
+	.local	.LBB109_9
+.LBB109_9:                              ; %.loopexit
+                                        ;   in Loop: Header=BB109_1 Depth=1
 	lea	de, iy + 0
 	ld	e, c
 	ld	d, b
@@ -23277,8 +22372,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	inc	hl
 	ld	(hl), b
 	dec	hl
-	jr	nz, .LBB108_11
-; %bb.10:                               ;   in Loop: Header=BB108_1 Depth=1
+	jr	nz, .LBB109_11
+; %bb.10:                               ;   in Loop: Header=BB109_1 Depth=1
 	ld	de, -213
 	lea	hl, ix + 0
 	add	hl, de
@@ -23287,9 +22382,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	lea	hl, ix + 0
 	add	hl, de
 	ld	a, (hl)                         ; 1-byte Folded Reload
-	jr	.LBB108_12
-	.local	.LBB108_11
-.LBB108_11:                             ;   in Loop: Header=BB108_1 Depth=1
+	jr	.LBB109_12
+	.local	.LBB109_11
+.LBB109_11:                             ;   in Loop: Header=BB109_1 Depth=1
 	lea	de, iy + 0
 	ld	bc, -218
 	lea	hl, ix + 0
@@ -23305,8 +22400,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	pop	hl
 	add	hl, de
 	ld	(hl), 32
-	.local	.LBB108_12
-.LBB108_12:                             ;   in Loop: Header=BB108_1 Depth=1
+	.local	.LBB109_12
+.LBB109_12:                             ;   in Loop: Header=BB109_1 Depth=1
 	lea	de, iy + 0
 	ld	e, a
 	push	bc
@@ -23339,8 +22434,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	hl, (iy + 0)
 	or	a, a
 	sbc	hl, de
-	jr	nc, .LBB108_14
-; %bb.13:                               ;   in Loop: Header=BB108_1 Depth=1
+	jr	nc, .LBB109_14
+; %bb.13:                               ;   in Loop: Header=BB109_1 Depth=1
 	ld	de, -224
 	lea	iy, ix + 0
 	add	iy, de
@@ -23365,9 +22460,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	hl, (iy + 0)
 	push	hl
 	call	_strcpy
-	jr	.LBB108_15
-	.local	.LBB108_14
-.LBB108_14:                             ;   in Loop: Header=BB108_1 Depth=1
+	jr	.LBB109_15
+	.local	.LBB109_14
+.LBB109_14:                             ;   in Loop: Header=BB109_1 Depth=1
 	ld	de, -213
 	lea	iy, ix + 0
 	add	iy, de
@@ -23379,8 +22474,8 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	hl, (iy + 0)
 	push	hl
 	call	_strcat
-	.local	.LBB108_15
-.LBB108_15:                             ;   in Loop: Header=BB108_1 Depth=1
+	.local	.LBB109_15
+.LBB109_15:                             ;   in Loop: Header=BB109_1 Depth=1
 	pop	hl
 	pop	hl
 	ld	de, -215
@@ -23400,7 +22495,7 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB108_1
+	jp	m, .LBB109_1
 ; %bb.16:
 	ld	de, -224
 	lea	iy, ix + 0
@@ -23419,9 +22514,9 @@ _optix_WordWrap:                        ; @optix_WordWrap
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end108
-.Lfunc_end108:
-	.size	_optix_WordWrap, .Lfunc_end108-_optix_WordWrap
+	.local	.Lfunc_end109
+.Lfunc_end109:
+	.size	_optix_WordWrap, .Lfunc_end109-_optix_WordWrap
                                         ; -- End function
 	.section	.text._optix_GetStringLength,"ax",@progbits
 	.globl	_optix_GetStringLength          ; -- Begin function optix_GetStringLength
@@ -23431,8 +22526,8 @@ _optix_GetStringLength:                 ; @optix_GetStringLength
 	call	__frameset0
 	ld	iy, (ix + 6)
 	ld	bc, 0
-	.local	.LBB109_1
-.LBB109_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB110_1
+.LBB110_1:                              ; =>This Inner Loop Header: Depth=1
 	push	bc
 	pop	de
 	lea	hl, iy + 0
@@ -23440,14 +22535,14 @@ _optix_GetStringLength:                 ; @optix_GetStringLength
 	inc	bc
 	ld	a, (hl)
 	or	a, a
-	jr	nz, .LBB109_1
+	jr	nz, .LBB110_1
 ; %bb.2:
 	ex	de, hl
 	pop	ix
 	ret
-	.local	.Lfunc_end109
-.Lfunc_end109:
-	.size	_optix_GetStringLength, .Lfunc_end109-_optix_GetStringLength
+	.local	.Lfunc_end110
+.Lfunc_end110:
+	.size	_optix_GetStringLength, .Lfunc_end110-_optix_GetStringLength
                                         ; -- End function
 	.section	.text._optix_AddWordWrapLine,"ax",@progbits
 	.globl	_optix_AddWordWrapLine          ; -- Begin function optix_AddWordWrapLine
@@ -23476,7 +22571,7 @@ _optix_AddWordWrapLine:                 ; @optix_AddWordWrapLine
 	pop	iy
 	sbc	hl, hl
 	adc	hl, de
-	jr	z, .LBB110_2
+	jr	z, .LBB111_2
 ; %bb.1:
 	ld	de, (ix + 6)
 	ld	hl, (ix + 9)
@@ -23500,14 +22595,14 @@ _optix_AddWordWrapLine:                 ; @optix_AddWordWrapLine
 	inc	a
 	ld	hl, (ix + 9)
 	ld	(hl), a
-	.local	.LBB110_2
-.LBB110_2:
+	.local	.LBB111_2
+.LBB111_2:
 	inc	sp
 	pop	ix
 	ret
-	.local	.Lfunc_end110
-.Lfunc_end110:
-	.size	_optix_AddWordWrapLine, .Lfunc_end110-_optix_AddWordWrapLine
+	.local	.Lfunc_end111
+.Lfunc_end111:
+	.size	_optix_AddWordWrapLine, .Lfunc_end111-_optix_AddWordWrapLine
                                         ; -- End function
 	.section	.text._optix_PrintWordWrap,"ax",@progbits
 	.globl	_optix_PrintWordWrap            ; -- Begin function optix_PrintWordWrap
@@ -23608,18 +22703,18 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	ld	bc, 201
 	call	__imulu
 	xor	a, a
-	.local	.LBB111_1
-.LBB111_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB112_1
+.LBB112_1:                              ; =>This Inner Loop Header: Depth=1
 	push	hl
 	pop	bc
 	sbc	hl, hl
 	adc	hl, de
-	jp	z, .LBB111_9
-; %bb.2:                                ;   in Loop: Header=BB111_1 Depth=1
+	jp	z, .LBB112_9
+; %bb.2:                                ;   in Loop: Header=BB112_1 Depth=1
 	ld	l, (ix + 21)
 	cp	a, l
-	jp	nc, .LBB111_9
-; %bb.3:                                ;   in Loop: Header=BB111_1 Depth=1
+	jp	nc, .LBB112_9
+; %bb.3:                                ;   in Loop: Header=BB112_1 Depth=1
 	push	ix
 	lea	ix, ix - 128
 	ld	(ix - 108), iy
@@ -23663,8 +22758,8 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	lea	iy, ix + 0
 	add	iy, de
 	cp	a, 126
-	jp	nz, .LBB111_6
-; %bb.4:                                ;   in Loop: Header=BB111_1 Depth=1
+	jp	nz, .LBB112_6
+; %bb.4:                                ;   in Loop: Header=BB112_1 Depth=1
 	ld	hl, (iy + 0)
 	ld	bc, -224
 	lea	iy, ix + 0
@@ -23673,8 +22768,8 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB111_7
-; %bb.5:                                ;   in Loop: Header=BB111_1 Depth=1
+	jp	p, .LBB112_7
+; %bb.5:                                ;   in Loop: Header=BB112_1 Depth=1
 	ld	de, -221
 	lea	hl, ix + 0
 	add	hl, de
@@ -23749,9 +22844,9 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	add	hl, de
 	ld	a, (hl)                         ; 1-byte Folded Reload
 	inc	a
-	jr	.LBB111_8
-	.local	.LBB111_6
-.LBB111_6:                              ;   in Loop: Header=BB111_1 Depth=1
+	jr	.LBB112_8
+	.local	.LBB112_6
+.LBB112_6:                              ;   in Loop: Header=BB112_1 Depth=1
 	ld	hl, (iy + 0)
 	ld	de, -212
 	lea	iy, ix + 0
@@ -23778,8 +22873,8 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB111_7
-.LBB111_7:                              ;   in Loop: Header=BB111_1 Depth=1
+	.local	.LBB112_7
+.LBB112_7:                              ;   in Loop: Header=BB112_1 Depth=1
 	ld	de, -237
 	lea	iy, ix + 0
 	add	iy, de
@@ -23788,8 +22883,8 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	lea	hl, ix + 0
 	add	hl, de
 	ld	iy, (hl)
-	.local	.LBB111_8
-.LBB111_8:                              ;   in Loop: Header=BB111_1 Depth=1
+	.local	.LBB112_8
+.LBB112_8:                              ;   in Loop: Header=BB112_1 Depth=1
 	push	ix
 	lea	ix, ix - 128
 	ld	hl, (ix - 112)
@@ -23802,15 +22897,15 @@ _optix_PrintWordWrap:                   ; @optix_PrintWordWrap
 	ld	de, (ix - 81)
 	pop	ix
 	dec	de
-	jp	.LBB111_1
-	.local	.LBB111_9
-.LBB111_9:
+	jp	.LBB112_1
+	.local	.LBB112_9
+.LBB112_9:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end111
-.Lfunc_end111:
-	.size	_optix_PrintWordWrap, .Lfunc_end111-_optix_PrintWordWrap
+	.local	.Lfunc_end112
+.Lfunc_end112:
+	.size	_optix_PrintWordWrap, .Lfunc_end112-_optix_PrintWordWrap
                                         ; -- End function
 	.section	.text._optix_Message,"ax",@progbits
 	.globl	_optix_Message                  ; -- Begin function optix_Message
@@ -23833,14 +22928,14 @@ _optix_Message:                         ; @optix_Message
 	cp	a, l
 	ld	(ix - 12), a                    ; 1-byte Folded Spill
 	ld	iyl, a
-	jr	c, .LBB112_2
+	jr	c, .LBB113_2
 ; %bb.1:
 	push	af
 	ld	a, (ix + 18)
 	ld	iyl, a
 	pop	af
-	.local	.LBB112_2
-.LBB112_2:
+	.local	.LBB113_2
+.LBB113_2:
 	lea	hl, ix - 2
 	ld	(ix - 33), hl
 	ld	de, 0
@@ -23870,16 +22965,16 @@ _optix_Message:                         ; @optix_Message
 	ld	de, 18
 	add	hl, de
 	ld	(ix - 21), hl
-	.local	.LBB112_3
-.LBB112_3:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB113_3
+.LBB113_3:                              ; =>This Inner Loop Header: Depth=1
 	call	_kb_AnyKey
 	or	a, a
-	jr	z, .LBB112_5
-; %bb.4:                                ;   in Loop: Header=BB112_3 Depth=1
+	jr	z, .LBB113_5
+; %bb.4:                                ;   in Loop: Header=BB113_3 Depth=1
 	call	_kb_Scan
-	jr	.LBB112_3
-	.local	.LBB112_5
-.LBB112_5:
+	jr	.LBB113_3
+	.local	.LBB113_5
+.LBB113_5:
 	ld	hl, (ix - 5)
 	call	__ishru_1
 	ld	(ix - 18), hl
@@ -23950,8 +23045,8 @@ _optix_Message:                         ; @optix_Message
 	ld	(ix - 18), hl
 	inc	a
 	ld	(ix - 24), a                    ; 1-byte Folded Spill
-	.local	.LBB112_6
-.LBB112_6:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB113_6
+.LBB113_6:                              ; =>This Inner Loop Header: Depth=1
 	ld	hl, -720868
 	push	de
 	ld	e, (hl)
@@ -23963,14 +23058,14 @@ _optix_Message:                         ; @optix_Message
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jp	nz, .LBB112_33
-; %bb.7:                                ;   in Loop: Header=BB112_6 Depth=1
+	jp	nz, .LBB113_33
+; %bb.7:                                ;   in Loop: Header=BB113_6 Depth=1
 	call	_kb_Scan
 	ld	a, (ix + 18)
 	ld	l, (ix - 12)
 	cp	a, l
-	jp	nc, .LBB112_23
-; %bb.8:                                ;   in Loop: Header=BB112_6 Depth=1
+	jp	nc, .LBB113_23
+; %bb.8:                                ;   in Loop: Header=BB113_6 Depth=1
 	ld	hl, -720866
 	ld	e, (hl)
 	inc	hl
@@ -23979,46 +23074,46 @@ _optix_Message:                         ; @optix_Message
 	ld	a, iyl
 	or	a, a
 	ld	l, -1
-	jr	nz, .LBB112_10
-; %bb.9:                                ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_10
+; %bb.9:                                ;   in Loop: Header=BB113_6 Depth=1
 	ld	l, 0
-	.local	.LBB112_10
-.LBB112_10:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_10
+.LBB113_10:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, e
 	bit	3, a
 	ld	a, -1
 	ld	c, 0
-	jr	nz, .LBB112_12
-; %bb.11:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_12
+; %bb.11:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, 0
-	.local	.LBB112_12
-.LBB112_12:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_12
+.LBB113_12:                             ;   in Loop: Header=BB113_6 Depth=1
 	and	a, l
 	ld	e, a
 	bit	0, e
 	ld	h, (ix - 24)                    ; 1-byte Folded Reload
-	jr	nz, .LBB112_14
-; %bb.13:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_14
+; %bb.13:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	l, c
-	jr	.LBB112_15
-	.local	.LBB112_14
-.LBB112_14:                             ;   in Loop: Header=BB112_6 Depth=1
+	jr	.LBB113_15
+	.local	.LBB113_14
+.LBB113_14:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	l, 1
 	ld	a, h
 	and	a, l
 	ld	l, a
-	.local	.LBB112_15
-.LBB112_15:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_15
+.LBB113_15:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, e
 	and	a, h
 	ld	e, a
 	bit	0, e
 	ld	e, c
-	jr	nz, .LBB112_17
-; %bb.16:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_17
+; %bb.16:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	e, h
-	.local	.LBB112_17
-.LBB112_17:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_17
+.LBB113_17:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, iyl
 	sub	a, l
 	ld	d, a
@@ -24033,23 +23128,23 @@ _optix_Message:                         ; @optix_Message
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jr	z, .LBB112_22
-; %bb.18:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	z, .LBB113_22
+; %bb.18:                               ;   in Loop: Header=BB113_6 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	l, d
 	ld	bc, (ix - 48)
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	p, .LBB112_22
-; %bb.19:                               ;   in Loop: Header=BB112_6 Depth=1
+	jp	p, .LBB113_22
+; %bb.19:                               ;   in Loop: Header=BB113_6 Depth=1
 	bit	0, e
 	ld	a, 0
-	jr	nz, .LBB112_21
-; %bb.20:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_21
+; %bb.20:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, e
-	.local	.LBB112_21
-.LBB112_21:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_21
+.LBB113_21:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	(ix - 24), a
 	ld	l, 1
 	ld	a, e
@@ -24059,22 +23154,22 @@ _optix_Message:                         ; @optix_Message
 	add	a, d
 	ld	l, a
 	ld	(ix - 18), hl
-	jr	.LBB112_23
-	.local	.LBB112_22
-.LBB112_22:                             ;   in Loop: Header=BB112_6 Depth=1
+	jr	.LBB113_23
+	.local	.LBB113_22
+.LBB113_22:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	l, d
 	ld	(ix - 18), hl
 	ld	(ix - 24), e                    ; 1-byte Folded Spill
-	.local	.LBB112_23
-.LBB112_23:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_23
+.LBB113_23:                             ;   in Loop: Header=BB113_6 Depth=1
 	call	_kb_AnyKey
 	or	a, a
 	ld	a, 1
-	jr	z, .LBB112_25
-; %bb.24:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	z, .LBB113_25
+; %bb.24:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	a, (ix - 24)                    ; 1-byte Folded Reload
-	.local	.LBB112_25
-.LBB112_25:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_25
+.LBB113_25:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	(ix - 24), a
 	ld	a, (_optix_guicolors+1)
 	ld	l, a
@@ -24150,32 +23245,32 @@ _optix_Message:                         ; @optix_Message
 	ld	a, (ix + 18)
 	ld	l, (ix - 12)
 	cp	a, l
-	jr	nc, .LBB112_32
-; %bb.26:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nc, .LBB113_32
+; %bb.26:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	de, (ix - 18)
 	ld	a, e
 	or	a, a
-	jr	nz, .LBB112_28
-; %bb.27:                               ;   in Loop: Header=BB112_6 Depth=1
+	jr	nz, .LBB113_28
+; %bb.27:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	(ix - 2), 25
-	jr	.LBB112_31
-	.local	.LBB112_28
-.LBB112_28:                             ;   in Loop: Header=BB112_6 Depth=1
+	jr	.LBB113_31
+	.local	.LBB113_28
+.LBB113_28:                             ;   in Loop: Header=BB113_6 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	l, e
 	ld	de, (ix - 48)
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB112_30
-; %bb.29:                               ;   in Loop: Header=BB112_6 Depth=1
+	jp	p, .LBB113_30
+; %bb.29:                               ;   in Loop: Header=BB113_6 Depth=1
 	ld	(ix - 2), 18
-	jr	.LBB112_31
-	.local	.LBB112_30
-.LBB112_30:                             ;   in Loop: Header=BB112_6 Depth=1
+	jr	.LBB113_31
+	.local	.LBB113_30
+.LBB113_30:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	(ix - 2), 24
-	.local	.LBB112_31
-.LBB112_31:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_31
+.LBB113_31:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	hl, (ix - 33)
 	push	hl
 	call	_gfx_GetStringWidth
@@ -24193,8 +23288,8 @@ _optix_Message:                         ; @optix_Message
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB112_32
-.LBB112_32:                             ;   in Loop: Header=BB112_6 Depth=1
+	.local	.LBB113_32
+.LBB113_32:                             ;   in Loop: Header=BB113_6 Depth=1
 	ld	hl, (ix - 30)
 	push	hl
 	ld	hl, (ix - 18)
@@ -24215,24 +23310,24 @@ _optix_Message:                         ; @optix_Message
 	pop	hl
 	pop	hl
 	call	_gfx_SwapDraw
-	jp	.LBB112_6
-	.local	.LBB112_33
-.LBB112_33:                             ; %.preheader
+	jp	.LBB113_6
+	.local	.LBB113_33
+.LBB113_33:                             ; %.preheader
                                         ; =>This Inner Loop Header: Depth=1
 	call	_kb_AnyKey
 	or	a, a
-	jr	z, .LBB112_35
-; %bb.34:                               ;   in Loop: Header=BB112_33 Depth=1
+	jr	z, .LBB113_35
+; %bb.34:                               ;   in Loop: Header=BB113_33 Depth=1
 	call	_kb_Scan
-	jr	.LBB112_33
-	.local	.LBB112_35
-.LBB112_35:
+	jr	.LBB113_33
+	.local	.LBB113_35
+.LBB113_35:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end112
-.Lfunc_end112:
-	.size	_optix_Message, .Lfunc_end112-_optix_Message
+	.local	.Lfunc_end113
+.Lfunc_end113:
+	.size	_optix_Message, .Lfunc_end113-_optix_Message
                                         ; -- End function
 	.section	.text._optix_Menu,"ax",@progbits
 	.globl	_optix_Menu                     ; -- Begin function optix_Menu
@@ -24265,11 +23360,11 @@ _optix_Menu:                            ; @optix_Menu
 	cp	a, l
 	ld	(ix - 21), a                    ; 1-byte Folded Spill
 	ld	l, a
-	jr	c, .LBB113_2
+	jr	c, .LBB114_2
 ; %bb.1:
 	ld	l, (ix + 18)
-	.local	.LBB113_2
-.LBB113_2:
+	.local	.LBB114_2
+.LBB114_2:
 	ld	(ix - 33), hl
 	lea	de, ix - 2
 	ld	(ix - 24), de
@@ -24336,16 +23431,16 @@ _optix_Menu:                            ; @optix_Menu
 	ld	(_optix_guidata), a
 	ld	hl, (_optix_menu)
 	ld	(ix - 17), hl
-	.local	.LBB113_3
-.LBB113_3:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB114_3
+.LBB114_3:                              ; =>This Inner Loop Header: Depth=1
 	call	_kb_AnyKey
 	or	a, a
-	jr	z, .LBB113_5
-; %bb.4:                                ;   in Loop: Header=BB113_3 Depth=1
+	jr	z, .LBB114_5
+; %bb.4:                                ;   in Loop: Header=BB114_3 Depth=1
 	call	_kb_Scan
-	jr	.LBB113_3
-	.local	.LBB113_5
-.LBB113_5:
+	jr	.LBB114_3
+	.local	.LBB114_5
+.LBB114_5:
 	or	a, a
 	sbc	hl, hl
 	push	hl
@@ -24398,12 +23493,12 @@ _optix_Menu:                            ; @optix_Menu
 	ld	de, (ix - 36)
 	add	iy, de
 	ld	(ix - 30), iy
-	.local	.LBB113_6
-.LBB113_6:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB114_6
+.LBB114_6:                              ; =>This Inner Loop Header: Depth=1
 	ld	iy, (ix - 17)
 	bit	0, (iy + 15)
-	jr	z, .LBB113_9
-; %bb.7:                                ;   in Loop: Header=BB113_6 Depth=1
+	jr	z, .LBB114_9
+; %bb.7:                                ;   in Loop: Header=BB114_6 Depth=1
 	ld	hl, -720868
 	push	de
 	ld	e, (hl)
@@ -24415,8 +23510,8 @@ _optix_Menu:                            ; @optix_Menu
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jr	nz, .LBB113_9
-; %bb.8:                                ;   in Loop: Header=BB113_6 Depth=1
+	jr	nz, .LBB114_9
+; %bb.8:                                ;   in Loop: Header=BB114_6 Depth=1
 	ld	hl, -720878
 	push	de
 	ld	e, (hl)
@@ -24427,9 +23522,9 @@ _optix_Menu:                            ; @optix_Menu
 	pop	de
 	ld	a, l
 	bit	5, a
-	jp	z, .LBB113_18
-	.local	.LBB113_9
-.LBB113_9:                              ;   in Loop: Header=BB113_6 Depth=1
+	jp	z, .LBB114_18
+	.local	.LBB114_9
+.LBB114_9:                              ;   in Loop: Header=BB114_6 Depth=1
 	call	_optix_UpdateCurrMenu
 	ld	a, (_optix_guicolors+1)
 	ld	l, a
@@ -24505,24 +23600,24 @@ _optix_Menu:                            ; @optix_Menu
 	ld	a, (ix + 18)
 	ld	l, (ix - 21)
 	cp	a, l
-	jr	nc, .LBB113_17
-; %bb.10:                               ;   in Loop: Header=BB113_6 Depth=1
+	jr	nc, .LBB114_17
+; %bb.10:                               ;   in Loop: Header=BB114_6 Depth=1
 	ld	iy, (ix - 17)
 	ld	l, (iy + 16)
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB113_13
-; %bb.11:                               ;   in Loop: Header=BB113_6 Depth=1
+	jr	nz, .LBB114_13
+; %bb.11:                               ;   in Loop: Header=BB114_6 Depth=1
 	ld	l, (iy + 14)
 	ld	de, (ix - 33)
 	ld	a, e
 	cp	a, l
-	jr	nc, .LBB113_16
-; %bb.12:                               ;   in Loop: Header=BB113_6 Depth=1
+	jr	nc, .LBB114_16
+; %bb.12:                               ;   in Loop: Header=BB114_6 Depth=1
 	ld	(ix - 2), 25
-	jr	.LBB113_16
-	.local	.LBB113_13
-.LBB113_13:                             ;   in Loop: Header=BB113_6 Depth=1
+	jr	.LBB114_16
+	.local	.LBB114_13
+.LBB114_13:                             ;   in Loop: Header=BB114_6 Depth=1
 	ld	bc, 0
 	push	bc
 	pop	de
@@ -24540,15 +23635,15 @@ _optix_Menu:                            ; @optix_Menu
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	p, .LBB113_15
-; %bb.14:                               ;   in Loop: Header=BB113_6 Depth=1
+	jp	p, .LBB114_15
+; %bb.14:                               ;   in Loop: Header=BB114_6 Depth=1
 	ld	(ix - 2), 18
-	jr	.LBB113_16
-	.local	.LBB113_15
-.LBB113_15:                             ;   in Loop: Header=BB113_6 Depth=1
+	jr	.LBB114_16
+	.local	.LBB114_15
+.LBB114_15:                             ;   in Loop: Header=BB114_6 Depth=1
 	ld	(ix - 2), 24
-	.local	.LBB113_16
-.LBB113_16:                             ;   in Loop: Header=BB113_6 Depth=1
+	.local	.LBB114_16
+.LBB114_16:                             ;   in Loop: Header=BB114_6 Depth=1
 	ld	hl, (ix - 24)
 	push	hl
 	call	_gfx_GetStringWidth
@@ -24566,17 +23661,17 @@ _optix_Menu:                            ; @optix_Menu
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB113_17
-.LBB113_17:                             ;   in Loop: Header=BB113_6 Depth=1
+	.local	.LBB114_17
+.LBB114_17:                             ;   in Loop: Header=BB114_6 Depth=1
 	ld	a, (_optix_guidata)
 	ld	l, a
 	push	hl
 	call	_optix_RenderMenu
 	pop	hl
 	call	_gfx_SwapDraw
-	jp	.LBB113_6
-	.local	.LBB113_18
-.LBB113_18:
+	jp	.LBB114_6
+	.local	.LBB114_18
+.LBB114_18:
 	ld	a, (iy + 12)
 	ld	(ix - 5), a
 	call	_optix_DeleteLastMenu
@@ -24584,9 +23679,9 @@ _optix_Menu:                            ; @optix_Menu
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end113
-.Lfunc_end113:
-	.size	_optix_Menu, .Lfunc_end113-_optix_Menu
+	.local	.Lfunc_end114
+.Lfunc_end114:
+	.size	_optix_Menu, .Lfunc_end114-_optix_Menu
                                         ; -- End function
 	.section	.text._optix_AddMenu,"ax",@progbits
 	.globl	_optix_AddMenu                  ; -- Begin function optix_AddMenu
@@ -24664,9 +23759,9 @@ _optix_AddMenu:                         ; @optix_AddMenu
 	pop	hl
 	xor	a, a
 	ld	(ix - 106), a                   ; 1-byte Folded Spill
-	.local	.LBB114_1
-.LBB114_1:                              ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB114_3 Depth 2
+	.local	.LBB115_1
+.LBB115_1:                              ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB115_3 Depth 2
 	ld	iy, 0
 	lea	hl, iy + 0
 	ld	c, (ix - 102)
@@ -24676,16 +23771,16 @@ _optix_AddMenu:                         ; @optix_AddMenu
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB114_7
-; %bb.2:                                ;   in Loop: Header=BB114_1 Depth=1
+	jp	p, .LBB115_7
+; %bb.2:                                ;   in Loop: Header=BB115_1 Depth=1
 	ld	(ix - 115), de
 	ld.sis	hl, 32
 	ld	(ix - 100), l
 	ld	(ix - 99), h
 	ld	e, h
 	ld	a, e
-	.local	.LBB114_3
-.LBB114_3:                              ;   Parent Loop BB114_1 Depth=1
+	.local	.LBB115_3
+.LBB115_3:                              ;   Parent Loop BB115_1 Depth=1
                                         ; =>  This Inner Loop Header: Depth=2
 	ld	(ix - 118), a
 	lea	de, iy + 0
@@ -24695,8 +23790,8 @@ _optix_AddMenu:                         ; @optix_AddMenu
 	add	hl, de
 	ld	a, (hl)
 	cp	a, 96
-	jr	z, .LBB114_5
-; %bb.4:                                ;   in Loop: Header=BB114_3 Depth=2
+	jr	z, .LBB115_5
+; %bb.4:                                ;   in Loop: Header=BB115_3 Depth=2
 	lea	de, iy + 0
 	ld	l, (ix - 118)                   ; 1-byte Folded Reload
 	ld	e, l
@@ -24719,13 +23814,13 @@ _optix_AddMenu:                         ; @optix_AddMenu
 	ld	hl, (ix - 115)
 	or	a, a
 	sbc	hl, de
-	jr	nc, .LBB114_3
-	jr	.LBB114_6
-	.local	.LBB114_5
-.LBB114_5:                              ;   in Loop: Header=BB114_1 Depth=1
+	jr	nc, .LBB115_3
+	jr	.LBB115_6
+	.local	.LBB115_5
+.LBB115_5:                              ;   in Loop: Header=BB115_1 Depth=1
 	ld	a, (ix - 118)                   ; 1-byte Folded Reload
-	.local	.LBB114_6
-.LBB114_6:                              ;   in Loop: Header=BB114_1 Depth=1
+	.local	.LBB115_6
+.LBB115_6:                              ;   in Loop: Header=BB115_1 Depth=1
 	inc.sis	bc
 	ld	(ix - 102), c
 	ld	(ix - 101), b
@@ -24775,18 +23870,18 @@ _optix_AddMenu:                         ; @optix_AddMenu
 	pop	hl
 	pop	hl
 	ld	de, (ix - 115)
-	jp	.LBB114_1
-	.local	.LBB114_7
-.LBB114_7:
+	jp	.LBB115_1
+	.local	.LBB115_7
+.LBB115_7:
 	ld	iy, (ix - 112)
 	ld	a, (ix - 106)                   ; 1-byte Folded Reload
 	ld	(iy - 6), a
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end114
-.Lfunc_end114:
-	.size	_optix_AddMenu, .Lfunc_end114-_optix_AddMenu
+	.local	.Lfunc_end115
+.Lfunc_end115:
+	.size	_optix_AddMenu, .Lfunc_end115-_optix_AddMenu
                                         ; -- End function
 	.section	.text._optix_DeleteLastMenu,"ax",@progbits
 	.globl	_optix_DeleteLastMenu           ; -- Begin function optix_DeleteLastMenu
@@ -24798,7 +23893,7 @@ _optix_DeleteLastMenu:                  ; @optix_DeleteLastMenu
 	ld	a, (_optix_guidata+1)
 	ld	e, a
 	or	a, a
-	jp	z, .LBB115_5
+	jp	z, .LBB116_5
 ; %bb.1:
 	ld	iy, (_optix_menu)
 	dec	e
@@ -24815,16 +23910,16 @@ _optix_DeleteLastMenu:                  ; @optix_DeleteLastMenu
 	ld	de, 0
 	ld	(ix - 3), bc
 	ld	(ix - 6), iy
-	.local	.LBB115_2
-.LBB115_2:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB116_2
+.LBB116_2:                              ; =>This Inner Loop Header: Depth=1
 	ld	a, (iy + 14)
 	ld	e, a
 	ld	iy, (iy + 9)
 	ld	hl, (ix - 3)
 	or	a, a
 	sbc	hl, de
-	jr	nc, .LBB115_4
-; %bb.3:                                ;   in Loop: Header=BB115_2 Depth=1
+	jr	nc, .LBB116_4
+; %bb.3:                                ;   in Loop: Header=BB116_2 Depth=1
 	add	iy, bc
 	ld	hl, (iy)
 	push	hl
@@ -24843,9 +23938,9 @@ _optix_DeleteLastMenu:                  ; @optix_DeleteLastMenu
 	sbc	hl, hl
 	ex	de, hl
 	ld	iy, (ix - 6)
-	jr	.LBB115_2
-	.local	.LBB115_4
-.LBB115_4:
+	jr	.LBB116_2
+	.local	.LBB116_4
+.LBB116_4:
 	push	iy
 	call	_free
 	pop	hl
@@ -24862,14 +23957,14 @@ _optix_DeleteLastMenu:                  ; @optix_DeleteLastMenu
 	pop	de
 	pop	de
 	ld	(_optix_menu), hl
-	.local	.LBB115_5
-.LBB115_5:
+	.local	.LBB116_5
+.LBB116_5:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end115
-.Lfunc_end115:
-	.size	_optix_DeleteLastMenu, .Lfunc_end115-_optix_DeleteLastMenu
+	.local	.Lfunc_end116
+.Lfunc_end116:
+	.size	_optix_DeleteLastMenu, .Lfunc_end116-_optix_DeleteLastMenu
                                         ; -- End function
 	.section	.text._optix_UpdateCurrMenu,"ax",@progbits
 	.globl	_optix_UpdateCurrMenu           ; -- Begin function optix_UpdateCurrMenu
@@ -24891,12 +23986,12 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	call	_kb_Scan
 	call	_kb_AnyKey
 	or	a, a
-	jr	nz, .LBB116_2
+	jr	nz, .LBB117_2
 ; %bb.1:
 	ld	a, 1
 	ld	(_optix_guidata+2), a
-	.local	.LBB116_2
-.LBB116_2:
+	.local	.LBB117_2
+.LBB117_2:
 	ld	e, 0
 	scf
 	sbc	hl, hl
@@ -24911,16 +24006,16 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	pop	de
 	ld	a, l
 	bit	3, a
-	jr	z, .LBB116_6
+	jr	z, .LBB117_6
 ; %bb.3:
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jr	z, .LBB116_6
+	jr	z, .LBB117_6
 ; %bb.4:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 6)
 	cp	a, 2
-	jr	c, .LBB116_6
+	jr	c, .LBB117_6
 ; %bb.5:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 12)
@@ -24936,8 +24031,8 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld	e, c
 	ld	(ix - 6), hl
 	ld	(_optix_guidata+2), a
-	.local	.LBB116_6
-.LBB116_6:
+	.local	.LBB117_6
+.LBB117_6:
 	ld	hl, -720866
 	push	de
 	ld	e, (hl)
@@ -24949,16 +24044,16 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jr	z, .LBB116_10
+	jr	z, .LBB117_10
 ; %bb.7:
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jr	z, .LBB116_10
+	jr	z, .LBB117_10
 ; %bb.8:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 6)
 	cp	a, 2
-	jr	c, .LBB116_10
+	jr	c, .LBB117_10
 ; %bb.9:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 12)
@@ -24975,8 +24070,8 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld	e, c
 	ld	a, e
 	ld	(_optix_guidata+2), a
-	.local	.LBB116_10
-.LBB116_10:
+	.local	.LBB117_10
+.LBB117_10:
 	ld	hl, -720866
 	push	de
 	ld	e, (hl)
@@ -24987,11 +24082,11 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	pop	de
 	ld	a, l
 	bit	1, a
-	jr	z, .LBB116_13
+	jr	z, .LBB117_13
 ; %bb.11:
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jr	z, .LBB116_13
+	jr	z, .LBB117_13
 ; %bb.12:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 12)
@@ -25007,8 +24102,8 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld	e, c
 	ld	(ix - 6), hl
 	ld	(_optix_guidata+2), a
-	.local	.LBB116_13
-.LBB116_13:
+	.local	.LBB117_13
+.LBB117_13:
 	ld	hl, -720866
 	push	de
 	ld	e, (hl)
@@ -25019,11 +24114,11 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	pop	de
 	ld	a, l
 	bit	2, a
-	jr	z, .LBB116_16
+	jr	z, .LBB117_16
 ; %bb.14:
 	ld	a, (_optix_guidata+2)
 	bit	0, a
-	jr	z, .LBB116_16
+	jr	z, .LBB117_16
 ; %bb.15:
 	ld	iy, (ix - 3)
 	ld	a, (iy + 12)
@@ -25039,8 +24134,8 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld	(ix - 6), hl
 	ld	a, c
 	ld	(_optix_guidata+2), a
-	.local	.LBB116_16
-.LBB116_16:
+	.local	.LBB117_16
+.LBB117_16:
 	ld	hl, -720868
 	push	de
 	ld	e, (hl)
@@ -25052,7 +24147,7 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jr	nz, .LBB116_18
+	jr	nz, .LBB117_18
 ; %bb.17:
 	ld	hl, -720878
 	push	de
@@ -25064,20 +24159,20 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	pop	de
 	ld	a, l
 	bit	5, a
-	jr	z, .LBB116_19
-	.local	.LBB116_18
-.LBB116_18:
+	jr	z, .LBB117_19
+	.local	.LBB117_18
+.LBB117_18:
 	ld	iy, (ix - 3)
 	ld	(iy + 15), 1
-	.local	.LBB116_19
-.LBB116_19:
+	.local	.LBB117_19
+.LBB117_19:
 	ld	de, 0
 	ld	hl, (ix - 6)
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
 	ld	bc, (ix - 3)
-	jp	m, .LBB116_22
+	jp	m, .LBB117_22
 ; %bb.20:
 	push	bc
 	pop	iy
@@ -25087,15 +24182,15 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	ld	hl, (ix - 6)
 	or	a, a
 	sbc	hl, de
-	jr	nc, .LBB116_22
+	jr	nc, .LBB117_22
 ; %bb.21:
 	ld	hl, (ix - 6)
 	ld	a, l
 	push	bc
 	pop	iy
 	ld	(iy + 12), a
-	.local	.LBB116_22
-.LBB116_22:
+	.local	.LBB117_22
+.LBB117_22:
 	push	bc
 	pop	iy
 	ld	a, (iy + 12)
@@ -25131,64 +24226,64 @@ _optix_UpdateCurrMenu:                  ; @optix_UpdateCurrMenu
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	p, .LBB116_26
+	jp	p, .LBB117_26
 ; %bb.23:
 	ld	l, (ix - 6)                     ; 1-byte Folded Reload
 	ld	a, (ix - 7)                     ; 1-byte Folded Reload
 	cp	a, 1
 	ld	e, a
-	jr	z, .LBB116_25
+	jr	z, .LBB117_25
 ; %bb.24:
 	ld	a, (ix - 12)                    ; 1-byte Folded Reload
 	cp	a, 1
-	jr	nz, .LBB116_30
-	.local	.LBB116_25
-.LBB116_25:
+	jr	nz, .LBB117_30
+	.local	.LBB117_25
+.LBB117_25:
 	inc	l
-	jr	.LBB116_33
-	.local	.LBB116_26
-.LBB116_26:
+	jr	.LBB117_33
+	.local	.LBB117_26
+.LBB117_26:
 	ld	e, (ix - 7)                     ; 1-byte Folded Reload
 	ld	a, (ix - 11)                    ; 1-byte Folded Reload
 	ld	l, (ix - 6)                     ; 1-byte Folded Reload
 	cp	a, l
-	jr	nc, .LBB116_34
+	jr	nc, .LBB117_34
 ; %bb.27:
 	ld	a, e
 	cp	a, 1
-	jr	z, .LBB116_29
+	jr	z, .LBB117_29
 ; %bb.28:
 	ld	a, (ix - 12)                    ; 1-byte Folded Reload
 	cp	a, 1
-	jr	nz, .LBB116_31
-	.local	.LBB116_29
-.LBB116_29:
+	jr	nz, .LBB117_31
+	.local	.LBB117_29
+.LBB117_29:
 	dec	l
-	jr	.LBB116_33
-	.local	.LBB116_30
-.LBB116_30:
+	jr	.LBB117_33
+	.local	.LBB117_30
+.LBB117_30:
 	ld	a, e
 	add	a, l
-	jr	.LBB116_32
-	.local	.LBB116_31
-.LBB116_31:
+	jr	.LBB117_32
+	.local	.LBB117_31
+.LBB117_31:
 	ld	a, l
 	sub	a, e
-	.local	.LBB116_32
-.LBB116_32:
+	.local	.LBB117_32
+.LBB117_32:
 	ld	l, a
-	.local	.LBB116_33
-.LBB116_33:
+	.local	.LBB117_33
+.LBB117_33:
 	ld	iy, (ix - 3)
 	ld	(iy + 16), l
-	.local	.LBB116_34
-.LBB116_34:
+	.local	.LBB117_34
+.LBB117_34:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end116
-.Lfunc_end116:
-	.size	_optix_UpdateCurrMenu, .Lfunc_end116-_optix_UpdateCurrMenu
+	.local	.Lfunc_end117
+.Lfunc_end117:
+	.size	_optix_UpdateCurrMenu, .Lfunc_end117-_optix_UpdateCurrMenu
                                         ; -- End function
 	.section	.text._optix_RenderMenu,"ax",@progbits
 	.globl	_optix_RenderMenu               ; -- Begin function optix_RenderMenu
@@ -25213,9 +24308,9 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 3), iy
-	.local	.LBB117_1
-.LBB117_1:                              ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB117_3 Depth 2
+	.local	.LBB118_1
+.LBB118_1:                              ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB118_3 Depth 2
 	ld	a, (iy + 6)
 	push	bc
 	pop	de
@@ -25223,14 +24318,14 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	ld	(ix - 6), hl
 	or	a, a
 	sbc	hl, de
-	jp	nc, .LBB117_12
+	jp	nc, .LBB118_12
 ; %bb.2:                                ; %.preheader.preheader
-                                        ;   in Loop: Header=BB117_1 Depth=1
+                                        ;   in Loop: Header=BB118_1 Depth=1
 	or	a, a
 	sbc	hl, hl
-	.local	.LBB117_3
-.LBB117_3:                              ; %.preheader
-                                        ;   Parent Loop BB117_1 Depth=1
+	.local	.LBB118_3
+.LBB118_3:                              ; %.preheader
+                                        ;   Parent Loop BB118_1 Depth=1
                                         ; =>  This Inner Loop Header: Depth=2
 	ld	iy, (ix - 3)
 	ld	a, (iy + 5)
@@ -25240,8 +24335,8 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	ld	(ix - 10), hl
 	or	a, a
 	sbc	hl, de
-	jp	nc, .LBB117_11
-; %bb.4:                                ;   in Loop: Header=BB117_3 Depth=2
+	jp	nc, .LBB118_11
+; %bb.4:                                ;   in Loop: Header=BB118_3 Depth=2
 	or	a, a
 	sbc	hl, hl
 	ld	c, (ix - 7)                     ; 1-byte Folded Reload
@@ -25252,13 +24347,13 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	ld	l, a
 	ld	a, c
 	cp	a, e
-	jp	nz, .LBB117_9
-; %bb.5:                                ;   in Loop: Header=BB117_3 Depth=2
+	jp	nz, .LBB118_9
+; %bb.5:                                ;   in Loop: Header=BB118_3 Depth=2
 	ld	a, l
 	ld	l, (ix + 6)
 	cp	a, l
-	jp	nz, .LBB117_9
-; %bb.6:                                ;   in Loop: Header=BB117_3 Depth=2
+	jp	nz, .LBB118_9
+; %bb.6:                                ;   in Loop: Header=BB118_3 Depth=2
 	ld	iy, (ix - 3)
 	ld	e, (iy + 15)
 	ld	l, 1
@@ -25270,11 +24365,11 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	ld	l, a
 	ld	a, (_optix_guicolors+2)
 	bit	0, e
-	jr	nz, .LBB117_8
-; %bb.7:                                ;   in Loop: Header=BB117_3 Depth=2
+	jr	nz, .LBB118_8
+; %bb.7:                                ;   in Loop: Header=BB118_3 Depth=2
 	ld	l, a
-	.local	.LBB117_8
-.LBB117_8:                              ;   in Loop: Header=BB117_3 Depth=2
+	.local	.LBB118_8
+.LBB118_8:                              ;   in Loop: Header=BB118_3 Depth=2
 	push	hl
 	call	_gfx_SetColor
 	pop	hl
@@ -25410,15 +24505,15 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	pop	hl
 	pop	hl
 	pop	hl
-	jr	.LBB117_10
-	.local	.LBB117_9
-.LBB117_9:                              ;   in Loop: Header=BB117_3 Depth=2
+	jr	.LBB118_10
+	.local	.LBB118_9
+.LBB118_9:                              ;   in Loop: Header=BB118_3 Depth=2
 	or	a, a
 	sbc	hl, hl
 	push	hl
 	call	_optix_CusText
-	.local	.LBB117_10
-.LBB117_10:                             ;   in Loop: Header=BB117_3 Depth=2
+	.local	.LBB118_10
+.LBB118_10:                             ;   in Loop: Header=BB118_3 Depth=2
 	pop	hl
 	ld	de, (ix - 3)
 	push	de
@@ -25507,21 +24602,21 @@ _optix_RenderMenu:                      ; @optix_RenderMenu
 	cp	a, l
 	ex	de, hl
 	ld	bc, 0
-	jp	nz, .LBB117_3
-	.local	.LBB117_11
-.LBB117_11:                             ;   in Loop: Header=BB117_1 Depth=1
+	jp	nz, .LBB118_3
+	.local	.LBB118_11
+.LBB118_11:                             ;   in Loop: Header=BB118_1 Depth=1
 	ld	hl, (ix - 6)
 	inc	hl
 	ld	iy, (ix - 3)
-	jp	.LBB117_1
-	.local	.LBB117_12
-.LBB117_12:
+	jp	.LBB118_1
+	.local	.LBB118_12
+.LBB118_12:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end117
-.Lfunc_end117:
-	.size	_optix_RenderMenu, .Lfunc_end117-_optix_RenderMenu
+	.local	.Lfunc_end118
+.Lfunc_end118:
+	.size	_optix_RenderMenu, .Lfunc_end118-_optix_RenderMenu
                                         ; -- End function
 	.section	.text._optix_InsertSpecialCharacter,"ax",@progbits
 	.globl	_optix_InsertSpecialCharacter   ; -- Begin function optix_InsertSpecialCharacter
@@ -25548,16 +24643,16 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	e, a
                                         ; implicit-def: $l
                                         ; kill: killed $l
-	.local	.LBB118_1
-.LBB118_1:                              ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB118_24 Depth 2
-                                        ;       Child Loop BB118_26 Depth 3
+	.local	.LBB119_1
+.LBB119_1:                              ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB119_24 Depth 2
+                                        ;       Child Loop BB119_26 Depth 3
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	call	__sand
 	bit	0, l
-	jp	nz, .LBB118_34
-; %bb.2:                                ;   in Loop: Header=BB118_1 Depth=1
+	jp	nz, .LBB119_34
+; %bb.2:                                ;   in Loop: Header=BB119_1 Depth=1
 	ld	(ix - 6), a                     ; 1-byte Folded Spill
 	ld	hl, -720878
 	push	de
@@ -25569,8 +24664,8 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	pop	de
 	ld	a, l
 	bit	5, a
-	jp	nz, .LBB118_33
-; %bb.3:                                ;   in Loop: Header=BB118_1 Depth=1
+	jp	nz, .LBB119_33
+; %bb.3:                                ;   in Loop: Header=BB119_1 Depth=1
 	ld	(ix - 9), e                     ; 1-byte Folded Spill
 	ld	a, (_optix_guicolors)
 	ld	l, a
@@ -25593,22 +24688,22 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ex	de, hl
 	ld	e, iyl
 	ex	de, hl
-	jr	nz, .LBB118_5
-; %bb.4:                                ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_5
+; %bb.4:                                ;   in Loop: Header=BB119_1 Depth=1
 	ex	de, hl
 	ld	e, iyh
 	ex	de, hl
-	.local	.LBB118_5
-.LBB118_5:                              ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_5
+.LBB119_5:                              ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, (ix - 6)                     ; 1-byte Folded Reload
 	or	a, a
 	ld	e, iyl
 	ld	c, (ix - 12)                    ; 1-byte Folded Reload
-	jr	nz, .LBB118_7
-; %bb.6:                                ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_7
+; %bb.6:                                ;   in Loop: Header=BB119_1 Depth=1
 	ld	e, iyh
-	.local	.LBB118_7
-.LBB118_7:                              ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_7
+.LBB119_7:                              ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, l
 	and	a, c
 	ld	l, a
@@ -25622,11 +24717,11 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	e, a
 	bit	0, l
 	ld	d, 0
-	jr	nz, .LBB118_9
-; %bb.8:                                ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_9
+; %bb.8:                                ;   in Loop: Header=BB119_1 Depth=1
 	ld	d, c
-	.local	.LBB118_9
-.LBB118_9:                              ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_9
+.LBB119_9:                              ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, (ix - 6)
 	add	a, e
 	ld	e, a
@@ -25655,11 +24750,11 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	(ix - 6), l                     ; 1-byte Folded Spill
 	bit	0, l
 	ld	c, b
-	jr	nz, .LBB118_11
-; %bb.10:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_11
+; %bb.10:                               ;   in Loop: Header=BB119_1 Depth=1
 	ld	c, d
-	.local	.LBB118_11
-.LBB118_11:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_11
+.LBB119_11:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	hl, -720866
 	ld	e, (hl)
 	inc	hl
@@ -25669,22 +24764,22 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ex	de, hl
 	ld	e, iyl
 	ex	de, hl
-	jr	nz, .LBB118_13
-; %bb.12:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_13
+; %bb.12:                               ;   in Loop: Header=BB119_1 Depth=1
 	ex	de, hl
 	ld	e, iyh
 	ex	de, hl
-	.local	.LBB118_13
-.LBB118_13:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_13
+.LBB119_13:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	e, (ix - 9)                     ; 1-byte Folded Reload
 	ld	a, e
 	or	a, a
 	ld	d, iyl
-	jr	nz, .LBB118_15
-; %bb.14:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_15
+; %bb.14:                               ;   in Loop: Header=BB119_1 Depth=1
 	ld	d, iyh
-	.local	.LBB118_15
-.LBB118_15:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_15
+.LBB119_15:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, l
 	and	a, c
 	ld	l, a
@@ -25698,11 +24793,11 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	b, a
 	bit	0, l
 	ld	d, 0
-	jr	nz, .LBB118_17
-; %bb.16:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_17
+; %bb.16:                               ;   in Loop: Header=BB119_1 Depth=1
 	ld	d, c
-	.local	.LBB118_17
-.LBB118_17:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_17
+.LBB119_17:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	hl, -720866
 	push	de
 	ld	e, (hl)
@@ -25716,13 +24811,13 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ex	de, hl
 	ld	d, iyl
 	ex	de, hl
-	jr	nz, .LBB118_19
-; %bb.18:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_19
+; %bb.18:                               ;   in Loop: Header=BB119_1 Depth=1
 	ex	de, hl
 	ld	d, iyh
 	ex	de, hl
-	.local	.LBB118_19
-.LBB118_19:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_19
+.LBB119_19:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, e
 	add	a, b
 	ld	l, a
@@ -25740,11 +24835,11 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	bit	0, h
 	ld	a, 0
 	ld	(ix - 12), a                    ; 1-byte Folded Spill
-	jr	nz, .LBB118_21
-; %bb.20:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	nz, .LBB119_21
+; %bb.20:                               ;   in Loop: Header=BB119_1 Depth=1
 	ld	(ix - 12), d                    ; 1-byte Folded Spill
-	.local	.LBB118_21
-.LBB118_21:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_21
+.LBB119_21:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, 1
 	ld	c, a
 	ld	a, (ix - 6)
@@ -25765,12 +24860,12 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	h, (iy + 1)
 	ld	a, l
 	bit	6, a
-	jr	z, .LBB118_23
-; %bb.22:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	z, .LBB119_23
+; %bb.22:                               ;   in Loop: Header=BB119_1 Depth=1
 	bit	0, (ix - 12)                    ; 1-byte Folded Reload
-	jp	nz, .LBB118_32
-	.local	.LBB118_23
-.LBB118_23:                             ;   in Loop: Header=BB118_1 Depth=1
+	jp	nz, .LBB119_32
+	.local	.LBB119_23
+.LBB119_23:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	(ix - 9), e                     ; 1-byte Folded Spill
 	call	_kb_AnyKey
 	ld	(ix - 19), a                    ; 1-byte Folded Spill
@@ -25858,17 +24953,17 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	xor	a, a
 	ld	iyl, a
 	ld	bc, 0
-	.local	.LBB118_24
-.LBB118_24:                             ;   Parent Loop BB118_1 Depth=1
+	.local	.LBB119_24
+.LBB119_24:                             ;   Parent Loop BB119_1 Depth=1
                                         ; =>  This Loop Header: Depth=2
-                                        ;       Child Loop BB118_26 Depth 3
+                                        ;       Child Loop BB119_26 Depth 3
 	push	bc
 	pop	hl
 	ld	de, 8
 	or	a, a
 	sbc	hl, de
-	jr	z, .LBB118_29
-; %bb.25:                               ;   in Loop: Header=BB118_24 Depth=2
+	jr	z, .LBB119_29
+; %bb.25:                               ;   in Loop: Header=BB119_24 Depth=2
 	ld	(ix - 23), bc
 	push	bc
 	pop	hl
@@ -25880,17 +24975,17 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	hl, 81
 	ld	e, iyl
 	ld	(ix - 3), de
-	.local	.LBB118_26
-.LBB118_26:                             ;   Parent Loop BB118_1 Depth=1
-                                        ;     Parent Loop BB118_24 Depth=2
+	.local	.LBB119_26
+.LBB119_26:                             ;   Parent Loop BB119_1 Depth=1
+                                        ;     Parent Loop BB119_24 Depth=2
                                         ; =>    This Inner Loop Header: Depth=3
 	push	hl
 	pop	bc
 	ld	de, 241
 	or	a, a
 	sbc	hl, de
-	jr	z, .LBB118_28
-; %bb.27:                               ;   in Loop: Header=BB118_26 Depth=3
+	jr	z, .LBB119_28
+; %bb.27:                               ;   in Loop: Header=BB119_26 Depth=3
 	ld	hl, (ix - 26)
 	push	hl
 	ld	(ix - 29), bc
@@ -25916,26 +25011,26 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	(ix - 3), de
 	ld	de, 10
 	add	hl, de
-	jr	.LBB118_26
-	.local	.LBB118_28
-.LBB118_28:                             ;   in Loop: Header=BB118_24 Depth=2
+	jr	.LBB119_26
+	.local	.LBB119_28
+.LBB119_28:                             ;   in Loop: Header=BB119_24 Depth=2
 	ld	bc, (ix - 23)
 	inc	bc
 	ld	l, 16
 	ld	a, iyl
 	add	a, l
 	ld	iyl, a
-	jr	.LBB118_24
-	.local	.LBB118_29
-.LBB118_29:                             ;   in Loop: Header=BB118_1 Depth=1
+	jr	.LBB119_24
+	.local	.LBB119_29
+.LBB119_29:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, (ix - 19)                    ; 1-byte Folded Reload
 	or	a, a
 	ld	a, 1
-	jr	z, .LBB118_31
-; %bb.30:                               ;   in Loop: Header=BB118_1 Depth=1
+	jr	z, .LBB119_31
+; %bb.30:                               ;   in Loop: Header=BB119_1 Depth=1
 	ld	a, (ix - 12)                    ; 1-byte Folded Reload
-	.local	.LBB118_31
-.LBB118_31:                             ;   in Loop: Header=BB118_1 Depth=1
+	.local	.LBB119_31
+.LBB119_31:                             ;   in Loop: Header=BB119_1 Depth=1
 	ld	(ix - 12), a
 	ld	a, (_optix_guicolors+2)
 	ld	l, a
@@ -26011,17 +25106,17 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld.sis	hl, 1
 	ld	c, l
 	ld	b, h
-	jp	.LBB118_1
-	.local	.LBB118_32
-.LBB118_32:
+	jp	.LBB119_1
+	.local	.LBB119_32
+.LBB119_32:
 	xor	a, a
 	ld	l, a
 	ld	(ix - 3), hl
-	.local	.LBB118_33
-.LBB118_33:
+	.local	.LBB119_33
+.LBB119_33:
 	ld	a, (ix - 6)                     ; 1-byte Folded Reload
-	.local	.LBB118_34
-.LBB118_34:
+	.local	.LBB119_34
+.LBB119_34:
 	ld	(ix - 9), e
 	ld	iy, 0
 	ld	iyl, e
@@ -26055,15 +25150,15 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	(ix - 9), hl
 	ld	de, (ix - 3)
 	ld	iy, -720868
-	.local	.LBB118_35
-.LBB118_35:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB119_35
+.LBB119_35:                             ; =>This Inner Loop Header: Depth=1
 	ld	l, (iy)
 	ld	h, (iy + 1)
 	ld.sis	bc, 1
 	call	__sand
 	bit	0, l
-	jp	z, .LBB118_37
-; %bb.36:                               ;   in Loop: Header=BB118_35 Depth=1
+	jp	z, .LBB119_37
+; %bb.36:                               ;   in Loop: Header=BB119_35 Depth=1
 	call	_kb_Scan
 	ld	a, (_optix_guicolors+3)
 	ld	l, a
@@ -26101,18 +25196,18 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	iy, -720868
 	ld	de, (ix - 9)
                                         ; kill: def $e killed $e killed $ude def $ude
-	jp	.LBB118_35
-	.local	.LBB118_37
-.LBB118_37:
+	jp	.LBB119_35
+	.local	.LBB119_37
+.LBB119_37:
 	ld	a, e
 	cp	a, 96
-	jr	z, .LBB118_39
+	jr	z, .LBB119_39
 ; %bb.38:
 	ld	a, e
 	cp	a, 126
-	jr	nz, .LBB118_40
-	.local	.LBB118_39
-.LBB118_39:
+	jr	nz, .LBB119_40
+	.local	.LBB119_39
+.LBB119_39:
 	ld	hl, 10
 	ex	de, hl
 	push	de
@@ -26131,8 +25226,8 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	pop	hl
 	xor	a, a
 	ld	e, a
-	.local	.LBB118_40
-.LBB118_40:
+	.local	.LBB119_40
+.LBB119_40:
 	ld	(ix - 3), de
 	ld	hl, 1
 	push	hl
@@ -26143,9 +25238,9 @@ _optix_InsertSpecialCharacter:          ; @optix_InsertSpecialCharacter
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end118
-.Lfunc_end118:
-	.size	_optix_InsertSpecialCharacter, .Lfunc_end118-_optix_InsertSpecialCharacter
+	.local	.Lfunc_end119
+.Lfunc_end119:
+	.size	_optix_InsertSpecialCharacter, .Lfunc_end119-_optix_InsertSpecialCharacter
                                         ; -- End function
 	.section	.text._optix_GetStringInput,"ax",@progbits
 	.globl	_optix_GetStringInput           ; -- Begin function optix_GetStringInput
@@ -26181,7 +25276,7 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	sbc	hl, hl
 	adc	hl, de
 	ld	hl, 0
-	jp	z, .LBB119_37
+	jp	z, .LBB120_37
 ; %bb.1:
 	ld	iy, (ix + 12)
 	ld	e, 1
@@ -26217,16 +25312,16 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	ld	de, 18
 	add	hl, de
 	ld	(ix - 25), hl
-	.local	.LBB119_2
-.LBB119_2:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB120_2
+.LBB120_2:                              ; =>This Inner Loop Header: Depth=1
 	call	_kb_AnyKey
 	or	a, a
-	jr	z, .LBB119_4
-; %bb.3:                                ;   in Loop: Header=BB119_2 Depth=1
+	jr	z, .LBB120_4
+; %bb.3:                                ;   in Loop: Header=BB120_2 Depth=1
 	call	_kb_Scan
-	jr	.LBB119_2
-	.local	.LBB119_4
-.LBB119_4:
+	jr	.LBB120_2
+	.local	.LBB120_4
+.LBB120_4:
 	ld	hl, (ix - 31)
 	call	__ishru_1
 	ex	de, hl
@@ -26282,13 +25377,13 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	xor	a, a
 	ld	(ix - 32), a                    ; 1-byte Folded Spill
 	ld	(ix - 54), a                    ; 1-byte Folded Spill
-	.local	.LBB119_5
-.LBB119_5:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB120_5
+.LBB120_5:                              ; =>This Inner Loop Header: Depth=1
 	call	_os_GetCSC
 	ld	iyh, a
 	cp	a, 9
-	jp	z, .LBB119_34
-; %bb.6:                                ;   in Loop: Header=BB119_5 Depth=1
+	jp	z, .LBB120_34
+; %bb.6:                                ;   in Loop: Header=BB120_5 Depth=1
 	or	a, a
 	sbc	hl, hl
 	push	hl
@@ -26319,12 +25414,12 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	ld	a, iyh
 	ld	(ix - 63), a
 	pop	af
-	jp	p, .LBB119_9
-; %bb.7:                                ;   in Loop: Header=BB119_5 Depth=1
+	jp	p, .LBB120_9
+; %bb.7:                                ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, e
 	or	a, a
-	jr	z, .LBB119_9
-; %bb.8:                                ;   in Loop: Header=BB119_5 Depth=1
+	jr	z, .LBB120_9
+; %bb.8:                                ;   in Loop: Header=BB120_5 Depth=1
 	ld	hl, (_optix_stringinput)
 	ld	bc, (ix - 25)
 	add	hl, bc
@@ -26351,32 +25446,32 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	pop	hl
 	xor	a, a
 	ld	(ix - 54), a                    ; 1-byte Folded Spill
-	.local	.LBB119_9
-.LBB119_9:                              ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_9
+.LBB120_9:                              ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, iyh
 	cp	a, 56
-	jr	nz, .LBB119_12
-; %bb.10:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_12
+; %bb.10:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	hl, (ix - 25)
 	ld	de, 1
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
-	jp	m, .LBB119_12
-; %bb.11:                               ;   in Loop: Header=BB119_5 Depth=1
+	jp	m, .LBB120_12
+; %bb.11:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	iy, (_optix_stringinput)
 	ld	de, (ix - 25)
 	add	iy, de
 	dec	de
 	ld	(ix - 25), de
 	ld	(iy - 1), 0
-	jr	.LBB119_14
-	.local	.LBB119_12
-.LBB119_12:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_14
+	.local	.LBB120_12
+.LBB120_12:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, iyh
 	cp	a, 15
-	jr	nz, .LBB119_15
-; %bb.13:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_15
+; %bb.13:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	hl, (_optix_stringinput)
 	ld.sis	de, 32
 	ld	(hl), e
@@ -26389,8 +25484,8 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 25), hl
-	.local	.LBB119_14
-.LBB119_14:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_14
+.LBB120_14:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	hl, (_optix_stringinput)
 	ld	de, (ix + 12)
 	push	de
@@ -26408,21 +25503,21 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	ld	a, (ix - 63)                    ; 1-byte Folded Reload
 	ld	iyh, a
 	pop	af
-	jr	.LBB119_18
-	.local	.LBB119_15
-.LBB119_15:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_18
+	.local	.LBB120_15
+.LBB120_15:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, iyh
 	cp	a, 10
-	jr	nz, .LBB119_18
-; %bb.16:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_18
+; %bb.16:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	de, (ix - 25)
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	p, .LBB119_18
-; %bb.17:                               ;   in Loop: Header=BB119_5 Depth=1
+	jp	p, .LBB120_18
+; %bb.17:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 25), de
 	call	_optix_InsertSpecialCharacter
 	ld	hl, (_optix_stringinput)
@@ -26431,28 +25526,28 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	inc	de
 	ld	(ix - 25), de
 	ld	(hl), a
-	jr	.LBB119_14
-	.local	.LBB119_18
-.LBB119_18:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_14
+	.local	.LBB120_18
+.LBB120_18:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, iyh
 	cp	a, 48
 	ld	l, 1
-	jr	z, .LBB119_20
-; %bb.19:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	z, .LBB120_20
+; %bb.19:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	l, 0
-	.local	.LBB119_20
-.LBB119_20:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_20
+.LBB120_20:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, iyl
 	add	a, l
 	ld	l, a
 	cp	a, 3
 	ld	a, 0
 	ld	de, (ix - 25)
-	jr	nc, .LBB119_22
-; %bb.21:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nc, .LBB120_22
+; %bb.21:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, l
-	.local	.LBB119_22
-.LBB119_22:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_22
+.LBB120_22:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 32), a
 	ld	iy, (_optix_stringinput)
 	add	iy, de
@@ -26518,8 +25613,8 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	ld	e, (ix - 54)                    ; 1-byte Folded Reload
 	ld	a, e
 	cp	a, 10
-	jp	nc, .LBB119_24
-; %bb.23:                               ;   in Loop: Header=BB119_5 Depth=1
+	jp	nc, .LBB120_24
+; %bb.23:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	iy, (_optix_wordwraptext)
 	ld	hl, (ix - 63)
 	dec	hl
@@ -26577,17 +25672,17 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB119_24
-.LBB119_24:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_24
+.LBB120_24:                             ;   in Loop: Header=BB120_5 Depth=1
 	inc	e
 	ld	a, e
 	cp	a, 21
 	ld	a, 0
-	jr	nc, .LBB119_26
-; %bb.25:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nc, .LBB120_26
+; %bb.25:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, e
-	.local	.LBB119_26
-.LBB119_26:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_26
+.LBB120_26:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 54), a
 	ld	hl, 1
 	push	hl
@@ -26627,31 +25722,31 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	ld	l, (ix - 32)                    ; 1-byte Folded Reload
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB119_28
-; %bb.27:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_28
+; %bb.27:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 2), 65
-	jr	.LBB119_33
-	.local	.LBB119_28
-.LBB119_28:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_33
+	.local	.LBB120_28
+.LBB120_28:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, l
 	cp	a, 1
-	jr	nz, .LBB119_30
-; %bb.29:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_30
+; %bb.29:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 2), 97
-	jr	.LBB119_33
-	.local	.LBB119_30
-.LBB119_30:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_33
+	.local	.LBB120_30
+.LBB120_30:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	a, l
 	cp	a, 2
-	jr	nz, .LBB119_32
-; %bb.31:                               ;   in Loop: Header=BB119_5 Depth=1
+	jr	nz, .LBB120_32
+; %bb.31:                               ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 2), 49
-	jr	.LBB119_33
-	.local	.LBB119_32
-.LBB119_32:                             ;   in Loop: Header=BB119_5 Depth=1
+	jr	.LBB120_33
+	.local	.LBB120_32
+.LBB120_32:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	(ix - 2), 63
-	.local	.LBB119_33
-.LBB119_33:                             ;   in Loop: Header=BB119_5 Depth=1
+	.local	.LBB120_33
+.LBB120_33:                             ;   in Loop: Header=BB120_5 Depth=1
 	ld	hl, (ix - 41)
 	push	hl
 	ld	hl, (ix - 53)
@@ -26700,27 +25795,27 @@ _optix_GetStringInput:                  ; @optix_GetStringInput
 	pop	hl
 	pop	hl
 	call	_gfx_SwapDraw
-	jp	.LBB119_5
-	.local	.LBB119_34
-.LBB119_34:                             ; %.preheader
+	jp	.LBB120_5
+	.local	.LBB120_34
+.LBB120_34:                             ; %.preheader
                                         ; =>This Inner Loop Header: Depth=1
 	call	_kb_AnyKey
 	or	a, a
-	jr	z, .LBB119_36
-; %bb.35:                               ;   in Loop: Header=BB119_34 Depth=1
+	jr	z, .LBB120_36
+; %bb.35:                               ;   in Loop: Header=BB120_34 Depth=1
 	call	_kb_Scan
-	jr	.LBB119_34
-	.local	.LBB119_36
-.LBB119_36:
+	jr	.LBB120_34
+	.local	.LBB120_36
+.LBB120_36:
 	ld	hl, (_optix_stringinput)
-	.local	.LBB119_37
-.LBB119_37:
+	.local	.LBB120_37
+.LBB120_37:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end119
-.Lfunc_end119:
-	.size	_optix_GetStringInput, .Lfunc_end119-_optix_GetStringInput
+	.local	.Lfunc_end120
+.Lfunc_end120:
+	.size	_optix_GetStringInput, .Lfunc_end120-_optix_GetStringInput
                                         ; -- End function
 	.section	.text._optix_InitializeButtons,"ax",@progbits
 	.globl	_optix_InitializeButtons        ; -- Begin function optix_InitializeButtons
@@ -26734,9 +25829,9 @@ _optix_InitializeButtons:               ; @optix_InitializeButtons
 	pop	de
 	ld	(_optix_button), hl
 	ret
-	.local	.Lfunc_end120
-.Lfunc_end120:
-	.size	_optix_InitializeButtons, .Lfunc_end120-_optix_InitializeButtons
+	.local	.Lfunc_end121
+.Lfunc_end121:
+	.size	_optix_InitializeButtons, .Lfunc_end121-_optix_InitializeButtons
                                         ; -- End function
 	.section	.text._optix_AddButton,"ax",@progbits
 	.globl	_optix_AddButton                ; -- Begin function optix_AddButton
@@ -26764,7 +25859,7 @@ _optix_AddButton:                       ; @optix_AddButton
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	nz, .LBB121_2
+	jr	nz, .LBB122_2
 ; %bb.1:
 	ld	hl, _.str.11.664
 	ld	de, _.str.12.665
@@ -26782,9 +25877,9 @@ _optix_AddButton:                       ; @optix_AddButton
 	pop	hl
 	pop	hl
 	pop	hl
-	jr	.LBB121_3
-	.local	.LBB121_2
-.LBB121_2:
+	jr	.LBB122_3
+	.local	.LBB122_2
+.LBB122_2:
 	ld	d, (ix + 9)
 	ld	e, (ix + 15)
 	ld	a, (_optix_buttoninfo)
@@ -26822,14 +25917,14 @@ _optix_AddButton:                       ; @optix_AddButton
 	ld	a, (ix - 1)                     ; 1-byte Folded Reload
 	inc	a
 	ld	(_optix_buttoninfo), a
-	.local	.LBB121_3
-.LBB121_3:
+	.local	.LBB122_3
+.LBB122_3:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end121
-.Lfunc_end121:
-	.size	_optix_AddButton, .Lfunc_end121-_optix_AddButton
+	.local	.Lfunc_end122
+.Lfunc_end122:
+	.size	_optix_AddButton, .Lfunc_end122-_optix_AddButton
                                         ; -- End function
 	.section	.text._optix_DeleteButton,"ax",@progbits
 	.globl	_optix_DeleteButton             ; -- Begin function optix_DeleteButton
@@ -26856,15 +25951,15 @@ _optix_DeleteButton:                    ; @optix_DeleteButton
 	pop	bc
 	ld	hl, (ix - 3)
 	add	hl, bc
-	.local	.LBB122_1
-.LBB122_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB123_1
+.LBB123_1:                              ; =>This Inner Loop Header: Depth=1
 	ld	(ix - 6), hl
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, de
 	lea	bc, iy + 0
-	jr	nc, .LBB122_3
-; %bb.2:                                ;   in Loop: Header=BB122_1 Depth=1
+	jr	nc, .LBB123_3
+; %bb.2:                                ;   in Loop: Header=BB123_1 Depth=1
 	ld	hl, (ix - 6)
 	push	hl
 	pop	iy
@@ -26879,9 +25974,9 @@ _optix_DeleteButton:                    ; @optix_DeleteButton
 	ld	de, (ix - 9)
 	dec	de
 	ld	hl, (ix - 12)
-	jr	.LBB122_1
-	.local	.LBB122_3
-.LBB122_3:
+	jr	.LBB123_1
+	.local	.LBB123_3
+.LBB123_3:
 	dec	a
 	ld	(_optix_buttoninfo), a
 	or	a, a
@@ -26899,9 +25994,9 @@ _optix_DeleteButton:                    ; @optix_DeleteButton
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end122
-.Lfunc_end122:
-	.size	_optix_DeleteButton, .Lfunc_end122-_optix_DeleteButton
+	.local	.Lfunc_end123
+.Lfunc_end123:
+	.size	_optix_DeleteButton, .Lfunc_end123-_optix_DeleteButton
                                         ; -- End function
 	.section	.text._TickerPriority,"ax",@progbits
 	.globl	_TickerPriority                 ; -- Begin function TickerPriority
@@ -26911,34 +26006,34 @@ _TickerPriority:                        ; @TickerPriority
 	call	__frameset0
 	ld	a, (ix + 6)
 	cp	a, 16
-	jr	nc, .LBB123_3
+	jr	nc, .LBB124_3
 ; %bb.1:
 	ld.sis	hl, -15841
 	ld	c, a
 	call	__sshru
 	bit	0, l
-	jr	z, .LBB123_3
+	jr	z, .LBB124_3
 ; %bb.2:
 	ld	hl, _switch.table.TickerUpdate.27
 	ld	de, 0
 	ld	e, a
 	add	hl, de
 	ld	a, (hl)
-	jp	.LBB123_4
-	.local	.LBB123_3
-.LBB123_3:
+	jp	.LBB124_4
+	.local	.LBB124_3
+.LBB124_3:
 	cp	a, 10
 	ccf
                                         ; kill: def $a killed $a
 	sbc	a, a
 	inc	a
-	.local	.LBB123_4
-.LBB123_4:
+	.local	.LBB124_4
+.LBB124_4:
 	pop	ix
 	ret
-	.local	.Lfunc_end123
-.Lfunc_end123:
-	.size	_TickerPriority, .Lfunc_end123-_TickerPriority
+	.local	.Lfunc_end124
+.Lfunc_end124:
+	.size	_TickerPriority, .Lfunc_end124-_TickerPriority
                                         ; -- End function
 	.section	.text._TickerInit,"ax",@progbits
 	.globl	_TickerInit                     ; -- Begin function TickerInit
@@ -26970,9 +26065,9 @@ _TickerInit:                            ; @TickerInit
 	ld	(_ticker+32), a
 	pop	ix
 	ret
-	.local	.Lfunc_end124
-.Lfunc_end124:
-	.size	_TickerInit, .Lfunc_end124-_TickerInit
+	.local	.Lfunc_end125
+.Lfunc_end125:
+	.size	_TickerInit, .Lfunc_end125-_TickerInit
                                         ; -- End function
 	.section	.text._TickerPost,"ax",@progbits
 	.globl	_TickerPost                     ; -- Begin function TickerPost
@@ -26988,17 +26083,17 @@ _TickerPost:                            ; @TickerPost
 	pop	hl
 	or	a, a
 	sbc	hl, de
-	jr	c, .LBB125_3
-	.local	.LBB125_1
-.LBB125_1:
+	jr	c, .LBB126_3
+	.local	.LBB126_1
+.LBB126_1:
 	ld	a, iyl
-	.local	.LBB125_2
-.LBB125_2:                              ; %.loopexit
+	.local	.LBB126_2
+.LBB126_2:                              ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.LBB125_3
-.LBB125_3:
+	.local	.LBB126_3
+.LBB126_3:
 	push	bc
 	pop	de
 	ld	bc, 14
@@ -27009,11 +26104,11 @@ _TickerPost:                            ; @TickerPost
 	pop	bc
 	ld	a, c
 	cp	a, 14
-	jp	nz, .LBB125_6
+	jp	nz, .LBB126_6
 ; %bb.4:
 	ld	a, (ix + 9)
 	cp	a, -56
-	jr	nc, .LBB125_1
+	jr	nc, .LBB126_1
 ; %bb.5:
 	ld.sis	de, 7
 	ld	hl, (ix + 12)
@@ -27021,72 +26116,72 @@ _TickerPost:                            ; @TickerPost
 	or	a, a
 	sbc.sis	hl, de
 	ld	de, (ix + 6)
-	jp	nc, .LBB125_1
-	.local	.LBB125_6
-.LBB125_6:
+	jp	nc, .LBB126_1
+	.local	.LBB126_6
+.LBB126_6:
 	ld	iy, 11
 	ex	de, hl
 	lea	de, iy + 0
 	or	a, a
 	sbc	hl, de
-	jr	z, .LBB125_8
+	jr	z, .LBB126_8
 ; %bb.7:
 	ld	a, c
 	cp	a, 6
-	jr	nz, .LBB125_9
-	.local	.LBB125_8
-.LBB125_8:
+	jr	nz, .LBB126_9
+	.local	.LBB126_8
+.LBB126_8:
 	ld	a, (ix + 9)
 	cp	a, 7
 	ld	a, 0
-	jp	nc, .LBB125_2
-	jp	.LBB125_14
-	.local	.LBB125_9
-.LBB125_9:
+	jp	nc, .LBB126_2
+	jp	.LBB126_14
+	.local	.LBB126_9
+.LBB126_9:
 	ld	a, (ix + 9)
 	cp	a, 7
 	ld	bc, (ix + 6)
 	ld	iyl, 0
-	jp	c, .LBB125_12
+	jp	c, .LBB126_12
 ; %bb.10:
 	ld	de, 4
 	push	bc
 	pop	hl
 	or	a, a
 	sbc	hl, de
-	jp	nz, .LBB125_12
+	jp	nz, .LBB126_12
 ; %bb.11:
 	ld.sis	de, 1
 	ld	hl, (ix + 12)
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, de
-	jp	z, .LBB125_1
-	.local	.LBB125_12
-.LBB125_12:
+	jp	z, .LBB126_1
+	.local	.LBB126_12
+.LBB126_12:
 	ld	de, 5
 	push	bc
 	pop	hl
 	or	a, a
 	sbc	hl, de
-	jr	nz, .LBB125_14
+	jr	nz, .LBB126_14
 ; %bb.13:
 	cp	a, 39
-	jp	nc, .LBB125_1
-	.local	.LBB125_14
-.LBB125_14:
+	jp	nc, .LBB126_1
+	.local	.LBB126_14
+.LBB126_14:
 	ld	iyl, 0
 	ld	l, 1
 	ld	(ix - 7), hl
 	ld	a, (_ticker+48)
 	ld	b, a
-	.local	.LBB125_15
-.LBB125_15:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB126_15
+.LBB126_15:                             ; =>This Inner Loop Header: Depth=1
 	ld	c, iyl
 	ld	a, b
 	cp	a, c
-	jp	z, .LBB125_24
-; %bb.16:                               ;   in Loop: Header=BB125_15 Depth=1
+	jp	z, .LBB126_24
+; %bb.16:                               ;   in Loop: Header=BB126_15 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	l, c
@@ -27099,21 +26194,21 @@ _TickerPost:                            ; @TickerPost
 	ld	(ix - 8), a                     ; 1-byte Folded Spill
 	ld	hl, (ix + 6)
 	cp	a, l
-	jp	nz, .LBB125_19
-; %bb.17:                               ;   in Loop: Header=BB125_15 Depth=1
+	jp	nz, .LBB126_19
+; %bb.17:                               ;   in Loop: Header=BB126_15 Depth=1
 	ld	a, (iy + 1)
 	ld	l, (ix + 9)
 	cp	a, l
-	jp	nz, .LBB125_19
-; %bb.18:                               ;   in Loop: Header=BB125_15 Depth=1
+	jp	nz, .LBB126_19
+; %bb.18:                               ;   in Loop: Header=BB126_15 Depth=1
 	ld	hl, (iy + 2)
                                         ; kill: def $hl killed $hl killed $uhl
 	ld	de, (ix + 12)
 	or	a, a
 	sbc.sis	hl, de
-	jp	z, .LBB125_40
-	.local	.LBB125_19
-.LBB125_19:                             ;   in Loop: Header=BB125_15 Depth=1
+	jp	z, .LBB126_40
+	.local	.LBB126_19
+.LBB126_19:                             ;   in Loop: Header=BB126_15 Depth=1
 	ld	(ix - 11), iy
 	ld	iyl, c
 	inc	iyl
@@ -27121,15 +26216,15 @@ _TickerPost:                            ; @TickerPost
 	ld	de, 3
 	or	a, a
 	sbc	hl, de
-	jp	nz, .LBB125_15
-; %bb.20:                               ;   in Loop: Header=BB125_15 Depth=1
+	jp	nz, .LBB126_15
+; %bb.20:                               ;   in Loop: Header=BB126_15 Depth=1
 	ld	a, c
 	or	a, a
-	jp	z, .LBB125_15
-; %bb.21:                               ;   in Loop: Header=BB125_15 Depth=1
+	jp	z, .LBB126_15
+; %bb.21:                               ;   in Loop: Header=BB126_15 Depth=1
 	ld	a, (ix - 8)                     ; 1-byte Folded Reload
 	cp	a, 3
-	jp	nz, .LBB125_15
+	jp	nz, .LBB126_15
 ; %bb.22:
 	ld	iy, (ix - 11)
 	ld	hl, (iy + 2)
@@ -27137,7 +26232,7 @@ _TickerPost:                            ; @TickerPost
 	ld	bc, (ix + 12)
 	or	a, a
 	sbc.sis	hl, bc
-	jp	nc, .LBB125_39
+	jp	nc, .LBB126_39
 ; %bb.23:
 	ld	d, 0
 	ld	(ix - 4), d
@@ -27166,12 +26261,12 @@ _TickerPost:                            ; @TickerPost
 	ld	bc, 3
 	xor	a, a
 	call	__ladd
-	jp	.LBB125_38
-	.local	.LBB125_24
-.LBB125_24:
+	jp	.LBB126_38
+	.local	.LBB126_24
+.LBB126_24:
 	ld	a, b
 	cp	a, 8
-	jp	nz, .LBB125_37
+	jp	nz, .LBB126_37
 ; %bb.25:
 	ld	bc, (ix + 6)
 	ld	a, c
@@ -27188,52 +26283,52 @@ _TickerPost:                            ; @TickerPost
 	ld	bc, 32
 	ld	de, 4
 	ld	iyl, b
-	.local	.LBB125_26
-.LBB125_26:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB126_26
+.LBB126_26:                             ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB125_1
-; %bb.27:                               ;   in Loop: Header=BB125_26 Depth=1
+	jp	z, .LBB126_1
+; %bb.27:                               ;   in Loop: Header=BB126_26 Depth=1
 	ld	hl, _ticker
 	add	hl, de
 	ld	a, (hl)
 	cp	a, 16
-	jr	nc, .LBB125_30
-; %bb.28:                               ;   in Loop: Header=BB125_26 Depth=1
+	jr	nc, .LBB126_30
+; %bb.28:                               ;   in Loop: Header=BB126_26 Depth=1
 	ld.sis	hl, -15841
 	ld	c, a
 	call	__sshru
 	bit	0, l
-	jr	z, .LBB125_30
-; %bb.29:                               ;   in Loop: Header=BB125_26 Depth=1
+	jr	z, .LBB126_30
+; %bb.29:                               ;   in Loop: Header=BB126_26 Depth=1
 	ld	bc, 0
 	ld	c, a
 	ld	hl, _switch.table.TickerUpdate.27
 	add	hl, bc
 	ld	l, (hl)
-	jp	.LBB125_31
-	.local	.LBB125_30
-.LBB125_30:                             ;   in Loop: Header=BB125_26 Depth=1
+	jp	.LBB126_31
+	.local	.LBB126_30
+.LBB126_30:                             ;   in Loop: Header=BB126_26 Depth=1
 	cp	a, 10
 	ccf
                                         ; kill: def $a killed $a
 	sbc	a, a
 	ld	l, a
 	inc	l
-	.local	.LBB125_31
-.LBB125_31:                             ;   in Loop: Header=BB125_26 Depth=1
+	.local	.LBB126_31
+.LBB126_31:                             ;   in Loop: Header=BB126_26 Depth=1
 	ld	bc, (ix + 6)
 	ld	a, c
 	cp	a, 16
 	ld	c, iyh
-	jr	nc, .LBB125_34
-; %bb.32:                               ;   in Loop: Header=BB125_26 Depth=1
+	jr	nc, .LBB126_34
+; %bb.32:                               ;   in Loop: Header=BB126_26 Depth=1
 	bit	0, (ix - 8)                     ; 1-byte Folded Reload
 	ld	c, iyh
-	jr	z, .LBB125_34
-; %bb.33:                               ;   in Loop: Header=BB125_26 Depth=1
+	jr	z, .LBB126_34
+; %bb.33:                               ;   in Loop: Header=BB126_26 Depth=1
 	ld	a, iyh
 	ld	iy, _switch.table.TickerUpdate.27
 	ld	bc, (ix + 6)
@@ -27241,29 +26336,29 @@ _TickerPost:                            ; @TickerPost
 	ld	c, (iy)
 	ld	iyh, a
 	ld	iyl, 0
-	.local	.LBB125_34
-.LBB125_34:                             ;   in Loop: Header=BB125_26 Depth=1
+	.local	.LBB126_34
+.LBB126_34:                             ;   in Loop: Header=BB126_26 Depth=1
 	ld	a, l
 	cp	a, c
-	jr	c, .LBB125_36
-; %bb.35:                               ;   in Loop: Header=BB125_26 Depth=1
+	jr	c, .LBB126_36
+; %bb.35:                               ;   in Loop: Header=BB126_26 Depth=1
 	inc	(ix - 7)
 	ex	de, hl
 	ld	de, 4
 	add	hl, de
 	ex	de, hl
 	ld	bc, 32
-	jp	.LBB125_26
-	.local	.LBB125_36
-.LBB125_36:
+	jp	.LBB126_26
+	.local	.LBB126_36
+.LBB126_36:
 	ld	hl, (ix - 7)
 	push	hl
 	call	_Remove
 	pop	hl
 	ld	a, (_ticker+48)
 	ld	b, a
-	.local	.LBB125_37
-.LBB125_37:
+	.local	.LBB126_37
+.LBB126_37:
 	ld	a, b
 	inc	a
 	ld	(_ticker+48), a
@@ -27300,21 +26395,21 @@ _TickerPost:                            ; @TickerPost
 	ld	bc, (ix + 6)
 	ld	a, d
 	call	__lor
-	.local	.LBB125_38
-.LBB125_38:                             ; %.loopexit
+	.local	.LBB126_38
+.LBB126_38:                             ; %.loopexit
 	ld	(iy), hl
 	ld	(iy + 3), e
-	.local	.LBB125_39
-.LBB125_39:                             ; %.loopexit
+	.local	.LBB126_39
+.LBB126_39:                             ; %.loopexit
 	ld	a, 1
-	jp	.LBB125_2
-	.local	.LBB125_40
-.LBB125_40:
+	jp	.LBB126_2
+	.local	.LBB126_40
+.LBB126_40:
 	xor	a, a
-	jp	.LBB125_2
-	.local	.Lfunc_end125
-.Lfunc_end125:
-	.size	_TickerPost, .Lfunc_end125-_TickerPost
+	jp	.LBB126_2
+	.local	.Lfunc_end126
+.Lfunc_end126:
+	.size	_TickerPost, .Lfunc_end126-_TickerPost
                                         ; -- End function
 	.section	.text._Remove,"ax",@progbits
 	.type	_Remove,@function               ; -- Begin function Remove
@@ -27332,8 +26427,8 @@ _Remove:                                ; @Remove
 	push	hl
 	pop	bc
 	add	iy, bc
-	.local	.LBB126_1
-.LBB126_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB127_1
+.LBB127_1:                              ; =>This Inner Loop Header: Depth=1
 	lea	iy, iy + 4
 	inc	de
 	ld	a, (_ticker+48)
@@ -27343,22 +26438,22 @@ _Remove:                                ; @Remove
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	nc, .LBB126_3
-; %bb.2:                                ;   in Loop: Header=BB126_1 Depth=1
+	jr	nc, .LBB127_3
+; %bb.2:                                ;   in Loop: Header=BB127_1 Depth=1
 	ld	hl, (iy)
 	ld	a, (iy + 3)
 	ld	(iy - 4), hl
 	ld	(iy - 1), a
-	jr	.LBB126_1
-	.local	.LBB126_3
-.LBB126_3:
+	jr	.LBB127_1
+	.local	.LBB127_3
+.LBB127_3:
 	dec	a
 	ld	(_ticker+48), a
 	pop	ix
 	ret
-	.local	.Lfunc_end126
-.Lfunc_end126:
-	.size	_Remove, .Lfunc_end126-_Remove
+	.local	.Lfunc_end127
+.Lfunc_end127:
+	.size	_Remove, .Lfunc_end127-_Remove
                                         ; -- End function
 	.section	.text._TickerText,"ax",@progbits
 	.globl	_TickerText                     ; -- Begin function TickerText
@@ -27369,16 +26464,16 @@ _TickerText:                            ; @TickerText
 	call	__frameset
 	ld	a, (_ticker+48)
 	or	a, a
-	jr	nz, .LBB127_2
+	jr	nz, .LBB128_2
 ; %bb.1:
 	ld	de, _.str.692
-	jp	.LBB127_33
-	.local	.LBB127_2
-.LBB127_2:
+	jp	.LBB128_33
+	.local	.LBB128_2
+.LBB128_2:
 	ld	de, _ticker+53
 	ld	a, (_ticker+52)
 	bit	0, a
-	jp	nz, .LBB127_33
+	jp	nz, .LBB128_33
 ; %bb.3:
 	ld	a, (_ticker)
 	ld	l, a
@@ -27387,13 +26482,13 @@ _TickerText:                            ; @TickerText
 	ld	bc, 0
 	ld	a, l
 	cp	a, 16
-	jr	c, .LBB127_5
+	jr	c, .LBB128_5
 ; %bb.4:
 	xor	a, a
 	ld	(_ticker+53), a
-	jp	.LBB127_33
-	.local	.LBB127_5
-.LBB127_5:
+	jp	.LBB128_33
+	.local	.LBB128_5
+.LBB128_5:
 	ld	a, h
 	ld	iy, _ticker+2
 	ld	de, (iy)
@@ -27402,19 +26497,19 @@ _TickerText:                            ; @TickerText
 	ld	(ix - 3), de
 	lea	de, iy + 0
 	ld	e, l
-	ld	hl, JTI127_0
+	ld	hl, JTI128_0
 	add	hl, de
 	add	hl, de
 	add	hl, de
 	ld	hl, (hl)
 	jp	(hl)
-	.local	.LBB127_6
-.LBB127_6:
+	.local	.LBB128_6
+.LBB128_6:
 	ld	hl, _.str.3.676
 	ld	bc, 28
-	jp	.LBB127_32
-	.local	.LBB127_7
-.LBB127_7:
+	jp	.LBB128_32
+	.local	.LBB128_7
+.LBB128_7:
 	ld	iy, _.str.1.674
 	or	a, a
 	sbc	hl, hl
@@ -27440,20 +26535,20 @@ _TickerText:                            ; @TickerText
 	push	hl
 	push	de
 	push	iy
-	jp	.LBB127_12
-	.local	.LBB127_8
-.LBB127_8:
+	jp	.LBB128_12
+	.local	.LBB128_8
+.LBB128_8:
 	ld	de, _.str.16.689
-	jp	.LBB127_22
-	.local	.LBB127_9
-.LBB127_9:
+	jp	.LBB128_22
+	.local	.LBB128_9
+.LBB128_9:
 	ld	iy, 80
 	ld.sis	de, 1
 	ld	hl, (ix - 3)
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, de
-	jp	nz, .LBB127_34
+	jp	nz, .LBB128_34
 ; %bb.10:
 	ld	de, _.str.7.680
 	or	a, a
@@ -27468,9 +26563,9 @@ _TickerText:                            ; @TickerText
 	ld	hl, (hl)
 	push	hl
 	push	de
-	jp	.LBB127_35
-	.local	.LBB127_11
-.LBB127_11:
+	jp	.LBB128_35
+	.local	.LBB128_11
+.LBB128_11:
 	ld.sis	bc, 100
 	ld	de, (ix - 3)
 	ld	l, e
@@ -27490,8 +26585,8 @@ _TickerText:                            ; @TickerText
 	push	iy
 	ld	hl, _.str.17.690
 	push	hl
-	.local	.LBB127_12
-.LBB127_12:
+	.local	.LBB128_12
+.LBB128_12:
 	ld	hl, 80
 	push	hl
 	ld	hl, _ticker+53
@@ -27499,18 +26594,18 @@ _TickerText:                            ; @TickerText
 	call	_snprintf
 	ld	de, _ticker+53
 	pop	hl
-	jp	.LBB127_29
-	.local	.LBB127_13
-.LBB127_13:
+	jp	.LBB128_29
+	.local	.LBB128_13
+.LBB128_13:
 	ld	hl, _.str.14.687
-	jp	.LBB127_26
-	.local	.LBB127_14
-.LBB127_14:
+	jp	.LBB128_26
+	.local	.LBB128_14
+.LBB128_14:
 	ld	hl, _.str.5.678
 	ld	bc, 38
-	jp	.LBB127_32
-	.local	.LBB127_15
-.LBB127_15:
+	jp	.LBB128_32
+	.local	.LBB128_15
+.LBB128_15:
 	ld	de, _.str.2.675
 	or	a, a
 	sbc	hl, hl
@@ -27520,22 +26615,22 @@ _TickerText:                            ; @TickerText
 	push	hl
 	pop	bc
 	ld	hl, _event_catalog
-	jr	.LBB127_23
-	.local	.LBB127_16
-.LBB127_16:
+	jr	.LBB128_23
+	.local	.LBB128_16
+.LBB128_16:
 	ld	hl, _.str.6.679
-	jr	.LBB127_26
-	.local	.LBB127_17
-.LBB127_17:
+	jr	.LBB128_26
+	.local	.LBB128_17
+.LBB128_17:
 	ld	de, _.str.11.684
-	jr	.LBB127_22
-	.local	.LBB127_18
-.LBB127_18:
+	jr	.LBB128_22
+	.local	.LBB128_18
+.LBB128_18:
 	ld	hl, _.str.4.677
 	ld	bc, 32
-	jp	.LBB127_32
-	.local	.LBB127_19
-.LBB127_19:
+	jp	.LBB128_32
+	.local	.LBB128_19
+.LBB128_19:
 	ld	iy, _traits
 	ld	de, _.str.9.682
 	or	a, a
@@ -27547,16 +26642,16 @@ _TickerText:                            ; @TickerText
 	pop	bc
 	add	iy, bc
 	ld	hl, (iy)
-	jr	.LBB127_24
-	.local	.LBB127_20
-.LBB127_20:
+	jr	.LBB128_24
+	.local	.LBB128_20
+.LBB128_20:
 	ld	hl, _.str.18.691
-	jr	.LBB127_26
-	.local	.LBB127_21
-.LBB127_21:
+	jr	.LBB128_26
+	.local	.LBB128_21
+.LBB128_21:
 	ld	de, _.str.10.683
-	.local	.LBB127_22
-.LBB127_22:
+	.local	.LBB128_22
+.LBB128_22:
 	or	a, a
 	sbc	hl, hl
 	ld	l, a
@@ -27565,69 +26660,69 @@ _TickerText:                            ; @TickerText
 	push	hl
 	pop	bc
 	ld	hl, _regions
-	.local	.LBB127_23
-.LBB127_23:
+	.local	.LBB128_23
+.LBB128_23:
 	add	hl, bc
 	ld	hl, (hl)
-	.local	.LBB127_24
-.LBB127_24:
+	.local	.LBB128_24
+.LBB128_24:
 	push	hl
 	push	de
-	jr	.LBB127_27
-	.local	.LBB127_25
-.LBB127_25:
+	jr	.LBB128_27
+	.local	.LBB128_25
+.LBB128_25:
 	ld	hl, _.str.15.688
-	.local	.LBB127_26
-.LBB127_26:
+	.local	.LBB128_26
+.LBB128_26:
 	ld	de, 0
 	ld	bc, (ix - 3)
 	ld	e, c
 	ld	d, b
 	push	de
 	push	hl
-	.local	.LBB127_27
-.LBB127_27:
+	.local	.LBB128_27
+.LBB128_27:
 	ld	hl, 80
 	push	hl
-	.local	.LBB127_28
-.LBB127_28:
+	.local	.LBB128_28
+.LBB128_28:
 	ld	hl, _ticker+53
 	push	hl
 	call	_snprintf
 	ld	de, _ticker+53
-	.local	.LBB127_29
-.LBB127_29:
+	.local	.LBB128_29
+.LBB128_29:
 	pop	hl
 	pop	hl
 	pop	hl
 	pop	hl
-	jp	.LBB127_33
-	.local	.LBB127_30
-.LBB127_30:
+	jp	.LBB128_33
+	.local	.LBB128_30
+.LBB128_30:
 	ld	bc, 80
 	ld.sis	de, 50
 	ld	hl, (ix - 3)
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, de
-	jr	nz, .LBB127_36
+	jr	nz, .LBB128_36
 ; %bb.31:
 	ld	hl, _.str.12.685
 	ld	bc, 34
-	.local	.LBB127_32
-.LBB127_32:
+	.local	.LBB128_32
+.LBB128_32:
 	ld	iy, _ticker+53
 	lea	de, iy + 0
 	ldir
 	lea	de, iy + 0
-	.local	.LBB127_33
-.LBB127_33:
+	.local	.LBB128_33
+.LBB128_33:
 	ex	de, hl
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.LBB127_34
-.LBB127_34:
+	.local	.LBB128_34
+.LBB128_34:
 	ld	hl, _.str.8.681
 	ld	de, 0
 	ld	bc, (ix - 3)
@@ -27635,12 +26730,12 @@ _TickerText:                            ; @TickerText
 	ld	d, b
 	push	de
 	push	hl
-	.local	.LBB127_35
-.LBB127_35:
+	.local	.LBB128_35
+.LBB128_35:
 	push	iy
-	jp	.LBB127_28
-	.local	.LBB127_36
-.LBB127_36:
+	jp	.LBB128_28
+	.local	.LBB128_36
+.LBB128_36:
 	ld	iy, _.str.13.686
 	or	a, a
 	sbc	hl, hl
@@ -27650,28 +26745,28 @@ _TickerText:                            ; @TickerText
 	push	hl
 	push	iy
 	push	bc
-	jp	.LBB127_28
-	.local	.Lfunc_end127
-.Lfunc_end127:
-	.size	_TickerText, .Lfunc_end127-_TickerText
+	jp	.LBB128_28
+	.local	.Lfunc_end128
+.Lfunc_end128:
+	.size	_TickerText, .Lfunc_end128-_TickerText
 	.section	.rodata._TickerText,"a",@progbits
-JTI127_0:
-	d24	.LBB127_6
-	d24	.LBB127_18
-	d24	.LBB127_14
-	d24	.LBB127_16
-	d24	.LBB127_9
-	d24	.LBB127_19
-	d24	.LBB127_21
-	d24	.LBB127_17
-	d24	.LBB127_30
-	d24	.LBB127_13
-	d24	.LBB127_25
-	d24	.LBB127_8
-	d24	.LBB127_11
-	d24	.LBB127_20
-	d24	.LBB127_7
-	d24	.LBB127_15
+JTI128_0:
+	d24	.LBB128_6
+	d24	.LBB128_18
+	d24	.LBB128_14
+	d24	.LBB128_16
+	d24	.LBB128_9
+	d24	.LBB128_19
+	d24	.LBB128_21
+	d24	.LBB128_17
+	d24	.LBB128_30
+	d24	.LBB128_13
+	d24	.LBB128_25
+	d24	.LBB128_8
+	d24	.LBB128_11
+	d24	.LBB128_20
+	d24	.LBB128_7
+	d24	.LBB128_15
                                         ; -- End function
 	.section	.text._TickerPrepare,"ax",@progbits
 	.globl	_TickerPrepare                  ; -- Begin function TickerPrepare
@@ -27682,11 +26777,11 @@ _TickerPrepare:                         ; @TickerPrepare
 	ld	bc, 0
 	ld	a, (_ticker+48)
 	or	a, a
-	jp	z, .LBB128_6
+	jp	z, .LBB129_6
 ; %bb.1:
 	ld	a, (_ticker+52)
 	bit	0, a
-	jp	nz, .LBB128_6
+	jp	nz, .LBB129_6
 ; %bb.2:
 	ld	hl, (ix + 6)
 	ld	d, 0
@@ -27703,12 +26798,12 @@ _TickerPrepare:                         ; @TickerPrepare
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, bc
-	jr	nc, .LBB128_4
+	jr	nc, .LBB129_4
 ; %bb.3:
 	ld	hl, 163840
-	jr	.LBB128_5
-	.local	.LBB128_4
-.LBB128_4:
+	jr	.LBB129_5
+	.local	.LBB129_4
+.LBB129_4:
 	ld	hl, 130760
 	ld	a, iyl
 	ld	bc, (ix + 6)
@@ -27733,20 +26828,20 @@ _TickerPrepare:                         ; @TickerPrepare
 	call	__ladd
 	ld	d, e
 	ld	e, iyl
-	.local	.LBB128_5
-.LBB128_5:
+	.local	.LBB129_5
+.LBB129_5:
 	ld	(_ticker+40), hl
 	ld	a, d
 	ld	(_ticker+43), a
 	ld	a, e
 	ld	(_ticker+52), a
-	.local	.LBB128_6
-.LBB128_6:
+	.local	.LBB129_6
+.LBB129_6:
 	pop	ix
 	ret
-	.local	.Lfunc_end128
-.Lfunc_end128:
-	.size	_TickerPrepare, .Lfunc_end128-_TickerPrepare
+	.local	.Lfunc_end129
+.Lfunc_end129:
+	.size	_TickerPrepare, .Lfunc_end129-_TickerPrepare
                                         ; -- End function
 	.section	.text._TickerUpdate,"ax",@progbits
 	.globl	_TickerUpdate                   ; -- Begin function TickerUpdate
@@ -27757,11 +26852,11 @@ _TickerUpdate:                          ; @TickerUpdate
 	call	__frameset
 	ld	a, (_ticker+48)
 	or	a, a
-	jp	z, .LBB129_25
+	jp	z, .LBB130_25
 ; %bb.1:
 	ld	a, (_ticker+52)
 	bit	0, a
-	jp	z, .LBB129_25
+	jp	z, .LBB130_25
 ; %bb.2:
 	ld	hl, (_ticker+40)
 	ld	a, (_ticker+43)
@@ -27777,7 +26872,7 @@ _TickerUpdate:                          ; @TickerUpdate
 	ld	hl, (ix + 6)
 	ld	e, (ix + 9)
 	call	__lcmpu
-	jr	nc, .LBB129_4
+	jr	nc, .LBB130_4
 ; %bb.3:
 	lea	hl, iy + 0
 	ld	e, d
@@ -27787,9 +26882,9 @@ _TickerUpdate:                          ; @TickerUpdate
 	ld	a, e
 	ld	(_ticker+36), hl
 	ld	(_ticker+39), a
-	jp	.LBB129_25
-	.local	.LBB129_4
-.LBB129_4:
+	jp	.LBB130_25
+	.local	.LBB130_4
+.LBB130_4:
 	or	a, a
 	sbc	hl, hl
 	ld	a, 1
@@ -27807,34 +26902,34 @@ _TickerUpdate:                          ; @TickerUpdate
 	ld	a, (_ticker+48)
 	cp	a, 2
 	ld	l, a
-	jr	nc, .LBB129_6
+	jr	nc, .LBB130_6
 ; %bb.5:
 	ld	l, 1
-	.local	.LBB129_6
-.LBB129_6:
+	.local	.LBB130_6
+.LBB130_6:
 	ld	de, _ticker+4
 	ld	(ix - 3), de
 	ld	de, 0
 	ld	e, l
-	.local	.LBB129_7
-.LBB129_7:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB130_7
+.LBB130_7:                              ; =>This Inner Loop Header: Depth=1
 	dec	de
 	sbc	hl, hl
 	adc	hl, de
-	jp	z, .LBB129_19
-; %bb.8:                                ;   in Loop: Header=BB129_7 Depth=1
+	jp	z, .LBB130_19
+; %bb.8:                                ;   in Loop: Header=BB130_7 Depth=1
 	ld	(ix - 5), a                     ; 1-byte Folded Spill
 	ld	hl, (ix - 3)
 	ld	a, (hl)
 	cp	a, 16
-	jr	nc, .LBB129_11
-; %bb.9:                                ;   in Loop: Header=BB129_7 Depth=1
+	jr	nc, .LBB130_11
+; %bb.9:                                ;   in Loop: Header=BB130_7 Depth=1
 	ld.sis	hl, -15841
 	ld	c, a
 	call	__sshru
 	bit	0, l
-	jr	z, .LBB129_11
-; %bb.10:                               ;   in Loop: Header=BB129_7 Depth=1
+	jr	z, .LBB130_11
+; %bb.10:                               ;   in Loop: Header=BB130_7 Depth=1
 	ld	iyl, b
 	ld	bc, 0
 	ld	c, a
@@ -27842,16 +26937,16 @@ _TickerUpdate:                          ; @TickerUpdate
 	add	hl, bc
 	ld	b, iyl
 	ld	a, (hl)
-	jp	.LBB129_12
-	.local	.LBB129_11
-.LBB129_11:                             ;   in Loop: Header=BB129_7 Depth=1
+	jp	.LBB130_12
+	.local	.LBB130_11
+.LBB130_11:                             ;   in Loop: Header=BB130_7 Depth=1
 	cp	a, 10
 	ccf
                                         ; kill: def $a killed $a
 	sbc	a, a
 	inc	a
-	.local	.LBB129_12
-.LBB129_12:                             ;   in Loop: Header=BB129_7 Depth=1
+	.local	.LBB130_12
+.LBB130_12:                             ;   in Loop: Header=BB130_7 Depth=1
 	ld	iyh, a
 	or	a, a
 	sbc	hl, hl
@@ -27865,50 +26960,50 @@ _TickerUpdate:                          ; @TickerUpdate
 	add	hl, bc
 	ld	a, (hl)
 	cp	a, 16
-	jr	nc, .LBB129_15
-; %bb.13:                               ;   in Loop: Header=BB129_7 Depth=1
+	jr	nc, .LBB130_15
+; %bb.13:                               ;   in Loop: Header=BB130_7 Depth=1
 	ld.sis	hl, -15841
 	ld	c, a
 	call	__sshru
 	bit	0, l
-	jr	z, .LBB129_15
-; %bb.14:                               ;   in Loop: Header=BB129_7 Depth=1
+	jr	z, .LBB130_15
+; %bb.14:                               ;   in Loop: Header=BB130_7 Depth=1
 	ld	bc, 0
 	ld	c, a
 	ld	hl, _switch.table.TickerUpdate.27
 	add	hl, bc
 	ld	a, (hl)
-	jp	.LBB129_16
-	.local	.LBB129_15
-.LBB129_15:                             ;   in Loop: Header=BB129_7 Depth=1
+	jp	.LBB130_16
+	.local	.LBB130_15
+.LBB130_15:                             ;   in Loop: Header=BB130_7 Depth=1
 	cp	a, 10
 	ccf
                                         ; kill: def $a killed $a
 	sbc	a, a
 	inc	a
-	.local	.LBB129_16
-.LBB129_16:                             ;   in Loop: Header=BB129_7 Depth=1
+	.local	.LBB130_16
+.LBB130_16:                             ;   in Loop: Header=BB130_7 Depth=1
 	cp	a, iyh
 	ld	b, (ix - 4)                     ; 1-byte Folded Reload
 	ld	a, (ix - 5)                     ; 1-byte Folded Reload
-	jr	c, .LBB129_18
-; %bb.17:                               ;   in Loop: Header=BB129_7 Depth=1
+	jr	c, .LBB130_18
+; %bb.17:                               ;   in Loop: Header=BB130_7 Depth=1
 	ld	b, iyl
-	.local	.LBB129_18
-.LBB129_18:                             ;   in Loop: Header=BB129_7 Depth=1
+	.local	.LBB130_18
+.LBB130_18:                             ;   in Loop: Header=BB130_7 Depth=1
 	ld	iy, (ix - 3)
 	lea	iy, iy + 4
 	ld	(ix - 3), iy
 	inc	(ix - 4)
-	jp	.LBB129_7
-	.local	.LBB129_19
-.LBB129_19:
+	jp	.LBB130_7
+	.local	.LBB130_19
+.LBB130_19:
 	or	a, a
-	jr	z, .LBB129_25
+	jr	z, .LBB130_25
 ; %bb.20:
 	ld	a, b
 	or	a, a
-	jr	z, .LBB129_25
+	jr	z, .LBB130_25
 ; %bb.21:
 	ld	de, 0
 	ld	e, b
@@ -27925,13 +27020,13 @@ _TickerUpdate:                          ; @TickerUpdate
 	ex	de, hl
 	add	hl, hl
 	add	hl, hl
-	.local	.LBB129_22
-.LBB129_22:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB130_22
+.LBB130_22:                             ; =>This Inner Loop Header: Depth=1
 	ex	de, hl
 	sbc	hl, hl
 	adc	hl, de
-	jr	z, .LBB129_24
-; %bb.23:                               ;   in Loop: Header=BB129_22 Depth=1
+	jr	z, .LBB130_24
+; %bb.23:                               ;   in Loop: Header=BB130_22 Depth=1
 	ld	iy, _ticker
 	add	iy, de
 	ld	hl, (iy - 4)
@@ -27943,19 +27038,19 @@ _TickerUpdate:                          ; @TickerUpdate
 	ex	de, hl
 	ld	de, -4
 	add	hl, de
-	jr	.LBB129_22
-	.local	.LBB129_24
-.LBB129_24:
+	jr	.LBB130_22
+	.local	.LBB130_24
+.LBB130_24:
 	ld	(_ticker), bc
 	ld	(_ticker+3), a
-	.local	.LBB129_25
-.LBB129_25:
+	.local	.LBB130_25
+.LBB130_25:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end129
-.Lfunc_end129:
-	.size	_TickerUpdate, .Lfunc_end129-_TickerUpdate
+	.local	.Lfunc_end130
+.Lfunc_end130:
+	.size	_TickerUpdate, .Lfunc_end130-_TickerUpdate
                                         ; -- End function
 	.section	.text._TickerOffset,"ax",@progbits
 	.globl	_TickerOffset                   ; -- Begin function TickerOffset
@@ -27970,7 +27065,7 @@ _TickerOffset:                          ; @TickerOffset
 	ld	a, (_ticker+39)
 	ld	e, a
 	bit	0, l
-	jp	z, .LBB130_5
+	jp	z, .LBB131_5
 ; %bb.1:
 	ld	hl, _ticker+44
 	ld	hl, (hl)
@@ -27979,13 +27074,13 @@ _TickerOffset:                          ; @TickerOffset
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, bc
-	jr	c, .LBB130_5
+	jr	c, .LBB131_5
 ; %bb.2:
 	ld	bc, 32769
 	xor	a, a
 	ld	hl, (_ticker+36)
 	call	__lcmpu
-	jr	c, .LBB130_5
+	jr	c, .LBB131_5
 ; %bb.3:
 	ld	d, -1
 	ld	iy, 0
@@ -28009,12 +27104,12 @@ _TickerOffset:                          ; @TickerOffset
 	ld	e, l
 	lea	hl, iy + 0
 	call	__lcmpu
-	jr	c, .LBB130_5
+	jr	c, .LBB131_5
 ; %bb.4:
 	push	bc
 	pop	iy
-	.local	.LBB130_5
-.LBB130_5:
+	.local	.LBB131_5
+.LBB131_5:
 	ex	de, hl
 	ld	e, iyl
 	ld	d, iyh
@@ -28022,9 +27117,9 @@ _TickerOffset:                          ; @TickerOffset
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end130
-.Lfunc_end130:
-	.size	_TickerOffset, .Lfunc_end130-_TickerOffset
+	.local	.Lfunc_end131
+.Lfunc_end131:
+	.size	_TickerOffset, .Lfunc_end131-_TickerOffset
                                         ; -- End function
 	.section	.text._TickerObserve,"ax",@progbits
 	.globl	_TickerObserve                  ; -- Begin function TickerObserve
@@ -28052,12 +27147,12 @@ _TickerObserve:                         ; @TickerObserve
 	ld	iyl, e
 	ld	iyh, d
 	ex	de, hl
-	.local	.LBB131_1
-.LBB131_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB132_1
+.LBB132_1:                              ; =>This Inner Loop Header: Depth=1
 	ld	e, a
 	or	a, a
-	jr	z, .LBB131_4
-; %bb.2:                                ;   in Loop: Header=BB131_1 Depth=1
+	jr	z, .LBB132_4
+; %bb.2:                                ;   in Loop: Header=BB132_1 Depth=1
 	ld	a, e
 	dec	a
 	ld	hl, 1
@@ -28068,7 +27163,7 @@ _TickerObserve:                         ; @TickerObserve
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB131_1
+	jr	z, .LBB132_1
 ; %bb.3:
 	ld	iy, 0
 	lea	bc, iy + 0
@@ -28088,8 +27183,8 @@ _TickerObserve:                         ; @TickerObserve
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB131_4
-.LBB131_4:                              ; %.loopexit5
+	.local	.LBB132_4
+.LBB132_4:                              ; %.loopexit5
 	ld	iy, (ix + 6)
 	ld	l, (iy + 28)
 	ld	a, (_ticker+50)
@@ -28099,13 +27194,13 @@ _TickerObserve:                         ; @TickerObserve
 	ld	a, e
 	and	a, l
 	ld	b, a
-	.local	.LBB131_5
-.LBB131_5:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB132_5
+.LBB132_5:                              ; =>This Inner Loop Header: Depth=1
 	ld	de, (ix - 6)
 	sbc	hl, hl
 	adc	hl, de
-	jp	z, .LBB131_8
-; %bb.6:                                ;   in Loop: Header=BB131_5 Depth=1
+	jp	z, .LBB132_8
+; %bb.6:                                ;   in Loop: Header=BB132_5 Depth=1
 	push	de
 	pop	hl
 	dec	hl
@@ -28119,7 +27214,7 @@ _TickerObserve:                         ; @TickerObserve
 	and	a, l
 	ld	l, a
 	or	a, a
-	jp	z, .LBB131_5
+	jp	z, .LBB132_5
 ; %bb.7:
 	ld	hl, _TickerObserve.deaths
 	push	hl
@@ -28139,8 +27234,8 @@ _TickerObserve:                         ; @TickerObserve
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB131_8
-.LBB131_8:                              ; %.loopexit4
+	.local	.LBB132_8
+.LBB132_8:                              ; %.loopexit4
 	ld	a, (iy + 30)
 	ld	(ix - 9), a
 	ld	hl, (ix + 9)
@@ -28151,16 +27246,16 @@ _TickerObserve:                         ; @TickerObserve
 	ld	(ix - 14), l
 	ld	(ix - 13), h
 	ld	de, 0
-	.local	.LBB131_9
-.LBB131_9:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB132_9
+.LBB132_9:                              ; =>This Inner Loop Header: Depth=1
 	ld	(ix - 15), l
 	push	de
 	pop	hl
 	ld	bc, 7
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB131_17
-; %bb.10:                               ;   in Loop: Header=BB131_9 Depth=1
+	jp	z, .LBB132_17
+; %bb.10:                               ;   in Loop: Header=BB132_9 Depth=1
 	ld	a, (_ticker+49)
 	push	de
 	pop	bc
@@ -28182,8 +27277,8 @@ _TickerObserve:                         ; @TickerObserve
 	and	a, e
 	ld	l, a
 	or	a, a
-	jr	z, .LBB131_12
-; %bb.11:                               ;   in Loop: Header=BB131_9 Depth=1
+	jr	z, .LBB132_12
+; %bb.11:                               ;   in Loop: Header=BB132_9 Depth=1
 	or	a, a
 	sbc	hl, hl
 	push	hl
@@ -28199,8 +27294,8 @@ _TickerObserve:                         ; @TickerObserve
 	pop	hl
 	ld	c, (iy + 30)
 	ld	iy, (ix - 9)
-	.local	.LBB131_12
-.LBB131_12:                             ;   in Loop: Header=BB131_9 Depth=1
+	.local	.LBB132_12
+.LBB132_12:                             ;   in Loop: Header=BB132_9 Depth=1
 	or	a, a
 	sbc	hl, hl
 	ld	l, c
@@ -28211,11 +27306,11 @@ _TickerObserve:                         ; @TickerObserve
 	ld	l, a
 	or	a, a
 	ld	a, 1
-	jr	nz, .LBB131_14
-; %bb.13:                               ;   in Loop: Header=BB131_9 Depth=1
+	jr	nz, .LBB132_14
+; %bb.13:                               ;   in Loop: Header=BB132_9 Depth=1
 	ld	a, 0
-	.local	.LBB131_14
-.LBB131_14:                             ;   in Loop: Header=BB131_9 Depth=1
+	.local	.LBB132_14
+.LBB132_14:                             ;   in Loop: Header=BB132_9 Depth=1
 	ld	iyl, a
 	ld	hl, (ix - 6)
 	ld	de, (hl)
@@ -28235,11 +27330,11 @@ _TickerObserve:                         ; @TickerObserve
 	sbc.sis	hl, de
 	ld	bc, (ix - 12)
 	ld	l, c
-	jr	c, .LBB131_16
-; %bb.15:                               ;   in Loop: Header=BB131_9 Depth=1
+	jr	c, .LBB132_16
+; %bb.15:                               ;   in Loop: Header=BB132_9 Depth=1
 	ld	l, a
-	.local	.LBB131_16
-.LBB131_16:                             ;   in Loop: Header=BB131_9 Depth=1
+	.local	.LBB132_16
+.LBB132_16:                             ;   in Loop: Header=BB132_9 Depth=1
 	ld	e, (ix - 14)
 	ld	d, (ix - 13)
 	ex	de, hl
@@ -28258,9 +27353,9 @@ _TickerObserve:                         ; @TickerObserve
 	lea	iy, iy + 6
 	ld	(ix - 6), iy
 	ld	iy, (ix + 6)
-	jp	.LBB131_9
-	.local	.LBB131_17
-.LBB131_17:
+	jp	.LBB132_9
+	.local	.LBB132_17
+.LBB132_17:
 	ld	a, (ix - 9)                     ; 1-byte Folded Reload
 	ld	(_ticker+49), a
 	ld	hl, (iy + 26)
@@ -28274,27 +27369,27 @@ _TickerObserve:                         ; @TickerObserve
 	ld	(_ticker+50), a
 	ld	a, (_ticker+48)
 	or	a, a
-	jp	nz, .LBB131_39
+	jp	nz, .LBB132_39
 ; %bb.18:
 	ld	a, (iy + 33)
 	or	a, a
-	jp	z, .LBB131_39
+	jp	z, .LBB132_39
 ; %bb.19:
 	ld	a, (iy + 34)
 	or	a, a
-	jp	nz, .LBB131_39
+	jp	nz, .LBB132_39
 ; %bb.20:
 	ld	hl, (iy + 8)
 	ld	e, (iy + 11)
 	call	__lcmpzero
-	jp	z, .LBB131_39
+	jp	z, .LBB132_39
 ; %bb.21:
 	ld	e, 7
 	ld	a, l
 	and	a, e
 	ld	l, a
 	or	a, a
-	jp	nz, .LBB131_39
+	jp	nz, .LBB132_39
 ; %bb.22:
 	or	a, a
 	sbc	hl, hl
@@ -28312,12 +27407,12 @@ _TickerObserve:                         ; @TickerObserve
 	ld	(ix - 17), h
 	ld	b, h
 	ld	a, 4
-	.local	.LBB131_23
-.LBB131_23:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB132_23
+.LBB132_23:                             ; =>This Inner Loop Header: Depth=1
 	ld	(ix - 6), a                     ; 1-byte Folded Spill
 	or	a, a
-	jp	z, .LBB131_39
-; %bb.24:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	z, .LBB132_39
+; %bb.24:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, (_ticker+51)
 	ld	l, a
 	inc	a
@@ -28327,8 +27422,8 @@ _TickerObserve:                         ; @TickerObserve
 	ld	(_ticker+51), a
 	ld	a, l
 	or	a, a
-	jr	nz, .LBB131_26
-; %bb.25:                               ;   in Loop: Header=BB131_23 Depth=1
+	jr	nz, .LBB132_26
+; %bb.25:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, c
 	or	a, a
 	ld	l, c
@@ -28338,14 +27433,14 @@ _TickerObserve:                         ; @TickerObserve
 	ld	l, a
 	ld	(ix - 9), hl
 	ld	d, 10
-	jp	nz, .LBB131_33
-	jp	.LBB131_37
-	.local	.LBB131_26
-.LBB131_26:                             ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_33
+	jp	.LBB132_37
+	.local	.LBB132_26
+.LBB132_26:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, l
 	cp	a, 1
-	jp	nz, .LBB131_28
-; %bb.27:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_28
+; %bb.27:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	hl, (ix - 21)
 	ld	hl, (hl)
 	add.sis	hl, bc
@@ -28357,31 +27452,31 @@ _TickerObserve:                         ; @TickerObserve
 	ld	l, (ix - 15)                    ; 1-byte Folded Reload
 	ld	(ix - 9), hl
 	ld	d, 11
-	jp	nz, .LBB131_33
-	jp	.LBB131_37
-	.local	.LBB131_28
-.LBB131_28:                             ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_33
+	jp	.LBB132_37
+	.local	.LBB132_28
+.LBB132_28:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, l
 	cp	a, 2
-	jr	nz, .LBB131_31
-; %bb.29:                               ;   in Loop: Header=BB131_23 Depth=1
+	jr	nz, .LBB132_31
+; %bb.29:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, (iy + 35)
 	cp	a, 2
-	jp	c, .LBB131_37
-; %bb.30:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	c, .LBB132_37
+; %bb.30:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	hl, (iy + 22)
 	ld	(ix - 12), hl
 	xor	a, a
 	ld	l, a
 	ld	(ix - 9), hl
 	ld	d, 12
-	jp	.LBB131_33
-	.local	.LBB131_31
-.LBB131_31:                             ;   in Loop: Header=BB131_23 Depth=1
+	jp	.LBB132_33
+	.local	.LBB132_31
+.LBB132_31:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, (iy + 32)
 	cp	a, 2
-	jp	nz, .LBB131_37
-; %bb.32:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_37
+; %bb.32:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	e, (ix - 18)
 	ld	d, (ix - 17)
 	ld	e, (iy + 36)
@@ -28396,22 +27491,22 @@ _TickerObserve:                         ; @TickerObserve
 	ld	l, a
 	ld	(ix - 9), hl
 	ld	d, 13
-	.local	.LBB131_33
-.LBB131_33:                             ;   in Loop: Header=BB131_23 Depth=1
+	.local	.LBB132_33
+.LBB132_33:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, (_ticker+32)
 	ld	e, a
 	ld	a, (_ticker+33)
 	ld	l, a
 	ld	a, d
 	cp	a, e
-	jp	nz, .LBB131_36
-; %bb.34:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_36
+; %bb.34:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	e, l
 	ld	hl, (ix - 9)
 	ld	a, l
 	cp	a, e
-	jp	nz, .LBB131_36
-; %bb.35:                               ;   in Loop: Header=BB131_23 Depth=1
+	jp	nz, .LBB132_36
+; %bb.35:                               ;   in Loop: Header=BB132_23 Depth=1
 	ld	hl, _ticker+34
 	ld	a, d
 	ld	de, (hl)
@@ -28420,9 +27515,9 @@ _TickerObserve:                         ; @TickerObserve
 	or	a, a
 	sbc.sis	hl, de
 	ld	d, a
-	jr	z, .LBB131_37
-	.local	.LBB131_36
-.LBB131_36:                             ;   in Loop: Header=BB131_23 Depth=1
+	jr	z, .LBB132_37
+	.local	.LBB132_36
+.LBB132_36:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	(ix - 22), d
 	or	a, a
 	sbc	hl, hl
@@ -28442,14 +27537,14 @@ _TickerObserve:                         ; @TickerObserve
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	nz, .LBB131_38
-	.local	.LBB131_37
-.LBB131_37:                             ;   in Loop: Header=BB131_23 Depth=1
+	jr	nz, .LBB132_38
+	.local	.LBB132_37
+.LBB132_37:                             ;   in Loop: Header=BB132_23 Depth=1
 	ld	a, (ix - 6)                     ; 1-byte Folded Reload
 	dec	a
-	jp	.LBB131_23
-	.local	.LBB131_38
-.LBB131_38:
+	jp	.LBB132_23
+	.local	.LBB132_38
+.LBB132_38:
 	push	hl
 	ld	l, (ix - 18)
 	ld	h, (ix - 17)
@@ -28500,14 +27595,14 @@ _TickerObserve:                         ; @TickerObserve
 	ld	a, e
 	ld	(_ticker+32), hl
 	ld	(_ticker+35), a
-	.local	.LBB131_39
-.LBB131_39:                             ; %.loopexit
+	.local	.LBB132_39
+.LBB132_39:                             ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end131
-.Lfunc_end131:
-	.size	_TickerObserve, .Lfunc_end131-_TickerObserve
+	.local	.Lfunc_end132
+.Lfunc_end132:
+	.size	_TickerObserve, .Lfunc_end132-_TickerObserve
                                         ; -- End function
 	.section	.text._TickerRender,"ax",@progbits
 	.globl	_TickerRender                   ; -- Begin function TickerRender
@@ -28519,14 +27614,14 @@ _TickerRender:                          ; @TickerRender
 	call	_TickerText
 	ld	a, (_ticker+48)
 	or	a, a
-	jp	z, .LBB132_10
+	jp	z, .LBB133_10
 ; %bb.1:
 	ld	(ix - 3), hl
 	ld	hl, 316
 	ld	de, 29
 	ld	a, (_ticker+52)
 	bit	0, a
-	jr	nz, .LBB132_3
+	jr	nz, .LBB133_3
 ; %bb.2:
 	ld	hl, (ix - 3)
 	push	hl
@@ -28537,8 +27632,8 @@ _TickerRender:                          ; @TickerRender
 	ld	de, 29
 	pop	hl
 	ld	hl, 316
-	.local	.LBB132_3
-.LBB132_3:
+	.local	.LBB133_3
+.LBB133_3:
 	push	de
 	push	hl
 	ld	hl, 20
@@ -28559,30 +27654,30 @@ _TickerRender:                          ; @TickerRender
 	cp	a, 16
 	push	de
 	pop	hl
-	jr	nc, .LBB132_9
+	jr	nc, .LBB133_9
 ; %bb.4:
 	ld.sis	hl, -15841
 	ld	c, a
 	call	__sshru
 	bit	0, l
 	ex	de, hl
-	jr	z, .LBB132_9
+	jr	z, .LBB133_9
 ; %bb.5:
 	ld	l, -32
 	cp	a, 15
-	jr	z, .LBB132_7
+	jr	z, .LBB133_7
 ; %bb.6:
 	ld	a, 0
-	jr	.LBB132_8
-	.local	.LBB132_7
-.LBB132_7:
+	jr	.LBB133_8
+	.local	.LBB133_7
+.LBB133_7:
 	ld	a, -1
-	.local	.LBB132_8
-.LBB132_8:
+	.local	.LBB133_8
+.LBB133_8:
 	or	a, l
 	ld	l, a
-	.local	.LBB132_9
-.LBB132_9:                              ; %TickerPriority.exit
+	.local	.LBB133_9
+.LBB133_9:                              ; %TickerPriority.exit
 	push	hl
 	call	_gfx_SetTextFGColor
 	pop	hl
@@ -28623,14 +27718,14 @@ _TickerRender:                          ; @TickerRender
 	push	hl
 	call	_gfx_SetTextFGColor
 	pop	hl
-	.local	.LBB132_10
-.LBB132_10:
+	.local	.LBB133_10
+.LBB133_10:
 	pop	hl
 	pop	ix
 	ret
-	.local	.Lfunc_end132
-.Lfunc_end132:
-	.size	_TickerRender, .Lfunc_end132-_TickerRender
+	.local	.Lfunc_end133
+.Lfunc_end133:
+	.size	_TickerRender, .Lfunc_end133-_TickerRender
                                         ; -- End function
 	.section	.text._RecountRegion,"ax",@progbits
 	.globl	_RecountRegion                  ; -- Begin function RecountRegion
@@ -28668,13 +27763,13 @@ _RecountRegion:                         ; @RecountRegion
 	ld	(ix - 6), h
 	ld	(ix - 9), l
 	ld	(ix - 8), h
-	.local	.LBB133_1
-.LBB133_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB134_1
+.LBB134_1:                              ; =>This Inner Loop Header: Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB133_9
-; %bb.2:                                ;   in Loop: Header=BB133_1 Depth=1
+	jr	z, .LBB134_9
+; %bb.2:                                ;   in Loop: Header=BB134_1 Depth=1
 	ld	(ix - 3), iy
 	ld	iy, (ix + 6)
 	ld	hl, (iy + 3)
@@ -28683,8 +27778,8 @@ _RecountRegion:                         ; @RecountRegion
 	add	hl, bc
 	ld	a, (hl)
 	cp	a, -32
-	jr	nz, .LBB133_4
-; %bb.3:                                ;   in Loop: Header=BB133_1 Depth=1
+	jr	nz, .LBB134_4
+; %bb.3:                                ;   in Loop: Header=BB134_1 Depth=1
 	ld	l, (ix - 5)
 	ld	h, (ix - 4)
 	inc.sis	hl
@@ -28692,12 +27787,12 @@ _RecountRegion:                         ; @RecountRegion
 	ld	(ix - 4), h
 	ld	(iy + 12), l
 	ld	(iy + 13), h
-	jr	.LBB133_8
-	.local	.LBB133_4
-.LBB133_4:                              ;   in Loop: Header=BB133_1 Depth=1
+	jr	.LBB134_8
+	.local	.LBB134_4
+.LBB134_4:                              ;   in Loop: Header=BB134_1 Depth=1
 	cp	a, -1
-	jr	nz, .LBB133_6
-; %bb.5:                                ;   in Loop: Header=BB133_1 Depth=1
+	jr	nz, .LBB134_6
+; %bb.5:                                ;   in Loop: Header=BB134_1 Depth=1
 	ld	l, (ix - 7)
 	ld	h, (ix - 6)
 	inc.sis	hl
@@ -28705,12 +27800,12 @@ _RecountRegion:                         ; @RecountRegion
 	ld	(ix - 6), h
 	ld	(iy + 10), l
 	ld	(iy + 11), h
-	jr	.LBB133_8
-	.local	.LBB133_6
-.LBB133_6:                              ;   in Loop: Header=BB133_1 Depth=1
+	jr	.LBB134_8
+	.local	.LBB134_6
+.LBB134_6:                              ;   in Loop: Header=BB134_1 Depth=1
 	cp	a, 64
-	jr	nz, .LBB133_8
-; %bb.7:                                ;   in Loop: Header=BB133_1 Depth=1
+	jr	nz, .LBB134_8
+; %bb.7:                                ;   in Loop: Header=BB134_1 Depth=1
 	ld	l, (ix - 9)
 	ld	h, (ix - 8)
 	inc.sis	hl
@@ -28718,21 +27813,21 @@ _RecountRegion:                         ; @RecountRegion
 	ld	(ix - 8), h
 	ld	(iy + 14), l
 	ld	(iy + 15), h
-	.local	.LBB133_8
-.LBB133_8:                              ;   in Loop: Header=BB133_1 Depth=1
+	.local	.LBB134_8
+.LBB134_8:                              ;   in Loop: Header=BB134_1 Depth=1
 	push	de
 	pop	bc
 	inc	bc
 	ld	iy, (ix - 3)
-	jr	.LBB133_1
-	.local	.LBB133_9
-.LBB133_9:
+	jr	.LBB134_1
+	.local	.LBB134_9
+.LBB134_9:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end133
-.Lfunc_end133:
-	.size	_RecountRegion, .Lfunc_end133-_RecountRegion
+	.local	.Lfunc_end134
+.Lfunc_end134:
+	.size	_RecountRegion, .Lfunc_end134-_RecountRegion
                                         ; -- End function
 	.section	.text._CountWorld,"ax",@progbits
 	.globl	_CountWorld                     ; -- Begin function CountWorld
@@ -28751,15 +27846,15 @@ _CountWorld:                            ; @CountWorld
 	ld	(ix - 4), h
 	ld	(ix - 11), l
 	ld	(ix - 10), h
-	.local	.LBB134_1
-.LBB134_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB135_1
+.LBB135_1:                              ; =>This Inner Loop Header: Depth=1
 	ld	hl, (ix - 3)
 	push	de
 	pop	bc
 	or	a, a
 	sbc	hl, de
-	jp	z, .LBB134_3
-; %bb.2:                                ;   in Loop: Header=BB134_1 Depth=1
+	jp	z, .LBB135_3
+; %bb.2:                                ;   in Loop: Header=BB135_1 Depth=1
 	ld	iy, (ix + 9)
 	ld	de, (ix - 3)
 	add	iy, de
@@ -28794,9 +27889,9 @@ _CountWorld:                            ; @CountWorld
 	ld	(ix - 10), h
 	push	bc
 	pop	de
-	jp	.LBB134_1
-	.local	.LBB134_3
-.LBB134_3:
+	jp	.LBB135_1
+	.local	.LBB135_3
+.LBB135_3:
 	ld	iy, (ix + 6)
 	ld	l, (ix - 11)
 	ld	h, (ix - 10)
@@ -28814,9 +27909,9 @@ _CountWorld:                            ; @CountWorld
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end134
-.Lfunc_end134:
-	.size	_CountWorld, .Lfunc_end134-_CountWorld
+	.local	.Lfunc_end135
+.Lfunc_end135:
+	.size	_CountWorld, .Lfunc_end135-_CountWorld
                                         ; -- End function
 	.section	.text._SetCell,"ax",@progbits
 	.globl	_SetCell                        ; -- Begin function SetCell
@@ -28842,7 +27937,7 @@ _SetCell:                               ; @SetCell
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jr	nc, .LBB135_8
+	jr	nc, .LBB136_8
 ; %bb.1:
 	ld	b, (ix + 12)
 	ld	hl, (iy + 3)
@@ -28851,31 +27946,31 @@ _SetCell:                               ; @SetCell
 	ld	c, (hl)
 	ld	a, b
 	cp	a, -32
-	jr	nz, .LBB135_4
+	jr	nz, .LBB136_4
 ; %bb.2:
 	ld	a, c
 	cp	a, -1
-	jr	nz, .LBB135_4
+	jr	nz, .LBB136_4
 ; %bb.3:
 	ld	bc, 10
 	ld	de, 12
-	jr	.LBB135_7
-	.local	.LBB135_4
-.LBB135_4:
+	jr	.LBB136_7
+	.local	.LBB136_4
+.LBB136_4:
 	ld	a, b
 	cp	a, 64
-	jr	nz, .LBB135_8
+	jr	nz, .LBB136_8
 ; %bb.5:
 	ld	a, c
 	cp	a, -32
 	ld	a, 0
-	jr	nz, .LBB135_9
+	jr	nz, .LBB136_9
 ; %bb.6:
 	ld	hl, 14
 	ld	bc, 12
 	ex	de, hl
-	.local	.LBB135_7
-.LBB135_7:
+	.local	.LBB136_7
+.LBB136_7:
 	ld	a, 1
 	lea	hl, iy + 0
 	add	hl, bc
@@ -28898,18 +27993,18 @@ _SetCell:                               ; @SetCell
 	add	iy, de
 	ld	l, (ix + 12)
 	ld	(iy), l
-	jr	.LBB135_9
-	.local	.LBB135_8
-.LBB135_8:
+	jr	.LBB136_9
+	.local	.LBB136_8
+.LBB136_8:
 	xor	a, a
-	.local	.LBB135_9
-.LBB135_9:
+	.local	.LBB136_9
+.LBB136_9:
 	pop	hl
 	pop	ix
 	ret
-	.local	.Lfunc_end135
-.Lfunc_end135:
-	.size	_SetCell, .Lfunc_end135-_SetCell
+	.local	.Lfunc_end136
+.Lfunc_end136:
+	.size	_SetCell, .Lfunc_end136-_SetCell
                                         ; -- End function
 	.section	.text._InfectCoordinate,"ax",@progbits
 	.globl	_InfectCoordinate               ; -- Begin function InfectCoordinate
@@ -28922,14 +28017,14 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	xor	a, a
 	ld	de, 0
 	ld	bc, 7
-	.local	.LBB136_1
-.LBB136_1:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB137_1
+.LBB137_1:                              ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB136_9
-; %bb.2:                                ;   in Loop: Header=BB136_1 Depth=1
+	jp	z, .LBB137_9
+; %bb.2:                                ;   in Loop: Header=BB137_1 Depth=1
 	ld	(ix - 6), de
 	ld	a, (iy + 8)
 	ld	bc, 0
@@ -28954,14 +28049,14 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB136_7
-; %bb.3:                                ;   in Loop: Header=BB136_1 Depth=1
+	jp	m, .LBB137_7
+; %bb.3:                                ;   in Loop: Header=BB137_1 Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB136_7
-; %bb.4:                                ;   in Loop: Header=BB136_1 Depth=1
+	jp	m, .LBB137_7
+; %bb.4:                                ;   in Loop: Header=BB137_1 Depth=1
 	lea	de, iy + 0
 	ld	iy, (ix - 3)
 	ld	a, (iy + 6)
@@ -28972,8 +28067,8 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	ld	c, a
 	ld	hl, (ix - 9)
 	sbc	hl, bc
-	jr	nc, .LBB136_7
-; %bb.5:                                ;   in Loop: Header=BB136_1 Depth=1
+	jr	nc, .LBB137_7
+; %bb.5:                                ;   in Loop: Header=BB137_1 Depth=1
 	ld	iy, (ix - 3)
 	or	a, a
 	sbc	hl, hl
@@ -28985,8 +28080,8 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	pop	hl
 	sbc	hl, bc
 	ld	bc, (ix - 12)
-	jr	nc, .LBB136_7
-; %bb.6:                                ;   in Loop: Header=BB136_1 Depth=1
+	jr	nc, .LBB137_7
+; %bb.6:                                ;   in Loop: Header=BB137_1 Depth=1
 	ex	de, hl
 	call	__imulu
 	ld	de, (ix - 9)
@@ -29001,18 +28096,18 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	nz, .LBB136_8
-	.local	.LBB136_7
-.LBB136_7:                              ;   in Loop: Header=BB136_1 Depth=1
+	jr	nz, .LBB137_8
+	.local	.LBB137_7
+.LBB137_7:                              ;   in Loop: Header=BB137_1 Depth=1
 	ld	de, (ix - 6)
 	inc	de
 	ld	iy, (ix - 3)
 	lea	iy, iy + 16
 	ld	bc, 7
 	xor	a, a
-	jp	.LBB136_1
-	.local	.LBB136_8
-.LBB136_8:
+	jp	.LBB137_1
+	.local	.LBB137_8
+.LBB137_8:
 	ld	hl, 1
 	ld	bc, (ix - 6)
 	call	__ishl
@@ -29029,14 +28124,14 @@ _InfectCoordinate:                      ; @InfectCoordinate
 	sbc	hl, de
                                         ; kill: def $a killed $a
 	sbc	a, a
-	.local	.LBB136_9
-.LBB136_9:                              ; %.loopexit
+	.local	.LBB137_9
+.LBB137_9:                              ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end136
-.Lfunc_end136:
-	.size	_InfectCoordinate, .Lfunc_end136-_InfectCoordinate
+	.local	.Lfunc_end137
+.Lfunc_end137:
+	.size	_InfectCoordinate, .Lfunc_end137-_InfectCoordinate
                                         ; -- End function
 	.section	.text._SeedRegion,"ax",@progbits
 	.globl	_SeedRegion                     ; -- Begin function SeedRegion
@@ -29049,12 +28144,12 @@ _SeedRegion:                            ; @SeedRegion
 	ld	l, 0
 	ld	de, 0
 	cp	a, 7
-	jr	c, .LBB137_2
+	jr	c, .LBB138_2
 ; %bb.1:
 	ld	a, l
-	jr	.LBB137_5
-	.local	.LBB137_2
-.LBB137_2:
+	jr	.LBB138_5
+	.local	.LBB138_2
+.LBB138_2:
 	ld	iy, (ix + 6)
 	push	de
 	pop	hl
@@ -29070,7 +28165,7 @@ _SeedRegion:                            ; @SeedRegion
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB137_4
+	jr	z, .LBB138_4
 ; %bb.3:
 	ld	a, (iy + 6)
 	push	de
@@ -29084,17 +28179,17 @@ _SeedRegion:                            ; @SeedRegion
 	ex	de, hl
 	sbc	hl, hl
 	adc	hl, de
-	jr	nz, .LBB137_6
-	.local	.LBB137_4
-.LBB137_4:
+	jr	nz, .LBB138_6
+	.local	.LBB138_4
+.LBB138_4:
 	xor	a, a
-	.local	.LBB137_5
-.LBB137_5:                              ; %.loopexit
+	.local	.LBB138_5
+.LBB138_5:                              ; %.loopexit
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.LBB137_6
-.LBB137_6:
+	.local	.LBB138_6
+.LBB138_6:
 	ld	hl, (ix + 15)
 	push	de
 	ld	(ix - 6), de
@@ -29107,14 +28202,14 @@ _SeedRegion:                            ; @SeedRegion
 	ld	iy, 224
 	push	bc
 	pop	hl
-	.local	.LBB137_7
-.LBB137_7:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB138_7
+.LBB138_7:                              ; =>This Inner Loop Header: Depth=1
 	ld	(ix - 9), hl
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB137_4
-; %bb.8:                                ;   in Loop: Header=BB137_7 Depth=1
+	jr	z, .LBB138_4
+; %bb.8:                                ;   in Loop: Header=BB138_7 Depth=1
 	push	de
 	pop	hl
 	call	__iremu
@@ -29134,7 +28229,7 @@ _SeedRegion:                            ; @SeedRegion
 	ld	hl, (ix - 9)
 	dec	hl
 	bit	0, a
-	jr	z, .LBB137_7
+	jr	z, .LBB138_7
 ; %bb.9:
 	ld	hl, 1
 	ld	c, (ix + 12)
@@ -29146,10 +28241,10 @@ _SeedRegion:                            ; @SeedRegion
 	ld	l, a
 	ld	(iy + 30), l
 	ld	a, 1
-	jp	.LBB137_5
-	.local	.Lfunc_end137
-.Lfunc_end137:
-	.size	_SeedRegion, .Lfunc_end137-_SeedRegion
+	jp	.LBB138_5
+	.local	.Lfunc_end138
+.Lfunc_end138:
+	.size	_SeedRegion, .Lfunc_end138-_SeedRegion
                                         ; -- End function
 	.section	.text._StepRegion,"ax",@progbits
 	.globl	_StepRegion                     ; -- Begin function StepRegion
@@ -29162,9 +28257,9 @@ _StepRegion:                            ; @StepRegion
 	ld	de, 0
 	push	de
 	pop	hl
-	.local	.LBB138_1
-.LBB138_1:                              ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB138_3 Depth 2
+	.local	.LBB139_1
+.LBB139_1:                              ; =>This Loop Header: Depth=1
+                                        ;     Child Loop BB139_3 Depth 2
 	ld	a, (iy + 6)
 	push	de
 	pop	bc
@@ -29172,14 +28267,14 @@ _StepRegion:                            ; @StepRegion
 	ld	(ix - 3), hl
 	or	a, a
 	sbc	hl, de
-	jp	nc, .LBB138_19
+	jp	nc, .LBB139_19
 ; %bb.2:                                ; %.preheader.preheader
-                                        ;   in Loop: Header=BB138_1 Depth=1
+                                        ;   in Loop: Header=BB139_1 Depth=1
 	push	bc
 	pop	hl
-	.local	.LBB138_3
-.LBB138_3:                              ; %.preheader
-                                        ;   Parent Loop BB138_1 Depth=1
+	.local	.LBB139_3
+.LBB139_3:                              ; %.preheader
+                                        ;   Parent Loop BB139_1 Depth=1
                                         ; =>  This Inner Loop Header: Depth=2
 	push	bc
 	pop	de
@@ -29189,8 +28284,8 @@ _StepRegion:                            ; @StepRegion
 	pop	bc
 	or	a, a
 	sbc	hl, de
-	jp	nc, .LBB138_18
-; %bb.4:                                ;   in Loop: Header=BB138_3 Depth=2
+	jp	nc, .LBB139_18
+; %bb.4:                                ;   in Loop: Header=BB139_3 Depth=2
 	ld	iy, (ix + 6)
 	ld	a, (iy + 6)
 	ld	de, 0
@@ -29209,22 +28304,22 @@ _StepRegion:                            ; @StepRegion
 	add	hl, de
 	ld	a, (hl)
 	cp	a, -32
-	jp	nz, .LBB138_17
-; %bb.5:                                ;   in Loop: Header=BB138_3 Depth=2
+	jp	nz, .LBB139_17
+; %bb.5:                                ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, (ix + 9)
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jp	z, .LBB138_13
-; %bb.6:                                ;   in Loop: Header=BB138_3 Depth=2
+	jp	z, .LBB139_13
+; %bb.6:                                ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, (ix + 9)
                                         ; kill: def $hl killed $hl killed $uhl
 	ld.sis	de, 10000
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB138_8
+	jr	nc, .LBB139_8
 ; %bb.7:                                ; %Roll.exit
-                                        ;   in Loop: Header=BB138_3 Depth=2
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, 10000
 	push	hl
 	ld	hl, (ix + 15)
@@ -29233,10 +28328,10 @@ _StepRegion:                            ; @StepRegion
 	ld	de, (ix + 9)
 	or	a, a
 	sbc.sis	hl, de
-	jp	nc, .LBB138_13
-	.local	.LBB138_8
-.LBB138_8:                              ; %Roll.exit.thread
-                                        ;   in Loop: Header=BB138_3 Depth=2
+	jp	nc, .LBB139_13
+	.local	.LBB139_8
+.LBB139_8:                              ; %Roll.exit.thread
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, 3
 	push	hl
 	ld	hl, (ix + 15)
@@ -29267,12 +28362,12 @@ _StepRegion:                            ; @StepRegion
 	ld	hl, (ix - 12)
 	add	hl, bc
 	ld	(ix - 12), hl
-	jr	nc, .LBB138_13
+	jr	nc, .LBB139_13
 ; %bb.9:                                ; %Roll.exit.thread
-                                        ;   in Loop: Header=BB138_3 Depth=2
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	bit	0, a
-	jr	z, .LBB138_13
-; %bb.10:                               ;   in Loop: Header=BB138_3 Depth=2
+	jr	z, .LBB139_13
+; %bb.10:                               ;   in Loop: Header=BB139_3 Depth=2
 	lea	hl, iy + 0
 	ld	iy, (ix + 6)
 	ld	a, (iy + 6)
@@ -29287,8 +28382,8 @@ _StepRegion:                            ; @StepRegion
 	or	a, a
 	sbc	hl, de
 	lea	de, iy + 0
-	jr	c, .LBB138_13
-; %bb.11:                               ;   in Loop: Header=BB138_3 Depth=2
+	jr	c, .LBB139_13
+; %bb.11:                               ;   in Loop: Header=BB139_3 Depth=2
 	ld	iy, (ix + 6)
 	ld	a, (iy + 7)
 	or	a, a
@@ -29296,8 +28391,8 @@ _StepRegion:                            ; @StepRegion
 	ld	l, a
 	sbc	hl, de
 	ld	hl, (ix - 18)
-	jr	c, .LBB138_13
-; %bb.12:                               ;   in Loop: Header=BB138_3 Depth=2
+	jr	c, .LBB139_13
+; %bb.12:                               ;   in Loop: Header=BB139_3 Depth=2
 	call	__imulu
 	ex	de, hl
 	ld	iy, (ix - 12)
@@ -29311,24 +28406,24 @@ _StepRegion:                            ; @StepRegion
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB138_13
-.LBB138_13:                             ; %Roll.exit.thread5
-                                        ;   in Loop: Header=BB138_3 Depth=2
+	.local	.LBB139_13
+.LBB139_13:                             ; %Roll.exit.thread5
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, (ix + 12)
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
 	ld	iy, (ix + 6)
-	jp	z, .LBB138_17
-; %bb.14:                               ;   in Loop: Header=BB138_3 Depth=2
+	jp	z, .LBB139_17
+; %bb.14:                               ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, (ix + 12)
                                         ; kill: def $hl killed $hl killed $uhl
 	ld.sis	de, 10000
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB138_16
+	jr	nc, .LBB139_16
 ; %bb.15:                               ; %Roll.exit4
-                                        ;   in Loop: Header=BB138_3 Depth=2
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, 10000
 	push	hl
 	ld	hl, (ix + 15)
@@ -29338,10 +28433,10 @@ _StepRegion:                            ; @StepRegion
 	ld	de, (ix + 12)
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB138_17
-	.local	.LBB138_16
-.LBB138_16:                             ; %Roll.exit4.thread
-                                        ;   in Loop: Header=BB138_3 Depth=2
+	jr	nc, .LBB139_17
+	.local	.LBB139_16
+.LBB139_16:                             ; %Roll.exit4.thread
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, 64
 	push	hl
 	ld	hl, (ix - 9)
@@ -29352,28 +28447,28 @@ _StepRegion:                            ; @StepRegion
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB138_17
-.LBB138_17:                             ; %Roll.exit4.thread6
-                                        ;   in Loop: Header=BB138_3 Depth=2
+	.local	.LBB139_17
+.LBB139_17:                             ; %Roll.exit4.thread6
+                                        ;   in Loop: Header=BB139_3 Depth=2
 	ld	hl, (ix - 6)
 	inc	hl
 	ld	bc, 0
-	jp	.LBB138_3
-	.local	.LBB138_18
-.LBB138_18:                             ;   in Loop: Header=BB138_1 Depth=1
+	jp	.LBB139_3
+	.local	.LBB139_18
+.LBB139_18:                             ;   in Loop: Header=BB139_1 Depth=1
 	ld	hl, (ix - 3)
 	inc	hl
 	ld	iy, (ix + 6)
 	ld	de, 0
-	jp	.LBB138_1
-	.local	.LBB138_19
-.LBB138_19:
+	jp	.LBB139_1
+	.local	.LBB139_19
+.LBB139_19:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end138
-.Lfunc_end138:
-	.size	_StepRegion, .Lfunc_end138-_StepRegion
+	.local	.Lfunc_end139
+.Lfunc_end139:
+	.size	_StepRegion, .Lfunc_end139-_StepRegion
                                         ; -- End function
 	.section	.text._StepWorldRegion,"ax",@progbits
 	.globl	_StepWorldRegion                ; -- Begin function StepWorldRegion
@@ -29420,11 +28515,11 @@ _StepWorldRegion:                       ; @StepWorldRegion
 	call	__lmulu
 	ld	bc, 10000
 	call	__lcmpu
-	jr	c, .LBB139_2
+	jr	c, .LBB140_2
 ; %bb.1:
 	ld	hl, 10000
-	.local	.LBB139_2
-.LBB139_2:
+	.local	.LBB140_2
+.LBB140_2:
 	ld	de, (ix + 15)
 	push	de
 	push	hl
@@ -29448,21 +28543,21 @@ _StepWorldRegion:                       ; @StepWorldRegion
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB139_4
+	jr	z, .LBB140_4
 ; %bb.3:
 	ld	a, 0
-	jr	.LBB139_5
-	.local	.LBB139_4
-.LBB139_4:
+	jr	.LBB140_5
+	.local	.LBB140_4
+.LBB140_4:
 	ld	a, -1
-	.local	.LBB139_5
-.LBB139_5:
+	.local	.LBB140_5
+.LBB140_5:
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end139
-.Lfunc_end139:
-	.size	_StepWorldRegion, .Lfunc_end139-_StepWorldRegion
+	.local	.Lfunc_end140
+.Lfunc_end140:
+	.size	_StepWorldRegion, .Lfunc_end140-_StepWorldRegion
                                         ; -- End function
 	.section	.text._ValidPort,"ax",@progbits
 	.globl	_ValidPort                      ; -- Begin function ValidPort
@@ -29477,12 +28572,12 @@ _ValidPort:                             ; @ValidPort
 	ld	de, 0
 	ld	a, c
 	cp	a, 7
-	jp	nc, .LBB140_8
+	jp	nc, .LBB141_8
 ; %bb.1:
 	ld	a, (iy + 3)
 	dec	a
 	cp	a, 3
-	jp	nc, .LBB140_8
+	jp	nc, .LBB141_8
 ; %bb.2:
 	push	de
 	pop	hl
@@ -29528,13 +28623,13 @@ _ValidPort:                             ; @ValidPort
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB140_7
+	jp	m, .LBB141_7
 ; %bb.3:
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
 	call	pe, __setflag
-	jp	m, .LBB140_7
+	jp	m, .LBB141_7
 ; %bb.4:
 	ld	(ix - 9), iy
 	ld	iy, (ix - 3)
@@ -29546,7 +28641,7 @@ _ValidPort:                             ; @ValidPort
 	ld	(ix - 12), bc
 	or	a, a
 	sbc	hl, bc
-	jr	nc, .LBB140_7
+	jr	nc, .LBB141_7
 ; %bb.5:
 	ld	iy, (ix - 3)
 	ld	e, (iy + 7)
@@ -29556,7 +28651,7 @@ _ValidPort:                             ; @ValidPort
 	or	a, a
 	sbc	hl, de
 	ld	l, 0
-	jr	nc, .LBB140_8
+	jr	nc, .LBB141_8
 ; %bb.6:
 	ld	iy, (ix - 3)
 	ld	iy, (iy + 3)
@@ -29570,23 +28665,23 @@ _ValidPort:                             ; @ValidPort
 	add	iy, de
 	ld	a, (iy)
 	or	a, a
-	jr	nz, .LBB140_9
-	.local	.LBB140_7
-.LBB140_7:
+	jr	nz, .LBB141_9
+	.local	.LBB141_7
+.LBB141_7:
 	ld	l, 0
-	.local	.LBB140_8
-.LBB140_8:
+	.local	.LBB141_8
+.LBB141_8:
 	ld	a, l
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.LBB140_9
-.LBB140_9:
+	.local	.LBB141_9
+.LBB141_9:
 	ld	l, -1
-	jr	.LBB140_8
-	.local	.Lfunc_end140
-.Lfunc_end140:
-	.size	_ValidPort, .Lfunc_end140-_ValidPort
+	jr	.LBB141_8
+	.local	.Lfunc_end141
+.Lfunc_end141:
+	.size	_ValidPort, .Lfunc_end141-_ValidPort
                                         ; -- End function
 	.section	.text._Transport,"ax",@progbits
 	.globl	_Transport                      ; -- Begin function Transport
@@ -29615,9 +28710,9 @@ _Transport:                             ; @Transport
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end141
-.Lfunc_end141:
-	.size	_Transport, .Lfunc_end141-_Transport
+	.local	.Lfunc_end142
+.Lfunc_end142:
+	.size	_Transport, .Lfunc_end142-_Transport
                                         ; -- End function
 	.section	.text._TransportEvents,"ax",@progbits
 	.globl	_TransportEvents                ; -- Begin function TransportEvents
@@ -29636,22 +28731,22 @@ _TransportEvents:                       ; @TransportEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB142_2
+	jr	z, .LBB143_2
 ; %bb.1:
 	ld	c, 0
-	jr	.LBB142_3
-	.local	.LBB142_2
-.LBB142_2:
+	jr	.LBB143_3
+	.local	.LBB143_2
+.LBB143_2:
 	ld	c, 1
-	.local	.LBB142_3
-.LBB142_3:
+	.local	.LBB143_3
+.LBB143_3:
 	ld	e, 0
 	ld	hl, (ix + 27)
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
 	ld	a, e
-	jr	z, .LBB142_7
+	jr	z, .LBB143_7
 ; %bb.4:
 	ld	l, (ix - 12)
 	ld	h, (ix - 11)
@@ -29659,15 +28754,15 @@ _TransportEvents:                       ; @TransportEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	nz, .LBB142_6
+	jr	nz, .LBB143_6
 ; %bb.5:
 	ld	a, (iy + 47)
-	jr	.LBB142_7
-	.local	.LBB142_6
-.LBB142_6:
+	jr	.LBB143_7
+	.local	.LBB143_6
+.LBB143_6:
 	ld	a, (iy + 46)
-	.local	.LBB142_7
-.LBB142_7:
+	.local	.LBB143_7
+.LBB143_7:
 	ld	(ix - 24), a
 	ld	iy, 0
 	ld	d, -1
@@ -29688,21 +28783,21 @@ _TransportEvents:                       ; @TransportEvents
 	ld	(ix - 8), d                     ; 1-byte Folded Spill
 	ld	(ix - 15), e                    ; 1-byte Folded Spill
 	lea	de, iy + 0
-	.local	.LBB142_8
-.LBB142_8:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB143_8
+.LBB143_8:                              ; =>This Inner Loop Header: Depth=1
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB142_19
-; %bb.9:                                ;   in Loop: Header=BB142_8 Depth=1
+	jp	z, .LBB143_19
+; %bb.9:                                ;   in Loop: Header=BB143_8 Depth=1
 	ld	hl, (ix + 9)
 	push	hl
 	pop	iy
 	add	iy, de
 	bit	0, (iy + 5)
-	jp	nz, .LBB142_18
-; %bb.10:                               ;   in Loop: Header=BB142_8 Depth=1
+	jp	nz, .LBB143_18
+; %bb.10:                               ;   in Loop: Header=BB143_8 Depth=1
 	ld	(ix - 31), de
 	ld	(ix - 28), a                    ; 1-byte Folded Spill
 	ld	(ix - 34), iy
@@ -29713,8 +28808,8 @@ _TransportEvents:                       ; @TransportEvents
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	z, .LBB142_17
-; %bb.11:                               ;   in Loop: Header=BB142_8 Depth=1
+	jr	z, .LBB143_17
+; %bb.11:                               ;   in Loop: Header=BB143_8 Depth=1
 	ld	iy, (ix - 34)
 	ld	c, (iy + 2)
 	ld	de, 0
@@ -29726,14 +28821,14 @@ _TransportEvents:                       ; @TransportEvents
 	ld	l, a
 	or	a, a
 	ld	l, (ix - 21)                    ; 1-byte Folded Reload
-	jr	nz, .LBB142_17
-; %bb.12:                               ;   in Loop: Header=BB142_8 Depth=1
+	jr	nz, .LBB143_17
+; %bb.12:                               ;   in Loop: Header=BB143_8 Depth=1
 	ld	a, (iy + 3)
 	and	a, l
 	ld	l, a
 	or	a, a
-	jr	z, .LBB142_17
-; %bb.13:                               ;   in Loop: Header=BB142_8 Depth=1
+	jr	z, .LBB143_17
+; %bb.13:                               ;   in Loop: Header=BB143_8 Depth=1
 	push	de
 	pop	hl
 	ld	l, c
@@ -29749,8 +28844,8 @@ _TransportEvents:                       ; @TransportEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB142_17
-; %bb.14:                               ;   in Loop: Header=BB142_8 Depth=1
+	jr	z, .LBB143_17
+; %bb.14:                               ;   in Loop: Header=BB143_8 Depth=1
 	ld	a, (ix - 15)                    ; 1-byte Folded Reload
 	inc	a
 	ld	(ix - 15), a                    ; 1-byte Folded Spill
@@ -29763,31 +28858,31 @@ _TransportEvents:                       ; @TransportEvents
 	or	a, a
 	sbc.sis	hl, bc
 	ld	a, (ix - 28)                    ; 1-byte Folded Reload
-	jr	z, .LBB142_16
-; %bb.15:                               ;   in Loop: Header=BB142_8 Depth=1
+	jr	z, .LBB143_16
+; %bb.15:                               ;   in Loop: Header=BB143_8 Depth=1
 	ld	a, (ix - 8)                     ; 1-byte Folded Reload
-	.local	.LBB142_16
-.LBB142_16:                             ;   in Loop: Header=BB142_8 Depth=1
+	.local	.LBB143_16
+.LBB143_16:                             ;   in Loop: Header=BB143_8 Depth=1
 	ld	(ix - 8), a                     ; 1-byte Folded Spill
-	.local	.LBB142_17
-.LBB142_17:                             ;   in Loop: Header=BB142_8 Depth=1
+	.local	.LBB143_17
+.LBB143_17:                             ;   in Loop: Header=BB143_8 Depth=1
 	ld	bc, 132
 	ld	a, (ix - 28)                    ; 1-byte Folded Reload
 	ld	de, (ix - 31)
-	.local	.LBB142_18
-.LBB142_18:                             ;   in Loop: Header=BB142_8 Depth=1
+	.local	.LBB143_18
+.LBB143_18:                             ;   in Loop: Header=BB143_8 Depth=1
 	ex	de, hl
 	ld	de, 6
 	add	hl, de
 	inc	a
 	ex	de, hl
-	jp	.LBB142_8
-	.local	.LBB142_19
-.LBB142_19:
+	jp	.LBB143_8
+	.local	.LBB143_19
+.LBB143_19:
 	ld	de, 0
 	ld	a, (ix - 8)                     ; 1-byte Folded Reload
 	cp	a, -1
-	jp	z, .LBB142_53
+	jp	z, .LBB143_53
 ; %bb.20:
 	ld	e, a
 	ld	bc, 6
@@ -29810,22 +28905,22 @@ _TransportEvents:                       ; @TransportEvents
 	ld	(ix - 34), a                    ; 1-byte Folded Spill
 	dec	a
 	ld	(ix - 28), a
-	.local	.LBB142_21
-.LBB142_21:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB143_21
+.LBB143_21:                             ; =>This Inner Loop Header: Depth=1
 	push	hl
 	pop	de
 	ld	bc, 132
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB142_34
-; %bb.22:                               ;   in Loop: Header=BB142_21 Depth=1
+	jp	z, .LBB143_34
+; %bb.22:                               ;   in Loop: Header=BB143_21 Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, de
 	push	de
 	pop	bc
-	jp	z, .LBB142_33
-; %bb.23:                               ;   in Loop: Header=BB142_21 Depth=1
+	jp	z, .LBB143_33
+; %bb.23:                               ;   in Loop: Header=BB143_21 Depth=1
 	ld	(ix - 37), iy
 	ld	hl, (ix + 9)
 	push	hl
@@ -29836,19 +28931,19 @@ _TransportEvents:                       ; @TransportEvents
 	ld	iy, (ix - 31)
 	ld	l, (iy + 2)
 	cp	a, l
-	jr	z, .LBB142_25
-; %bb.24:                               ;   in Loop: Header=BB142_21 Depth=1
+	jr	z, .LBB143_25
+; %bb.24:                               ;   in Loop: Header=BB143_21 Depth=1
 	push	de
 	pop	iy
 	bit	0, (iy + 5)
 	lea	hl, iy + 0
-	jr	z, .LBB142_26
-	.local	.LBB142_25
-.LBB142_25:                             ;   in Loop: Header=BB142_21 Depth=1
+	jr	z, .LBB143_26
+	.local	.LBB143_25
+.LBB143_25:                             ;   in Loop: Header=BB143_21 Depth=1
 	ld	iy, (ix - 37)
-	jr	.LBB142_33
-	.local	.LBB142_26
-.LBB142_26:                             ;   in Loop: Header=BB142_21 Depth=1
+	jr	.LBB143_33
+	.local	.LBB143_26
+.LBB143_26:                             ;   in Loop: Header=BB143_21 Depth=1
 	ld	(ix - 41), a                    ; 1-byte Folded Spill
 	ld	(ix - 40), bc
 	ld	(ix - 44), hl
@@ -29859,8 +28954,8 @@ _TransportEvents:                       ; @TransportEvents
 	pop	hl
 	pop	hl
 	bit	0, a
-	jr	z, .LBB142_32
-; %bb.27:                               ;   in Loop: Header=BB142_21 Depth=1
+	jr	z, .LBB143_32
+; %bb.27:                               ;   in Loop: Header=BB143_21 Depth=1
 	ld	hl, 1
 	ld	c, (ix - 41)                    ; 1-byte Folded Reload
 	call	__ishl
@@ -29870,16 +28965,16 @@ _TransportEvents:                       ; @TransportEvents
 	ld	l, a
 	or	a, a
 	ld	l, (ix - 21)                    ; 1-byte Folded Reload
-	jr	nz, .LBB142_32
-; %bb.28:                               ;   in Loop: Header=BB142_21 Depth=1
+	jr	nz, .LBB143_32
+; %bb.28:                               ;   in Loop: Header=BB143_21 Depth=1
 	ld	iy, (ix - 44)
 	ld	a, (iy + 3)
 	and	a, l
 	ld	l, a
 	or	a, a
 	ld	iy, 0
-	jr	z, .LBB142_32
-; %bb.29:                               ;   in Loop: Header=BB142_21 Depth=1
+	jr	z, .LBB143_32
+; %bb.29:                               ;   in Loop: Header=BB143_21 Depth=1
 	ld	a, (ix - 34)                    ; 1-byte Folded Reload
 	inc	a
 	lea	hl, iy + 0
@@ -29893,30 +28988,30 @@ _TransportEvents:                       ; @TransportEvents
 	or	a, a
 	sbc.sis	hl, bc
 	ld	a, (ix - 15)                    ; 1-byte Folded Reload
-	jr	z, .LBB142_31
-; %bb.30:                               ;   in Loop: Header=BB142_21 Depth=1
+	jr	z, .LBB143_31
+; %bb.30:                               ;   in Loop: Header=BB143_21 Depth=1
 	ld	a, (ix - 28)                    ; 1-byte Folded Reload
-	.local	.LBB142_31
-.LBB142_31:                             ;   in Loop: Header=BB142_21 Depth=1
+	.local	.LBB143_31
+.LBB143_31:                             ;   in Loop: Header=BB143_21 Depth=1
 	ld	(ix - 28), a                    ; 1-byte Folded Spill
-	.local	.LBB142_32
-.LBB142_32:                             ;   in Loop: Header=BB142_21 Depth=1
+	.local	.LBB143_32
+.LBB143_32:                             ;   in Loop: Header=BB143_21 Depth=1
 	ld	iy, (ix - 37)
 	ld	bc, (ix - 40)
-	.local	.LBB142_33
-.LBB142_33:                             ;   in Loop: Header=BB142_21 Depth=1
+	.local	.LBB143_33
+.LBB143_33:                             ;   in Loop: Header=BB143_21 Depth=1
 	push	bc
 	pop	hl
 	ld	bc, 6
 	add	hl, bc
 	inc	(ix - 15)
-	jp	.LBB142_21
-	.local	.LBB142_34
-.LBB142_34:
+	jp	.LBB143_21
+	.local	.LBB143_34
+.LBB143_34:
 	ld	e, (ix - 28)                    ; 1-byte Folded Reload
 	ld	a, e
 	cp	a, -1
-	jp	z, .LBB142_53
+	jp	z, .LBB143_53
 ; %bb.35:
 	ld	hl, (ix + 21)
 	ld	a, (ix - 8)
@@ -29928,12 +29023,12 @@ _TransportEvents:                       ; @TransportEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB142_37
+	jr	z, .LBB143_37
 ; %bb.36:
 	ld	hl, 22
 	ld	(ix - 18), hl
-	.local	.LBB142_37
-.LBB142_37:
+	.local	.LBB143_37
+.LBB143_37:
 	ld	bc, 0
 	push	bc
 	pop	hl
@@ -29957,7 +29052,7 @@ _TransportEvents:                       ; @TransportEvents
 	or	a, a
 	sbc	hl, bc
 	ld	(ix - 8), c
-	jr	nz, .LBB142_39
+	jr	nz, .LBB143_39
 ; %bb.38:                               ; %._crit_edge
 	ld	hl, (ix - 15)
 	ld	d, h
@@ -29967,21 +29062,21 @@ _TransportEvents:                       ; @TransportEvents
 	sbc	hl, hl
 	ld	l, a
 	ld	(ix - 18), c                    ; 1-byte Folded Spill
-	jp	.LBB142_49
-	.local	.LBB142_39
-.LBB142_39:
+	jp	.LBB143_49
+	.local	.LBB143_39
+.LBB143_39:
 	ld	l, (ix - 12)
 	ld	h, (ix - 11)
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB142_41
+	jr	z, .LBB143_41
 ; %bb.40:
 	or	a, a
 	sbc	hl, hl
 	ld	(ix - 27), hl
-	.local	.LBB142_41
-.LBB142_41:
+	.local	.LBB143_41
+.LBB143_41:
 	ld	hl, (ix + 27)
 	push	hl
 	pop	iy
@@ -30028,15 +29123,15 @@ _TransportEvents:                       ; @TransportEvents
 	or	a, a
 	sbc.sis	hl, bc
 	call	pe, __setflag
-	jp	p, .LBB142_43
+	jp	p, .LBB143_43
 ; %bb.42:
 	ld.sis	hl, 50
 	ex	de, hl
 	ld	iyl, e
 	ld	iyh, d
 	ex	de, hl
-	.local	.LBB142_43
-.LBB142_43:
+	.local	.LBB143_43
+.LBB143_43:
 	ld.sis	bc, 150
 	ex	de, hl
 	ld	e, iyl
@@ -30045,15 +29140,15 @@ _TransportEvents:                       ; @TransportEvents
 	or	a, a
 	sbc.sis	hl, bc
 	ld	de, (ix - 15)
-	jr	c, .LBB142_45
+	jr	c, .LBB143_45
 ; %bb.44:
 	ld.sis	hl, 150
 	ex	de, hl
 	ld	iyl, e
 	ld	iyh, d
 	ex	de, hl
-	.local	.LBB142_45
-.LBB142_45:
+	.local	.LBB143_45
+.LBB143_45:
 	xor	a, a
 	ld	(ix - 4), a
 	ld	bc, (ix - 6)
@@ -30080,19 +29175,19 @@ _TransportEvents:                       ; @TransportEvents
 	sbc	a, a
 	inc	a
 	bit	0, a
-	jr	nz, .LBB142_47
+	jr	nz, .LBB143_47
 ; %bb.46:
 	ld	(ix - 15), bc
-	.local	.LBB142_47
-.LBB142_47:
+	.local	.LBB143_47
+.LBB143_47:
 	bit	0, a
 	ld	hl, (ix - 12)
-	jr	nz, .LBB142_49
+	jr	nz, .LBB143_49
 ; %bb.48:
 	ld	d, 0
 	ld	(ix - 18), d                    ; 1-byte Folded Spill
-	.local	.LBB142_49
-.LBB142_49:
+	.local	.LBB143_49
+.LBB143_49:
 	add	hl, hl
 	add	hl, hl
 	add	hl, hl
@@ -30135,14 +29230,14 @@ _TransportEvents:                       ; @TransportEvents
 	pop	bc
 	sbc.sis	hl, hl
 	adc.sis	hl, bc
-	jr	z, .LBB142_53
+	jr	z, .LBB143_53
 ; %bb.50:
 	ld.sis	de, 10000
 	ld	l, c
 	ld	h, b
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB142_52
+	jr	nc, .LBB143_52
 ; %bb.51:                               ; %Roll.exit
 	ld	hl, 10000
 	push	hl
@@ -30153,9 +29248,9 @@ _TransportEvents:                       ; @TransportEvents
 	ld	de, (ix - 8)
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB142_53
-	.local	.LBB142_52
-.LBB142_52:                             ; %Roll.exit.thread
+	jr	nc, .LBB143_53
+	.local	.LBB143_52
+.LBB143_52:                             ; %Roll.exit.thread
 	ld	bc, 6
 	ld	hl, (ix - 24)
 	call	__imulu
@@ -30179,15 +29274,15 @@ _TransportEvents:                       ; @TransportEvents
 	pop	hl
 	pop	hl
 	pop	hl
-	.local	.LBB142_53
-.LBB142_53:                             ; %Roll.exit.thread6
+	.local	.LBB143_53
+.LBB143_53:                             ; %Roll.exit.thread6
 	ld	a, (ix - 9)                     ; 1-byte Folded Reload
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end142
-.Lfunc_end142:
-	.size	_TransportEvents, .Lfunc_end142-_TransportEvents
+	.local	.Lfunc_end143
+.Lfunc_end143:
+	.size	_TransportEvents, .Lfunc_end143-_TransportEvents
                                         ; -- End function
 	.section	.text._Migrate,"ax",@progbits
 	.globl	_Migrate                        ; -- Begin function Migrate
@@ -30210,9 +29305,9 @@ _Migrate:                               ; @Migrate
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end143
-.Lfunc_end143:
-	.size	_Migrate, .Lfunc_end143-_Migrate
+	.local	.Lfunc_end144
+.Lfunc_end144:
+	.size	_Migrate, .Lfunc_end144-_Migrate
                                         ; -- End function
 	.section	.text._MigrateEvents,"ax",@progbits
 	.globl	_MigrateEvents                  ; -- Begin function MigrateEvents
@@ -30225,11 +29320,11 @@ _MigrateEvents:                         ; @MigrateEvents
 	ld	e, 0
 	ld	a, (iy + 33)
 	or	a, a
-	jp	z, .LBB144_19
+	jp	z, .LBB145_19
 ; %bb.1:
 	ld	a, (iy + 34)
 	or	a, a
-	jp	nz, .LBB144_19
+	jp	nz, .LBB145_19
 ; %bb.2:
 	ld	a, (iy + 8)
 	inc	a
@@ -30237,14 +29332,14 @@ _MigrateEvents:                         ; @MigrateEvents
 	and	a, l
 	ld	l, a
 	or	a, a
-	jp	nz, .LBB144_19
+	jp	nz, .LBB145_19
 ; %bb.3:
 	ld	iy, (ix + 12)
 	ld	hl, (iy + 26)
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jp	z, .LBB144_19
+	jp	z, .LBB145_19
 ; %bb.4:                                ; %.preheader.preheader
 	ld	d, 0
 	ld	l, -1
@@ -30256,14 +29351,14 @@ _MigrateEvents:                         ; @MigrateEvents
 	ld	(ix - 14), hl
 	ld	(ix - 7), l                     ; 1-byte Folded Spill
 	ld	(ix - 11), d                    ; 1-byte Folded Spill
-	.local	.LBB144_5
-.LBB144_5:                              ; %.preheader
+	.local	.LBB145_5
+.LBB145_5:                              ; %.preheader
                                         ; =>This Inner Loop Header: Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB144_11
-; %bb.6:                                ;   in Loop: Header=BB144_5 Depth=1
+	jr	z, .LBB145_11
+; %bb.6:                                ;   in Loop: Header=BB145_5 Depth=1
 	ld	hl, (ix + 6)
 	lea	bc, iy + 0
 	add	hl, bc
@@ -30271,8 +29366,8 @@ _MigrateEvents:                         ; @MigrateEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB144_10
-; %bb.7:                                ;   in Loop: Header=BB144_5 Depth=1
+	jr	z, .LBB145_10
+; %bb.7:                                ;   in Loop: Header=BB145_5 Depth=1
 	ld	(ix - 20), iy
 	inc	d
 	or	a, a
@@ -30289,28 +29384,28 @@ _MigrateEvents:                         ; @MigrateEvents
 	or	a, a
 	sbc.sis	hl, bc
 	ld	l, a
-	jr	z, .LBB144_9
-; %bb.8:                                ;   in Loop: Header=BB144_5 Depth=1
+	jr	z, .LBB145_9
+; %bb.8:                                ;   in Loop: Header=BB145_5 Depth=1
 	ld	l, (ix - 7)                     ; 1-byte Folded Reload
-	.local	.LBB144_9
-.LBB144_9:                              ;   in Loop: Header=BB144_5 Depth=1
+	.local	.LBB145_9
+.LBB145_9:                              ;   in Loop: Header=BB145_5 Depth=1
 	ld	(ix - 7), l                     ; 1-byte Folded Spill
 	ld	e, 0
 	ld	iy, (ix - 20)
 	ld	d, (ix - 23)                    ; 1-byte Folded Reload
-	.local	.LBB144_10
-.LBB144_10:                             ;   in Loop: Header=BB144_5 Depth=1
+	.local	.LBB145_10
+.LBB145_10:                             ;   in Loop: Header=BB145_5 Depth=1
 	ld	bc, 16
 	add	iy, bc
 	inc	a
 	ld	bc, 124
-	jr	.LBB144_5
-	.local	.LBB144_11
-.LBB144_11:
+	jr	.LBB145_5
+	.local	.LBB145_11
+.LBB145_11:
 	ld	bc, 0
 	ld	a, (ix - 7)                     ; 1-byte Folded Reload
 	cp	a, -1
-	jp	z, .LBB144_19
+	jp	z, .LBB145_19
 ; %bb.12:
 	ld	c, a
 	ld	iy, (ix + 12)
@@ -30321,7 +29416,7 @@ _MigrateEvents:                         ; @MigrateEvents
 	sbc	hl, bc
 	ld	hl, 100
 	ld	e, h
-	jr	z, .LBB144_14
+	jr	z, .LBB145_14
 ; %bb.13:
 	push	bc
 	pop	hl
@@ -30339,8 +29434,8 @@ _MigrateEvents:                         ; @MigrateEvents
 	ld	h, d
 	ld	l, e
 	ld	de, 0
-	.local	.LBB144_14
-.LBB144_14:
+	.local	.LBB145_14
+.LBB145_14:
 	xor	a, a
 	ld	(ix - 3), a
 	ld	(ix - 17), bc
@@ -30398,36 +29493,36 @@ _MigrateEvents:                         ; @MigrateEvents
 	call	__lcmpu
 	push	hl
 	pop	iy
-	jr	c, .LBB144_16
+	jr	c, .LBB145_16
 ; %bb.15:
 	push	bc
 	pop	iy
-	.local	.LBB144_16
-.LBB144_16:
+	.local	.LBB145_16
+.LBB145_16:
 	call	__lcmpzero
-	jp	m, .LBB144_18
+	jp	m, .LBB145_18
 ; %bb.17:
 	lea	bc, iy + 0
 	sbc.sis	hl, hl
 	adc.sis	hl, bc
-	jr	nz, .LBB144_20
-	.local	.LBB144_18
-.LBB144_18:
+	jr	nz, .LBB145_20
+	.local	.LBB145_18
+.LBB145_18:
 	ld	e, 0
-	.local	.LBB144_19
-.LBB144_19:                             ; %Roll.exit.thread4
+	.local	.LBB145_19
+.LBB145_19:                             ; %Roll.exit.thread4
 	ld	a, e
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.LBB144_20
-.LBB144_20:
+	.local	.LBB145_20
+.LBB145_20:
 	ld.sis	de, 10000
 	ld	l, c
 	ld	h, b
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB144_22
+	jr	nc, .LBB145_22
 ; %bb.21:                               ; %Roll.exit
 	ld	hl, 10000
 	push	hl
@@ -30438,9 +29533,9 @@ _MigrateEvents:                         ; @MigrateEvents
 	ld	de, (ix - 7)
 	or	a, a
 	sbc.sis	hl, de
-	jr	nc, .LBB144_18
-	.local	.LBB144_22
-.LBB144_22:                             ; %Roll.exit.thread
+	jr	nc, .LBB145_18
+	.local	.LBB145_22
+.LBB145_22:                             ; %Roll.exit.thread
 	ld	hl, _neighbors
 	ld	de, (ix - 17)
 	add	hl, de
@@ -30450,13 +29545,13 @@ _MigrateEvents:                         ; @MigrateEvents
 	ld	(ix - 17), a                    ; 1-byte Folded Spill
 	ld	e, a
 	ld	iy, 0
-	.local	.LBB144_23
-.LBB144_23:                             ; =>This Inner Loop Header: Depth=1
+	.local	.LBB145_23
+.LBB145_23:                             ; =>This Inner Loop Header: Depth=1
 	lea	hl, iy + 0
 	or	a, a
 	sbc	hl, bc
-	jr	z, .LBB144_30
-; %bb.24:                               ;   in Loop: Header=BB144_23 Depth=1
+	jr	z, .LBB145_30
+; %bb.24:                               ;   in Loop: Header=BB145_23 Depth=1
 	ld	hl, 1
 	ld	(ix - 7), iy
 	ld	c, iyl
@@ -30465,8 +29560,8 @@ _MigrateEvents:                         ; @MigrateEvents
 	and	a, d
 	ld	l, a
 	or	a, a
-	jr	z, .LBB144_29
-; %bb.25:                               ;   in Loop: Header=BB144_23 Depth=1
+	jr	z, .LBB145_29
+; %bb.25:                               ;   in Loop: Header=BB145_23 Depth=1
 	ld	hl, (ix + 6)
 	ld	bc, (ix - 10)
 	add	hl, bc
@@ -30474,8 +29569,8 @@ _MigrateEvents:                         ; @MigrateEvents
 	add.sis	hl, bc
 	or	a, a
 	sbc.sis	hl, bc
-	jr	z, .LBB144_29
-; %bb.26:                               ;   in Loop: Header=BB144_23 Depth=1
+	jr	z, .LBB145_29
+; %bb.26:                               ;   in Loop: Header=BB145_23 Depth=1
 	ld	(ix - 20), d                    ; 1-byte Folded Spill
 	ld	a, (ix - 17)                    ; 1-byte Folded Reload
 	inc	a
@@ -30491,18 +29586,18 @@ _MigrateEvents:                         ; @MigrateEvents
 	or	a, a
 	sbc.sis	hl, bc
 	ld	a, (ix - 11)                    ; 1-byte Folded Reload
-	jr	z, .LBB144_28
-; %bb.27:                               ;   in Loop: Header=BB144_23 Depth=1
+	jr	z, .LBB145_28
+; %bb.27:                               ;   in Loop: Header=BB145_23 Depth=1
 	ld	hl, (ix - 14)
 	ld	a, l
-	.local	.LBB144_28
-.LBB144_28:                             ;   in Loop: Header=BB144_23 Depth=1
+	.local	.LBB145_28
+.LBB145_28:                             ;   in Loop: Header=BB145_23 Depth=1
 	ld	l, a
 	ld	(ix - 14), hl
 	ld	e, 0
 	ld	d, (ix - 20)                    ; 1-byte Folded Reload
-	.local	.LBB144_29
-.LBB144_29:                             ;   in Loop: Header=BB144_23 Depth=1
+	.local	.LBB145_29
+.LBB145_29:                             ;   in Loop: Header=BB145_23 Depth=1
 	ld	iy, (ix - 7)
 	inc	iy
 	ld	hl, (ix - 10)
@@ -30511,13 +29606,13 @@ _MigrateEvents:                         ; @MigrateEvents
 	inc	(ix - 11)
 	ld	(ix - 10), hl
 	ld	bc, 7
-	jr	.LBB144_23
-	.local	.LBB144_30
-.LBB144_30:
+	jr	.LBB145_23
+	.local	.LBB145_30
+.LBB145_30:
 	ld	hl, (ix - 14)
 	ld	a, l
 	cp	a, -1
-	jp	z, .LBB144_19
+	jp	z, .LBB145_19
 ; %bb.31:
 	ex	de, hl
 	ld	hl, (ix + 15)
@@ -30533,10 +29628,10 @@ _MigrateEvents:                         ; @MigrateEvents
 	pop	hl
 	pop	hl
 	pop	hl
-	jp	.LBB144_19
-	.local	.Lfunc_end144
-.Lfunc_end144:
-	.size	_MigrateEvents, .Lfunc_end144-_MigrateEvents
+	jp	.LBB145_19
+	.local	.Lfunc_end145
+.Lfunc_end145:
+	.size	_MigrateEvents, .Lfunc_end145-_MigrateEvents
                                         ; -- End function
 	.section	.text._SporeBurst,"ax",@progbits
 	.globl	_SporeBurst                     ; -- Begin function SporeBurst
@@ -30549,19 +29644,19 @@ _SporeBurst:                            ; @SporeBurst
 	ld	c, 0
 	ld	a, (iy + 33)
 	or	a, a
-	jp	z, .LBB145_7
+	jp	z, .LBB146_7
 ; %bb.1:
 	ld	a, (iy + 34)
 	or	a, a
-	jp	nz, .LBB145_7
+	jp	nz, .LBB146_7
 ; %bb.2:
 	ld	a, (iy + 32)
 	cp	a, 2
-	jp	nz, .LBB145_7
+	jp	nz, .LBB146_7
 ; %bb.3:
 	ld	a, (iy + 36)
 	cp	a, 3
-	jp	nc, .LBB145_7
+	jp	nc, .LBB146_7
 ; %bb.4:
 	ld	de, 0
 	ld	e, a
@@ -30572,7 +29667,7 @@ _SporeBurst:                            ; @SporeBurst
                                         ; kill: def $hl killed $hl killed $uhl
 	or	a, a
 	sbc.sis	hl, de
-	jp	c, .LBB145_7
+	jp	c, .LBB146_7
 ; %bb.5:
 	ld	(ix - 2), e
 	ld	(ix - 1), d
@@ -30592,7 +29687,7 @@ _SporeBurst:                            ; @SporeBurst
 	pop	hl
 	pop	hl
 	bit	0, a
-	jp	z, .LBB145_7
+	jp	z, .LBB146_7
 ; %bb.6:
 	ld	c, 1
 	ld	iy, (ix + 9)
@@ -30610,15 +29705,15 @@ _SporeBurst:                            ; @SporeBurst
 	sbc.sis	hl, de
 	ld	(iy + 20), l
 	ld	(iy + 21), h
-	.local	.LBB145_7
-.LBB145_7:
+	.local	.LBB146_7
+.LBB146_7:
 	ld	a, c
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end145
-.Lfunc_end145:
-	.size	_SporeBurst, .Lfunc_end145-_SporeBurst
+	.local	.Lfunc_end146
+.Lfunc_end146:
+	.size	_SporeBurst, .Lfunc_end146-_SporeBurst
                                         ; -- End function
 	.section	.text._ClosePorts,"ax",@progbits
 	.globl	_ClosePorts                     ; -- Begin function ClosePorts
@@ -30631,28 +29726,28 @@ _ClosePorts:                            ; @ClosePorts
 	ld	l, 0
 	ld	a, (iy + 35)
 	or	a, a
-	jp	z, .LBB146_16
+	jp	z, .LBB147_16
 ; %bb.1:
 	ld	a, l
 	ld	de, 0
-	.local	.LBB146_2
-.LBB146_2:                              ; =>This Inner Loop Header: Depth=1
+	.local	.LBB147_2
+.LBB147_2:                              ; =>This Inner Loop Header: Depth=1
 	ld	bc, 132
 	push	de
 	pop	hl
 	or	a, a
 	sbc	hl, bc
-	jp	z, .LBB146_15
-; %bb.3:                                ;   in Loop: Header=BB146_2 Depth=1
+	jp	z, .LBB147_15
+; %bb.3:                                ;   in Loop: Header=BB147_2 Depth=1
 	ld	iy, (ix + 9)
 	add	iy, de
 	bit	0, (iy + 5)
-	jr	z, .LBB146_5
-; %bb.4:                                ;   in Loop: Header=BB146_2 Depth=1
+	jr	z, .LBB147_5
+; %bb.4:                                ;   in Loop: Header=BB147_2 Depth=1
 	ld	bc, 6
-	jp	.LBB146_14
-	.local	.LBB146_5
-.LBB146_5:                              ;   in Loop: Header=BB146_2 Depth=1
+	jp	.LBB147_14
+	.local	.LBB147_5
+.LBB147_5:                              ;   in Loop: Header=BB147_2 Depth=1
 	ld	(ix - 7), de
 	ld	(ix - 4), a                     ; 1-byte Folded Spill
 	ld	(ix - 3), iy
@@ -30684,8 +29779,8 @@ _ClosePorts:                            ; @ClosePorts
 	ld	e, l
 	ld	d, h
                                         ; kill: def $hl killed $hl def $uhl
-	jr	z, .LBB146_7
-; %bb.6:                                ;   in Loop: Header=BB146_2 Depth=1
+	jr	z, .LBB147_7
+; %bb.6:                                ;   in Loop: Header=BB147_2 Depth=1
 	or	a, a
 	sbc	hl, hl
 	push	hl
@@ -30722,9 +29817,9 @@ _ClosePorts:                            ; @ClosePorts
 	call	__imulu
 	ld	bc, (ix - 13)
 	call	__idivu
-	.local	.LBB146_7
-.LBB146_7:                              ; %Percentage.exit1
-                                        ;   in Loop: Header=BB146_2 Depth=1
+	.local	.LBB147_7
+.LBB147_7:                              ; %Percentage.exit1
+                                        ;   in Loop: Header=BB147_2 Depth=1
                                         ; kill: def $hl killed $hl killed $uhl
 	ld.sis	bc, 255
 	call	__sand
@@ -30738,21 +29833,21 @@ _ClosePorts:                            ; @ClosePorts
 	ld	a, (iy + 35)
 	cp	a, 3
 	ld.sis	de, 10
-	jr	z, .LBB146_9
+	jr	z, .LBB147_9
 ; %bb.8:                                ; %Percentage.exit1
-                                        ;   in Loop: Header=BB146_2 Depth=1
+                                        ;   in Loop: Header=BB147_2 Depth=1
 	ld.sis	de, 0
-	.local	.LBB146_9
-.LBB146_9:                              ; %Percentage.exit1
-                                        ;   in Loop: Header=BB146_2 Depth=1
+	.local	.LBB147_9
+.LBB147_9:                              ; %Percentage.exit1
+                                        ;   in Loop: Header=BB147_2 Depth=1
 	add.sis	hl, de
 	ld	iy, (ix - 3)
 	ld	e, (iy + 4)
 	ld	d, 0
 	or	a, a
 	sbc.sis	hl, de
-	jp	c, .LBB146_12
-; %bb.10:                               ;   in Loop: Header=BB146_2 Depth=1
+	jp	c, .LBB147_12
+; %bb.10:                               ;   in Loop: Header=BB147_2 Depth=1
 	ld	hl, 10000
 	push	hl
 	ld	hl, (ix + 18)
@@ -30761,8 +29856,8 @@ _ClosePorts:                            ; @ClosePorts
 	ld.sis	de, 800
 	or	a, a
 	sbc.sis	hl, de
-	jp	nc, .LBB146_12
-; %bb.11:                               ;   in Loop: Header=BB146_2 Depth=1
+	jp	nc, .LBB147_12
+; %bb.11:                               ;   in Loop: Header=BB147_2 Depth=1
 	ld	iy, (ix - 3)
 	ld	(iy + 5), 1
 	ld	hl, 1
@@ -30773,32 +29868,32 @@ _ClosePorts:                            ; @ClosePorts
 	ld	a, e
 	or	a, l
 	ld	e, a
-	jr	.LBB146_13
-	.local	.LBB146_12
-.LBB146_12:                             ;   in Loop: Header=BB146_2 Depth=1
+	jr	.LBB147_13
+	.local	.LBB147_12
+.LBB147_12:                             ;   in Loop: Header=BB147_2 Depth=1
 	ld	a, (ix - 4)                     ; 1-byte Folded Reload
-	.local	.LBB146_13
-.LBB146_13:                             ;   in Loop: Header=BB146_2 Depth=1
+	.local	.LBB147_13
+.LBB147_13:                             ;   in Loop: Header=BB147_2 Depth=1
 	ld	bc, 6
 	ld	de, (ix - 7)
-	.local	.LBB146_14
-.LBB146_14:                             ;   in Loop: Header=BB146_2 Depth=1
+	.local	.LBB147_14
+.LBB147_14:                             ;   in Loop: Header=BB147_2 Depth=1
 	ex	de, hl
 	add	hl, bc
 	ex	de, hl
-	jp	.LBB146_2
-	.local	.LBB146_15
-.LBB146_15:
+	jp	.LBB147_2
+	.local	.LBB147_15
+.LBB147_15:
 	ld	l, a
-	.local	.LBB146_16
-.LBB146_16:                             ; %.loopexit
+	.local	.LBB147_16
+.LBB147_16:                             ; %.loopexit
 	ld	a, l
 	ld	sp, ix
 	pop	ix
 	ret
-	.local	.Lfunc_end146
-.Lfunc_end146:
-	.size	_ClosePorts, .Lfunc_end146-_ClosePorts
+	.local	.Lfunc_end147
+.Lfunc_end147:
+	.size	_ClosePorts, .Lfunc_end147-_ClosePorts
                                         ; -- End function
 	.section	.rodata._.str,"a",@progbits
 	.balign	1

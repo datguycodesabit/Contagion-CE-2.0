@@ -42,11 +42,13 @@ static bool Capable(uint8_t region,uint8_t mode) {
  uint8_t i;for(i=0;i<PORT_COUNT;i++)if(port_definitions[i].region==region && (port_definitions[i].modes&mode))return true;return false;
 }
 bool EventsEligible(const event_def_t *e,const disease_t *d,const counts_t counts[REGION_COUNT],uint8_t r) {
- const environment_t *env;counts_t c;uint8_t i;bool meaningful=false;
+ const environment_t *env;counts_t c;uint8_t i;
  if(r>=7 || !d->started || d->result!=PLAYING || d->cycles<e->min_cycle || d->response<e->min_response || !(e->type_mask&(1U<<d->type)) || (e->required_trait!=EVENT_NONE&&!Owns(d,e->required_trait)))return false;
  c=counts[r];env=&environments[r];
  if(!c.healthy&&!c.active)return false;
- if(Percentage(c.active,LandCount(c))<e->min_active || Percentage(c.dead,LandCount(c))<e->min_dead)return false;
+ /* A zero threshold cannot reject a region; avoid its integer division. */
+ if((e->min_active && Percentage(c.active,LandCount(c))<e->min_active) ||
+    (e->min_dead && Percentage(c.dead,LandCount(c))<e->min_dead))return false;
  switch(e->target) {
  case TARGET_ACTIVE:if(!c.active)return false;break;
  case TARGET_HEALTHY:if(!c.healthy)return false;break;
@@ -62,15 +64,15 @@ bool EventsEligible(const event_def_t *e,const disease_t *d,const counts_t count
  default:break;
  }
  for(i=0;i<2;i++) {
-  event_effect_t f=e->effect[i];if(!f.kind||!f.amount)continue;
-  if(f.trait!=EVENT_NONE && !Owns(d,f.trait))continue;
-  if(f.kind==EV_SPREAD && f.trait!=EVENT_NONE && !TransmissionContribution(d,r,f.trait))continue;
-  if(f.kind==EV_RESEARCH && d->response<RESEARCH)continue;
-  if(f.kind==EV_DISCOVERY && d->response!=UNDETECTED)continue;
-  if(f.kind==EV_MIGRATION && !Owns(d,BIRDS1))continue;
-  meaningful=true;
+  const event_effect_t *f=&e->effect[i];if(!f->kind||!f->amount)continue;
+  if(f->trait!=EVENT_NONE && !Owns(d,f->trait))continue;
+  if(f->kind==EV_SPREAD && f->trait!=EVENT_NONE && !TransmissionContribution(d,r,f->trait))continue;
+  if(f->kind==EV_RESEARCH && d->response<RESEARCH)continue;
+  if(f->kind==EV_DISCOVERY && d->response!=UNDETECTED)continue;
+  if(f->kind==EV_MIGRATION && !Owns(d,BIRDS1))continue;
+  return true;
  }
- return meaningful;
+ return false;
 }
 static bool Branch(const event_def_t *e,const disease_t *d,const counts_t counts[7],uint8_t r) {
  effects_t base;

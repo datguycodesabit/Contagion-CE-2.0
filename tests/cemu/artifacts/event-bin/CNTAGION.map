@@ -72,7 +72,7 @@ Linker script and memory map
                 0x00d1aab3                ___exithl
                 0x00d1aab4                _exit.sp
 
-.text           0x00d1aaef     0xb8f0
+.text           0x00d1aaef     0xb0a5
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -200,1552 +200,1554 @@ Linker script and memory map
                 0x00d1cc93      0x384 tests/cemu/artifacts/event-obj/CNTAGION.o
                 0x00d1cc93                _EventsValidate
  .text._EventsEligible
-                0x00d1d017      0x2f6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1d017      0x329 tests/cemu/artifacts/event-obj/CNTAGION.o
                 0x00d1d017                _EventsEligible
  .text._Capable
-                0x00d1d30d       0x3a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1d340       0x3a tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._EventsRefreshTraits
-                0x00d1d347       0xb4 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1d347                _EventsRefreshTraits
+                0x00d1d37a       0xb4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1d37a                _EventsRefreshTraits
  .text._EventsAdvance
-                0x00d1d3fb      0x728 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1d3fb                _EventsAdvance
+                0x00d1d42e      0x728 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1d42e                _EventsAdvance
  .text._RandomEvent
-                0x00d1db23       0x61 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1db56       0x61 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._EventAmount
-                0x00d1db84       0x46 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1db84                _EventAmount
+                0x00d1dbb7       0x46 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1dbb7                _EventAmount
  .text._EventsApply
-                0x00d1dbca      0x874 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1dbca                _EventsApply
+                0x00d1dbfd      0x874 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1dbfd                _EventsApply
  .text._EvolutionMenu
-                0x00d1e43e     0x1702 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1e43e                _EvolutionMenu
+                0x00d1e471     0x1702 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1e471                _EvolutionMenu
  .text._StateSymbol
-                0x00d1fb40       0x65 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1fb73       0x65 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._RegionInfo
-                0x00d1fba5      0x315 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1fba5                _RegionInfo
+                0x00d1fbd8      0x315 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1fbd8                _RegionInfo
  .text._SporeMenu
-                0x00d1feba      0x25c tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d1feba                _SporeMenu
+                0x00d1feed      0x25c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d1feed                _SporeMenu
  .text._LoadData
-                0x00d20116       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d20116                _LoadData
+                0x00d20149       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20149                _LoadData
  .text._ReadNamed
-                0x00d20160       0xb8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20193       0xb8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileRead
-                0x00d20218       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2024b       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileWrite
-                0x00d20249       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2027c       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileSeek
-                0x00d2027a       0x2c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d202ad       0x2c tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._HasLegacySave
-                0x00d202a6       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d202a6                _HasLegacySave
+                0x00d202d9       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d202d9                _HasLegacySave
  .text._ReadLegacyNamed
-                0x00d202ce       0xb0 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20301       0xb0 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._ImportLegacySave
-                0x00d2037e      0x1a0 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2037e                _ImportLegacySave
+                0x00d203b1      0x1a0 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d203b1                _ImportLegacySave
  .text._SaveData
-                0x00d2051e      0x103 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2051e                _SaveData
+                0x00d20551      0x103 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20551                _SaveData
  .text._CopyNamed
-                0x00d20621      0x105 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20654      0x105 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._SaveSize
-                0x00d20726       0x77 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d20726                _SaveSize
+                0x00d20759       0x77 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20759                _SaveSize
  .text._EncodeSave
-                0x00d2079d      0x13a tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2079d                _EncodeSave
- .text._Header  0x00d208d7       0xac tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._State   0x00d20983      0x20f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d207d0       0xf2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d207d0                _EncodeSave
+ .text._Header  0x00d208c2       0xa0 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._State   0x00d20962      0x20f tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._WriteMap
+                0x00d20b71       0x74 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._Geometry
-                0x00d20b92       0x69 tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._Bytes   0x00d20bfb       0xbd tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20be5       0x69 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._Bytes   0x00d20c4e       0xbd tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._Checksum
-                0x00d20cb8       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._U32     0x00d20d06       0xd2 tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._U16     0x00d20dd8       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._U8      0x00d20e2d       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20d0b       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._U32     0x00d20d59       0xd2 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._U16     0x00d20e2b       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._U8      0x00d20e80       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._ValidateSave
-                0x00d20e47       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d20e47                _ValidateSave
+                0x00d20e9a       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20e9a                _ValidateSave
  .text._ReadSave
-                0x00d20e64      0x761 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d20eb7      0x1b9 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._ReadMap
+                0x00d21070      0x342 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._DecodeSave
-                0x00d215c5       0x40 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d215c5                _DecodeSave
+                0x00d213b2       0x40 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d213b2                _DecodeSave
  .text._SaveSizeV3
-                0x00d21605       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d21605                _SaveSizeV3
+                0x00d213f2       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d213f2                _SaveSizeV3
  .text._EncodeSaveV3
-                0x00d2161e      0x250 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2161e                _EncodeSaveV3
- .text._HeaderV3
-                0x00d2186e       0xac tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2140b      0x1da tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2140b                _EncodeSaveV3
  .text._EventState
-                0x00d2191a       0xd3 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d215e5       0xd3 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._ValidateSaveV3
-                0x00d219ed       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d219ed                _ValidateSaveV3
+                0x00d216b8       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d216b8                _ValidateSaveV3
  .text._ReadSaveV3
-                0x00d21a0b      0x834 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d216d6      0x31e tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._DecodeSaveV3
-                0x00d2223f       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2223f                _DecodeSaveV3
+                0x00d219f4       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d219f4                _DecodeSaveV3
  .text._TickerInit
-                0x00d22284       0x44 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22284                _TickerInit
+                0x00d21a39       0x44 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21a39                _TickerInit
  .text._TickerPost
-                0x00d222c8      0x274 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d222c8                _TickerPost
- .text._Remove  0x00d2253c       0x43 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21a7d      0x274 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21a7d                _TickerPost
+ .text._Remove  0x00d21cf1       0x43 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._RecountRegion
-                0x00d2257f       0xb9 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2257f                _RecountRegion
+                0x00d21d34       0xb9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21d34                _RecountRegion
  .text._SetCell
-                0x00d22638       0x97 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22638                _SetCell
+                0x00d21ded       0x97 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21ded                _SetCell
  .text._SeedRegion
-                0x00d226cf       0xbc tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d226cf                _SeedRegion
+                0x00d21e84       0xbc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21e84                _SeedRegion
  .text._SporeBurst
-                0x00d2278b       0x9e tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2278b                _SporeBurst
+                0x00d21f40       0x9e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21f40                _SporeBurst
  .text._GameRandom
-                0x00d22829       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22829                _GameRandom
+                0x00d21fde       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d21fde                _GameRandom
  .text._ReadKey
-                0x00d2285a       0xda tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2285a                _ReadKey
+                0x00d2200f       0xda tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2200f                _ReadKey
  .text._ScannedKeyDown
-                0x00d22934       0x2e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d220e9       0x2e tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._ReleaseKeys
-                0x00d22962       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22962                _ReleaseKeys
+                0x00d22117       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22117                _ReleaseKeys
  .text._WaitKey
-                0x00d22975        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22975                _WaitKey
+                0x00d2212a        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2212a                _WaitKey
  .text._EndModal
-                0x00d22983       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22983                _EndModal
+                0x00d22138       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22138                _EndModal
  .text._MenuMove
-                0x00d22994       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22994                _MenuMove
+                0x00d22149       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22149                _MenuMove
  .text._MenuItem
-                0x00d229e6       0x7e tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d229e6                _MenuItem
- .text._Text    0x00d22a64       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22a64                _Text
+                0x00d2219b       0x7e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2219b                _MenuItem
+ .text._Text    0x00d22219       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22219                _Text
  .text._ChooseMenu
-                0x00d22aa2      0x107 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22aa2                _ChooseMenu
+                0x00d22257      0x107 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22257                _ChooseMenu
  .text._BeginScreen
-                0x00d22ba9       0x6d tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22ba9                _BeginScreen
+                0x00d2235e       0x6d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2235e                _BeginScreen
  .text._WrapText
-                0x00d22c16      0x127 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22c16                _WrapText
+                0x00d223cb      0x127 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d223cb                _WrapText
  .text._RefreshEffects
-                0x00d22d3d       0x87 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22d3d                _RefreshEffects
+                0x00d224f2       0x87 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d224f2                _RefreshEffects
  .text._ResetGameState
-                0x00d22dc4       0xfe tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22dc4                _ResetGameState
+                0x00d22579       0xfe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22579                _ResetGameState
  .text._ActionsMenu
-                0x00d22ec2      0x359 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d22ec2                _ActionsMenu
+                0x00d22677      0x359 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22677                _ActionsMenu
  .text._SaveExit
-                0x00d2321b       0xa2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d229d0       0xa2 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._InitializeMap
-                0x00d232bd       0x9b tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._main    0x00d23358      0xf40 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d23358                _main
+                0x00d22a72       0x9b tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._main    0x00d22b0d      0xf40 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d22b0d                _main
  .text._RemoveSaves
-                0x00d24298       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23a4d       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._StartRun
-                0x00d242b7       0xa3 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23a6c       0xa3 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._DiscoveredWithClosures
-                0x00d2435a       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23b0f       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._SetActive
-                0x00d243a2       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
- .text._Check   0x00d243f9       0x66 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23b57       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .text._Check   0x00d23bae       0x66 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._SameEvents
-                0x00d2445f       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23c14       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileRead.753
-                0x00d24487       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23c3c       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileWrite.754
-                0x00d244b8       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23c6d       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._FileSeek.755
-                0x00d244e9       0x2c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23c9e       0x2c tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._HashVar
-                0x00d24515      0x12e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23cca      0x12e tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._CheckChainBranch
-                0x00d24643      0x369 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d23df8      0x369 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._npf_vpprintf
-                0x00d249ac     0x1775 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d249ac                _npf_vpprintf
+                0x00d24161     0x1775 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d24161                _npf_vpprintf
  .text._NPF_PUTC_IMPL
-                0x00d26121       0x2d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d258d6       0x2d tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._npf_utoa_rev
-                0x00d2614e       0xe6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25903       0xe6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._vsnprintf
-                0x00d26234       0x88 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d26234                _vsnprintf
+                0x00d259e9       0x88 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d259e9                _vsnprintf
  .text._npf_bufputc
-                0x00d262bc       0x25 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25a71       0x25 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._npf_bufputc_nop
-                0x00d262e1        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25a96        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .text._snprintf
-                0x00d262e8       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d262e8                _snprintf
- .text.__bctlz  0x00d26310       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d26310                __bctlz
- .text.__sctlz  0x00d26332        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d26332                __sctlz
- .text.__ictlz  0x00d2633e       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2633e                __ictlz
+                0x00d25a9d       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25a9d                _snprintf
+ .text.__bctlz  0x00d25ac5       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25ac5                __bctlz
+ .text.__sctlz  0x00d25ae7        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25ae7                __sctlz
+ .text.__ictlz  0x00d25af3       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25af3                __ictlz
  .text.__llctlz
-                0x00d26350        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d26350                __llctlz
+                0x00d25b05        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25b05                __llctlz
  .text.__i48ctlz
-                0x00d2635e       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2635e                __i48ctlz
- .text._random  0x00d26373       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d26373                _random
+                0x00d25b13       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25b13                __i48ctlz
+ .text._random  0x00d25b28       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25b28                _random
  .text._srandom
-                0x00d263c8       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d263c8                _srandom
-                0x00d263cf                __setstate
+                0x00d25b7d       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25b7d                _srandom
+                0x00d25b84                __setstate
  *(.gnu.warning)
 
-.rodata         0x00d263e0     0x7e21
+.rodata         0x00d25b94     0x7e21
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata._TransmissionContribution
-                0x00d263e0       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25b94       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._EventsEligible
-                0x00d26407       0x33 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25bbb       0x33 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._EventsAdvance
-                0x00d2643a       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25bee       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._EventsApply
-                0x00d2644c       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c00       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._SporeMenu
-                0x00d26464        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c18        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._ActionsMenu
-                0x00d26470        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c24        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4
-                0x00d2647c       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c30       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1.5
-                0x00d26498       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c4c       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2.6
-                0x00d264d6       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25c8a       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.3.7
-                0x00d264f1       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25ca5       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4.8
-                0x00d2653a       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25cee       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.5
-                0x00d26550       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25d04       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.6
-                0x00d265a4       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25d58       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.7
-                0x00d265bc       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25d70       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.8
-                0x00d26607       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25dbb       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.9
-                0x00d2661c       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25dd0       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.10
-                0x00d2666c       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25e20       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.11
-                0x00d26682       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25e36       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.12
-                0x00d266d7       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25e8b       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.13
-                0x00d266ec       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25ea0       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.14
-                0x00d26743       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25ef7       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.15
-                0x00d26758       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25f0c       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.16
-                0x00d267b2       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25f66       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.17
-                0x00d267c6       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25f7a       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.18
-                0x00d2681c       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25fd0       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.19
-                0x00d26831       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d25fe5       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.20
-                0x00d2687d       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26031       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.21
-                0x00d26893       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26047       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.22
-                0x00d268dd       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26091       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.23
-                0x00d268f9       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d260ad       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.24
-                0x00d26949       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d260fd       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.25
-                0x00d26966       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2611a       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.26
-                0x00d269be       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26172       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.27
-                0x00d269d5       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26189       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.28
-                0x00d26a28       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d261dc       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.29
-                0x00d26a3f       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d261f3       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.30
-                0x00d26a8b       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2623f       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.31
-                0x00d26a9d       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26251       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.32
-                0x00d26af0       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d262a4       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.33
-                0x00d26b09       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d262bd       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.34
-                0x00d26b63       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26317       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.35
-                0x00d26b75       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26329       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.36
-                0x00d26bcf       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26383       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.37
-                0x00d26be5       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26399       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.38
-                0x00d26c3a       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d263ee       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.39
-                0x00d26c4d       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26401       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.40
-                0x00d26ca1       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26455       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.41
-                0x00d26cb5       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26469       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.42
-                0x00d26d11       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d264c5       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.43
-                0x00d26d25       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d264d9       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.44
-                0x00d26d7b       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2652f       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.45
-                0x00d26d92       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26546       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.46
-                0x00d26de3       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26597       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.47
-                0x00d26df7       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d265ab       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.48
-                0x00d26e41       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d265f5       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.49
-                0x00d26e59       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2660d       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.50
-                0x00d26eab       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2665f       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.51
-                0x00d26ec0       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26674       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.52
-                0x00d26f19       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d266cd       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.53
-                0x00d26f2c       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d266e0       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.54
-                0x00d26f7c       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26730       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.55
-                0x00d26f8f       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26743       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.56
-                0x00d26fe3       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26797       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.57
-                0x00d26ff6       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d267aa       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.58
-                0x00d2704c       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26800       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.59
-                0x00d27063       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26817       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.60
-                0x00d270b8       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2686c       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.61
-                0x00d270ce       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26882       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.62
-                0x00d27122       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d268d6       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.63
-                0x00d27134       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d268e8       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.64
-                0x00d27181       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26935       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.65
-                0x00d27194       0x5d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26948       0x5d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.66
-                0x00d271f1       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d269a5       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.67
-                0x00d27204       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d269b8       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.68
-                0x00d2725c       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26a10       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.69
-                0x00d2726d       0x42 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26a21       0x42 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.70
-                0x00d272af       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26a63       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.71
-                0x00d272c2       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26a76       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.72
-                0x00d2730b       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26abf       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.73
-                0x00d27321       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26ad5       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.74
-                0x00d2736c       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26b20       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.75
-                0x00d2737c       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26b30       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.76
-                0x00d273cd       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26b81       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.77
-                0x00d273e5       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26b99       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.78
-                0x00d27430       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26be4       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.79
-                0x00d27445       0x5e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26bf9       0x5e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.80
-                0x00d274a3       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26c57       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.81
-                0x00d274bd       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26c71       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.82
-                0x00d2750d       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26cc1       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.83
-                0x00d27522       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26cd6       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.84
-                0x00d27577       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26d2b       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.85
-                0x00d27591       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26d45       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.86
-                0x00d275db       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26d8f       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.87
-                0x00d275f5       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26da9       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.88
-                0x00d27651       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26e05       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.89
-                0x00d27669       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26e1d       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.90
-                0x00d276c5       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26e79       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.91
-                0x00d276db       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26e8f       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.92
-                0x00d27731       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26ee5       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.93
-                0x00d2774d       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26f01       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.94
-                0x00d27797       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26f4b       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.95
-                0x00d277b3       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26f67       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.96
-                0x00d277fb       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26faf       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.97
-                0x00d27814       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d26fc8       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.98
-                0x00d2786d       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27021       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.99
-                0x00d27884       0x6d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27038       0x6d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.100
-                0x00d278f1       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d270a5       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.101
-                0x00d27907       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d270bb       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.102
-                0x00d2795d       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27111       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.103
-                0x00d27975       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27129       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.104
-                0x00d279cf       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27183       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.105
-                0x00d279e4       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27198       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.106
-                0x00d27a3a       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d271ee       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.107
-                0x00d27a4d       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27201       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.108
-                0x00d27aa0       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27254       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.109
-                0x00d27ab6       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2726a       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.110
-                0x00d27b07       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d272bb       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.111
-                0x00d27b21       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d272d5       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.112
-                0x00d27b7d       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27331       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.113
-                0x00d27b96       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2734a       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.114
-                0x00d27bee       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d273a2       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.115
-                0x00d27c05       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d273b9       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.116
-                0x00d27c58       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2740c       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.117
-                0x00d27c6d       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27421       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.118
-                0x00d27cc6       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2747a       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.119
-                0x00d27cde       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27492       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.120
-                0x00d27d30       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d274e4       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.121
-                0x00d27d44       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d274f8       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.122
-                0x00d27d97       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2754b       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.123
-                0x00d27daa       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2755e       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.124
-                0x00d27e04       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d275b8       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.125
-                0x00d27e19       0x6f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d275cd       0x6f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.126
-                0x00d27e88       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2763c       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.127
-                0x00d27e9e       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27652       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.128
-                0x00d27efd       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d276b1       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.129
-                0x00d27f15       0x5b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d276c9       0x5b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.130
-                0x00d27f70       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27724       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.131
-                0x00d27f84       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27738       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.132
-                0x00d27fdd       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27791       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.133
-                0x00d27ff2       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d277a6       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.134
-                0x00d2804b       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d277ff       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.135
-                0x00d2805f       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27813       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.136
-                0x00d280b5       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27869       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.137
-                0x00d280cd       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27881       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.138
-                0x00d28116       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d278ca       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.139
-                0x00d2812e       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d278e2       0x58 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.140
-                0x00d28186       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2793a       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.141
-                0x00d281a1       0x3d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27955       0x3d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.142
-                0x00d281de       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27992       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.143
-                0x00d281f2       0x40 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d279a6       0x40 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.144
-                0x00d28232       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d279e6       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.145
-                0x00d28248       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d279fc       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.146
-                0x00d28291       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27a45       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.147
-                0x00d282a6       0x75 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27a5a       0x75 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.148
-                0x00d2831b       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27acf       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.149
-                0x00d28336       0x6e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27aea       0x6e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.150
-                0x00d283a4       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27b58       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.151
-                0x00d283c1       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27b75       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.152
-                0x00d2842d       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27be1       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.153
-                0x00d28444       0x60 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27bf8       0x60 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.154
-                0x00d284a4       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27c58       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.155
-                0x00d284c0       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27c74       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.156
-                0x00d284fe       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27cb2       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.157
-                0x00d28515       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27cc9       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.158
-                0x00d28579       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27d2d       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.159
-                0x00d28590       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27d44       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.160
-                0x00d285f4       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27da8       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.161
-                0x00d28606       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27dba       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.162
-                0x00d28650       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27e04       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.163
-                0x00d28668       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27e1c       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.164
-                0x00d286b9       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27e6d       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.165
-                0x00d286cd       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27e81       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.166
-                0x00d28721       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27ed5       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.167
-                0x00d2873a       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27eee       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.168
-                0x00d28793       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27f47       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.169
-                0x00d287ac       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27f60       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.170
-                0x00d28803       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27fb7       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.171
-                0x00d2881a       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d27fce       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.172
-                0x00d28879       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2802d       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.173
-                0x00d2888d       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28041       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.174
-                0x00d288e7       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2809b       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.175
-                0x00d288fb       0x69 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d280af       0x69 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.176
-                0x00d28964       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28118       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.177
-                0x00d2897b       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2812f       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.178
-                0x00d289d0       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28184       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.179
-                0x00d289e9       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2819d       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.180
-                0x00d28a45       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d281f9       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.181
-                0x00d28a5c       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28210       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.182
-                0x00d28aa1       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28255       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.183
-                0x00d28ab6       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2826a       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.184
-                0x00d28b1d       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d282d1       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.185
-                0x00d28b38       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d282ec       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.186
-                0x00d28b92       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28346       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.187
-                0x00d28ba9       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2835d       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.188
-                0x00d28bfb       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d283af       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.189
-                0x00d28c15       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d283c9       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.190
-                0x00d28c5d       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28411       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.191
-                0x00d28c73       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28427       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.192
-                0x00d28cc8       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2847c       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.193
-                0x00d28ce0       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28494       0x49 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.194
-                0x00d28d29       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d284dd       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.195
-                0x00d28d3e       0x63 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d284f2       0x63 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.196
-                0x00d28da1       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28555       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.197
-                0x00d28db7       0x65 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2856b       0x65 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.198
-                0x00d28e1c       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d285d0       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.199
-                0x00d28e37       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d285eb       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.200
-                0x00d28e87       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2863b       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.201
-                0x00d28ea0       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28654       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.202
-                0x00d28ef1       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d286a5       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.203
-                0x00d28f02       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d286b6       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.204
-                0x00d28f4d        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28701        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.205
-                0x00d28f5c       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28710       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.206
-                0x00d28fac       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28760       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.207
-                0x00d28fbf       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28773       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.208
-                0x00d29013       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d287c7       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.209
-                0x00d2902d       0x37 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d287e1       0x37 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.210
-                0x00d29064       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28818       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.211
-                0x00d2907e       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28832       0x5c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.212
-                0x00d290da       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2888e       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.213
-                0x00d290f1       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d288a5       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.214
-                0x00d29144       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d288f8       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.215
-                0x00d29158       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2890c       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.216
-                0x00d291ab       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2895f       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.217
-                0x00d291c4       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28978       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.218
-                0x00d2921d       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d289d1       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.219
-                0x00d29233       0x36 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d289e7       0x36 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.220
-                0x00d29269       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28a1d       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.221
-                0x00d2927c       0x66 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28a30       0x66 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.222
-                0x00d292e2       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28a96       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.223
-                0x00d292fa       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28aae       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.224
-                0x00d29350       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28b04       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.225
-                0x00d29366       0x39 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28b1a       0x39 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.226
-                0x00d2939f       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28b53       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.227
-                0x00d293b5       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28b69       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.228
-                0x00d2941c       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28bd0       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.229
-                0x00d29438       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28bec       0x3e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.230
-                0x00d29476       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28c2a       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.231
-                0x00d2948b       0x60 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28c3f       0x60 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.232
-                0x00d294eb       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28c9f       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.233
-                0x00d29505       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28cb9       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.234
-                0x00d29558       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28d0c       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.235
-                0x00d29573       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28d27       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.236
-                0x00d295df       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28d93       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.237
-                0x00d295fa       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28dae       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.238
-                0x00d29661       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28e15       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.239
-                0x00d2967c       0x68 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28e30       0x68 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.240
-                0x00d296e4       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28e98       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.241
-                0x00d296ff       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28eb3       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.242
-                0x00d29755       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28f09       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.243
-                0x00d2976b       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28f1f       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.244
-                0x00d297b8       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28f6c       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.245
-                0x00d297d2       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28f86       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.246
-                0x00d2981f       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28fd3       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.247
-                0x00d2983b       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d28fef       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.248
-                0x00d2988b       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2903f       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.249
-                0x00d298a0       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29054       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.250
-                0x00d298ba       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2906e       0x51 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.251
-                0x00d2990b       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d290bf       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.252
-                0x00d2991f       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d290d3       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.253
-                0x00d2996b       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2911f       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.254
-                0x00d29983       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29137       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.255
-                0x00d299cd       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29181       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.256
-                0x00d299e7       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2919b       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.257
-                0x00d29a3d       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d291f1       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.258
-                0x00d29a52       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29206       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.259
-                0x00d29a68       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2921c       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.260
-                0x00d29abe       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29272       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.261
-                0x00d29ad1       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29285       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.262
-                0x00d29b1d       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d292d1       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.263
-                0x00d29b33       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d292e7       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.264
-                0x00d29b85       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29339       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.265
-                0x00d29b9d       0x4f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29351       0x4f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.266
-                0x00d29bec       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d293a0       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.267
-                0x00d29c03       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d293b7       0x4b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.268
-                0x00d29c4e       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29402       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.269
-                0x00d29c61       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29415       0x52 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.270
-                0x00d29cb3       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29467       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.271
-                0x00d29cc9       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2947d       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.272
-                0x00d29d15       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d294c9       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.273
-                0x00d29d2b       0x61 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d294df       0x61 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.274
-                0x00d29d8c       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29540       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.275
-                0x00d29da6       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2955a       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.276
-                0x00d29dfd       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d295b1       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.277
-                0x00d29e14       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d295c8       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.278
-                0x00d29e26       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d295da       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.279
-                0x00d29e3b       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d295ef       0x45 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.280
-                0x00d29e80       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29634       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.281
-                0x00d29e9b       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2964f       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.282
-                0x00d29ef4       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d296a8       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.283
-                0x00d29f11       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d296c5       0x57 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.284
-                0x00d29f68       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2971c       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.285
-                0x00d29f7e       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29732       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.286
-                0x00d29f91       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29745       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.287
-                0x00d29fe5       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29799       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.288
-                0x00d29ff9       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d297ad       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.289
-                0x00d2a049       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d297fd       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.290
-                0x00d2a059       0x5d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2980d       0x5d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.291
-                0x00d2a0b6       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2986a       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.292
-                0x00d2a0cd       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29881       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.293
-                0x00d2a126       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d298da       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.294
-                0x00d2a138       0x3f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d298ec       0x3f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.295
-                0x00d2a177       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2992b       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.296
-                0x00d2a18c       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29940       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.297
-                0x00d2a1f0       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d299a4       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.298
-                0x00d2a208       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d299bc       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.299
-                0x00d2a255       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29a09       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.300
-                0x00d2a26d       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29a21       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.301
-                0x00d2a2d4       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29a88       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.302
-                0x00d2a2f1       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29aa5       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.303
-                0x00d2a347       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29afb       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.304
-                0x00d2a35e       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29b12       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.305
-                0x00d2a3b4       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29b68       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.306
-                0x00d2a3c9       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29b7d       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.307
-                0x00d2a417       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29bcb       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.308
-                0x00d2a42b       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29bdf       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.309
-                0x00d2a475       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29c29       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.310
-                0x00d2a491       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29c45       0x6c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.311
-                0x00d2a4fd       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29cb1       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.312
-                0x00d2a519       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29ccd       0x64 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.313
-                0x00d2a57d       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29d31       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.314
-                0x00d2a597       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29d4b       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.315
-                0x00d2a5b1       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29d65       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.316
-                0x00d2a604       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29db8       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.317
-                0x00d2a61a       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29dce       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.318
-                0x00d2a666       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29e1a       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.319
-                0x00d2a680       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29e34       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.320
-                0x00d2a6d3       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29e87       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.321
-                0x00d2a6eb       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29e9f       0x4e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.322
-                0x00d2a739       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29eed       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.323
-                0x00d2a750       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29f04       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.324
-                0x00d2a7a6       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29f5a       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.325
-                0x00d2a7be       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29f72       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.326
-                0x00d2a81d       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29fd1       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.327
-                0x00d2a835       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d29fe9       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.328
-                0x00d2a894       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a048       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.329
-                0x00d2a8b3       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a067       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.330
-                0x00d2a912       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a0c6       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.331
-                0x00d2a926       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a0da       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.332
-                0x00d2a985       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a139       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.333
-                0x00d2a99d       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a151       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.334
-                0x00d2a9b3       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a167       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.335
-                0x00d2aa12       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a1c6       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.336
-                0x00d2aa28       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a1dc       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.337
-                0x00d2aa87       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a23b       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.338
-                0x00d2aaa1       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a255       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.339
-                0x00d2ab00       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a2b4       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.340
-                0x00d2ab19       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a2cd       0x5f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.341
-                0x00d2ab78       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a32c       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.342
-                0x00d2ab92       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a346       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.343
-                0x00d2abb0       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a364       0x56 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.344
-                0x00d2ac06       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a3ba       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.345
-                0x00d2ac1a       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a3ce       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.346
-                0x00d2ac6d       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a421       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.347
-                0x00d2ac86       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a43a       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.348
-                0x00d2acd3       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a487       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.349
-                0x00d2ace9       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a49d       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.350
-                0x00d2ad42       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a4f6       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.351
-                0x00d2ad5d       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a511       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.352
-                0x00d2ad76       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a52a       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.353
-                0x00d2adc9       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a57d       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.354
-                0x00d2ade1       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a595       0x4a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.355
-                0x00d2ae2b       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a5df       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.356
-                0x00d2ae47       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a5fb       0x5a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.357
-                0x00d2aea1       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a655       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.358
-                0x00d2aebb       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a66f       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.359
-                0x00d2af14       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a6c8       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.360
-                0x00d2af2d       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a6e1       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.361
-                0x00d2af82       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a736       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.362
-                0x00d2af9a       0x6b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a74e       0x6b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.363
-                0x00d2b005       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a7b9       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.364
-                0x00d2b01e       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a7d2       0x4d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.365
-                0x00d2b06b       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a81f       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.366
-                0x00d2b084       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a838       0x48 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.367
-                0x00d2b0cc       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a880       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.368
-                0x00d2b0ea       0x6a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a89e       0x6a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.369
-                0x00d2b154       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a908       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.370
-                0x00d2b16a       0x38 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a91e       0x38 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.371
-                0x00d2b1a2       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a956       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.372
-                0x00d2b1bc       0x68 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a970       0x68 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.373
-                0x00d2b224       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a9d8       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.374
-                0x00d2b23c       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2a9f0       0x4c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.375
-                0x00d2b288       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aa3c       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.376
-                0x00d2b2a3       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aa57       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.377
-                0x00d2b2fc       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aab0       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.378
-                0x00d2b318       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aacc       0x53 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.379
-                0x00d2b36b       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ab1f       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.380
-                0x00d2b388       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ab3c       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.381
-                0x00d2b3a5       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ab59       0x67 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.382
-                0x00d2b40c       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2abc0       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.383
-                0x00d2b420       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2abd4       0x55 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.384
-                0x00d2b475       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ac29       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.385
-                0x00d2b48c       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ac40       0x54 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.386
-                0x00d2b4e0       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ac94       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.387
-                0x00d2b4f5       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aca9       0x59 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.388
-                0x00d2b54e       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ad02       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.389
-                0x00d2b568       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ad1c       0x50 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.390
-                0x00d2b5b8       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ad6c       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1.391
-                0x00d2b5cd       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ad81       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2.392
-                0x00d2b5e5        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ad99        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4.394
-                0x00d2b5f4       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ada8       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.6.396
-                0x00d2b613       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2adc7       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.7.397
-                0x00d2b627       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2addb       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.8.398
-                0x00d2b63a        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2adee        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._effect_names
-                0x00d2b63d       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2adf1       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.9.399
-                0x00d2b658       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae0c       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.10.400
-                0x00d2b66f        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae23        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.11.403
-                0x00d2b679        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae2d        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.12.401
-                0x00d2b687        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae3b        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.14.404
-                0x00d2b691       0x30 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae45       0x30 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.15.405
-                0x00d2b6c1       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae75       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.16.406
-                0x00d2b6d7       0x26 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ae8b       0x26 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.17.407
-                0x00d2b6fd       0x23 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aeb1       0x23 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._EventDetail.checks
-                0x00d2b720       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aed4       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.18.413
-                0x00d2b735       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aee9       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.19.414
-                0x00d2b74a       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aefe       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.20.415
-                0x00d2b767       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2af1b       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.21.416
-                0x00d2b78e       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2af42       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.22.417
-                0x00d2b7a9       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2af5d       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.23.408
-                0x00d2b7c4        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2af78        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.24.409
-                0x00d2b7d3       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2af87       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.25.410
-                0x00d2b7f5       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2afa9       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.26.411
-                0x00d2b814       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2afc8       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.29.419
-                0x00d2b835        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2afe9        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.30.420
-                0x00d2b842        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2aff6        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.31.421
-                0x00d2b84d        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b001        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.32.422
-                0x00d2b858        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b00c        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.33.423
-                0x00d2b867       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b01b       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.34.424
-                0x00d2b87a       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b02e       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.35.425
-                0x00d2b88c       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b040       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.36.426
-                0x00d2b89f       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b053       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.433
-                0x00d2b8b2       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b066       0x1b tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._categories
-                0x00d2b8cd        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b081        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1.434
-                0x00d2b8d6        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b08a        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._branch_labels
-                0x00d2b8dd       0x3f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b091       0x3f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2.435
-                0x00d2b91c        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b0d0        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.3.436
-                0x00d2b924        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b0d8        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4.437
-                0x00d2b92f        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b0e3        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.5.438
-                0x00d2b936       0x29 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b0ea       0x29 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.6.439
-                0x00d2b95f       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b113       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.7.440
-                0x00d2b97d       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b131       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._first_node
-                0x00d2b98f        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b143        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._environments
-                0x00d2b992       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2b992                _environments
+                0x00d2b146       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b146                _environments
  .rodata._.str.8.487
-                0x00d2b9c3       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b177       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.9.488
-                0x00d2b9e4       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b198       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.10.489
-                0x00d2b9f5       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b1a9       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.11.490
-                0x00d2ba12       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b1c6       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.12.491
-                0x00d2ba24       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b1d8       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.13.492
-                0x00d2ba3d       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b1f1       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.14.493
-                0x00d2ba51        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b205        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.15.494
-                0x00d2ba5f       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b213       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.16.495
-                0x00d2ba7b       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b22f       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.19.497
-                0x00d2ba9a       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b24e       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.20.499
-                0x00d2baae       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b262       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.21.498
-                0x00d2bac7       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b27b       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.22.500
-                0x00d2bae5       0x26 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b299       0x26 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.23.501
-                0x00d2bb0b       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b2bf       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.24.502
-                0x00d2bb1d       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b2d1       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.25.503
-                0x00d2bb3e       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b2f2       0x17 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.26.505
-                0x00d2bb55       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b309       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.27.506
-                0x00d2bb6e       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b322       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.28.507
-                0x00d2bb8e       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b342       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.29.504
-                0x00d2bbae       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b362       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.30.508
-                0x00d2bbc7       0x25 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b37b       0x25 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.41.484
-                0x00d2bbec        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3a0        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.42.485
-                0x00d2bbf9        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3ad        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.43.486
-                0x00d2bc02        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3b6        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.44.469
-                0x00d2bc0c        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3c0        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.45.470
-                0x00d2bc10        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3c4        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.46.471
-                0x00d2bc16        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3ca        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.47.472
-                0x00d2bc1b        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3cf        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.48.473
-                0x00d2bc1f        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3d3        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.49.474
-                0x00d2bc26        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3da        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.50.475
-                0x00d2bc2b        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3df        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.51.476
-                0x00d2bc31        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3e5        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.52.477
-                0x00d2bc3d        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3f1        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.53.478
-                0x00d2bc47        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b3fb        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.54.479
-                0x00d2bc50        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b404        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.55.480
-                0x00d2bc55        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b409        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.56.481
-                0x00d2bc5a        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b40e        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.57.482
-                0x00d2bc62        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b416        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.58.483
-                0x00d2bc69        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b41d        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.59.442
-                0x00d2bc71       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b425       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.60.443
-                0x00d2bc83       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b437       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.61.444
-                0x00d2bc9f        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b453        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.62.445
-                0x00d2bca9        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b45d        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.63.446
-                0x00d2bcae       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b462       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.64.447
-                0x00d2bcd2       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b486       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.65.448
-                0x00d2bce3       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b497       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.66.449
-                0x00d2bcf5       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b4a9       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.67.450
-                0x00d2bd0a       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b4be       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._reshuffle_reductions
-                0x00d2bd24        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2bd24                _reshuffle_reductions
+                0x00d2b4d8        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b4d8                _reshuffle_reductions
  .rodata._.str.68.451
-                0x00d2bd28       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b4dc       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.69.452
-                0x00d2bd49       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b4fd       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.70.453
-                0x00d2bd62       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b516       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.71.454
-                0x00d2bd80       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b534       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.72.455
-                0x00d2bda0       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b554       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.73.459
-                0x00d2bdc1       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b575       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.74.457
-                0x00d2bdd4        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b588        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.75.458
-                0x00d2bddd        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b591        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.76.456
-                0x00d2bde7        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b59b        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.77.461
-                0x00d2bdf3       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5a7       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.78.460
-                0x00d2be05       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5b9       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.79.462
-                0x00d2be18        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5cc        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.80.465
-                0x00d2be1d        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5d1        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.81.466
-                0x00d2be2c       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5e0       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.82.467
-                0x00d2be42       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b5f6       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.83.463
-                0x00d2be52        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b606        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.84.468
-                0x00d2be5d       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b611       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.85.464
-                0x00d2be7b       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b62f       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.526
-                0x00d2be90        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b644        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.567
-                0x00d2be95        0x1 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b649        0x1 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._switch.table.TickerUpdate.27
-                0x00d2be96       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b64a       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.577
-                0x00d2bea6        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b65a        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1.578
-                0x00d2beac       0x2f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b660       0x2f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2.579
-                0x00d2bedb        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b68f        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.3.580
-                0x00d2bee2        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b696        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4.581
-                0x00d2beea       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b69e       0x31 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.5.582
-                0x00d2bf1b        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b6cf        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.6.583
-                0x00d2bf24        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b6d8        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.7.584
-                0x00d2bf30       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b6e4       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.8.585
-                0x00d2bf4f        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b703        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.9.586
-                0x00d2bf5c        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b710        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.10.587
-                0x00d2bf66       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b71a       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.11.588
-                0x00d2bf85        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b739        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.12.589
-                0x00d2bf90        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b744        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.13.590
-                0x00d2bf9a       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b74e       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.14.591
-                0x00d2bfb8        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b76c        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.15.592
-                0x00d2bfc3        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b777        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.16.593
-                0x00d2bfcb       0x2a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b77f       0x2a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.17.594
-                0x00d2bff5        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b7a9        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.18.595
-                0x00d2bffe        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b7b2        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.19.596
-                0x00d2c006       0x29 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b7ba       0x29 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.20.597
-                0x00d2c02f        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b7e3        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.21.598
-                0x00d2c038       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b7ec       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.22.599
-                0x00d2c04c       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b800       0x1f tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.23.600
-                0x00d2c06b       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b81f       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.24.601
-                0x00d2c07d       0x2e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b831       0x2e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.25.602
-                0x00d2c0ab       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b85f       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.26.603
-                0x00d2c0bd       0x23 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b871       0x23 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.27.604
-                0x00d2c0e0        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b894        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.28.605
-                0x00d2c0e6       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b89a       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.29.606
-                0x00d2c10a        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b8be        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.30.607
-                0x00d2c113       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b8c7       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.31.608
-                0x00d2c137        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b8eb        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.32.609
-                0x00d2c141       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b8f5       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.33.610
-                0x00d2c161       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b915       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.34.611
-                0x00d2c175       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b929       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.35.612
-                0x00d2c19c        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b950        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.36.613
-                0x00d2c1a3        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b957        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.37.614
-                0x00d2c1ac        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b960        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.38.615
-                0x00d2c1b5       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b969       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.39.616
-                0x00d2c1c7        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b97b        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.40.617
-                0x00d2c1cc        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b980        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.41.618
-                0x00d2c1d2       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b986       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.42.619
-                0x00d2c1e5        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b999        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.43.620
-                0x00d2c1f3       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b9a7       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.44.621
-                0x00d2c205       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b9b9       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.45.622
-                0x00d2c221       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b9d5       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.46.623
-                0x00d2c234       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2b9e8       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.47.624
-                0x00d2c258       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba0c       0x12 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.48.625
-                0x00d2c26a       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba1e       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.49.626
-                0x00d2c286       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba3a       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.50.627
-                0x00d2c299       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba4d       0x24 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.51.628
-                0x00d2c2bd       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba71       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.52.629
-                0x00d2c2d2       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ba86       0x22 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.53.630
-                0x00d2c2f4       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2baa8       0x16 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.54.631
-                0x00d2c30a       0x2a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2babe       0x2a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.55.632
-                0x00d2c334       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bae8       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.56.633
-                0x00d2c348       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bafc       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.57.634
-                0x00d2c365       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bb19       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.58.635
-                0x00d2c37a       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bb2e       0x1e tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.59.636
-                0x00d2c398       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bb4c       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.60.637
-                0x00d2c3ac       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bb60       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.61.638
-                0x00d2c3d4       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bb88       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.62.639
-                0x00d2c3e9       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
- *fill*         0x00d2c411        0x1 
+                0x00d2bb9d       0x28 tests/cemu/artifacts/event-obj/CNTAGION.o
+ *fill*         0x00d2bbc5        0x1 
  .rodata._traits
-                0x00d2c412      0x35a tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2c412                _traits
+                0x00d2bbc6      0x35a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bbc6                _traits
  .rodata._.str.670
-                0x00d2c76c        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf20        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1.671
-                0x00d2c76e        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf22        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2.678
-                0x00d2c770       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf24       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.3.679
-                0x00d2c791        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf45        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.4.682
-                0x00d2c79d       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf51       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._port_definitions
-                0x00d2c7b2       0x84 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2c7b2                _port_definitions
+                0x00d2bf66       0x84 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bf66                _port_definitions
  .rodata._.str.5.687
-                0x00d2c836        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bfea        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.6.688
-                0x00d2c83d        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bff1        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.7.689
-                0x00d2c847        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2bffb        0xf tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.8.691
-                0x00d2c856       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c00a       0x19 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.9.690
-                0x00d2c86f       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c023       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.10.692
-                0x00d2c889        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c03d        0xd tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.11.693
-                0x00d2c896       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c04a       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._spore_costs
-                0x00d2c8b3        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2c8b3                _spore_costs
+                0x00d2c067        0x3 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c067                _spore_costs
  .rodata._.str.12.694
-                0x00d2c8b6       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c06a       0x1d tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.13.695
-                0x00d2c8d3       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c087       0x11 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.14.696
-                0x00d2c8e4        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c098        0xc tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.15.697
-                0x00d2c8f0       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0a4       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.16.698
-                0x00d2c900        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0b4        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.17.699
-                0x00d2c907        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0bb        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.18.700
-                0x00d2c90e        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0c2        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.31.756
-                0x00d2c91c       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0d0       0x1c tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.32.757
-                0x00d2c938       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c0ec       0x20 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.33.758
-                0x00d2c958       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c10c       0x27 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.34.759
-                0x00d2c97f       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c133       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.35.760
-                0x00d2c994       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c148       0x18 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._SaveExit.choices
-                0x00d2c9ac        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c160        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.36.705
-                0x00d2c9b5       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c169       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.37.706
-                0x00d2c9c9        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c17d        0xb tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.38.704
-                0x00d2c9d4       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c188       0x14 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.39.701
-                0x00d2c9e8       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c19c       0x21 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._SaveExit.confirm
-                0x00d2ca09        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c1bd        0x6 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.40.703
-                0x00d2ca0f        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c1c3        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.41.702
-                0x00d2ca17       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c1cb       0x1a tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._InitializeMap.names
-                0x00d2ca31       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c1e5       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.42.742
-                0x00d2ca46        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c1fa        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.43.743
-                0x00d2ca4d        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c201        0x5 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.44.744
-                0x00d2ca52        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c206        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.45.745
-                0x00d2ca59        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c20d        0xa tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.46.746
-                0x00d2ca63        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c217        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.47.747
-                0x00d2ca71        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c225        0xe tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.48.748
-                0x00d2ca7f        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c233        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._InitializeMap.x
-                0x00d2ca87        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c23b        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._InitializeMap.y
-                0x00d2ca8e        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c242        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._map_sprites
-                0x00d2ca95       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c249       0x15 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.61.724
-                0x00d2caaa        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
- *fill*         0x00d2cab3        0x1 
+                0x00d2c25e        0x9 tests/cemu/artifacts/event-obj/CNTAGION.o
+ *fill*         0x00d2c267        0x1 
  .rodata._event_catalog
-                0x00d2cab4     0x15e0 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2cab4                _event_catalog
+                0x00d2c268     0x15e0 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2c268                _event_catalog
  .rodata._.str.72.749
-                0x00d2e094        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d848        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.73.763
-                0x00d2e09b        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d84f        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.74.764
-                0x00d2e0a3        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d857        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.75.762
-                0x00d2e0ab       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d85f       0x13 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.76.750
-                0x00d2e0be        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d872        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.77.751
-                0x00d2e0c0        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d874        0x7 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.78.752
-                0x00d2e0c7        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d87b        0x8 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.79.761
-                0x00d2e0cf        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d883        0x2 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._npf_vpprintf
-                0x00d2e0d1      0x102 tests/cemu/artifacts/event-obj/CNTAGION.o
- .rodata._.str  0x00d2e1d3        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d885      0x102 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .rodata._.str  0x00d2d987        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.1
-                0x00d2e1d7        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d98b        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata._.str.2
-                0x00d2e1db        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d98f        0x4 tests/cemu/artifacts/event-obj/CNTAGION.o
  .rodata.libload
-                0x00d2e1df       0x22 tests/cemu/artifacts/event-obj/crt0.o
+                0x00d2d993       0x22 tests/cemu/artifacts/event-obj/crt0.o
 
-.init_array     0x00d2e201        0x0
+.init_array     0x00d2d9b5        0x0
                 [!provide]                        PROVIDE (__init_array_start = .)
  *(.preinit_array)
  *(SORT_BY_INIT_PRIORITY(.init_array.*))
  *(.init_array)
                 [!provide]                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x00d2e201        0x0
+.fini_array     0x00d2d9b5        0x0
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*))
  *(.fini_array)
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x00d2e201                        ___data_low = .
+                0x00d2d9b5                        ___data_low = .
 
-.data           0x00d2e201     0x2a5b
+.data           0x00d2d9b5     0x2a5b
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00d2e201       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
+ .data          0x00d2d9b5       0x10 tests/cemu/artifacts/event-obj/CNTAGION.o
  .data._africa_data
-                0x00d2e211      0x75a tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2e211                _africa_data
+                0x00d2d9c5      0x75a tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2d9c5                _africa_data
  .data._asia_data
-                0x00d2e96b      0xdf9 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2e96b                _asia_data
+                0x00d2e11f      0xdf9 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2e11f                _asia_data
  .data._europe_data
-                0x00d2f764      0x302 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2f764                _europe_data
+                0x00d2ef18      0x302 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2ef18                _europe_data
  .data._greenland_data
-                0x00d2fa66      0x152 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2fa66                _greenland_data
+                0x00d2f21a      0x152 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2f21a                _greenland_data
  .data._northamerica_data
-                0x00d2fbb8      0x7b2 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d2fbb8                _northamerica_data
+                0x00d2f36c      0x7b2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2f36c                _northamerica_data
  .data._southamerica_data
-                0x00d3036a      0x4d2 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d3036a                _southamerica_data
+                0x00d2fb1e      0x4d2 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2fb1e                _southamerica_data
  .data._oceania_data
-                0x00d3083c      0x420 tests/cemu/artifacts/event-obj/CNTAGION.o
-                0x00d3083c                _oceania_data
+                0x00d2fff0      0x420 tests/cemu/artifacts/event-obj/CNTAGION.o
+                0x00d2fff0                _oceania_data
  *(.data1)
-                0x00d30c5c                        ___runprgm_reloc_start = .
+                0x00d30410                        ___runprgm_reloc_start = .
  *(.runprgm.reloc)
-                0x00d30c5c                        ___runprgm_reloc_end = .
-                0x00d30c5c                        ___data_high = .
+                0x00d30410                        ___runprgm_reloc_end = .
+                0x00d30410                        ___data_high = .
                 0x00002a5b                        ___data_len = (___data_high - ___data_low)
                 0x00d052c6                        . = BSSHEAP_LOW
                 0x00d052c6                        ___bss_low = .

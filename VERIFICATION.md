@@ -1,6 +1,94 @@
 # CONTAGION CE 2.0 verification report
 
-## September 24, 2026: lightweight news ticker (current candidate)
+## September 29, 2026: preservation-focused cleanup (current candidate)
+
+The working tree was clean before the baseline build; no applicable `AGENTS.md`
+was found. Baseline host suites and native build passed. No pre-existing game
+failure was reproduced. The SDK selection below is required on this host;
+legacy OPTIX warnings and SDK executable-stack linker notices remain unchanged.
+
+Production changes are limited to event eligibility and shared v2/v3 map codec
+helpers. No catalog, balance, controls, disease rules, save schema, or FileIOC
+replacement policy changed. Event eligibility avoids zero-threshold divisions
+and stops at the first meaningful effect. Both formats share the same map
+geometry/pixel/checksum/outcome checks while keeping their own state records.
+
+Commands used (repository root):
+
+```sh
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk make test-host
+PATH=/tmp/contagion-cedev-mount/CEdev/bin:$PATH CEDEV=/tmp/contagion-cedev-mount/CEdev make -B OUTPUT_MAP=YES
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_events
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_rules
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh test_event_saves
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk sh tests/host/run.sh event_balance 2
+CE_LIBRARIES=bin/CONTAGION-CE-2.0 python3 tests/package/build.py
+shasum -a 256 bin/CNTAGION.8xp bin/CONTAGION-CE-2.0.zip
+```
+
+PASS: the complete final `make test-host` suite, including generator freshness,
+rules, ticker, event engine, and v2/v3 saves, ran with ASan/UBSan. New checks
+verify the pre-refactor serialization fingerprints and reject malformed v3
+geometry, pixels, checksums, and sizes without changing any live map bytes,
+counts, ports, disease, session, or event outputs. The live map deliberately
+differs from the saved image so unintended partial application is observable.
+Final production and native event/save fixture builds both passed.
+
+Targeted native execution is **blocked for this cleanup**. The existing driver
+fails with `ERR_MODULE_NOT_FOUND` for the deleted ti84ce `emu_core.js` injector
+(and its WASM companion). The retained `/tmp/contagion-browser/WebCEmu.js`, WASM,
+and preloaded OS 5.3 `game.rom` remain, but a direct transfer probe did not
+establish a usable injection path. That unsupported-call failure is not evidence
+of a game defect. No final-build emulator assertions or screenshot inspection
+are claimed. Restoring the injector or a verified reference-core transfer
+adapter is required to run the final fixture; older results below are historical.
+
+```sh
+PATH=/tmp/contagion-cedev-mount/CEdev/bin:$PATH CEDEV=/tmp/contagion-cedev-mount/CEdev sh tests/event-native/build.sh
+# Attempted; blocked before emulation by the missing injector module:
+TI84CE_ROOT=/tmp/ti84ce-eb90c33cfaebd19fbd0fea9c06a359e3efaf54c2 AUTOTESTER_ROM=/tmp/contagion-browser/game.rom CE_LIBRARIES=bin/CONTAGION-CE-2.0 CONTAGION_PROGRAM=tests/cemu/artifacts/event-bin/CNTAGION.8xp CONTAGION_MAP=tests/cemu/artifacts/event-bin/CNTAGION.map TI84CE_OUTPUT=/tmp/contagion-cleanup-baseline-events node tests/ti84ce/events.mjs
+```
+
+The two-seed, three-disease, events-on/off diagnostic produced identical complete
+output before and after the eligibility cleanup (12 runs). These are automated
+production-rule simulations, not natural keypad playthroughs or speed measurements.
+Baseline compatibility fingerprints were captured from the unedited codec:
+v2 `5c23ace8`; v3 low/high severity branch fixtures `6c26689a` / `0394eba8`;
+v3 empty-event fixture `f01d8fc0` (FNV-1a over bytes before the checksum).
+
+| Measurement | Baseline | Final | Change |
+|---|---:|---:|---:|
+| Calculator binary | 47,960 | 46,976 | -984 bytes |
+| Linker text | 55,133 | 53,082 | -2,051 bytes |
+| Read-only data | 34,268 | 34,268 | 0 |
+| Initialized data | 10,843 | 10,843 | 0 |
+| BSS | 587 | 587 | 0 |
+| v2 / v3 save length | 10,923 / 10,973 | 10,923 / 10,973 | 0 |
+
+The streaming pixel buffer remains 32 bytes. Assembly local-frame allocations
+for v2 changed from 234 to 91 + 136 bytes (caller + shared helper); v3 changed
+from 287 to 153 + 136. Those figures exclude call arguments, saved registers,
+and deeper callees: they are not stack high-water measurements. The extra call
+is a small stack tradeoff for removing duplicated code, not a stack optimization.
+
+The refreshed ZIP is 61,163 bytes, contains seven payload files plus its checksum
+manifest, and matches the directly transferable folder and final binary.
+Final SHA-256:
+
+```text
+67a52f116c0c5018cb1a97f53f246c3037bbdb5606e2e422afcdb588e7dcbfa7  CNTAGION.8xp
+7f196b4310aead78a9c29b5efce69b6cc7b1f65d79529ad16c152e39703a4728  CONTAGION-CE-2.0.zip
+```
+
+Three GPT-6 Luna agents at max reasoning reviewed events, saves/UI, and tests.
+Root owns production integration and final acceptance. Two-pass loading,
+recoverable FileIOC replacement, cycle-boundary cache refresh, and historical
+OPTIX code were retained deliberately; a broader rewrite has no demonstrated
+benefit for this cleanup. No commits, pushes, or firmware downloads were made.
+Physical TI-84 Plus CE OS 5.7 verification, real power loss/archive GC, stack
+high-water, and on-device performance remain unverified.
+
+## September 24, 2026: lightweight news ticker (historical checkpoint)
 
 `bin/CNTAGION.8xp`: **29,685 bytes**, SHA-256
 `b3033ba328cf75d71d3b2bf05a5969f51c0558b5122cac852ddb592d12831c5f`.
